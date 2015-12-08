@@ -1,0 +1,176 @@
+\documentclass{report}
+\author{Ben Haladik}
+\title{Bioinformatische Anwendung von \textit{Graphlets} zur Analyse von Proteinstrukturtopologien zur Analyse von Proteinen}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{ngerman}
+\usepackage{hyperref}
+
+\begin{document}
+
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\chapter{Einleitung}
+
+\section{Motivation}
+
+
+\chapter{Materialien und Methoden}
+
+Um die Proteinstrukturtopologien aus der PTGL zu vergleichen wurde das Programm \texttt{graphletAnalyser} genutzt und erweitert. Es wurde bereits 2013 von \textit{Tatiana Bakirova} im Rahmen ihrer Diplomarbeit im Arbeitskreis \textit{Molekulare Bioinformatik} geschrieben. Die urspr\"ungliche Funktionalität wurde erweitert. Hierbei wurden Funktionen zur Analyse von Komplexgraphen, Aminos\"auregraphen und den Sekund\"arstrukturgraphen implemetiert. Diese Graphen stammen allesamt aus der PTGL (\underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary) von Tim Sch\"afer.
+
+\section{PLCC}
+
+\section{Die PTGL}
+
+
+
+
+\section{Der \textit{Graphlet}-Algorithmus}
+
+\paragraph{Motivation}
+Die PTGL erm\"oglicht also die Darstellung von Proteinstrukturtopologien als Graphen. Um aus diesen Graphen weitere Informationen zu gewinnen, ist es sinnvoll, sie untereinander vergleichen zu k\"onnen. Ein solcher Vergleich ist jedoch ein schwieriges Problem: Gesucht ist eine Funktion $f: (G,G') \rightarrow \mathbb{R} $, die f\"ur zwei Graphen $G$ und $G'$ deren \"Ahnlichkeit zueinander beziffert.
+Es gibt diverse M\"oglichkeiten diesesd Problem zu bearbeiten, von denen jedoch keine einfach ist.
+Eine M\"oglichkeit ist, die Suche nach gr\"o"sten gemeinsamen isomorphen Teilgraphen in $G$ und $G'$, oder man versucht eine Editierdistanz zu berechnen - also herauszufinden, wie viele Operationen (Hinzuf\"ugen oder Entfernen von Knoten und Kanten) n\"otig sind um $G$ in $G'$ zu \"uberf\"uhren. Diese beiden genannten Methoden erfordern jedoch aufw\"andige Berechnungen.
+Deshalb werden Methoden verwendet, die \emph{Topologische Charakteristiken} berechnen und dies in polynomieller Laufzeit bewerkstelligen. Der Vorteil hierbei ist, dass die (aufw\"andige) Berechnung dieser Charakteristiken nur einmal pro Graph erfolgen muss. Die Charakteristiken k\"onen dann als Datenpunkte verglichen werden und man spart sich die Berechnungen, die man sonst f\"ur alle Paare von Graphen $G,G'$ durchf\"uhren muss.
+Eine Algorithmus, mit dem sich solche Charakteristiken verechnen lassen wurde 2009 von \textit{N. Shervashidze} vorgestellt: Der \textit{Graphlet}-Algorithmus.
+
+
+\paragraph{Beschreibung des Algorithmus}
+\textit{Graphlets} sind kleine induzierte Teilgraphen eines gr\"o"seren ungerichteten Graphen. \textit{N. Shervashidze} stellte diese Methode als Vergleichsschema f\"ur Graphen 2009 zum ersten Mal vor.  (Literaturverweis einf\"ugen). Folgendes Bild zeigt alle \textit{Graphlets} der Gr\"o"se 4:
+
+\begin{figure}[h]
+\includegraphics[width =\linewidth]{4graphlets.pdf}
+\caption{Graphlets der Gr\"o"se 4 (\textit{Shervashidze et al.})}
+\label{fig:4graphlets}
+\end{figure}
+
+
+Um ein \textit{Graphlet} der Gr\"o"se k zu finden, besucht der Algorithmus alle Euler-Wege der L\"ange k, in dem gegebenen Graphen. F\"ur jeden dieser Wege \"uperpr\"uft er, f\"ur alle Paare von Knoten $v,w$ ob es eine Kante $e = {v,w}$ gibt, die nicht zu dem besuchten Euler-Weges gehg\"ort. Je nachdem, welche Kanten hierbei gefunden werden, wird der Z\"ahler f\"ur das entsprechende \textit{Graphlet} erh\"oht. Der Algorithmus z\"ahlt hier aber nur alle zusammenh\"angenden \textit{Graphlets}. Er verwendet die folgenden Gewichtungsvektoren:
+\\
+\\
+
+\begin{subequations}
+\label{eq:w-vector}
+\textit{Graphlet}-Gewichtungsvektoren
+\begin{align}
+w_2 := \left( \frac{1}{2} \right) \\
+w_3 := \left( \frac{1}{6}, \frac{1}{2} \right) \\
+w_4 := \left( \frac{1}{24}, \frac{1}{12}, \frac{1}{4}, 1, \frac{1}{8},\frac{1}{2} \right) \\
+w_5 := \left( \frac{1}{120}, \frac{1}{72}, \frac{1}{48}, \frac{1}{36}, \frac{1}{28}, \frac{1}{20}, \frac{1}{14}, \frac{1}{10}, \frac{1}{12}, \frac{1}{8}, \frac{1}{4}, \frac{1}{2}, \frac{1}{12} \frac{1}{12}, \frac{1}{4} \frac{1}{4}, \frac{1}{2}, 1, \frac{1}{2}, 1\right)
+\end{align}
+\end{subequations}
+
+Jede Stelle eines Vektors $w_i$ ist mit einem \textit{Graphlet} assoziiert. Da der Algorithmus alle Euler-Wege einer L\"ange $i$ in dem Graphen abl\"auft, sind in den Vektoren Br\"uche eingetragen, wobei der Z\"ahler f\"ur die Anzahl der Euler-Wege der L\"ange $i$ steht. Dies stimmt nat\"urlich nicht f\"ur die sogenannten Stern-\textit{Graphlets} ($g_4$ in \ref{fig:4graphlets} $g_{19}$,$g_{20}$ und $g_{21}$ in \ref{fig:5graphlets}). Da diese keinen Euler-Weg der L\"ange 4 bzw. 5 enthalten werden sie anders gez\"ahlt.
+(beispiel mit Pseudocode einf\"ugen?)
+
+
+\section{\texttt{graphletAnalyser}}
+
+Der \texttt{graphletAnalyser} berechnet die oben beschreibenen \textit{Graphlets} nach dem Algorithmus von \emph{Shervashidze et al.}. ZUr Zeit unterst\"utzt er die Berechnung f\"ur 3 verschiedene Graphen der PTGL: 
+SSE-Graphen sind Graphen, die eine Polypeptidkette als Graph darstellen indem sie ihre Sekund\"arstrukturelemente als Knoten repr\"asentieren und diese mit Kanten verbinden, wenn sie r\"aumlich benachbart sind. \\
+Komplexgraphen sind Graphen f\"ur Proteinkomplexe; sie modellieren mehrere Polypeptidketten indem sie mehrere SSE-Graphen miteinander verkn\"upfen. \\
+Aminos\"auregraphen modellieren einzelne Aminos\"auren als Knoten und verbinden diese miteinander, wenn sie r\"aumlich benachbart sind. Dementsprechend ein Vielfaches der Knoten und Kanten eines SSE- oder Komplex-Graphen. \\
+Zus\"atzlich zu den \textit{Graphlets} bis zur Gr\"o"se 5 berechnet der \texttt{graphletAnalyser} markierte \textit{Graphlets} mit bis zu 3 Knoten. Dabei werden zun\"achst alle Markierungen die kombinatorisch m\"oglich sind berechnet und die entsprechenden \textit{Graphlets} werden gez\"ahlt.
+
+\newpage
+
+\section{Scoring}
+
+
+
+\subsection{Tanimoto-Koeffizient}
+
+\subsection{Relative \textit{Graphlet}-H\"aufigkeiten-Distanz}
+
+\subsection{\textit{Root-Mean-Square-Deviation}}
+
+
+
+
+\newpage
+\section{Datens\"atze}
+
+
+\subsection{FATCAT-SCOP-\textit{Benchmarking-Set}}
+
+Die FATCAT SCOP DB, beschrieben in: http://bioinformatics.oxfordjournals.org/content/23/2/e219.long
+k\"onnte sich gut zum Vergleich eignen
+
+Das FATCAT-SCOP-\textit{Benchmarking-Set} ist f\"ur das Programm FATCAT zusammengestellt worden, um seine Performance mit der von etablierten Strukturalignment-Programmen wie DALI und CE zu vergleichen. Der Datensatz setzt sich aus \"uber 13000 PDB-Eintr\"agen zusammen. Er ist nach Paaren mit gro"ser strukturelller \"Ahnlichkeit sortiert. So eignen sich auch Teilmengen des Datensatzes, um \textit{Graphlets} zu testen. Wenn der Ansatz funktioniert, dann sollten die Paare aus dem FATCAT-Datensatz auch in der PTGL die Paare mit dem h\"ochsten Score sein.
+
+
+\subsection{Fallstudien}
+
+\section{Ergebnisse}
+
+
+
+\section{Diskussion und Ausblick}
+
+
+
+
+
+Es bieten sich Paper an, die in Liisa Holm \textit{Advances and Pitfalls of Protein Structure Prediction} besprochen wurden. Das Problem ist, dass \texttt{graphletAnalyser} Vektoren erzeugt - also eindimensionale Daten. Somit eignen sich Methoden, die 2D- oder 3D-Daten miteinander alignieren schlecht zum Vergleich. \textit{Holm} erw\"ahnt in ihrer Arbeit aber auch Autoren, die Vergleiche von eindimensionalen Daten durchgef\"uhrt haben. Dies sind folgende:
+
+Liu X, Zhao YP, Zheng WM: CLEMAPS: multiple alignment of protein structures based on conformational letters
+
+Sierk ML, Pearson WR: Sensitivity and selectivity in protein structure comparison
+
+Sacan A, Toroslu IH, Ferhatosmanoglu H: Integrated search and alignment of protein structures
+
+Friedberg I, Harder T, Kolodny R et al. Using an alignment of fragment strings for comparing protein structures
+
+Tung CH, Huan JW, Yang JM: Kappa-alpha plot derived structural alphabet and BLOSUM-like substitution matrix for rapid search of protein structure database
+
+
+
+
+
+
+Yang JA: Comprehensive description of protein structures using protein shape code
+
+
+
+
+\chapter{Anhang}
+
+\section{Tabellenverzeichnis}
+
+\section{Bildverzeichnis}
+
+\begin{figure}[h]
+\includegraphics[width =\linewidth]{3graphlets.pdf}
+\caption{Graphlets der Gr\"o"se 3 (\textit{Shervashidze et al.})}
+\label{fig:3graphlets}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width =\linewidth]{4graphlets.pdf}
+\caption{Graphlets der Gr\"o"se 4 (\textit{Shervashidze et al.})}
+\label{fig:4graphlets2}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width =\linewidth]{5graphlets.pdf}
+\caption{Graphlets der Gr\"o"se 5 (\textit{Shervashidze et al.})}
+\label{fig:5graphlets}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width = \linewidth]{graphletAnalyserUMLv1.jpg}
+\caption{UML-Diagramm von \texttt{graphletAnalyser}}
+\label{fig:uml}
+\end{figure}
+
+\section{Literaturverzeichnis}
+
+\end{document}
