@@ -21,6 +21,13 @@
 
 \section{Motivation}
 
+\section{\textit{State of the Art}}
+
+3D-Strukturdaten von Proteinen effektiv miteinander zu vergleichen ist ein schwieriges Problem. 
+
+\section{Ziele}
+
+\section{Aufbau der Arbeit}
 
 \chapter{Materialien und Methoden}
 
@@ -78,9 +85,13 @@ Der \texttt{graphletAnalyser} berechnet die oben beschreibenen \textit{Graphlets
 SSE-Graphen sind Graphen, die eine Polypeptidkette als Graph darstellen indem sie ihre Sekund\"arstrukturelemente als Knoten repr\"asentieren und diese mit Kanten verbinden, wenn sie r\"aumlich benachbart sind. \\
 Komplexgraphen sind Graphen f\"ur Proteinkomplexe; sie modellieren mehrere Polypeptidketten indem sie mehrere SSE-Graphen miteinander verkn\"upfen. \\
 Aminos\"auregraphen modellieren einzelne Aminos\"auren als Knoten und verbinden diese miteinander, wenn sie r\"aumlich benachbart sind. Dementsprechend ein Vielfaches der Knoten und Kanten eines SSE- oder Komplex-Graphen. \\
-Zus\"atzlich zu den \textit{Graphlets} bis zur Gr\"o"se 5 berechnet der \texttt{graphletAnalyser} markierte \textit{Graphlets} mit bis zu 3 Knoten. Dabei werden zun\"achst alle Markierungen die kombinatorisch m\"oglich sind berechnet und die entsprechenden \textit{Graphlets} werden gez\"ahlt.
+Zus\"atzlich zu den \textit{Graphlets} bis zur Gr\"o"se 5 berechnet das Programm markierte \textit{Graphlets} mit bis zu 3 Knoten. Dabei werden zun\"achst alle Markierungen die kombinatorisch m\"oglich sind berechnet und die entsprechenden \textit{Graphlets} werden gez\"ahlt.\\
+Das Programm wird \"uber die Kommandozeile aufgerufen und erh\"alt eine oder mehrere GML-Dateien als Argumente.
+Zus\"atzlich kann angegeben werden, ob die GML-Datei einen Proteingraphen, Komplexgraphen oder Aminos\"auregraphen beschreibt.
+Alternativ kann auch in der Konfigurationsdatei angegeben werden, dass eine andere Art von Graph eingelesen werden soll.
+\texttt{graphletAnalyser} ist also in der Lage, jede GML-Datei, die einen ungerichteten Graphen enth\"alt einzulesen und f\"ur sie \textit{Graphlets} zu berechnen. Der Nutzer kann weiterhin ein Alphabet unterschiedlicher Knotenmarkierungen angeben, f\"ur das markierte \textit{Graphlets} berechnet werden. Somit kann das Programm auch f\"ur graphenbezogene Fragestellungen verwendet werden, die sich nicht auf Proteine beziehen.
+Aus der .gml-Datei wird ein Graph erstellt. Das Programm nutzt hierbei die \textit{Boost-Graph-Library} zur internen Darstellung. Entsprechend der vom Nutzer ausgew\"ahlten Funktionen werden die \textit{Graphlets} berechnet und als Datei ausgegeben. Zus\"atzlich k\"onnen sie in einer lokalen Datenbank abgespeichert werden.
 
-\newpage
 
 \section{Scoring}
 
@@ -95,7 +106,6 @@ Zus\"atzlich zu den \textit{Graphlets} bis zur Gr\"o"se 5 berechnet der \texttt{
 
 
 
-\newpage
 \section{Datens\"atze}
 
 
@@ -109,11 +119,11 @@ Das FATCAT-SCOP-\textit{Benchmarking-Set} ist f\"ur das Programm FATCAT zusammen
 
 \subsection{Fallstudien}
 
-\section{Ergebnisse}
+\chapter{Ergebnisse}
 
 
 
-\section{Diskussion und Ausblick}
+\chapter{Diskussion und Ausblick}
 
 
 
