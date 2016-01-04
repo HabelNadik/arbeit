@@ -1,0 +1,23 @@
+\BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Motivation}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{State of the Art}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Ziele}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Aufbau der Arbeit}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Materialien und Methoden}{}% 6
+\BOOKMARK [1][-]{section.2.1}{PLCC}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Die PTGL}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.3}{Der Graphlet-Algorithmus}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.4}{graphletAnalyser}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.5}{Scoring}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.5.1}{Tanimoto-Koeffizient}{section.2.5}% 12
+\BOOKMARK [2][-]{subsection.2.5.2}{Relative Graphlet-H\344ufigkeiten-Distanz}{section.2.5}% 13
+\BOOKMARK [2][-]{subsection.2.5.3}{Root-Mean-Square-Deviation}{section.2.5}% 14
+\BOOKMARK [1][-]{section.2.6}{Datens\344tze}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.6.1}{FATCAT-SCOP-Benchmarking-Set}{section.2.6}% 16
+\BOOKMARK [2][-]{subsection.2.6.2}{Fallstudien}{section.2.6}% 17
+\BOOKMARK [0][-]{chapter.3}{Ergebnisse}{}% 18
+\BOOKMARK [0][-]{chapter.4}{Diskussion und Ausblick}{}% 19
+\BOOKMARK [0][-]{chapter.5}{Anhang}{}% 20
+\BOOKMARK [1][-]{section.5.1}{Tabellenverzeichnis}{chapter.5}% 21
+\BOOKMARK [1][-]{section.5.2}{Bildverzeichnis}{chapter.5}% 22
+\BOOKMARK [1][-]{section.5.3}{Literaturverzeichnis}{chapter.5}% 23

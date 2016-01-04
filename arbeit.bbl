@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{advancespitfalls}
+Hasegawa et~al.
+\newblock Advances and pitfalls of protein structural alignment.
+\newblock {\em Current Opinion in Structural Biology}, 2009.
+
+\bibitem{ptgl1}
+May et~al.
+\newblock Ptgl: a database for secondary structure-based protein topologies.
+\newblock {\em Nucleic Acids Research}, 2009.
+
+\bibitem{vplg}
+Schafer et~al.
+\newblock Computation and visualization of protein topology graphs including
+  ligand information.
+\newblock {\em Bioinformatics}, 2015.
+
+\end{thebibliography}

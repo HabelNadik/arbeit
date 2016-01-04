@@ -5,7 +5,8 @@
 \usepackage{amsfonts}
 \usepackage{ngerman}
 \usepackage{hyperref}
-\usepackage{cite}
+%\usepackage{natbib}
+%\usepackage{cite}
 
 \begin{document}
 
@@ -21,6 +22,10 @@
 \chapter{Einleitung}
 
 \section{Motivation}
+
+\"Ubung: \cite{advancespitfalls}
+Jetzt zitiere ich \cite{ptgl1}
+
 
 \section{\textit{State of the Art}}
 
@@ -44,7 +49,7 @@ Um die Proteinstrukturtopologien aus der PTGL zu vergleichen wurde das Programm 
 \section{Der \textit{Graphlet}-Algorithmus}
 
 \paragraph{Motivation}
-Die PTGL ~\cite{vplg} erm\"oglicht also die Darstellung von Proteinstrukturtopologien als Graphen. Um aus diesen Graphen weitere Informationen zu gewinnen, ist es sinnvoll, sie untereinander vergleichen zu k\"onnen. Ein solcher Vergleich ist jedoch ein schwieriges Problem: Gesucht ist eine Funktion $f: (G,G') \rightarrow \mathbb{R} $, die f\"ur zwei Graphen $G$ und $G'$ deren \"Ahnlichkeit zueinander beziffert.
+Die PTGL \cite{vplg} erm\"oglicht also die Darstellung von Proteinstrukturtopologien als Graphen. Um aus diesen Graphen weitere Informationen zu gewinnen, ist es sinnvoll, sie untereinander vergleichen zu k\"onnen. Ein solcher Vergleich ist jedoch ein schwieriges Problem: Gesucht ist eine Funktion $f: (G,G') \rightarrow \mathbb{R} $, die f\"ur zwei Graphen $G$ und $G'$ deren \"Ahnlichkeit zueinander beziffert.
 Es gibt diverse M\"oglichkeiten diesesd Problem zu bearbeiten, von denen jedoch keine einfach ist.
 Eine M\"oglichkeit ist, die Suche nach gr\"o"sten gemeinsamen isomorphen Teilgraphen in $G$ und $G'$, oder man versucht eine Editierdistanz zu berechnen - also herauszufinden, wie viele Operationen (Hinzuf\"ugen oder Entfernen von Knoten und Kanten) n\"otig sind um $G$ in $G'$ zu \"uberf\"uhren. Diese beiden genannten Methoden erfordern jedoch aufw\"andige Berechnungen.
 Deshalb werden Methoden verwendet, die \emph{Topologische Charakteristiken} berechnen und dies in polynomieller Laufzeit bewerkstelligen. Der Vorteil hierbei ist, dass die (aufw\"andige) Berechnung dieser Charakteristiken nur einmal pro Graph erfolgen muss. Die Charakteristiken k\"onen dann als Datenpunkte verglichen werden und man spart sich die Berechnungen, die man sonst f\"ur alle Paare von Graphen $G,G'$ durchf\"uhren muss.
@@ -61,9 +66,8 @@ Eine Algorithmus, mit dem sich solche Charakteristiken verechnen lassen wurde 20
 \end{figure}
 
 
-Um ein \textit{Graphlet} der Gr\"o"se k zu finden, besucht der Algorithmus alle Euler-Wege der L\"ange k, in dem gegebenen Graphen. F\"ur jeden dieser Wege \"uperpr\"uft er, f\"ur alle Paare von Knoten $v,w$ ob es eine Kante $e = {v,w}$ gibt, die nicht zu dem besuchten Euler-Weges gehg\"ort. Je nachdem, welche Kanten hierbei gefunden werden, wird der Z\"ahler f\"ur das entsprechende \textit{Graphlet} erh\"oht. Der Algorithmus z\"ahlt hier aber nur alle zusammenh\"angenden \textit{Graphlets}. Er verwendet die folgenden Gewichtungsvektoren:
-\\
-\\
+Um ein \textit{Graphlet} der Gr\"o"se k zu finden, besucht der Algorithmus alle Euler-Wege der L\"ange k, in dem gegebenen Graphen. F\"ur jeden dieser Wege \"uperpr\"uft er, f\"ur alle Paare von Knoten $v,w$ ob es eine Kante $e = {v,w}$ gibt, die nicht zu dem besuchten Euler-Weges gehg\"ort. Je nachdem, welche Kanten hierbei gefunden werden, wird der Z\"ahler f\"ur das entsprechende \textit{Graphlet} erh\"oht. Der Algorithmus z\"ahlt hier aber nur alle zusammenh\"angenden \textit{Graphlets}. Er verwendet die folgenden Gewichtungsvektoren: 
+
 
 \begin{subequations}
 \label{eq:w-vector}
@@ -176,15 +180,16 @@ Yang JA: Comprehensive description of protein structures using protein shape cod
 \label{fig:5graphlets}
 \end{figure}
 
-\begin{figure}[h]
-\includegraphics[width = \linewidth]{graphletAnalyserUMLv1.jpg}
-\caption{UML-Diagramm von \texttt{graphletAnalyser}}
-\label{fig:uml}
-\end{figure}
+
+%TODO: UML Diagramm so, konvertieren, dass es eine Bounding Box hat und wieder einf\"ugen
+
 
 \section{Literaturverzeichnis}
 
 
-\bibliography{literatur.bibtex}{}
 \bibliographystyle{plain}
+\bibliography{literatur}
+
+
+
 \end{document}
