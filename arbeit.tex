@@ -29,7 +29,21 @@ Jetzt zitiere ich \cite{ptgl1}
 
 \section{\textit{State of the Art}}
 
-3D-Strukturdaten von Proteinen effektiv miteinander zu vergleichen ist ein schwieriges Problem. 
+TODO: Methoden nennen, weitere Zitationen
+
+Es gibt bereits einige Methoden, um Proteinstrukturen miteinander zu vergleichen. \textit{Hasegawa et al} \cite{advancespitfalls} liefern einen umfangreichen Vergleich verschiedener Methoden, bei denen Strukturen auf unterschiedlichen Abstraktionsstufen betrachtet und verglichen werden. So k\"onnen Proteinstrukturen dreidimensional, zweidimensional und eindimensional betrachtet und verglichen werden.
+
+\paragraph{3D-Methoden} versuchen zun\"achst mittels Sequenzalignment einen Bereich in den zu vergleichenden Proteinen zu finden, in dem sich beide Proteine sehr \"ahnlich sind. Dieser Bereich fungiert gewisserma"sen als \emph{Anker} f\"ur das weitere Alignment. In den weiteren Schritten werden die Proteine so positioniert, dass die Distanzen in dem alignierten Bereich minimal sind. Von diesem \textit{Template} ausgehend, werden die Distanzen zwischen den weiteren Residuen der Proteine berechnet und meist mittels \textit{Root-mean-square-deviation} bewertet.
+
+\paragraph{2D-methoden} versuchen Kontakte zwischen Residuen oder Sekund\"arstrukturen zu vergleichen. Diese Kontakte werden beispielsweise als graphen oder Distanzmatrizen dargestellt. Der Vergleich zwischen zwei Proteinstrukturen wird dann beispielsweise als Verlgeich zweier Distanzmatrizen durchgef\"uhrt.
+
+\paragraph{1D-Methoden} nutzen Strukturprofile zur Darstellung von Proteinen. In Strukturprofilen repr\"asentieren einzelne Buchstaben Eigenschaften von Residuen und die Konformation des Protein-\textit{Backbone} an der entsprechenden Stelle. So k\"onnen schnelle \textit{String}-Algorithmen genutzt werden, um Strukturen zu suchen und zu vergleichen.
+
+\paragraph{0D-Methoden} reduzieren die 3D-Struktur am st\"arksten. Die gesamte Struktur wird durch eine Zahl beschrieben, die sich aus der Struktur berechnen l\"asst. Sie erlauben sehr schnelle Suchen in Datenbanken, haben aber das Problem, dass sie keinen Vergleich von Teilstrukturen erm\"oglichen.
+
+\paragraph{Die Anwendung} dieser Methoden dient haupts\"achlich zwei Zwecken. Der erste ist die schnelle Suche nach \"ahnlichen Strukturen in Datenbanken. Dies findet haupts\"achlich im pharmakologischen Bereich statt.
+Der zweite Zweck ist der Erkenntnisgewinn \"uber die ferne evolution\"are verwandschaft von Proteinen. Es wird davon ausgegangen, dass \"ahnliche Strukturen bei niedriger Sequenzidentit\"at auf ferne Verwandschaft und \"ahnliche Funktion hindeuten. Wenn eine
+
 
 \section{Ziele}
 
@@ -44,6 +58,7 @@ Um die Proteinstrukturtopologien aus der PTGL zu vergleichen wurde das Programm 
 \section{Die PTGL}
 
 
+Die \underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary ist 2009 von \textit{May et al.} \cite{ptgl1} entwickelt worden. Sie stellt ein System zur Klassifizierung von 3D Proteinstrukturen zur Verf\"ugung. Es gibt berei
 
 
 \section{Der \textit{Graphlet}-Algorithmus}

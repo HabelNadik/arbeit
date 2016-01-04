@@ -1,25 +1,30 @@
 \contentsline {chapter}{\numberline {1}Einleitung}{2}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motivation}{2}{section.1.1}
 \contentsline {section}{\numberline {1.2}\textit {State of the Art}}{2}{section.1.2}
-\contentsline {section}{\numberline {1.3}Ziele}{2}{section.1.3}
-\contentsline {section}{\numberline {1.4}Aufbau der Arbeit}{2}{section.1.4}
-\contentsline {chapter}{\numberline {2}Materialien und Methoden}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}PLCC}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}Die PTGL}{3}{section.2.2}
-\contentsline {section}{\numberline {2.3}Der \textit {Graphlet}-Algorithmus}{3}{section.2.3}
-\contentsline {paragraph}{Motivation}{3}{section*.2}
-\contentsline {paragraph}{Beschreibung des Algorithmus}{4}{section*.3}
-\contentsline {section}{\numberline {2.4}\texttt {graphletAnalyser}}{5}{section.2.4}
-\contentsline {section}{\numberline {2.5}Scoring}{6}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Tanimoto-Koeffizient}{6}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Relative \textit {Graphlet}-H\"aufigkeiten-Distanz}{6}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}\textit {Root-Mean-Square-Deviation}}{6}{subsection.2.5.3}
-\contentsline {section}{\numberline {2.6}Datens\"atze}{6}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}FATCAT-SCOP-\textit {Benchmarking-Set}}{6}{subsection.2.6.1}
-\contentsline {subsection}{\numberline {2.6.2}Fallstudien}{6}{subsection.2.6.2}
-\contentsline {chapter}{\numberline {3}Ergebnisse}{7}{chapter.3}
-\contentsline {chapter}{\numberline {4}Diskussion und Ausblick}{8}{chapter.4}
-\contentsline {chapter}{\numberline {5}Anhang}{9}{chapter.5}
-\contentsline {section}{\numberline {5.1}Tabellenverzeichnis}{9}{section.5.1}
-\contentsline {section}{\numberline {5.2}Bildverzeichnis}{9}{section.5.2}
-\contentsline {section}{\numberline {5.3}Literaturverzeichnis}{9}{section.5.3}
+\contentsline {paragraph}{3D-Methoden}{2}{section*.2}
+\contentsline {paragraph}{2D-methoden}{2}{section*.3}
+\contentsline {paragraph}{1D-Methoden}{2}{section*.4}
+\contentsline {paragraph}{0D-Methoden}{3}{section*.5}
+\contentsline {paragraph}{Die Anwendung}{3}{section*.6}
+\contentsline {section}{\numberline {1.3}Ziele}{3}{section.1.3}
+\contentsline {section}{\numberline {1.4}Aufbau der Arbeit}{3}{section.1.4}
+\contentsline {chapter}{\numberline {2}Materialien und Methoden}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}PLCC}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Die PTGL}{4}{section.2.2}
+\contentsline {section}{\numberline {2.3}Der \textit {Graphlet}-Algorithmus}{4}{section.2.3}
+\contentsline {paragraph}{Motivation}{4}{section*.7}
+\contentsline {paragraph}{Beschreibung des Algorithmus}{5}{section*.8}
+\contentsline {section}{\numberline {2.4}\texttt {graphletAnalyser}}{6}{section.2.4}
+\contentsline {section}{\numberline {2.5}Scoring}{7}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Tanimoto-Koeffizient}{7}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Relative \textit {Graphlet}-H\"aufigkeiten-Distanz}{7}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}\textit {Root-Mean-Square-Deviation}}{7}{subsection.2.5.3}
+\contentsline {section}{\numberline {2.6}Datens\"atze}{7}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}FATCAT-SCOP-\textit {Benchmarking-Set}}{7}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Fallstudien}{7}{subsection.2.6.2}
+\contentsline {chapter}{\numberline {3}Ergebnisse}{8}{chapter.3}
+\contentsline {chapter}{\numberline {4}Diskussion und Ausblick}{9}{chapter.4}
+\contentsline {chapter}{\numberline {5}Anhang}{10}{chapter.5}
+\contentsline {section}{\numberline {5.1}Tabellenverzeichnis}{10}{section.5.1}
+\contentsline {section}{\numberline {5.2}Bildverzeichnis}{10}{section.5.2}
+\contentsline {section}{\numberline {5.3}Literaturverzeichnis}{10}{section.5.3}
