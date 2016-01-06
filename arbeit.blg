@@ -6,4 +6,5 @@ I was expecting a `,' or a `}'---line 29 of file literatur.bib
  :                 year = "2004" }
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+Warning--empty year in frqdistribution
 (There was 1 error message)

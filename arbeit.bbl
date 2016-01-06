@@ -10,6 +10,11 @@ May et~al.
 \newblock Ptgl: a database for secondary structure-based protein topologies.
 \newblock {\em Nucleic Acids Research}, 2009.
 
+\bibitem{frqdistribution}
+Przulj et~al.
+\newblock Modelling interactome: scale-free or geometric.
+\newblock {\em Bioinformatics}.
+
 \bibitem{vplg}
 Schafer et~al.
 \newblock Computation and visualization of protein topology graphs including

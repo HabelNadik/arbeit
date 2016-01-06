@@ -41,11 +41,17 @@ Es gibt bereits einige Methoden, um Proteinstrukturen miteinander zu vergleichen
 
 \paragraph{0D-Methoden} reduzieren die 3D-Struktur am st\"arksten. Die gesamte Struktur wird durch eine Zahl beschrieben, die sich aus der Struktur berechnen l\"asst. Sie erlauben sehr schnelle Suchen in Datenbanken, haben aber das Problem, dass sie keinen Vergleich von Teilstrukturen erm\"oglichen.
 
-\paragraph{Die Anwendung} dieser Methoden dient haupts\"achlich zwei Zwecken. Der erste ist die schnelle Suche nach \"ahnlichen Strukturen in Datenbanken. Dies findet haupts\"achlich im pharmakologischen Bereich statt.
-Der zweite Zweck ist der Erkenntnisgewinn \"uber die ferne evolution\"are verwandschaft von Proteinen. Es wird davon ausgegangen, dass \"ahnliche Strukturen bei niedriger Sequenzidentit\"at auf ferne Verwandschaft und \"ahnliche Funktion hindeuten. Wenn eine
+\paragraph{Die Methoden} stellen alle einen Versuch dar, die \"Ahnlichkeit von Proteinen zu beziffern. Sie werden angewendet, um entferent homologe Proteine aufzusp\"uren und in Datenbanken eine \"Ahnlichkeitssuche zu erm\"oglichen. Dies findet vor allem im pharmakologischen Bereich Anwendung.
 
+Interessant ist, dass unter den von \textit{Hasegawa et al} vorgestellten 1D-Methoden keine wirklich analog zur Analyse mit \textit{Graphlets} funktioniert. Andere 1D-Methoden versuchen die Polypeptidkette als \textit{String} darzustellen und damit die Konformations\"anderung des \textit{Backbone} zu beschreiben. Im Gegensatz dazu z\"ahlt der \textit{Graphlet}-Algorithmus die \textit{Graphlets} unabh\"angig von ihrer Position im Graphen. Somit repr\"asentiert der \textit{Graphlet}-Vektor an jeder Stelle eine globale Eigenschaft des Graphen, anstatt die Ver\"anderung von einer Sekund\"arstruktur zur n\"achsten zu beschreiben.
 
 \section{Ziele}
+
+TODO: Zitationen einf\"ugen
+
+Ziel der Arbeit war festzustellen, ob sich \textit{Graphlets} eignen, um \"Ahnlichkeiten von Proteinstrukturen festzustellen. In den Arbeiten von \emph{Hasegawa et al}, \emph{Pr\v{u}lj et al} und \emph{Shervashidze} wurden \textit{Graphlets} bereits erfolgreich angewandt, um die \"Ahnlichkeiten von Netzwerken zu bestimmen. Ihre analysen wurden haupts\"achlich f\"ur sehr gro"se netzwerke, wie PPI-Graphen und (siehe TODO, arbeit von Shervashidze) durchgef\"uhrt. Somit blieb die Frage offen, ob sich \textit{Graphlets} auch zur analyse von Netzwerken eigenen, die deutlich kleiner sind und deutlich niedrigere Knotengrade haben.
+Weiterhin galt es, herauszufinden, welche Metriken sich am besten eignen, um die Unterschiede zwischen verschiedenen Topologien zu befiffern.
+Hiermit k\"onnte schlie"slich eine \"Ahnlichkeitssuche in der PTGL implementiert werden.
 
 \section{Aufbau der Arbeit}
 
@@ -121,9 +127,34 @@ Aus der .gml-Datei wird ein Graph erstellt. Das Programm nutzt hierbei die \text
 
 \subsection{Relative \textit{Graphlet}-H\"aufigkeiten-Distanz}
 
+\textit{N. Pr\v{z}ulj et al.} haben \textit{Graphlets} bereits in verschiedensten Zusammenh\"anen auf biologische Daten wie Protein-Protein-Interaktionsnetzwerke \cite{frqdistribution} angewandt. Als Ma"s f\"ur die \"Ahnlichkeit von Netzwerken nutzen sie die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz $D(G,H)$. Diese Metrik bestimmt den Unterschied zwischen zwei Graphen $G$ und $H$ als logarithmierte Differenz der normalisierten Anzahl der \textit{Graphlets} in $G$ und $H$. Sie ist folgenderma"sen definiert: \\
+
+Sei $N_{i}(G)$ die Anzahl der \textit{Graphlets} von Typ $i \in {1,...,29}$ und \\ $T(G) = \sum_{i = 1}^{29} N_{i}(G)$ die Anzahl der \textit{Graphlets} in $G$, beziehungsweise $H$\\
+
+Dann ist die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz $D(G,H)$ f\"ur zwei Graphen $G$ und $H$ definert als:
+
+\begin{subequations}
+\begin{align}
+D(G,H) = \sum_{i = 1}^{29} | F_{i}(G) - F_{i}(H) | \\
+mit F_{i}(G) = - log(\frac{N_{i}(G)}{T(G)})
+\end{align}
+\end{subequations}
+
+
+
+Diese Metrik hat den Vorteil, dass sie die normailisierten \textit{Graphlet}-Vektoren verwendet. So ist ein guter Vergleich auch m\"oglich, wenn einzelne \textit{Graphlets} in den Netzwerken \"uberrepr\"asentiert sind.
+Weiterhin wurde gezeigt, \cite{frqdistribution} dass diese Metrik auch bei verrauschten Daten noch sehr gut funktioniert.
+
 \subsection{\textit{Root-Mean-Square-Deviation}}
 
+Die \textit{Root-Mean-Square-Deviation} RMSD ist ein Standardma"s zur Abstandsmessung in Vektorr\"aumen. Sie wird f\"ur zwei Vektoren $x$ und $y$ durch folgende Formel berechnet:
 
+\begin{subequations}
+\label{eq:rmsd}
+\begin{align}
+RMSD = \sum_{i=1}^{n} (x_i - y_i)^2
+\end{align}
+\end{subequations}
 
 
 \section{Datens\"atze}
