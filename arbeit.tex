@@ -63,6 +63,10 @@ Hiermit k\"onnte schlie"slich eine \"Ahnlichkeitssuche in der PTGL implementiert
 
 \section{Aufbau der Arbeit}
 
+Zun\"achst wird im Kapitel \emph{Materialien und Methoden} PLCC vorgestellt - das Programm, mit dem die Graphen der PTGL erzeugt werden. Es folgt eine Kurzbeschreibung der PTGL selbst, sowie eine Beschreibung des \textit{Graphlet}-Algorithmus. Weiterhin wird das Programm\texttt{graphletAnalyser}vorgestellt, welches den \textit{Graphlet}-Algorithmus implementiert. Es werden verschiedene Metriken vorgestellt und evaluiert, mit denen die erhaltenen \textit{Graphlet}-Vektoren verglichen werden.
+Abschlie"send folgt eine kurze Beschreibung des FATCAT-SCOP-\textit{Benchmarking}-Datensatzes und der f\"ur die Fallstudien ausgew\"ahlten Proteine.
+Die dabei erhaltenen Ergebnisse werden im gleichnamigen folgenden Kapitel vorgestellt. Eine Diskussion der Ergebnisse und ein Ausblick auf weitere Anwendungen und Verbesserungsm\"oglichkeiten erfolgt im letzten Kapitel.
+
 \chapter{Materialien und Methoden}
 
 Um die Proteinstrukturtopologien aus der PTGL zu vergleichen wurde das Programm \texttt{graphletAnalyser} genutzt und erweitert. Es wurde bereits 2013 von \textit{Tatiana Bakirova} im Rahmen ihrer Diplomarbeit im Arbeitskreis \textit{Molekulare Bioinformatik} geschrieben. Die urspr\"ungliche Funktionalität wurde erweitert. Hierbei wurden Funktionen zur Analyse von Komplexgraphen, Aminos\"auregraphen und den Sekund\"arstrukturgraphen implemetiert. Diese Graphen stammen allesamt aus der PTGL (\underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary) von Tim Sch\"afer.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.31)  6 JAN 2016 17:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.31)  6 JAN 2016 18:48
 entering extended mode
 **arbeit.tex
 (arbeit.tex
@@ -361,36 +361,36 @@ Missing character: There is no ¤ in font cmr10!
 ] <4graphlets.pdf, id=169, 704.6325pt x 305.14pt>
 File: 4graphlets.pdf Graphic file (type pdf)
  <use 4graphlets.pdf>
-Package pdftex.def Info: 4graphlets.pdf used on input line 92.
+Package pdftex.def Info: 4graphlets.pdf used on input line 96.
 (pdftex.def)             Requested size: 345.0pt x 149.39883pt.
 
 [6 <./4graphlets.pdf>]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 116.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 120.
 
-Overfull \hbox (9.71568pt too wide) in paragraph at lines 118--128
+Overfull \hbox (9.71568pt too wide) in paragraph at lines 122--132
 \OT1/cmr/m/n/10 wer-den, dass ei-ne an-de-re Art von Graph ein-ge-le-sen wer-de
 n soll. \OT1/cmtt/m/n/10 graphletAnalyser
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 138--139
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--141
+Underfull \hbox (badness 10000) in paragraph at lines 144--145
 
  []
 
 [8]
-Overfull \hbox (113.5021pt too wide) in paragraph at lines 173--175
+Overfull \hbox (113.5021pt too wide) in paragraph at lines 177--179
 \OT1/cmr/m/n/10 Die FAT-CAT SCOP DB, be-schrie-ben in: http://bioinformatics.ox
 fordjournals.org/content/23/2/e219.long
  []
 
 
-Overfull \hbox (20.46523pt too wide) in paragraph at lines 176--178
+Overfull \hbox (20.46523pt too wide) in paragraph at lines 180--182
 []\OT1/cmr/m/n/10 Das FATCAT-SCOP-\OT1/cmr/m/it/10 Benchmarking-Set \OT1/cmr/m/
 n/10 ist f[]ur das Strukturalignment-Programm
  []
@@ -402,7 +402,7 @@ Kapitel 3.
 ]
 Kapitel 4.
 
-Overfull \hbox (11.45709pt too wide) in paragraph at lines 192--193
+Overfull \hbox (11.45709pt too wide) in paragraph at lines 196--197
 \OT1/cmr/m/it/10 Struc-ture Pre-dic-ti-on \OT1/cmr/m/n/10 be-spro-chen wur-den.
  Das Pro-blem ist, dass \OT1/cmtt/m/n/10 graphletAnalyser
  []
@@ -414,12 +414,12 @@ Kapitel 5.
 <3graphlets.pdf, id=265, 397.46494pt x 141.52171pt>
 File: 3graphlets.pdf Graphic file (type pdf)
  <use 3graphlets.pdf>
-Package pdftex.def Info: 3graphlets.pdf used on input line 221.
+Package pdftex.def Info: 3graphlets.pdf used on input line 225.
 (pdftex.def)             Requested size: 345.0pt x 122.84863pt.
 File: 4graphlets.pdf Graphic file (type pdf)
 
 <use 4graphlets.pdf>
-Package pdftex.def Info: 4graphlets.pdf used on input line 227.
+Package pdftex.def Info: 4graphlets.pdf used on input line 231.
 (pdftex.def)             Requested size: 345.0pt x 149.39883pt.
 
 
@@ -428,7 +428,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <5graphlets.pdf, id=266, 894.29707pt x 1068.1004pt>
 File: 5graphlets.pdf Graphic file (type pdf)
  <use 5graphlets.pdf>
-Package pdftex.def Info: 5graphlets.pdf used on input line 233.
+Package pdftex.def Info: 5graphlets.pdf used on input line 237.
 (pdftex.def)             Requested size: 345.0pt x 412.04297pt.
 
 
@@ -437,18 +437,18 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 (arbeit.bbl [12
 
  <./3graphlets.pdf>] [13] [14 <./5graphlets.pdf>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 250.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 254.
  [15
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 250.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 254.
 
 (arbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 250.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 250.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 254.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 254.
 Package rerunfilecheck Info: File `arbeit.out' has not changed.
 (rerunfilecheck)             Checksum: F0A85F0CB3B33167F0B35532FA5BE73E;1448.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 250.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 254.
  ) 
 Here is how much of TeX's memory you used:
  6455 strings out of 493673
@@ -475,7 +475,7 @@ X 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX
 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/
 fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on arbeit.pdf (16 pages, 734018 bytes).
+Output written on arbeit.pdf (16 pages, 734748 bytes).
 PDF statistics:
  481 PDF objects out of 1000 (max. 8388607)
  67 named destinations out of 1000 (max. 500000)
