@@ -1,6 +1,6 @@
 \documentclass{report}
 \author{Ben Haladik}
-\title{Bioinformatische Anwendung von \textit{Graphlets} zur Analyse von Proteinstrukturtopologien zur Analyse von Proteinen}
+\title{Bioinformatische Anwendung von \textit{Graphlets} zur Analyse von Proteinstrukturtopologien zur Analyse von Proteinen \\ Rohfassung}
 \usepackage{mathtools}
 \usepackage{amsfonts}
 \usepackage{ngerman}
@@ -23,8 +23,16 @@
 
 \section{Motivation}
 
-\"Ubung: \cite{advancespitfalls}
-Jetzt zitiere ich \cite{ptgl1}
+TODO: Zitationen einf\"ugen: schwierigkeit der Analyse, bereits bekannte Methoden
+
+Dei \"Ahnlickeit von Proteinen zu bestimmen ist eine gro"se Herausforderung. In der Zeit als wenige Strukturen bekannt waren wurde die strukturelle \"Ahnlichkeit von Proteinen noch von Experten visuell bewertet, aber mittlerweile wurde die Strukturen von \"uber 100000 biologischen Makromolek\"ulen in der PDB. Der Vergleich dieser gigantischen Anzahl von Strukturdaten erfordert effiziente algorithmische Analysemethoden. Solche Analysen k\"onnen tiefe Einblicke in die ferne evolution\"are Verwandschaft von Proteinen liefern. Au"serdem sind sie im Bereich des \textit{Drug-Design} hoch interessant, denn  Strukturdaten liefer Informationen \"uber m \"ogliche Liganden, die ein Protein binden kann. Damit sind sie in der pharmakologischen Forschung von zentraler Bedeutung.
+Das Problem hierbei ist, dass die Berechnung der \"Ahnlichkeit von 3D-Strukturen algorithmisch ein schwieriges Problem darstellt; lange Berechnungszeiten sind die Regel und es ist schwierig herauszufinden, ob der gefundene \"Ahnlichkeitswert f\"ur zwei Proteine nur ein lokales Optimum darstellt.
+Deshalb wird versucht, von der 3D-Darstellung zu abstrahieren, ohne zentrale Strukturinformationen zu verlieren. Beispielsweise werden Distanzmatrizen verwendet, die die Abst\"ande einzelner Residuen zueinander speichern (DALI zitieren), anstatt die Koordinaten jedes Atoms abzuspeichern.
+Auch Graphen eignen sich, um Strukturdaten in einer leichter zu analysierenden Form abzuspeichern. Denn Graphen k\"onnen genau wie Distanzmatrizen Informationen \"uber r\"aumliche N\"ahe aufbewahren.
+Die PTGL \cite{ptgl1} speichert Proteinstrukturtopologien als Graphen ab. So werden zentrale Informationen \"uber die Struktur eines Proteins aufbewahrt w\"ahrend die Gr\"o"se der Daten ma"sgeblich reduziert wird. Diese Darstellung hat den weiteren Vorteil, dass Graphen zu den meistuntersuchten mathematischen strukturen der letzten Jahre geh\"oren. Soziale Netzwerke, Interaktionen von Proteinen in Zellen, das Internet: All diese Dinge lassen sich als Graphen darstellem und werden als solche untersucht.
+Doch auch die \"Ahnlichkeit von Graphen zu bestimmen ist ein schwieriges Problem. Es gilt als NP-schwer (Zitat?).
+In den 2000ern tauchten mehrere Methoden auf, um die \"Ahnlichkeit von Graphen zu bestimmen. 
+   
 
 
 \section{\textit{State of the Art}}
@@ -165,7 +173,8 @@ RMSD = \sum_{i=1}^{n} (x_i - y_i)^2
 Die FATCAT SCOP DB, beschrieben in: http://bioinformatics.oxfordjournals.org/content/23/2/e219.long
 k\"onnte sich gut zum Vergleich eignen
 
-Das FATCAT-SCOP-\textit{Benchmarking-Set} ist f\"ur das Programm FATCAT zusammengestellt worden, um seine Performance mit der von etablierten Strukturalignment-Programmen wie DALI und CE zu vergleichen. Der Datensatz setzt sich aus \"uber 13000 PDB-Eintr\"agen zusammen. Er ist nach Paaren mit gro"ser strukturelller \"Ahnlichkeit sortiert. So eignen sich auch Teilmengen des Datensatzes, um \textit{Graphlets} zu testen. Wenn der Ansatz funktioniert, dann sollten die Paare aus dem FATCAT-Datensatz auch in der PTGL die Paare mit dem h\"ochsten Score sein.
+Das FATCAT-SCOP-\textit{Benchmarking-Set} ist f\"ur das Strukturalignment-Programm FATCAT \cite{fatcat} zusammengestellt worden, um seine Performance mit der von etablierten Strukturalignment-Programmen wie DALI und CE zu vergleichen. Der Datensatz besteht aus 2256 PDB-Eintr\"agen, die bereits durch die SCOP-Datenbank klassifiziert worden sind.
+In dem Datensatz befinden sich Paare von PDB-Eintr\"agen, die von allen drei Programmen als sehr \"ahnlich bewertet wurden. 
 
 
 \subsection{Fallstudien}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.31)  6 JAN 2016 16:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.31)  6 JAN 2016 17:46
 entering extended mode
 **arbeit.tex
 (arbeit.tex
@@ -332,132 +332,132 @@ l.20 \newpage
 
 ]
 Kapitel 1.
+[2
 
-Overfull \hbox (5.93738pt too wide) in paragraph at lines 40--41
+]
+Overfull \hbox (5.93738pt too wide) in paragraph at lines 48--49
  []\OT1/cmr/bx/n/10 1D-Methoden[] \OT1/cmr/m/n/10 nut-zen Struk-tur-pro-fi-le z
 ur Dar-stel-lung von Pro-te-i-nen. In Struk-
  []
 
-[2
 
-]
-Overfull \hbox (0.31221pt too wide) in paragraph at lines 46--47
+Overfull \hbox (0.31221pt too wide) in paragraph at lines 54--55
 []\OT1/cmr/m/n/10 Interessant ist, dass un-ter den von \OT1/cmr/m/it/10 Ha-se-g
 a-wa et al \OT1/cmr/m/n/10 vor-ge-stell-ten 1D-Methoden
  []
 
 
-Overfull \hbox (11.36388pt too wide) in paragraph at lines 46--47
+Overfull \hbox (11.36388pt too wide) in paragraph at lines 54--55
 \OT1/cmr/m/n/10 kei-ne wirk-lich ana-log zur Ana-ly-se mit \OT1/cmr/m/it/10 Gra
 -phlets \OT1/cmr/m/n/10 funk-tio-niert. An-de-re 1D-Methoden
  []
 
-[3]
+[3] [4]
 Kapitel 2.
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¤ in font cmr10!
-[4
+[5
 
-] <4graphlets.pdf, id=166, 704.6325pt x 305.14pt>
+] <4graphlets.pdf, id=169, 704.6325pt x 305.14pt>
 File: 4graphlets.pdf Graphic file (type pdf)
  <use 4graphlets.pdf>
-Package pdftex.def Info: 4graphlets.pdf used on input line 84.
+Package pdftex.def Info: 4graphlets.pdf used on input line 92.
 (pdftex.def)             Requested size: 345.0pt x 149.39883pt.
 
-[5 <./4graphlets.pdf>]
+[6 <./4graphlets.pdf>]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 108.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 116.
 
-Overfull \hbox (9.71568pt too wide) in paragraph at lines 110--120
+Overfull \hbox (9.71568pt too wide) in paragraph at lines 118--128
 \OT1/cmr/m/n/10 wer-den, dass ei-ne an-de-re Art von Graph ein-ge-le-sen wer-de
 n soll. \OT1/cmtt/m/n/10 graphletAnalyser
  []
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 130--131
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
-
- []
-
 [7]
-Overfull \hbox (113.5021pt too wide) in paragraph at lines 165--167
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 140--141
+
+ []
+
+[8]
+Overfull \hbox (113.5021pt too wide) in paragraph at lines 173--175
 \OT1/cmr/m/n/10 Die FAT-CAT SCOP DB, be-schrie-ben in: http://bioinformatics.ox
 fordjournals.org/content/23/2/e219.long
  []
 
 
-Overfull \hbox (40.77959pt too wide) in paragraph at lines 168--169
-\OT1/cmr/m/n/10 sam-men-ge-stellt wor-den, um sei-ne Per-for-man-ce mit der von
- eta-blier-ten Strukturalignment-
+Overfull \hbox (20.46523pt too wide) in paragraph at lines 176--178
+[]\OT1/cmr/m/n/10 Das FATCAT-SCOP-\OT1/cmr/m/it/10 Benchmarking-Set \OT1/cmr/m/
+n/10 ist f[]ur das Strukturalignment-Programm
  []
 
-[8]
+[9]
 Kapitel 3.
-[9
+[10
 
 ]
 Kapitel 4.
 
-Overfull \hbox (11.45709pt too wide) in paragraph at lines 183--184
+Overfull \hbox (11.45709pt too wide) in paragraph at lines 192--193
 \OT1/cmr/m/it/10 Struc-ture Pre-dic-ti-on \OT1/cmr/m/n/10 be-spro-chen wur-den.
  Das Pro-blem ist, dass \OT1/cmtt/m/n/10 graphletAnalyser
  []
 
-[10
+[11
 
 ]
 Kapitel 5.
-<3graphlets.pdf, id=260, 397.46494pt x 141.52171pt>
+<3graphlets.pdf, id=265, 397.46494pt x 141.52171pt>
 File: 3graphlets.pdf Graphic file (type pdf)
  <use 3graphlets.pdf>
-Package pdftex.def Info: 3graphlets.pdf used on input line 212.
+Package pdftex.def Info: 3graphlets.pdf used on input line 221.
 (pdftex.def)             Requested size: 345.0pt x 122.84863pt.
 File: 4graphlets.pdf Graphic file (type pdf)
 
 <use 4graphlets.pdf>
-Package pdftex.def Info: 4graphlets.pdf used on input line 218.
+Package pdftex.def Info: 4graphlets.pdf used on input line 227.
 (pdftex.def)             Requested size: 345.0pt x 149.39883pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<5graphlets.pdf, id=261, 894.29707pt x 1068.1004pt>
+<5graphlets.pdf, id=266, 894.29707pt x 1068.1004pt>
 File: 5graphlets.pdf Graphic file (type pdf)
  <use 5graphlets.pdf>
-Package pdftex.def Info: 5graphlets.pdf used on input line 224.
+Package pdftex.def Info: 5graphlets.pdf used on input line 233.
 (pdftex.def)             Requested size: 345.0pt x 412.04297pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-(arbeit.bbl [11
+(arbeit.bbl [12
 
- <./3graphlets.pdf>] [12] [13 <./5graphlets.pdf>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 241.
- [14
+ <./3graphlets.pdf>] [13] [14 <./5graphlets.pdf>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 250.
+ [15
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 241.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 250.
 
 (arbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 241.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 241.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 250.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 250.
 Package rerunfilecheck Info: File `arbeit.out' has not changed.
 (rerunfilecheck)             Checksum: F0A85F0CB3B33167F0B35532FA5BE73E;1448.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 241.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 250.
  ) 
 Here is how much of TeX's memory you used:
- 6452 strings out of 493673
- 94055 string characters out of 3141539
- 189201 words of memory out of 3000000
- 9675 multiletter control sequences out of 15000+200000
+ 6455 strings out of 493673
+ 94081 string characters out of 3141539
+ 189242 words of memory out of 3000000
+ 9676 multiletter control sequences out of 15000+200000
  14463 words of font info for 55 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 33i,9n,28p,661b,384s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,9n,28p,804b,384s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C
@@ -475,9 +475,9 @@ X 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX
 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/
 fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on arbeit.pdf (15 pages, 731042 bytes).
+Output written on arbeit.pdf (16 pages, 734018 bytes).
 PDF statistics:
- 475 PDF objects out of 1000 (max. 8388607)
- 65 named destinations out of 1000 (max. 500000)
+ 481 PDF objects out of 1000 (max. 8388607)
+ 67 named destinations out of 1000 (max. 500000)
  200 words of extra memory for PDF output out of 10000 (max. 10000000)
 
