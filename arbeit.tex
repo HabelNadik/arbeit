@@ -5,7 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{ngerman}
 \usepackage{hyperref}
-%\usepackage{natbib}
+\usepackage{natbib}
 %\usepackage{cite}
 
 \begin{document}
@@ -31,8 +31,7 @@ Deshalb wird versucht, von der 3D-Darstellung zu abstrahieren, ohne zentrale Str
 Auch Graphen eignen sich, um Strukturdaten in einer leichter zu analysierenden Form abzuspeichern. Denn Graphen k\"onnen genau wie Distanzmatrizen Informationen \"uber r\"aumliche N\"ahe aufbewahren.
 Die PTGL \cite{ptgl1} speichert Proteinstrukturtopologien als Graphen ab. So werden zentrale Informationen \"uber die Struktur eines Proteins aufbewahrt w\"ahrend die Gr\"o"se der Daten ma"sgeblich reduziert wird. Diese Darstellung hat den weiteren Vorteil, dass Graphen zu den meistuntersuchten mathematischen strukturen der letzten Jahre geh\"oren. Soziale Netzwerke, Interaktionen von Proteinen in Zellen, das Internet: All diese Dinge lassen sich als Graphen darstellem und werden als solche untersucht.
 Doch auch die \"Ahnlichkeit von Graphen zu bestimmen ist ein schwieriges Problem. Es gilt als NP-schwer (Zitat?).
-In den 2000ern tauchten mehrere Methoden auf, um die \"Ahnlichkeit von Graphen zu bestimmen. 
-   
+
 
 
 \section{\textit{State of the Art}}
@@ -182,6 +181,26 @@ In dem Datensatz befinden sich Paare von PDB-Eintr\"agen, die von allen drei Pro
 
 
 \subsection{Fallstudien}
+
+
+\subsubsection{4-Helix-\textit{Bundles}}
+
+Das Cytochrom B562 von \emph{E. coli} (Bild einf\"ugen) ist ein Protein, das f\"ur Elektronentransport zust\"andig ist. Strukturell wird es als 4-Helix-\textit{Bundle} eingeordnet. Zu diesem Protein gibt es zwei PDB-Eintr\"age: 1QPU und 256B. Es gibt von diesem Rrotein auch eine Hem-bindende Variante, die oxidiert ist. Sie hat die PDB-ID 1QQ3. All diese Strukturdaten werden von CATH als sehr \"ahnliche Strukturen mit hoher Sequenzidentit\"at eingeordnet.
+Um die Parameter und Metriken f\"ur den Vergleich zu testen, bietet es sich an, diese Proteine mit weiteren Proteinen aus der selben homologen Superfamilie zu vergleichen und diese dann mit Proteinen aus anderen Homologen Superfamilien zu vergleichen. Die entsprechenden Proteine werden h\"andisch entsprechend der Einordnung durch CATH gew\"ahlt. Proteine die neu designt wurden k\"onnten sich auch anbieten. INwiefern eine Untersuchung an ihnen sinnvoll ist, muss aber noch \"uberpr\"uft werden.
+Weitere PRoteine aus der Homologen Superfamilie, die sich eignen sind:\\
+2XL6: Cytochrom C aus Alcaligenes Xylosoxidans, gebunden mit NO\\
+2YL1: s.o. nur andere Variante mit anderem Bindungspartner.\\
+Diese beiden m\"ussten strukturell \"ahnlicher sein, als die weiter oben genannten Varianten von Cytochrom B562.\\
+Die oben genannten Proteine werden von CATH alle in die \emph{Homologe Superfamilie} der 4-Helix-\textit{Bundles} (Hemerythrin Untereinheit A) eingeordnet.
+
+\subsubsection{Wachstumshormone}
+
+Sie k\"onnen mit Proteinen aus der Topologie \textit{Growth Hormone, Chain A} verglichen werden. Denn beide werden von CATH in die gleiche Architektur \emph{Up-down bundle} eingeordnet. Proteine aus dieser Topologie sind: \\
+1HGU: Menschliches Wachstumshormon\\
+1M4R: Rekombinantes menschliches Interleukin 22\\
+1D9C: Rinder Interferon Gamma \\
+Die oben genannten Proteine aus der Topologie der Wachstumshormone haben eine Sequenzidentit\"at zwischen 35 und 60 Prozent. Sie scheinen sich gut f\"ur die untersuchung zu eignen.
+
 
 \chapter{Ergebnisse}
 
