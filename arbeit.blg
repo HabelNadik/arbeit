@@ -1,10 +1,46 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: arbeit.aux
+This is BibTeX, Version 0.99d (TeX Live 2013/TeX Live for SUSE Linux)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: arbeit.aux
 The style file: plain.bst
 Database file #1: literatur.bib
-I was expecting a `,' or a `}'---line 29 of file literatur.bib
- :                 
- :                 year = "2004" }
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Warning--empty year in frqdistribution
-(There was 1 error message)
+You've used 6 entries,
+            2118 wiz_defined-function locations,
+            524 strings with 4641 characters,
+and the built_in function-call counts, 1244 in all, are:
+= -- 120
+> -- 42
+< -- 0
++ -- 18
+- -- 12
+* -- 50
+:= -- 243
+add.period$ -- 18
+call.type$ -- 6
+change.case$ -- 24
+chr.to.int$ -- 0
+cite$ -- 6
+duplicate$ -- 60
+empty$ -- 103
+format.name$ -- 12
+if$ -- 247
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 6
+newline$ -- 33
+num.names$ -- 12
+pop$ -- 24
+preamble$ -- 1
+purify$ -- 18
+quote$ -- 0
+skip$ -- 42
+stack$ -- 0
+substring$ -- 30
+swap$ -- 6
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 24
+warning$ -- 0
+while$ -- 12
+width$ -- 7
+write$ -- 62

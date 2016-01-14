@@ -6,6 +6,7 @@
 \usepackage{ngerman}
 \usepackage{hyperref}
 \usepackage{natbib}
+%\usepackage{qtree}
 %\usepackage{cite}
 
 \begin{document}
@@ -25,13 +26,15 @@
 
 TODO: Zitationen einf\"ugen: schwierigkeit der Analyse, bereits bekannte Methoden
 
-Dei \"Ahnlickeit von Proteinen zu bestimmen ist eine gro"se Herausforderung. In der Zeit als wenige Strukturen bekannt waren wurde die strukturelle \"Ahnlichkeit von Proteinen noch von Experten visuell bewertet, aber mittlerweile wurde die Strukturen von \"uber 100000 biologischen Makromolek\"ulen in der PDB. Der Vergleich dieser gigantischen Anzahl von Strukturdaten erfordert effiziente algorithmische Analysemethoden. Solche Analysen k\"onnen tiefe Einblicke in die ferne evolution\"are Verwandschaft von Proteinen liefern. Au"serdem sind sie im Bereich des \textit{Drug-Design} hoch interessant, denn  Strukturdaten liefer Informationen \"uber m \"ogliche Liganden, die ein Protein binden kann. Damit sind sie in der pharmakologischen Forschung von zentraler Bedeutung.
+Dei \"Ahnlickeit von Proteinen zu bestimmen ist eine gro"se Herausforderung. In der Zeit als wenige Strukturen bekannt waren wurde die strukturelle \"Ahnlichkeit von Proteinen noch von Experten visuell bewertet, aber mittlerweile wurde die Strukturen von \"uber 100000 biologischen Makromolek\"ulen in der PDB. Der Vergleich dieser gigantischen Anzahl von Strukturdaten erfordert effiziente algorithmische Analysemethoden. Solche Analysen k\"onnen tiefe Einblicke in die ferne evolution\"are Verwandschaft von Proteinen liefern und sie helfen bei der Bestimmung der Funktion eines Proteins. Des weiteren sind sie im Bereich des \textit{Drug-Design} hoch interessant, denn  Strukturdaten liefer Informationen \"uber m \"ogliche Liganden, die ein Protein binden kann und damit auch \"uber m\"ogliche Ziele von Medikamenten bei der Bek\"ampfung von Krankheiten. Deshalb sind strukturbasierte \"Ahnlichkeitsanalysen in der pharmakologischen Forschung von zentraler Bedeutung.
 Das Problem hierbei ist, dass die Berechnung der \"Ahnlichkeit von 3D-Strukturen algorithmisch ein schwieriges Problem darstellt; lange Berechnungszeiten sind die Regel und es ist schwierig herauszufinden, ob der gefundene \"Ahnlichkeitswert f\"ur zwei Proteine nur ein lokales Optimum darstellt.
-Deshalb wird versucht, von der 3D-Darstellung zu abstrahieren, ohne zentrale Strukturinformationen zu verlieren. Beispielsweise werden Distanzmatrizen verwendet, die die Abst\"ande einzelner Residuen zueinander speichern (DALI zitieren), anstatt die Koordinaten jedes Atoms abzuspeichern.
+Deshalb wird versucht, von der 3D-Darstellung zu abstrahieren, ohne zentrale Strukturinformationen zu verlieren. \emph{Dali} \cite{dali}verwendet beispielsweise Distanzmatrizen, die die Abst\"ande einzelner Residuen zueinander speichern, anstatt die Koordinaten jedes Atoms abzuspeichern.
+Der Strukturvergleich findet dann als Vergleich dieser Distanzmatrizen statt.
+
 Auch Graphen eignen sich, um Strukturdaten in einer leichter zu analysierenden Form abzuspeichern. Denn Graphen k\"onnen genau wie Distanzmatrizen Informationen \"uber r\"aumliche N\"ahe aufbewahren.
 Die PTGL \cite{ptgl1} speichert Proteinstrukturtopologien als Graphen ab. So werden zentrale Informationen \"uber die Struktur eines Proteins aufbewahrt w\"ahrend die Gr\"o"se der Daten ma"sgeblich reduziert wird. Diese Darstellung hat den weiteren Vorteil, dass Graphen zu den meistuntersuchten mathematischen strukturen der letzten Jahre geh\"oren. Soziale Netzwerke, Interaktionen von Proteinen in Zellen, das Internet: All diese Dinge lassen sich als Graphen darstellem und werden als solche untersucht.
-Doch auch die \"Ahnlichkeit von Graphen zu bestimmen ist ein schwieriges Problem. Es gilt als NP-schwer (Zitat?).
-
+Doch auch die \"Ahnlichkeit von Graphen zu bestimmen ist ein schwieriges Problem. Es leitet sich vom \emph{Graph-Isomorphismus-Problem} ab. Es ist nicht klar, ob dieses Problem NP-vollst\"andig ist. In den letzten Jahren wurde \textit{Feature}-basierte Methoden erforscht, die diese Problem reduzieren. Anstatt direkt zwei Graphen miteinander zu vergleichen, werden \textit{Features} verglichen, so dass einfache Datenpunkte anstatt von komplexen Graphen verglichen werden.
+Solche Methoden wurden h\"aufig erfolgreich angewandt. Diese Anwendungen fanden immer auf gro"sen Netzwerken statt. Nun stellt sich die Frage, ob sich solche Methoden auch f\"ur deutlich kleinere Netzwerke eignen. in der vorliegenden Arbeit wird eine solche \textit{Feature}-basierte Methode - der \textit{Graphlet}-Algorithmus auf verschiedene Proteingraphen angewandt. 
 
 
 \section{\textit{State of the Art}}
@@ -191,6 +194,8 @@ In dem Datensatz befinden sich Paare von PDB-Eintr\"agen, die von allen drei Pro
 
 \subsection{Fallstudien}
 
+Anfangs wurden 20 verschiedene Proteine aus verschiedenen CATH-Klassen zum Vergleich ausgew\"ahlt. Die Proteine wurden so gew\"ahlt, dass die drei CATH-klassen mit vielen Sekund\"arstrukturelementen \textit{mainly-alpha}, \textit{mainly-beta} und \textit{alpha-beta} vertreten sind. Weiterhin wurde die Auswahl so getroffen, dass es f\"ur jede Stufe der Hierarchie mindestens zwei Proteine gibt, die auf der entsprechenden Stufe in die gleiche Klasse eingeordnet werden. Die Proteine werden im folgenden kurz beschreiben.
+
 
 \subsubsection{4-Helix-\textit{Bundles}}
 
@@ -243,6 +248,7 @@ PDB-ID & CATH-Code  \\
 7TIM & 3.20.20.70   \\
 1NEY & 3.20.20.70   \\
 2V5L & 3.20.20.70   \\
+1V3Z & 3.30.70.100  \\
 
 \end{tabular}
 

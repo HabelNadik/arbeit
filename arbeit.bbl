@@ -13,13 +13,18 @@ May et~al.
 \bibitem{frqdistribution}
 Przulj et~al.
 \newblock Modelling interactome: scale-free or geometric.
-\newblock {\em Bioinformatics}.
+\newblock {\em Bioinformatics}, 2004.
 
 \bibitem{vplg}
 Schafer et~al.
 \newblock Computation and visualization of protein topology graphs including
   ligand information.
 \newblock {\em Bioinformatics}, 2015.
+
+\bibitem{dali}
+Chris~Sander Liisa~Holm.
+\newblock Dali: a network tool for protein structure comparison.
+\newblock {\em Trends in Biomedical Sciences}, 1995.
 
 \bibitem{fatcat}
 Adam~Godzik Yuzhen~Ye.
