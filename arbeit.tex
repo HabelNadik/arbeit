@@ -120,6 +120,34 @@ w_5 := \left( \frac{1}{120}, \frac{1}{72}, \frac{1}{48}, \frac{1}{36}, \frac{1}{
 Jede Stelle eines Vektors $w_i$ ist mit einem \textit{Graphlet} assoziiert. Da der Algorithmus alle Euler-Wege einer L\"ange $i$ in dem Graphen abl\"auft, sind in den Vektoren Br\"uche eingetragen, wobei der Z\"ahler f\"ur die Anzahl der Euler-Wege der L\"ange $i$ steht. Dies stimmt nat\"urlich nicht f\"ur die sogenannten Stern-\textit{Graphlets} ($g_4$ in \ref{fig:4graphlets} $g_{19}$,$g_{20}$ und $g_{21}$ in \ref{fig:5graphlets}). Da diese keinen Euler-Weg der L\"ange 4 bzw. 5 enthalten werden sie anders gez\"ahlt.
 (beispiel mit Pseudocode einf\"ugen?)
 
+\paragraph{Markierte \textit{Graphlets}}
+werden ebenfalls durch den Algorithmus gez\"ahlt. In dieser Implementierung z\"ahlt der Algorithmus \textit{Graphlets} mit Knotenmarkierungen, die in der Konfigurationsdatei vorgegeben werden k\"onnen.
+ Es werden alle kombinatorisch m\"oglichen Markierungen von \textit{Graphlets} bis zur Gr\"o"se 3 betrachtet.
+ Gr\"o"sere markierte \textit{Graphlets} werden ignoriert, um die Laufzeit niedrig zu halten.
+Da die Markierungen von SSE-Graphen und AA-Graphen betrachtet werden, werden verschiedene Vektoren \"uber verschiedenen Alphabeten verwendet.\\
+Die Vektoren $p_2, p_{3-Weg}$ und $p_{3-Kreis}$ beschreiben die verschiedenen Worte f\"ur den 2-Pfad, den 3-Weg und den 3-Kreis in Proteingraphen.
+
+
+\begin{subequations}
+\begin{align}
+p_2 := (HH, HE, HL, EE, EL, LL) \\
+p_{3-Weg} := (HHH, HEH, HHE, HEE, EHE, HEL, LHE, ELH, HLH, HHL, HLL, LHL, EEE, ELE, EEL, ELL, LEL, LLL) \\
+p_{3-Kreis} := (HHH, HEH, HEE, HEL, LEH, HLH, HLL, EEE, ELE, ELL, LLL) \\
+\end{align}
+\end{subequations}
+
+Die Vektoren $a_2, a_{3-Weg}$ und $a_{3-Kreis}$ beschreiben die Worte f\"ur \textit{Graphlets} in AA-Graphen 
+
+\begin{subequations}
+\begin{align}
+a_2 := (hh, hp, ha, h?, pp, pa, p?, aa, a?, ??) \\
+a_{3-Weg} := (hhh, hph, hhp, hpp, php, hpa, ahp, pah, hp?, ?hp, p?h, hah, hha, haa, aha, ha?, ?ha ,a?h, h?h, hh?, h??, ?h?, ppp, pap, ppa, paa, apa, pa?, ?pa, a?p, p?p, pp?, p??, ?p?, aaa, a?a, aa?, a??, ?a?, ???) \\
+a_{3-Kreis} := (hhh, hph, hpp, hpa, aph, hp?, ?ph, hah, haa, ha?, ?ah, h?h, h??, ppp, pap, paa, pa?, ?ap, p?p, p??, aaa, a?a, a??, ???)
+\end{align}
+\end{subequations}
+
+
+
 
 \section{\texttt{graphletAnalyser}}
 
