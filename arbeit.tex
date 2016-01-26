@@ -28,7 +28,7 @@ TODO: Zitationen einf\"ugen: schwierigkeit der Analyse, bereits bekannte Methode
 
 Dei \"Ahnlickeit von Proteinen zu bestimmen ist eine gro"se Herausforderung. In der Zeit als wenige Strukturen bekannt waren wurde die strukturelle \"Ahnlichkeit von Proteinen noch von Experten visuell bewertet, aber mittlerweile wurde die Strukturen von \"uber 100000 biologischen Makromolek\"ulen in der PDB. Der Vergleich dieser gigantischen Anzahl von Strukturdaten erfordert effiziente algorithmische Analysemethoden. Solche Analysen k\"onnen tiefe Einblicke in die ferne evolution\"are Verwandschaft von Proteinen liefern und sie helfen bei der Bestimmung der Funktion eines Proteins. Des weiteren sind sie im Bereich des \textit{Drug-Design} hoch interessant, denn  Strukturdaten liefer Informationen \"uber m \"ogliche Liganden, die ein Protein binden kann und damit auch \"uber m\"ogliche Ziele von Medikamenten bei der Bek\"ampfung von Krankheiten. Deshalb sind strukturbasierte \"Ahnlichkeitsanalysen in der pharmakologischen Forschung von zentraler Bedeutung.
 Das Problem hierbei ist, dass die Berechnung der \"Ahnlichkeit von 3D-Strukturen algorithmisch ein schwieriges Problem darstellt; lange Berechnungszeiten sind die Regel und es ist schwierig herauszufinden, ob der gefundene \"Ahnlichkeitswert f\"ur zwei Proteine nur ein lokales Optimum darstellt.
-Deshalb wird versucht, von der 3D-Darstellung zu abstrahieren, ohne zentrale Strukturinformationen zu verlieren. \emph{Dali} \cite{dali}verwendet beispielsweise Distanzmatrizen, die die Abst\"ande einzelner Residuen zueinander speichern, anstatt die Koordinaten jedes Atoms abzuspeichern.
+Deshalb wird versucht, von der 3D-Darstellung zu abstrahieren, ohne zentrale Strukturinformationen zu verlieren. \emph{Dali} \cite{dali}verwendet beispielsweise Distanzmatrizen, die die Abst\"ande einzelner Residuen zueinander speichern, anstatt die Koordinaten jedes Atoms abdsspzuspeichern.
 Der Strukturvergleich findet dann als Vergleich dieser Distanzmatrizen statt.
 
 Auch Graphen eignen sich, um Strukturdaten in einer leichter zu analysierenden Form abzuspeichern. Denn Graphen k\"onnen genau wie Distanzmatrizen Informationen \"uber r\"aumliche N\"ahe aufbewahren.
@@ -279,7 +279,7 @@ PDB-ID & CATH-Code  \\
 2V5L & 3.20.20.70   \\ %  TRYPANOSOMAL TRIOSEPHOSPHATE ISOMERASE - neue kristallform
 1V3Z & 3.30.70.100  \\ % Acylphosphatase
 1A17 & 1.25.40.10   \\ % pdb-header sagt hydrolase - muesste anderen hydrolasen aehnlich sein
-1ar0 & 3.10.450.50  \\
+1ar0 & 3.10.450.50  \\ % Nuclear transport factor 2
 
 \end{tabular}
 
@@ -309,9 +309,28 @@ PDB-ID & Chain & CATH-Code   & EC-Code  \\
 
 Der erste kleine Test mit den Proteinen 1qf6, 1qf8 und 1qe0 war erfolgreich. Richtigerweise bewertet der Algorithmus mit der Relativen-\textit{Graphlet}-H\"aufigkeiten-Distanz die \"Ahnlichkeit von 1qf8 und 1qe0 h\"oher als die \"Ahnlichkeit zwischen den beiden und 1qf6. 1qf6 und 1qe0 sind beide Synthetasen, die Komplexe mit tRNA bilden, w\"ahrend 1qf8 eine Casein Kinase ist. 
 
-\section{Fallstudie - vergleich mit Dali}
+\section{Fallstudie - Vergleich mit CATH-Einordnung}
+
+Die Ergebnisse sind f\"ur die KOmplexgraphen eher schlecht; bei Aminos\"auregraphen funktioniert der Vergleich ok, allerdings h\"angt das von der Klasse ab.
+Die beste aktuelle Idee zur Verbesserung ist eine st\"arkere Gewichtung der gelabelten \textit{Graphlets}. Diese k\"onnte f\"ur die AA-Graphen jedoch dazu f\"uhren, dass die Scores am st\"arksten mit der Sequenz\"ahnlichkeit korrelieren.
+Weiterhin k\"onnte es sinnvoll sein, die Homologie der Proteine im Datensatz zu pr\"ufen und zu schauen, ob sich Ideen f\"ur weitere Verbesserungen gewinnen lassen.
 
 
+
+\subsection{AA-\textit{Graphlets}}
+
+F\"ur die Proteine aus der Homologen Superfamilie der Cytochrome lieferten die Aminos\"auregraphen die besten Ergebnisse.
+Nur hier stammten die \"ahnlichsten Proteine auch aus der gleichen Superfamilie.
+Als Metrik wurde die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz verwendet.
+
+\begin{tabular}{l c c r}
+
+PDB-ID & CATH-Code   & Platz 1 - 4            & Scores             \\
+1QPU   & 1.20.120.10 & 1QQ3, 2XL6, 1M4R, 2YL1 & 1.45 3.65 5.41 5.63 \\
+1QQ3   & 1.20.120.10 & 1QPU, 2XL6, 1M4R, 2YL1 & 1.45 3.61 5.08 5.65 \\
+2XL6   & 1.20.120.10 & 1QQ3, 1QPU, 2YL1, 2V5L & 3.61 3.65 4.51 4.71 \\
+2YL1   & 1.20.120.10 & 2XL6, 1QPU, 1QQ3, 2V5L & 3.61 3.65 4.51 4.71 \\
+\end{tabular}
 
 
 \chapter{Diskussion und Ausblick}
