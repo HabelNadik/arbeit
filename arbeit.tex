@@ -7,11 +7,16 @@
 \usepackage{hyperref}
 \usepackage{natbib}
 \usepackage{rotating}
-\usepackage[table]{xcolor}
+\usepackage[table, dvipsnames, usenames]{xcolor}
+\usepackage{color}
 %\usepackage{qtree}
 %\usepackage{cite}
 
+\definecolor{fGreen}{rgb}{0.13,0.54,0.13}
+
 \begin{document}
+
+\definecolor{green}{rgb}{0.13,0.54,0.13}
 
 
 \maketitle
@@ -399,10 +404,12 @@ Yang JA: Comprehensive description of protein structures using protein shape cod
 
 \begin{sidewaystable}
 
+\definecolor{fGreen}{rgb}{0.13,0.54,0.13}
+
 \scalebox{0.8}{
 \begin{tabular}[h!]{l l l l l l l l l l l l l l l l l l l l l l l l}
 
-PDB-ID & \cellcolor{blue!35}2utg & 1vib & 1qpu & 1qq3 & 2xl6 & 2yl1 & 1rxq & 2qe9 & 2rd9 & 1m4r & 1hgu & 1pv6 & 1awr & 1d9c & 1ngl & 1n7v & 7tim & 1ney & 1v3z & 1a17 & 1ar0 & 2v5l &  \\
+PDB-ID & \cellcolor{fGreen!100}2utg & 1vib & 1qpu & 1qq3 & 2xl6 & 2yl1 & 1rxq & 2qe9 & 2rd9 & 1m4r & 1hgu & 1pv6 & 1awr & 1d9c & 1ngl & 1n7v & 7tim & 1ney & 1v3z & 1a17 & 1ar0 & 2v5l &  \\
 2utg &   X   & 8.915 & 8.626 & 8.150 & 9.759 & 13.62 & 6.408 & 8.128 & 7.384 & 5.158 & 4.944 & 3.570 & 11.67 & 4.392 & 7.387 & 13.02 & 9.171 & 8.737 & 8.025 & 2.490 & 9.329 & 6.253 &  \\
 1vib & 8.915 &   X   & 15.54 & 15.89 & 16.89 & 21.08 & 15.22 & 16.80 & 16.23 & 13.39 & 13.26 & 12.32 & 17.13 & 12.55 & 11.80 & 17.87 & 17.44 & 17.07 & 13.78 & 7.943 & 16.33 & 14.27 &  \\
 1qpu & 8.626 & 15.54 &   X   & 1.451 & 3.655 & 5.632 & 6.272 & 8.187 & 7.539 & 5.410 & 7.849 & 7.087 & 11.01 & 7.053 & 9.864 & 12.54 & 8.261 & 8.829 & 8.822 & 9.192 & 9.692 & 6.462 &  \\
@@ -440,21 +447,22 @@ In dieser Tabelle befinden sich die Graphen zu den Chains - Proteingraphen
 \begin{tabular}{l l l l l l l l l l l l l l l l l}
 
 PDB-ID & 1exs & 1ngl & 1qqs & 3slo & 1wjx & 5chy & 2id9 & 3i42 & 2w0i & 1d4o & 1qpu & 1qq3 & 1cgn & 1he9 & 3gf9 &  \\
-1exs &   X   & 1.324 & 1.324 & 2.968 & 0.696 & 0.885 & 1.492 & 1.610 & 3.820 & 3.102 & 1.159 & 1.703 & 1.633 & 3.253 & 2.523 &  \\
-1ngl & 1.324 &   X   & 0.002 & 0.787 & 2.629 & 2.279 & 0.788 & 0.286 & 2.722 & 0.980 & 2.195 & 0.883 & 1.193 & 1.386 & 2.815 &  \\
-1qqs & 1.324 & 0.002 &   X   & 0.787 & 2.631 & 2.281 & 0.788 & 0.285 & 2.722 & 0.980 & 2.197 & 0.883 & 1.193 & 1.386 & 2.817 &  \\
-3slo & 2.968 & 0.787 & 0.787 &   X   & 0.257 & 0.705 & 1.024 & 1.073 & 6.154 & 3.137 & 1.226 & 1.396 & 1.513 & 4.357 & 1.596 &  \\
-1wjx & 0.696 & 2.629 & 2.631 & 0.257 &   X   & 1.043 & 0.933 & 0.914 & 2.093 & 0.644 & 1.049 & 1.270 & 1.339 & 1.291 & 2.056 &  \\
-5chy & 0.885 & 2.279 & 2.281 & 0.705 & 1.043 &   X   & 0.607 & 0.800 & 2.282 & 0.275 & 1.014 & 0.869 & 1.060 & 1.135 & 1.816 &  \\
-2id9 & 1.492 & 0.788 & 0.788 & 1.024 & 0.933 & 0.607 &   X   & 0.692 & 2.890 & 0.783 & 0.811 & 0.405 & 0.811 & 1.099 & 1.917 &  \\
-3i42 & 1.610 & 0.286 & 0.285 & 1.073 & 0.914 & 0.800 & 0.692 &   X   & 3.008 & 1.076 & 1.098 & 0.693 & 1.098 & 1.386 & 2.034 &  \\
-2w0i & 3.820 & 2.722 & 2.722 & 6.154 & 2.093 & 2.282 & 2.890 & 3.008 &   X   & 4.406 & 0.972 & 1.779 & 1.516 & 2.506 & 4.130 &  \\
-1d4o & 3.102 & 0.980 & 0.980 & 3.137 & 0.644 & 0.275 & 0.783 & 1.076 & 4.406 &   X   & 0.628 & 0.988 & 1.011 & 3.599 & 3.122 &  \\
-1qpu & 1.159 & 2.195 & 2.197 & 1.226 & 1.049 & 1.014 & 0.811 & 1.098 & 0.972 & 0.628 &   X   & 0.806 & 0.606 & 0.697 & 3.131 &  \\
-1qq3 & 1.703 & 0.883 & 0.883 & 1.396 & 1.270 & 0.869 & 0.405 & 0.693 & 1.779 & 0.988 & 0.806 &   X   & 0.405 & 1.504 & 1.567 &  \\
-1cgn & 1.633 & 1.193 & 1.193 & 1.513 & 1.339 & 1.060 & 0.811 & 1.098 & 1.516 & 1.011 & 0.606 & 0.405 &   X   & 0.810 & 1.432 &  \\
-1he9 & 3.253 & 1.386 & 1.386 & 4.357 & 1.291 & 1.135 & 1.099 & 1.386 & 2.506 & 3.599 & 0.697 & 1.504 & 0.810 &   X   & 4.492 &  \\
-3gf9 & 2.523 & 2.815 & 2.817 & 1.596 & 2.056 & 1.816 & 1.917 & 2.034 & 4.130 & 3.122 & 3.131 & 1.567 & 1.432 & 4.492 &   X   &  \\
+1exs &   X   & \cellcolor{fGreen!25}1.324 & 1.324 & 2.968 & \cellcolor{fGreen!100}0.696 & \cellcolor{fGreen!75}0.885 & 1.492 & 1.610 & 3.820 & 3.102 & \cellcolor{fGreen!50}1.159 & 1.703 & 1.633 & 3.253 & 2.523 &  \\
+1ngl & 1.324 &   X   & \cellcolor{fGreen!100}0.002 & \cellcolor{fGreen!50}0.787 & 2.629 & 2.279 & \cellcolor{fGreen!25}0.788 & \cellcolor{fGreen!75}0.286 & 2.722 & 0.980 & 2.195 & 0.883 & 1.193 & 1.386 & 2.815 &  \\
+1qqs & 1.324 & \cellcolor{fGreen!100}0.002 &   X   & \cellcolor{fGreen!50}0.787 & 2.631 & 2.281 & \cellcolor{fGreen!25}0.788 & \cellcolor{fGreen!75}0.285 & 2.722 & 0.980 & 2.197 & 0.883 & 1.193 & 1.386 & 2.817 &  \\
+3slo & 2.968 & \cellcolor{fGreen!50}0.787 & \cellcolor{fGreen!25}0.787 &   X   & \cellcolor{fGreen!100}0.257 & \cellcolor{fGreen!75}0.705 & 1.024 & 1.073 & 6.154 & 3.137 & 1.226 & 1.396 & 1.513 & 4.357 & 1.596 &  \\
+1wjx & \cellcolor{fGreen!50}0.696 & 2.629 & 2.631 & \cellcolor{fGreen!100}0.257 &   X   & 1.043 & 0.933 & \cellcolor{fGreen!25}0.914 & 2.093 & \cellcolor{fGreen!75}0.644 & 1.049 & 1.270 & 1.339 & 1.291 & 2.056 &  \\
+5chy & 0.885 & 2.279 & 2.281 & \cellcolor{fGreen!50}0.705 & 1.043 &   X   & \cellcolor{fGreen!75}0.607 & \cellcolor{fGreen!25}0.800 & 2.282 & \cellcolor{fGreen!100}0.275 & 1.014 & 0.869 & 1.060 & 1.135 & 1.816 &  \\
+2id9 & 1.492 & 0.788 & 0.788 & 1.024 & 0.933 & \cellcolor{fGreen!75}0.607 &   X   & \cellcolor{fGreen!50}0.692 & 2.890 & \cellcolor{fGreen!25}0.783 & 0.811 & \cellcolor{fGreen!100}0.405 & 0.811 & 1.099 & 1.917 &  \\
+3i42 & 1.610 & \cellcolor{fGreen!75}0.286 & \cellcolor{fGreen!100}0.285 & 1.073 & 0.914 & 0.800 & \cellcolor{fGreen!50}0.692 &   X   & 3.008 & 1.076 & 1.098 & \cellcolor{fGreen!25}0.693 & 1.098 & 1.386 & 2.034 &  \\
+2w0i & 3.820 & 2.722 & 2.722 & 6.154 & \cellcolor{fGreen!25}2.093 & 2.282 & 2.890 & 3.008 &   X   & 4.406 & \cellcolor{fGreen!100}0.972 & \cellcolor{fGreen!50}1.779 & \cellcolor{fGreen!75}1.516 & 2.506 & 4.130 &  \\
+1d4o & 3.102 & 0.980 & 0.980 & 3.137 & \cellcolor{fGreen!50}0.644 & \cellcolor{fGreen!100}0.275 & \cellcolor{fGreen!25}0.783 & 1.076 & 4.406 &   X   & \cellcolor{fGreen!75}0.628 & 0.988 & 1.011 & 3.599 & 3.122 &  \\
+1qpu & 1.159 & 2.195 & 2.197 & 1.226 & 1.049 & 1.014 & 0.811 & 1.098 & 0.972 & \cellcolor{fGreen!75}0.628 &   X   & \cellcolor{fGreen!25}0.806 & \cellcolor{fGreen!100}0.606 & \cellcolor{fGreen!50}0.697 & 3.131 &  \\
+1qq3 & 1.703 & 0.883 & 0.883 & 1.396 & 1.270 & 0.869 & \cellcolor{fGreen!75}0.405 & \cellcolor{fGreen!50}0.693 & 1.779 & 0.988 & \cellcolor{fGreen!25}0.806 &   X   & \cellcolor{fGreen!100}0.405 & 1.504 & 1.567 &  \\
+1cgn & 1.633 & 1.193 & 1.193 & 1.513 & 1.339 & 1.060 & \cellcolor{fGreen!25}0.811 & 1.098 & 1.516 & 1.011 & \cellcolor{fGreen!75}0.606 & \cellcolor{fGreen!100}0.405 &   X   & \cellcolor{fGreen!50}0.810 & 1.432 &  \\
+1he9 & 3.253 & 1.386 & 1.386 & 4.357 & 1.291 & \cellcolor{fGreen!25}1.135 & \cellcolor{fGreen!50}1.099 & 1.386 & 2.506 & 3.599 & \cellcolor{fGreen!100}0.697 & 1.504 & \cellcolor{fGreen!75}0.810 &   X   & 4.492 &  \\
+3gf9 & 2.523 & 2.815 & 2.817 & \cellcolor{fGreen!50}1.596 & 2.056 & \cellcolor{fGreen!25}1.816 & 1.917 & 2.034 & 4.130 & 3.122 & 3.131 & \cellcolor{fGreen!75}1.567 & \cellcolor{fGreen!100}1.432 & 4.492 &   X   &  \\
+
 
 
 \end{tabular}}
@@ -468,24 +476,74 @@ Hier sind die Komplexgraphen
 \begin{tabular}{l l l l l l l l l l l l l l l l l}
 
 PDB-ID & 1exs & 1ngl & 1qqs & 3slo & 1wjx & 5chy & 2id9 & 3i42 & 2w0i & 1d4o & 1qpu & 1qq3 & 1cgn & 1he9 & 3gf9 &  \\
-1exs &   X   & 1.290 & 3.217 & 4.391 & 0.611 & 0.662 & 1.459 & 1.576 & 4.226 & 9.191 & 3.567 & 3.860 & 1.712 & 3.456 & 5.473 &  \\
-1ngl & 1.290 &   X   & 3.637 & 2.620 & 2.697 & 2.644 & 0.788 & 0.286 & 2.722 & 4.373 & 2.309 & 3.457 & 1.979 & 1.386 & 4.230 &  \\
-1qqs & 3.217 & 3.637 &   X   & 12.90 & 5.645 & 4.202 & 3.394 & 3.512 & 4.907 & 16.22 & 13.66 & 6.851 & 7.333 & 4.069 & 14.86 &  \\
-3slo & 4.391 & 2.620 & 12.90 &   X   & 4.974 & 3.863 & 2.351 & 2.412 & 7.116 & 14.09 & 14.10 & 12.70 & 12.20 & 5.432 & 15.99 &  \\
-1wjx & 0.611 & 2.697 & 5.645 & 4.974 &   X   & 0.360 & 0.961 & 0.965 & 2.042 & 2.225 & 2.128 & 2.587 & 1.954 & 1.466 & 2.516 &  \\
-5chy & 0.662 & 2.644 & 4.202 & 3.863 & 0.360 &   X   & 0.797 & 0.914 & 2.093 & 1.728 & 1.933 & 2.431 & 1.120 & 1.291 & 1.971 &  \\
-2id9 & 1.459 & 0.788 & 3.394 & 2.351 & 0.961 & 0.797 &   X   & 0.692 & 2.890 & 1.921 & 2.165 & 2.557 & 0.249 & 1.099 & 2.575 &  \\
-3i42 & 1.576 & 0.286 & 3.512 & 2.412 & 0.965 & 0.914 & 0.692 &   X   & 3.008 & 2.039 & 1.877 & 2.269 & 0.037 & 1.386 & 2.693 &  \\
-2w0i & 4.226 & 2.722 & 4.907 & 7.116 & 2.042 & 2.093 & 2.890 & 3.008 &   X   & 10.76 & 4.422 & 3.002 & 0.980 & 2.506 & 11.61 &  \\
-1d4o & 9.191 & 4.373 & 16.22 & 14.09 & 2.225 & 1.728 & 1.921 & 2.039 & 10.76 &   X   & 8.791 & 7.907 & 6.501 & 9.950 & 8.811 &  \\
-1qpu & 3.567 & 2.309 & 13.66 & 14.10 & 2.128 & 1.933 & 2.165 & 1.877 & 4.422 & 8.791 &   X   & 4.405 & 5.056 & 2.271 & 10.75 &  \\
-1qq3 & 3.860 & 3.457 & 6.851 & 12.70 & 2.587 & 2.431 & 2.557 & 2.269 & 3.002 & 7.907 & 4.405 &   X   & 1.906 & 1.714 & 10.03 &  \\
-1cgn & 1.712 & 1.979 & 7.333 & 12.20 & 1.954 & 1.120 & 0.249 & 0.037 & 0.980 & 6.501 & 5.056 & 1.906 &   X   & 0.985 & 9.469 &  \\
-1he9 & 3.456 & 1.386 & 4.069 & 5.432 & 1.466 & 1.291 & 1.099 & 1.386 & 2.506 & 9.950 & 2.271 & 1.714 & 0.985 &   X   & 5.881 &  \\
-3gf9 & 5.473 & 4.230 & 14.86 & 15.99 & 2.516 & 1.971 & 2.575 & 2.693 & 11.61 & 8.811 & 10.75 & 10.03 & 9.469 & 5.881 &   X   &  \\
+1exs &   X   & \cellcolor{fGreen!50}1.290 & 3.217 & 4.391 & \cellcolor{fGreen!100}0.611 & \cellcolor{fGreen!75}0.662 & \cellcolor{fGreen!25}1.459 & 1.576 & 4.226 & 9.191 & 3.567 & 3.860 & 1.712 & 3.456 & 5.473 &  \\
+1ngl & \cellcolor{fGreen!50}1.290 &   X   & 3.637 & 2.620 & 2.697 & 2.644 & \cellcolor{fGreen!75}0.788 & \cellcolor{fGreen!100}0.286 & 2.722 & 4.373 & 2.309 & 3.457 & 1.979 & \cellcolor{fGreen!25}1.386 & 4.230 &  \\
+1qqs & \cellcolor{fGreen!100}3.217 & \cellcolor{fGreen!25}3.637 &   X   & 12.90 & 5.645 & 4.202 & \cellcolor{fGreen!75}3.394 & \cellcolor{fGreen!50}3.512 & 4.907 & 16.22 & 13.66 & 6.851 & 7.333 & 4.069 & 14.86 &  \\
+3slo & 4.391 & \cellcolor{fGreen!50}2.620 & 12.90 &   X   & 4.974 & \cellcolor{fGreen!25}3.863 & \cellcolor{fGreen!100}2.351 & \cellcolor{fGreen!75}2.412 & 7.116 & 14.09 & 14.10 & 12.70 & 12.20 & 5.432 & 15.99 &  \\
+1wjx & \cellcolor{fGreen!75}0.611 & 2.697 & 5.645 & 4.974 &   X   & \cellcolor{fGreen!100}0.360 & \cellcolor{fGreen!50}0.961 & \cellcolor{fGreen!25}0.965 & 2.042 & 2.225 & 2.128 & 2.587 & 1.954 & 1.466 & 2.516 &  \\
+5chy & \cellcolor{fGreen!75}0.662 & 2.644 & 4.202 & 3.863 & \cellcolor{fGreen!100}0.360 &   X   & \cellcolor{fGreen!50}0.797 & \cellcolor{fGreen!25}0.914 & 2.093 & 1.728 & 1.933 & 2.431 & 1.120 & 1.291 & 1.971 &  \\
+2id9 & 1.459 & \cellcolor{fGreen!50}0.788 & 3.394 & 2.351 & 0.961 & \cellcolor{fGreen!25}0.797 &   X   & \cellcolor{fGreen!75}0.692 & 2.890 & 1.921 & 2.165 & 2.557 & \cellcolor{fGreen!100}0.249 & 1.099 & 2.575 &  \\
+3i42 & 1.576 & \cellcolor{fGreen!75}0.286 & 3.512 & 2.412 & 0.965 & \cellcolor{fGreen!25}0.914 & \cellcolor{fGreen!50}0.692 &   X   & 3.008 & 2.039 & 1.877 & 2.269 & \cellcolor{fGreen!100}0.037 & 1.386 & 2.693 &  \\
+2w0i & 4.226 & 2.722 & 4.907 & 7.116 & \cellcolor{fGreen!75}2.042 & \cellcolor{fGreen!50}2.093 & 2.890 & 3.008 &   X   & 10.76 & 4.422 & 3.002 & \cellcolor{fGreen!100}0.980 & \cellcolor{fGreen!25}2.506 & 11.61 &  \\
+1d4o & 9.191 & 4.373 & 16.22 & 14.09 & \cellcolor{fGreen!25}2.225 & \cellcolor{fGreen!100}1.728 & \cellcolor{fGreen!75}1.921 & \cellcolor{fGreen!50}2.039 & 10.76 &   X   & 8.791 & 7.907 & 6.501 & 9.950 & 8.811 &  \\
+1qpu & 3.567 & 2.309 & 13.66 & 14.10 & \cellcolor{fGreen!50}2.128 & \cellcolor{fGreen!75}1.933 & \cellcolor{fGreen!25}2.165 & \cellcolor{fGreen!100}1.877 & 4.422 & 8.791 &   X   & 4.405 & 5.056 & 2.271 & 10.75 &  \\
+1qq3 & 3.860 & 3.457 & 6.851 & 12.70 & 2.587 & \cellcolor{fGreen!25}2.431 & 2.557 & \cellcolor{fGreen!50}2.269 & 3.002 & 7.907 & 4.405 &   X   & \cellcolor{fGreen!75}1.906 & \cellcolor{fGreen!100}1.714 & 10.03 &  \\
+1cgn & 1.712 & 1.979 & 7.333 & 12.20 & 1.954 & 1.120 & \cellcolor{fGreen!75}0.249 & \cellcolor{fGreen!100}0.037 & \cellcolor{fGreen!50}0.980 & 6.501 & 5.056 & 1.906 &   X   & \cellcolor{fGreen!25}0.985 & 9.469 &  \\
+1he9 & 3.456 & \cellcolor{fGreen!25}1.386 & 4.069 & 5.432 & 1.466 & \cellcolor{fGreen!50}1.291 & \cellcolor{fGreen!75}1.099 & 1.386 & 2.506 & 9.950 & 2.271 & 1.714 & \cellcolor{fGreen!100}0.985 &   X   & 5.881 &  \\
+3gf9 & 5.473 & 4.230 & 14.86 & 15.99 & \cellcolor{fGreen!75}2.516 & \cellcolor{fGreen!100}1.971 & \cellcolor{fGreen!50}2.575 & \cellcolor{fGreen!25}2.693 & 11.61 & 8.811 & 10.75 & 10.03 & 9.469 & 5.881 &   X   &  \\
+
 
 \end{tabular}}
 
+Hier sind die Komplexgraphen mit Tanimoto
+
+\scalebox{0.8}{
+\begin{tabular}{l l l l l l l l l l l l l l l l l}
+
+PDB-ID & 1exs & 1ngl & 1qqs & 3slo & 1wjx & 5chy & 2id9 & 3i42 & 2w0i & 1d4o & 1qpu & 1qq3 & 1cgn & 1he9 & 3gf9 &  \\
+1exs &   X   & 0.5 & 0.2 & 0.153 & \cellcolor{fGreen!25}0.578 & 0.578 & \cellcolor{fGreen!100}0.666 & \cellcolor{fGreen!50}0.578 & \cellcolor{fGreen!75}0.621 & 0.5 & 0.304 & 0.395 & 0.428 & 0.578 & 0.276 &  \\
+1ngl & 0.5 &   X   & 0.132 & 0.132 & \cellcolor{fGreen!25}0.818 & \cellcolor{fGreen!75}0.818 & \cellcolor{fGreen!50}0.818 & \cellcolor{fGreen!100}0.875 & 0.395 & 0.428 & 0.395 & 0.5 & 0.5 & 0.621 & 0.224 &  \\
+1qqs & \cellcolor{fGreen!25}0.2 & 0.132 &   X   & \cellcolor{fGreen!75}0.224 & 0.132 & 0.132 & 0.132 & 0.132 & 0.2 & 0.132 & 0.132 & \cellcolor{fGreen!50}0.2 & \cellcolor{fGreen!100}0.224 & 0.153 & 0.153 &  \\
+3slo & \cellcolor{fGreen!50}0.153 & 0.132 & \cellcolor{fGreen!100}0.224 &   X   & 0.111 & 0.090 & 0.090 & 0.111 & \cellcolor{fGreen!75}0.153 & 0.111 & 0.111 & 0.090 & 0.111 & 0.090 & \cellcolor{fGreen!25}0.153 &  \\
+1wjx & 0.578 & \cellcolor{fGreen!50}0.818 & 0.132 & 0.111 &   X   & \cellcolor{fGreen!100}0.935 & \cellcolor{fGreen!25}0.714 & \cellcolor{fGreen!75}0.818 & 0.395 & 0.5 & 0.363 & 0.5 & 0.463 & 0.538 & 0.276 &  \\
+5chy & 0.578 & \cellcolor{fGreen!25}0.818 & 0.132 & 0.090 & \cellcolor{fGreen!100}0.935 &   X   & \cellcolor{fGreen!75}0.875 & \cellcolor{fGreen!50}0.818 & 0.395 & 0.5 & 0.395 & 0.5 & 0.5 & 0.621 & 0.304 &  \\
+2id9 & 0.666 & \cellcolor{fGreen!50}0.818 & 0.132 & 0.090 & \cellcolor{fGreen!25}0.714 & \cellcolor{fGreen!75}0.875 &   X   & \cellcolor{fGreen!100}0.935 & 0.463 & 0.5 & 0.428 & 0.538 & 0.538 & 0.714 & 0.25 &  \\
+3i42 & 0.578 & \cellcolor{fGreen!75}0.875 & 0.132 & 0.111 & \cellcolor{fGreen!25}0.818 & \cellcolor{fGreen!50}0.818 & \cellcolor{fGreen!100}0.935 &   X   & 0.463 & 0.428 & 0.428 & 0.538 & 0.538 & 0.714 & 0.224 &  \\
+2w0i & \cellcolor{fGreen!100}0.621 & 0.395 & 0.2 & 0.153 & 0.395 & 0.395 & \cellcolor{fGreen!25}0.463 & \cellcolor{fGreen!50}0.463 &   X   & 0.333 & 0.276 & 0.428 & 0.363 & \cellcolor{fGreen!75}0.538 & 0.224 &  \\
+1d4o & \cellcolor{fGreen!100}0.5 & 0.428 & 0.132 & 0.111 & \cellcolor{fGreen!50}0.5 & \cellcolor{fGreen!25}0.5 & \cellcolor{fGreen!75}0.5 & 0.428 & 0.333 &   X   & 0.276 & 0.333 & 0.363 & 0.428 & 0.276 &  \\
+1qpu & 0.304 & 0.395 & 0.132 & 0.111 & 0.363 & 0.395 & \cellcolor{fGreen!75}0.428 & \cellcolor{fGreen!25}0.428 & 0.276 & 0.276 &   X   & \cellcolor{fGreen!100}0.428 & 0.395 & \cellcolor{fGreen!50}0.428 & 0.153 &  \\
+1qq3 & 0.395 & 0.5 & 0.2 & 0.090 & 0.5 & 0.5 & \cellcolor{fGreen!50}0.538 & \cellcolor{fGreen!25}0.538 & 0.428 & 0.333 & 0.428 &   X   & \cellcolor{fGreen!100}0.666 & \cellcolor{fGreen!75}0.621 & 0.2 &  \\
+1cgn & 0.428 & 0.5 & 0.224 & 0.111 & 0.463 & 0.5 & \cellcolor{fGreen!25}0.538 & \cellcolor{fGreen!50}0.538 & 0.363 & 0.363 & 0.395 & \cellcolor{fGreen!100}0.666 &   X   & \cellcolor{fGreen!75}0.621 & 0.224 &  \\
+1he9 & 0.578 & \cellcolor{fGreen!50}0.621 & 0.153 & 0.090 & 0.538 & \cellcolor{fGreen!25}0.621 & \cellcolor{fGreen!100}0.714 & \cellcolor{fGreen!75}0.714 & 0.538 & 0.428 & 0.428 & 0.621 & 0.621 &   X   & 0.25 &  \\
+3gf9 & \cellcolor{fGreen!75}0.276 & 0.224 & 0.153 & 0.153 & \cellcolor{fGreen!50}0.276 & \cellcolor{fGreen!100}0.304 & 0.25 & 0.224 & 0.224 & \cellcolor{fGreen!25}0.276 & 0.153 & 0.2 & 0.224 & 0.25 &   X   &  \\
+
+
+\end{tabular}}
+
+Hier sind die Proteingraphen mit Tanimoto
+
+\scalebox{0.8}{
+\begin{tabular}{l l l l l l l l l l l l l l l l l}
+
+PDB-ID & 1exs & 1ngl & 1qqs & 3slo & 1wjx & 5chy & 2id9 & 3i42 & 2w0i & 1d4o & 1qpu & 1qq3 & 1cgn & 1he9 & 3gf9 &  \\
+1exs &   X   & 0.5 & 0.5 & \cellcolor{fGreen!100}0.714 & 0.5 & 0.578 & \cellcolor{fGreen!50}0.666 & 0.578 & 0.621 & \cellcolor{fGreen!75}0.714 & 0.463 & \cellcolor{fGreen!25}0.621 & 0.578 & 0.578 & 0.428 &  \\
+1ngl & 0.5 &   X   & \cellcolor{fGreen!100}1.0 & 0.538 & \cellcolor{fGreen!50}0.818 & \cellcolor{fGreen!25}0.818 & 0.818 & \cellcolor{fGreen!75}0.875 & 0.395 & 0.578 & 0.621 & 0.714 & 0.714 & 0.621 & 0.463 &  \\
+1qqs & 0.5 & \cellcolor{fGreen!100}1.0 &   X   & 0.538 & \cellcolor{fGreen!25}0.818 & 0.818 & \cellcolor{fGreen!50}0.818 & \cellcolor{fGreen!75}0.875 & 0.395 & 0.578 & 0.621 & 0.714 & 0.714 & 0.621 & 0.463 &  \\
+3slo & \cellcolor{fGreen!100}0.714 & 0.538 & 0.538 &   X   & 0.538 & 0.5 & \cellcolor{fGreen!25}0.578 & \cellcolor{fGreen!75}0.621 & 0.463 & \cellcolor{fGreen!50}0.578 & 0.428 & 0.538 & 0.538 & 0.578 & 0.463 &  \\
+1wjx & 0.5 & \cellcolor{fGreen!50}0.818 & \cellcolor{fGreen!100}0.818 & 0.538 &   X   & \cellcolor{fGreen!25}0.764 & 0.714 & \cellcolor{fGreen!75}0.818 & 0.395 & 0.538 & 0.578 & 0.714 & 0.666 & 0.538 & 0.463 &  \\
+5chy & 0.578 & \cellcolor{fGreen!75}0.818 & \cellcolor{fGreen!25}0.818 & 0.5 & 0.764 &   X   & \cellcolor{fGreen!100}0.875 & \cellcolor{fGreen!50}0.818 & 0.395 & 0.621 & 0.666 & 0.764 & 0.714 & 0.621 & 0.538 &  \\
+2id9 & 0.666 & 0.818 & 0.818 & 0.578 & 0.714 & \cellcolor{fGreen!75}0.875 &   X   & \cellcolor{fGreen!100}0.935 & 0.463 & 0.714 & 0.666 & \cellcolor{fGreen!50}0.875 & \cellcolor{fGreen!25}0.875 & 0.714 & 0.428 &  \\
+3i42 & 0.578 & \cellcolor{fGreen!50}0.875 & \cellcolor{fGreen!75}0.875 & 0.621 & \cellcolor{fGreen!25}0.818 & 0.818 & \cellcolor{fGreen!100}0.935 &   X   & 0.463 & 0.666 & 0.666 & 0.818 & 0.818 & 0.714 & 0.463 &  \\
+2w0i & \cellcolor{fGreen!100}0.621 & 0.395 & 0.395 & 0.463 & 0.395 & 0.395 & 0.463 & 0.463 &   X   & \cellcolor{fGreen!25}0.5 & 0.395 & \cellcolor{fGreen!50}0.5 & 0.463 & \cellcolor{fGreen!75}0.538 & 0.333 &  \\
+1d4o & \cellcolor{fGreen!100}0.714 & 0.578 & 0.578 & 0.578 & 0.538 & 0.621 & \cellcolor{fGreen!75}0.714 & \cellcolor{fGreen!25}0.666 & 0.5 &   X   & 0.538 & \cellcolor{fGreen!50}0.666 & 0.621 & 0.666 & 0.5 &  \\
+1qpu & 0.463 & 0.621 & 0.621 & 0.428 & 0.578 & 0.666 & \cellcolor{fGreen!50}0.666 & \cellcolor{fGreen!25}0.666 & 0.395 & 0.538 &   X   & \cellcolor{fGreen!75}0.764 & \cellcolor{fGreen!100}0.764 & 0.578 & 0.463 &  \\
+1qq3 & 0.621 & 0.714 & 0.714 & 0.538 & 0.714 & \cellcolor{fGreen!25}0.764 & \cellcolor{fGreen!75}0.875 & \cellcolor{fGreen!50}0.818 & 0.5 & 0.666 & 0.764 &   X   & \cellcolor{fGreen!100}0.935 & 0.764 & 0.463 &  \\
+1cgn & 0.578 & 0.714 & 0.714 & 0.538 & 0.666 & 0.714 & \cellcolor{fGreen!75}0.875 & \cellcolor{fGreen!50}0.818 & 0.463 & 0.621 & \cellcolor{fGreen!25}0.764 & \cellcolor{fGreen!100}0.935 &   X   & 0.764 & 0.428 &  \\
+1he9 & 0.578 & 0.621 & 0.621 & 0.578 & 0.538 & 0.621 & \cellcolor{fGreen!25}0.714 & \cellcolor{fGreen!50}0.714 & 0.538 & 0.666 & 0.578 & \cellcolor{fGreen!75}0.764 & \cellcolor{fGreen!100}0.764 &   X   & 0.463 &  \\
+3gf9 & 0.428 & \cellcolor{fGreen!25}0.463 & 0.463 & 0.463 & \cellcolor{fGreen!50}0.463 & \cellcolor{fGreen!100}0.538 & 0.428 & 0.463 & 0.333 & \cellcolor{fGreen!75}0.5 & 0.463 & 0.463 & 0.428 & 0.463 &   X   &  \\
+
+
+\end{tabular}}
 
 
 \bibliographystyle{plain}
