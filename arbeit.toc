@@ -1,0 +1,46 @@
+\contentsline {chapter}{\numberline {1}Einleitung}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}\textit {State of the Art}}{3}{section.1.2}
+\contentsline {paragraph}{3D-Methoden}{3}{section*.2}
+\contentsline {paragraph}{2D-methoden}{3}{section*.3}
+\contentsline {paragraph}{1D-Methoden}{3}{section*.4}
+\contentsline {paragraph}{0D-Methoden}{4}{section*.5}
+\contentsline {paragraph}{Die Methoden}{4}{section*.6}
+\contentsline {section}{\numberline {1.3}Ziele}{4}{section.1.3}
+\contentsline {section}{\numberline {1.4}Aufbau der Arbeit}{4}{section.1.4}
+\contentsline {chapter}{\numberline {2}Materialien und Methoden}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Die PTGL}{6}{section.2.1}
+\contentsline {paragraph}{Die Berechnung dieser Graphen}{6}{section*.7}
+\contentsline {paragraph}{Komplexgraphen}{7}{section*.8}
+\contentsline {paragraph}{Aminos\"auregraphen}{7}{section*.9}
+\contentsline {section}{\numberline {2.2}Der \textit {Graphlet}-Algorithmus}{7}{section.2.2}
+\contentsline {paragraph}{Motivation}{7}{section*.10}
+\contentsline {paragraph}{Beschreibung des Algorithmus}{7}{section*.11}
+\contentsline {paragraph}{Markierte \textit {Graphlets}}{9}{section*.12}
+\contentsline {section}{\numberline {2.3}\texttt {graphletAnalyser}}{9}{section.2.3}
+\contentsline {section}{\numberline {2.4}Scoring}{10}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Tanimoto-Koeffizient}{10}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Relative \textit {Graphlet}-H\"aufigkeiten-Distanz}{10}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}\textit {Root-Mean-Square-Deviation}}{11}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.4}Anpassung der Parameter}{11}{subsection.2.4.4}
+\contentsline {section}{\numberline {2.5}Datens\"atze}{11}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}FATCAT-SCOP-\textit {Benchmarking-Set}}{11}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Fallstudien}{11}{subsection.2.5.2}
+\contentsline {subsubsection}{4-Helix-\textit {Bundles}}{12}{section*.13}
+\contentsline {subsubsection}{Wachstumshormone}{12}{section*.14}
+\contentsline {subsubsection}{Aldolasen}{12}{section*.15}
+\contentsline {subsubsection}{Zusammengefasst}{13}{section*.16}
+\contentsline {subsection}{\numberline {2.5.3}Datensatz 1}{13}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.4}Lokale und globale \"Ahnlichkeit}{14}{subsection.2.5.4}
+\contentsline {subsubsection}{Vergleich von Proteinen \"ahnlicher Gr\"o\active@dq \dq@prtct {s}e}{14}{section*.17}
+\contentsline {subsubsection}{Vergleich nach EC-Termen}{14}{section*.18}
+\contentsline {chapter}{\numberline {3}Ergebnisse}{16}{chapter.3}
+\contentsline {section}{\numberline {3.1}Fallstudien - Datensatz 1}{16}{section.3.1}
+\contentsline {paragraph}{Der Vergleich mittels RGF}{16}{section*.19}
+\contentsline {paragraph}{Der Vergleich der Tanimoto-Koeffizienten}{17}{section*.20}
+\contentsline {chapter}{\numberline {4}Diskussion und Ausblick}{18}{chapter.4}
+\contentsline {section}{\numberline {4.1}Datensatz 1}{18}{section.4.1}
+\contentsline {section}{\numberline {4.2}Ausblick}{18}{section.4.2}
+\contentsline {chapter}{\numberline {5}Anhang}{19}{chapter.5}
+\contentsline {section}{\numberline {5.1}Bildverzeichnis}{19}{section.5.1}
+\contentsline {section}{\numberline {5.2}Tabellenverzeichnis}{20}{section.5.2}

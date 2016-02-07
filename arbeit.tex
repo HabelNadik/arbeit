@@ -5,13 +5,12 @@
 \usepackage{amsfonts}
 \usepackage{ngerman}
 \usepackage{hyperref}
-\usepackage{natbib}
+%\usepackage{natbib}
 \usepackage{rotating}
 \usepackage[table, dvipsnames, usenames]{xcolor}
 \usepackage{color}
 %\usepackage{qtree}
 %\usepackage{cite}
-
 \definecolor{fGreen}{rgb}{0.13,0.54,0.13}
 
 \begin{document}
@@ -84,24 +83,36 @@ Die dabei erhaltenen Ergebnisse werden im gleichnamigen folgenden Kapitel vorges
 
 Um die Proteinstrukturtopologien aus der PTGL zu vergleichen wurde das Programm \texttt{graphletAnalyser} genutzt und erweitert. Es wurde bereits 2013 von \textit{Tatiana Bakirova} im Rahmen ihrer Diplomarbeit im Arbeitskreis \textit{Molekulare Bioinformatik} geschrieben. Die urspr\"ungliche Funktionalität wurde erweitert. Hierbei wurden Funktionen zur Analyse von Komplexgraphen, Aminos\"auregraphen und den Sekund\"arstrukturgraphen implemetiert. Diese Graphen stammen allesamt aus der PTGL (\underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary) von Tim Sch\"afer.
 
-\section{PLCC}
-
-PLCC ist das Programm, das die Graphen der PTGL erstellt. Hierf\"ur ben\"otigt es die PDB und DSSP Dateien des zu modellierenden Proteins. Der DSSP-Algorithmus weist den Residuen aus der PDB-Datei Sekund\"arstrukturen zu. Diese werden in den PTGL-Graphen als Knoten modelliert. Um die r\"aumliche N\"ahe der Sekund\"arstrukturen zueinander festzustellen werden die Koordinaten aus der PDB-Datei genutzt. Wenn zwei Sekund\"arstrukturen r\"aumlich benachbart sind, werden die entsprechenden Knoten durch eine Kante verbunden.
 
 \section{Die PTGL}
 
 
-Die \underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary ist 2009 von \textit{May et al.} \cite{ptgl1} entwickelt worden. Sie stellt ein System zur Klassifizierung von 3D Proteinstrukturen zur Verf\"ugung. Es gibt berei
+Die \underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary ist 2009 von \textit{May et al.} \cite{ptgl1} entwickelt worden. Ausgehend von der Tatsache, dass sich Proteinstrukturtopologien als r\"aunliche Beziehungen von SSEs untereinander definieren lassen, verwendet die PTGL \emph{Graphen}, um Proteinstrukturtopologien darzustellen.
+Hierbei stellen die Knoten des Graphen die SSEs eines Proteins dar. Sie werden dem jeweiligen SSE entsprechend markiert. Knoten, die $\alpha$-Helices repr\"asentieren werden mit einem H markiert, $\beta$-Faltbl\"atter mit einem E. Weiterhin erm\"oglicht die PTGL die Darstellung von Liganden, (\cite{vplg}) denen mit L markierte Knoten zugeordnet werden. Um die r\"aumliche Nachbarschaft von Sekund\"arstrukturen und Liganden untereinander darstellen zu k\"onnen werden ungerichtete Kanten zwischen Knoten gezogen wenn die entsprechenden Elemente benachbart sind. Jede Polypeptidkette eines Proteins wird dann als \emph{Proteingraph} dargestellt. Die Zusammenhangskomponenten eines Proteingraphen werden als Faltungsgraphen bezeichnet, weil sie typischerweise eine unabh\"angige Faltungseinheit darstellen.
+
+\paragraph{Die Berechnung dieser Graphen}
+
+erfolgt unter Verwendung der entsprechenden PDB und DSSP Dateien. Um den Graphen einer Polypeptidkette zu berechnen werden aus der DSSP-Datei die Sekund\"arstrukturen des Proteins ausgelesen. F\"ur jedes Paar aus zwei SSEs wird die Anzahl der r\"aumlichen Kontakte ihrere Residuen berechnet. Wenn die Anzahl dieser Kontakte einen gewissen Grenzwert \"uberschreitet, wird die angenommen, dass die SSEs r\"aumlich benachbart sind und die jeweiligen Knoten werden durch eine Kante verbunden.
+
+\paragraph{Komplexgraphen}
+
+werden ebenfalls in dieser Arbeit untersucht. Ihre Berechnung erfolgt analog zur Berechnung der Proteingraphen. Komplexgraphen k\"onnen einen vollst\"andigen Proteinkomplex darstellen. In einem solchen Graphen werden zus\"atzlich die Nachbarschaften von SSEs unterschiedlicher Polypeptidketten einbezoogen. Ein Komplexgraph setzt sich also aus mehreren Proteingraphen zusammen. Hier wird jedem Knoten zus\"atzlich zum SSE die Zugeh\"origkeit zu einer Polypeptidkette zugeordnet.
+
+\paragraph{Aminos\"auregraphen} werden ebenfalls untersucht und analog zu Proteingraphen berechnet. Hier wird allerdings auf eine Zuordnung von SSEs verzichtet. Stattdessen repr\"asentiert jeder Knoten eine Aminos\"aure eines Proteins. Die Knoten werden entsprechend der chemischen Eigenschaften der Aminos\"auren markiert. Knoten, die saure oder basische Residuen darstellen werden mit einem c markiert. Ein p markiert Knoten f\"ur polare Residuen, die weder sauer noch basisch sind. F\"ur unpolare Aminos\"auren wird ein h verwendet. Auch Liganden k\"onnen in Aminos\"auregraphen dargestellt werden. Ihre Knoten werden durch ein ? markiert.
 
 
 \section{Der \textit{Graphlet}-Algorithmus}
+
+
+
+
 
 \paragraph{Motivation}
 Die PTGL \cite{vplg} erm\"oglicht also die Darstellung von Proteinstrukturtopologien als Graphen. Um aus diesen Graphen weitere Informationen zu gewinnen, ist es sinnvoll, sie untereinander vergleichen zu k\"onnen. Ein solcher Vergleich ist jedoch ein schwieriges Problem: Gesucht ist eine Funktion $f: (G,G') \rightarrow \mathbb{R} $, die f\"ur zwei Graphen $G$ und $G'$ deren \"Ahnlichkeit zueinander beziffert.
 Es gibt diverse M\"oglichkeiten diesesd Problem zu bearbeiten, von denen jedoch keine einfach ist.
 Eine M\"oglichkeit ist, die Suche nach gr\"o"sten gemeinsamen isomorphen Teilgraphen in $G$ und $G'$, oder man versucht eine Editierdistanz zu berechnen - also herauszufinden, wie viele Operationen (Hinzuf\"ugen oder Entfernen von Knoten und Kanten) n\"otig sind um $G$ in $G'$ zu \"uberf\"uhren. Diese beiden genannten Methoden erfordern jedoch aufw\"andige Berechnungen.
-Deshalb werden Methoden verwendet, die \emph{Topologische Charakteristiken} berechnen und dies in polynomieller Laufzeit bewerkstelligen. Der Vorteil hierbei ist, dass die (aufw\"andige) Berechnung dieser Charakteristiken nur einmal pro Graph erfolgen muss. Die Charakteristika k\"onen dann als Datenpunkte verglichen werden und man spart sich die Berechnungen, die man sonst f\"ur alle Paare von Graphen $G,G'$ durchf\"uhren muss.
-Als Charakteristika eignen sich beispielsweise induzierte Teilgraphen
+Deshalb werden Methoden verwendet, die \emph{Topologische Charakteristiken} berechnen und dies in polynomieller Laufzeit bewerkstelligen. Der Vorteil hierbei ist, dass die (aufw\"andige) Berechnung dieser Charakteristiken nur einmal pro Graph erfolgen muss. Die Charakteristika k\"onnen dann als Vektoren verglichen werden und man spart sich die Berechnungen, die man sonst f\"ur alle Paare von Graphen $G,G'$ durchf\"uhren muss.
+
 
 
 \paragraph{Beschreibung des Algorithmus}
@@ -384,6 +395,13 @@ F\"ur die KOmplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter
 
 \chapter{Diskussion und Ausblick}
 
+
+
+\section{Datensatz 1}
+
+
+
+\section{Ausblick}
 
 
 
