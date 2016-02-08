@@ -191,29 +191,6 @@ Aus der .gml-Datei wird ein Graph erstellt. Das Programm nutzt hierbei die \text
 
 
 
-\subsection{Modifizierter Jaccard-Index}
-
-Der Jaccard-Index ist im eigentlichen Sinne ein Ma"s, um die \"Ahnlichkeit von gleichm\"achtigen Mengen zu bewerten. F\"ur zwei Mengen $A,B$ berechnet sich der Jaccard-Index $D_{Jac}(A,B)$ folgenderma"sen:
-
-\[ D_{Jac}(A,B) := \frac{\sum_{x \ in A \land x \in B} 1}{\sum_{x \in A \lor x \in B} 1} \]
-
-Dementsprechend sind zwei Mengen $A,B$ gleich, wenn  gilt $D_{Jac} = 1$ und disjunkt, wenn gilt $D_{Jac} = 0$. Mit ihm wird die relative Anzahl der Elemente beider Mengen berechnet.
-Um dieses Ma"s in sinnvoller Weise auf \textit{Graphlet}-Vektoren zu \"ubertragen wurde ein zus\"atzlicher Faktor $k \in \mathbb{R} $ mit $k \in [0,1]$  eingef\"uhrt, der als Pr\"azisionsfaktor zu verstehen ist. Die Defintion des modifizierten Jaccard-Index $D_{Jac-m}(v,w)$ f\"ur zwei Vektoren $v,w$ lautet also:
-
-\[ D_{Jac-m}(v,w) := \frac{\sum_{i = 1}^n x_i}{\sum_{x \in A \lor x \in B} 1} \],
-
-wobei gilt:
-
-\[ x_i = 
-   \begin{cases}
-     1     & \quad \mathrm{if} v_i >= w_i * k \land w_i >= v_i * k \\
-     0     & \quad \mathrm{else} \\
-   \end{cases}
-\]
-
-In dieser modifizierten Variante werden zwei Vektoren $v,w$ als gleich angesehen, wenn sich alle Stellen $v_i,w_i$ der beiden Vektoren h\"ochstens um den Faktor $k$ unterschieden.
-
-TODO: Beobachtung zur Begr\"undung einf\"ugen
 
 
 \subsection{Relative \textit{Graphlet}-H\"aufigkeiten-Distanz}
@@ -235,6 +212,31 @@ mit F_{i}(G) := - log(\frac{N_{i}(G)}{T(G)})
 
 Diese Metrik l\"asst sich analog zur euklidischen Distanz, oder einer beliebigen anderen Vektornorm auffassen, denn sie berechnet f\"ur jeden Index $i$ die Differenz zwischen den Stellen $x_i,y_i$ zweier Vektoren $x$ und $y$. Sie verwendet die normalisierten \textit{Graphlet}-Vektoren unter der Annahme, dass die \"Ahnlichkeit zweier Netzwerke sich aus der \"Ahnlichkeit lokaler Substrukturen ableiten l\"asst \cite{frqdistribution}. Somit k\"onnen Netzwerke, die \"ahnliche Substrukturen habe, sich aber in ihrer Gr\"o"se starkt unterschieden, immer noch als \"ahnlich erkannt werden.
 Weiterhin wurde gezeigt, \cite{frqdistribution} dass diese Metrik auch bei verrauschten Daten noch sehr gut funktioniert. Hierbei ist jedoch zu beachten, dass sie bisher vor allem f\"ur sehr gro"se Netzwerke mit mehreren Tausend Knoten und Kanten verwendet wurde. Diese Gr\"o"se kann zwar von Aminos\"auregraphen erreicht werden, wenn sie gro"se Proteine modellieren. Proteingraphen und Komplexgraphen sind aber deutlich kleiner.
+
+
+\subsection{Modifizierter Jaccard-Index}
+
+Der Jaccard-Index ist im eigentlichen Sinne ein Ma"s, um die \"Ahnlichkeit von gleichm\"achtigen Mengen zu bewerten. F\"ur zwei Mengen $A,B$ berechnet sich der Jaccard-Index $D_{Jac}(A,B)$ folgenderma"sen:
+
+\[ D_{Jac}(A,B) := \frac{\sum_{x \ in A \land x \in B} 1}{\sum_{x \in A \lor x \in B} 1} \]
+
+Dementsprechend sind zwei Mengen $A,B$ gleich, wenn  gilt $D_{Jac} = 1$ und disjunkt, wenn gilt $D_{Jac} = 0$. Mit ihm wird die relative Anzahl der Elemente beider Mengen berechnet.
+Um dieses Ma"s in sinnvoller Weise auf \textit{Graphlet}-Vektoren zu \"ubertragen wurde ein zus\"atzlicher Faktor $k \in \mathbb{R} $ mit $k \in [0,1]$  eingef\"uhrt, der als Pr\"azisionsfaktor zu verstehen ist. Die Defintion des modifizierten Jaccard-Index $D_{Jac-m}(v,w)$ f\"ur zwei Vektoren $v,w$ lautet also:
+
+\[ D_{Jac-m}(v,w) := \frac{\sum_{i = 1}^n x_i}{\sum_{x \in A \lor x \in B} 1} \]
+
+Hierbei gilt:
+
+\[ x_i = 
+   \begin{cases}
+     1     & \quad \mathrm{if} \quad v_i >= w_i \times k \land w_i >= v_i \times k \\
+     0     & \quad \mathrm{else} \\
+   \end{cases}
+\]
+
+In dieser modifizierten Variante werden zwei Vektoren $v,w$ als gleich angesehen, wenn sich $v_i,w_i$ f\"ur alle $i$ h\"ochstens um den Faktor $k$ unterschieden.
+Dies steht im Gegensatz zur RGF, die - analog zu einer Vektornorm - die Abst\"ande zwischen zwei \textit{Graphlet}-Vektoren misst.
+
 
 
 \section{Datens\"atze}
@@ -409,7 +411,12 @@ F\"ur die KOmplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter
 
 \subsection{Verbesserung des Scoring}
 
-\subsection{Optimierung von \texttt{graphletAnalyser}}
+\subsection{Optimierung der Laufzeit von \texttt{graphletAnalyser}}
+
+\subsection{\"Ahnlichkeitssuche}
+
+\subsection{\textit{Graphlets} im Faltungsraum}
+
 
 
 Es bieten sich Paper an, die in Liisa Holm \textit{Advances and Pitfalls of Protein Structure Prediction} besprochen wurden. Das Problem ist, dass \texttt{graphletAnalyser} Vektoren erzeugt - also eindimensionale Daten. Somit eignen sich Methoden, die 2D- oder 3D-Daten miteinander alignieren schlecht zum Vergleich. \textit{Holm} erw\"ahnt in ihrer Arbeit aber auch Autoren, die Vergleiche von eindimensionalen Daten durchgef\"uhrt haben. Dies sind folgende:
