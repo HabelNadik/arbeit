@@ -101,7 +101,7 @@ werden ebenfalls in dieser Arbeit untersucht. Ihre Berechnung erfolgt analog zur
 \paragraph{Aminos\"auregraphen} werden ebenfalls untersucht und analog zu Proteingraphen berechnet. Hier wird allerdings auf eine Zuordnung von SSEs verzichtet. Stattdessen repr\"asentiert jeder Knoten eine Aminos\"aure eines Proteins. Die Knoten werden entsprechend der chemischen Eigenschaften der Aminos\"auren markiert. Knoten, die saure oder basische Residuen darstellen werden mit einem c markiert. Ein p markiert Knoten f\"ur polare Residuen, die weder sauer noch basisch sind. F\"ur unpolare Aminos\"auren wird ein h verwendet. Auch Liganden k\"onnen in Aminos\"auregraphen dargestellt werden. Ihre Knoten werden durch ein ? markiert.
 
 
-F\"ur die Berechnungen dieser Arbeit wurde eine lokale Kopie der Datenbank verwendet. 
+F\"ur die Berechnungen dieser Arbeit wurde eine lokale Datenbank erstellt, die das gleiche Schema wie die PTGL verwendet.
 
 \section{Der \textit{Graphlet}-Algorithmus}
 
@@ -218,7 +218,7 @@ TODO: Beobachtung zur Begr\"undung einf\"ugen
 
 \subsection{Relative \textit{Graphlet}-H\"aufigkeiten-Distanz}
 
-\textit{N. Pr\v{z}ulj et al.} haben \textit{Graphlets} bereits in verschiedensten Zusammenh\"anen auf biologische Daten wie Protein-Protein-Interaktionsnetzwerke \cite{frqdistribution} angewandt. Als Ma"s f\"ur die \"Ahnlichkeit von Netzwerken nutzen sie die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz $D(G,H)$. Diese Metrik berechnet den Unterschied zwischen zwei Graphen $G$ und $H$ als logarithmierte Differenz der normalisierten Anzahl der \textit{Graphlets} in $G$ und $H$. Sie ist folgenderma"sen definiert: \\
+\textit{N. Pr\v{z}ulj et al.} haben \textit{Graphlets} bereits in verschiedensten Zusammenh\"anen auf biologische Daten wie Protein-Protein-Interaktionsnetzwerke \cite{frqdistribution} angewandt. Als Ma"s f\"ur die \"Ahnlichkeit von Netzwerken nutzen sie die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz (RGF) $D(G,H)$. Diese Metrik berechnet den Abstand zwischen zwei Graphen $G$ und $H$ als logarithmierte Differenz der normalisierten Anzahl der \textit{Graphlets} in $G$ und $H$. Sie ist folgenderma"sen definiert: \\
 
 Sei $N_{i}(G)$ die Anzahl der \textit{Graphlets} von Typ $i \in {1,...,29}$ und \\ $T(G) = \sum_{i = 1}^{29} N_{i}(G)$ die Anzahl der \textit{Graphlets} in $G$, beziehungsweise $H$\\
 
@@ -236,8 +236,6 @@ mit F_{i}(G) := - log(\frac{N_{i}(G)}{T(G)})
 Diese Metrik l\"asst sich analog zur euklidischen Distanz, oder einer beliebigen anderen Vektornorm auffassen, denn sie berechnet f\"ur jeden Index $i$ die Differenz zwischen den Stellen $x_i,y_i$ zweier Vektoren $x$ und $y$. Sie verwendet die normalisierten \textit{Graphlet}-Vektoren unter der Annahme, dass die \"Ahnlichkeit zweier Netzwerke sich aus der \"Ahnlichkeit lokaler Substrukturen ableiten l\"asst \cite{frqdistribution}. Somit k\"onnen Netzwerke, die \"ahnliche Substrukturen habe, sich aber in ihrer Gr\"o"se starkt unterschieden, immer noch als \"ahnlich erkannt werden.
 Weiterhin wurde gezeigt, \cite{frqdistribution} dass diese Metrik auch bei verrauschten Daten noch sehr gut funktioniert. Hierbei ist jedoch zu beachten, dass sie bisher vor allem f\"ur sehr gro"se Netzwerke mit mehreren Tausend Knoten und Kanten verwendet wurde. Diese Gr\"o"se kann zwar von Aminos\"auregraphen erreicht werden, wenn sie gro"se Proteine modellieren. Proteingraphen und Komplexgraphen sind aber deutlich kleiner.
 
-
-\subsection{Anpassung der Parameter}
 
 \section{Datens\"atze}
 
@@ -260,7 +258,7 @@ Anfangs wurden 20 verschiedene Proteine aus verschiedenen CATH-Klassen zum Vergl
 
 Das Cytochrom B562 von \emph{E. coli} (Bild einf\"ugen) ist ein Protein, das f\"ur Elektronentransport zust\"andig ist. Strukturell wird es als 4-Helix-\textit{Bundle} eingeordnet. Zu diesem Protein gibt es zwei PDB-Eintr\"age: 1QPU und 256B. Es gibt von diesem Protein auch eine Hem-bindende Variante, die oxidiert ist. Sie hat die PDB-ID 1QQ3. All diese Strukturdaten werden von CATH als sehr \"ahnliche Strukturen mit hoher Sequenzidentit\"at eingeordnet.
 Um die Parameter und Metriken f\"ur den Vergleich zu testen, bietet es sich an, diese Proteine mit weiteren Proteinen aus der selben homologen Superfamilie zu vergleichen und diese dann mit Proteinen aus anderen Homologen Superfamilien zu vergleichen. Die entsprechenden Proteine werden h\"andisch entsprechend der Einordnung durch CATH gew\"ahlt. Proteine die neu designt wurden k\"onnten sich auch anbieten. Inwiefern eine Untersuchung an ihnen sinnvoll ist, muss aber noch \"uberpr\"uft werden.
-Weitere PRoteine aus der Homologen Superfamilie, die sich eignen sind:\\
+Weitere Proteine aus der Homologen Superfamilie, die sich eignen sind:\\
 2XL6: Cytochrom C aus Alcaligenes Xylosoxidans, gebunden mit NO\\
 2YL1: s.o. nur andere Variante mit anderem Bindungspartner.\\
 Diese beiden m\"ussten strukturell \"ahnlicher sein, als die weiter oben genannten Varianten von Cytochrom B562.\\
@@ -322,7 +320,7 @@ F\"ur die ersten Tests wurden verschiedene Proteine entsprechend ihrer CATH-Klas
 Es befinden sich je 5 Vertreter der drei CATH-Klassen 1 (\textit{mainly-alpha}), 2 (\textit{mainly-beta}) und 3 (\textit{alpha-beta}) in diesem Datensatz. Diese wurden so gew\"ahlt, dass je ein Paar innerhalb der selben Klasse ein direkter struktureller Nachbar mit eine Sequenzidentit\"at von mehr als 95\%, sowie ein Nachbar mit einer Sequenzidentit\"at von meher als 35\% befindet, um zu \"uberpr\"ufen, ob die \textit{Graphlet}-Vektoren von Aminos\"auregraphen eine Korrelation mit der Sequenzidentit\"at aufweisen k\"onnen.
 Weiterhin wurde je ein Vertreter der selben Topologie aus einer anderen Superfamilie, sowie der selben Architektur mit anderer Topologie gew\"ahlt.
  
-Da die \textit{Graphlet}-Vektoren globale Eigenschaften eines Graphen beschreiben, wurde bei diesem Datensatz darauf geachtet, dass alle Strukturen aus genau einer Polypeptidkette bestehen.
+Da die \textit{Graphlet}-Vektoren globale Eigenschaften eines Graphen beschreiben, wurde bei diesem Datensatz darauf geachtet, dass alle Strukturen aus genau einer Polypeptidkette mit genau einer Dom\"ane bestehen.
 
 
 \begin{tabular}{c c c}
@@ -347,9 +345,6 @@ PDB-ID & CATH        & Klassifizierung         \\
 \end{tabular}
 
 
-\subsection{Lokale und globale \"Ahnlichkeit}
-
-Der \textit{Graphlet}-Vektor
 
 \subsubsection{Vergleich von Proteinen \"ahnlicher Gr\"o"se}
 
@@ -406,13 +401,15 @@ F\"ur die KOmplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter
 
 
 
-\section{Datensatz 1}
+\section{Diskussion: Datensatz 1}
 
 
 
 \section{Ausblick}
 
+\subsection{Verbesserung des Scoring}
 
+\subsection{Optimierung von \texttt{graphletAnalyser}}
 
 
 Es bieten sich Paper an, die in Liisa Holm \textit{Advances and Pitfalls of Protein Structure Prediction} besprochen wurden. Das Problem ist, dass \texttt{graphletAnalyser} Vektoren erzeugt - also eindimensionale Daten. Somit eignen sich Methoden, die 2D- oder 3D-Daten miteinander alignieren schlecht zum Vergleich. \textit{Holm} erw\"ahnt in ihrer Arbeit aber auch Autoren, die Vergleiche von eindimensionalen Daten durchgef\"uhrt haben. Dies sind folgende:
@@ -530,6 +527,7 @@ PDB-ID & 1qpu & 1qq3 & 1cgn & 1he9 & 3gf9 & 1exs & 1ngl & 1qqs & 3slo & 1wjx & 5
 3i42 & 6.625 & 6.039 & 5.929 & \cellcolor{fGreen!25}3.452 & 4.359 & 5.541 & 5.065 & 8.612 & 8.600 & 5.699 & \cellcolor{fGreen!75}2.817 & \cellcolor{fGreen!100}2.447 &   X   & 9.544 & \cellcolor{fGreen!50}2.817 &  \\
 1d4o & \cellcolor{fGreen!50}7.326 & 7.491 & \cellcolor{fGreen!100}7.091 & 10.93 & 12.08 & \cellcolor{fGreen!25}7.374 & 9.755 & \cellcolor{fGreen!75}7.226 & 7.680 & 8.450 & 8.667 & 10.24 & 9.544 &   X   & 8.970 &  \\
 2w0i & 8.572 & 8.059 & 7.918 & 4.807 & 6.018 & 4.530 & \cellcolor{fGreen!25}4.031 & 7.404 & 6.997 & 4.384 & \cellcolor{fGreen!100}1.497 & \cellcolor{fGreen!50}3.657 & \cellcolor{fGreen!75}2.817 & 8.970 &   X   &  \\
+
 
 
 \end{tabular}}
