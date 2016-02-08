@@ -101,6 +101,8 @@ werden ebenfalls in dieser Arbeit untersucht. Ihre Berechnung erfolgt analog zur
 \paragraph{Aminos\"auregraphen} werden ebenfalls untersucht und analog zu Proteingraphen berechnet. Hier wird allerdings auf eine Zuordnung von SSEs verzichtet. Stattdessen repr\"asentiert jeder Knoten eine Aminos\"aure eines Proteins. Die Knoten werden entsprechend der chemischen Eigenschaften der Aminos\"auren markiert. Knoten, die saure oder basische Residuen darstellen werden mit einem c markiert. Ein p markiert Knoten f\"ur polare Residuen, die weder sauer noch basisch sind. F\"ur unpolare Aminos\"auren wird ein h verwendet. Auch Liganden k\"onnen in Aminos\"auregraphen dargestellt werden. Ihre Knoten werden durch ein ? markiert.
 
 
+F\"ur die Berechnungen dieser Arbeit wurde eine lokale Kopie der Datenbank verwendet. 
+
 \section{Der \textit{Graphlet}-Algorithmus}
 
 
@@ -189,17 +191,34 @@ Aus der .gml-Datei wird ein Graph erstellt. Das Programm nutzt hierbei die \text
 
 
 
-\subsection{Tanimoto-Koeffizient}
+\subsection{Modifizierter Jaccard-Index}
 
-Der Tanimoto-Koeffizient ist im eigentlichen Sinne ein Ma"s, um die \"Ahnlichkeit von gleichm\"achtigen Mengen zu bewerten. F\"ur zwei Mengen $A,B$ berechnet sich der Tanimoto-Koeffizient $D_{Tan}(A,B)$ folgenderma"sen:
+Der Jaccard-Index ist im eigentlichen Sinne ein Ma"s, um die \"Ahnlichkeit von gleichm\"achtigen Mengen zu bewerten. F\"ur zwei Mengen $A,B$ berechnet sich der Jaccard-Index $D_{Jac}(A,B)$ folgenderma"sen:
 
-\[ D_{Tan}(A,B) := \frac{\sum_{x \ in A \land x \in B} 1}{\sum_{x \in A \lor x \in B} 1} \]
+\[ D_{Jac}(A,B) := \frac{\sum_{x \ in A \land x \in B} 1}{\sum_{x \in A \lor x \in B} 1} \]
 
-Er berechnet also die relative H\"aufigkeit der gemeinsamen Elemente beider Mengen. Damit ist dieses Berechnungsschema auch f\"ur Vektoren geeignet.
+Dementsprechend sind zwei Mengen $A,B$ gleich, wenn  gilt $D_{Jac} = 1$ und disjunkt, wenn gilt $D_{Jac} = 0$. Mit ihm wird die relative Anzahl der Elemente beider Mengen berechnet.
+Um dieses Ma"s in sinnvoller Weise auf \textit{Graphlet}-Vektoren zu \"ubertragen wurde ein zus\"atzlicher Faktor $k \in \mathbb{R} $ mit $k \in [0,1]$  eingef\"uhrt, der als Pr\"azisionsfaktor zu verstehen ist. Die Defintion des modifizierten Jaccard-Index $D_{Jac-m}(v,w)$ f\"ur zwei Vektoren $v,w$ lautet also:
+
+\[ D_{Jac-m}(v,w) := \frac{\sum_{i = 1}^n x_i}{\sum_{x \in A \lor x \in B} 1} \],
+
+wobei gilt:
+
+\[ x_i = 
+   \begin{cases}
+     1     & \quad \mathrm{if} v_i >= w_i * k \land w_i >= v_i * k \\
+     0     & \quad \mathrm{else} \\
+   \end{cases}
+\]
+
+In dieser modifizierten Variante werden zwei Vektoren $v,w$ als gleich angesehen, wenn sich alle Stellen $v_i,w_i$ der beiden Vektoren h\"ochstens um den Faktor $k$ unterschieden.
+
+TODO: Beobachtung zur Begr\"undung einf\"ugen
+
 
 \subsection{Relative \textit{Graphlet}-H\"aufigkeiten-Distanz}
 
-\textit{N. Pr\v{z}ulj et al.} haben \textit{Graphlets} bereits in verschiedensten Zusammenh\"anen auf biologische Daten wie Protein-Protein-Interaktionsnetzwerke \cite{frqdistribution} angewandt. Als Ma"s f\"ur die \"Ahnlichkeit von Netzwerken nutzen sie die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz $D(G,H)$. Diese Metrik bestimmt den Unterschied zwischen zwei Graphen $G$ und $H$ als logarithmierte Differenz der normalisierten Anzahl der \textit{Graphlets} in $G$ und $H$. Sie ist folgenderma"sen definiert: \\
+\textit{N. Pr\v{z}ulj et al.} haben \textit{Graphlets} bereits in verschiedensten Zusammenh\"anen auf biologische Daten wie Protein-Protein-Interaktionsnetzwerke \cite{frqdistribution} angewandt. Als Ma"s f\"ur die \"Ahnlichkeit von Netzwerken nutzen sie die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz $D(G,H)$. Diese Metrik berechnet den Unterschied zwischen zwei Graphen $G$ und $H$ als logarithmierte Differenz der normalisierten Anzahl der \textit{Graphlets} in $G$ und $H$. Sie ist folgenderma"sen definiert: \\
 
 Sei $N_{i}(G)$ die Anzahl der \textit{Graphlets} von Typ $i \in {1,...,29}$ und \\ $T(G) = \sum_{i = 1}^{29} N_{i}(G)$ die Anzahl der \textit{Graphlets} in $G$, beziehungsweise $H$\\
 
@@ -214,19 +233,9 @@ mit F_{i}(G) := - log(\frac{N_{i}(G)}{T(G)})
 
 
 
-Diese Metrik hat den Vorteil, dass sie die normalisierten \textit{Graphlet}-Vektoren verwendet. So ist ein guter Vergleich auch m\"oglich, wenn einzelne \textit{Graphlets} in den Netzwerken \"uberrepr\"asentiert sind.
-Weiterhin wurde gezeigt, \cite{frqdistribution} dass diese Metrik auch bei verrauschten Daten noch sehr gut funktioniert.
+Diese Metrik l\"asst sich analog zur euklidischen Distanz, oder einer beliebigen anderen Vektornorm auffassen, denn sie berechnet f\"ur jeden Index $i$ die Differenz zwischen den Stellen $x_i,y_i$ zweier Vektoren $x$ und $y$. Sie verwendet die normalisierten \textit{Graphlet}-Vektoren unter der Annahme, dass die \"Ahnlichkeit zweier Netzwerke sich aus der \"Ahnlichkeit lokaler Substrukturen ableiten l\"asst \cite{frqdistribution}. Somit k\"onnen Netzwerke, die \"ahnliche Substrukturen habe, sich aber in ihrer Gr\"o"se starkt unterschieden, immer noch als \"ahnlich erkannt werden.
+Weiterhin wurde gezeigt, \cite{frqdistribution} dass diese Metrik auch bei verrauschten Daten noch sehr gut funktioniert. Hierbei ist jedoch zu beachten, dass sie bisher vor allem f\"ur sehr gro"se Netzwerke mit mehreren Tausend Knoten und Kanten verwendet wurde. Diese Gr\"o"se kann zwar von Aminos\"auregraphen erreicht werden, wenn sie gro"se Proteine modellieren. Proteingraphen und Komplexgraphen sind aber deutlich kleiner.
 
-\subsection{\textit{Root-Mean-Square-Deviation}}
-
-Die \textit{Root-Mean-Square-Deviation} RMSD ist ein Standardma"s zur Abstandsmessung in Vektorr\"aumen. Sie wird f\"ur zwei Vektoren $x$ und $y$ durch folgende Formel berechnet:
-
-\begin{subequations}
-\label{eq:rmsd}
-\begin{align}
-RMSD(x,y) = \sum_{i=1}^{n} (x_i - y_i)^2
-\end{align}
-\end{subequations}
 
 \subsection{Anpassung der Parameter}
 
