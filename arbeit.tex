@@ -93,13 +93,13 @@ Hierbei stellen die Knoten des Graphen die SSEs eines Proteins dar. Sie werden d
 
 \paragraph{Die Berechnung dieser Graphen}
 
-erfolgt unter Verwendung der entsprechenden PDB und DSSP Dateien. Um den Graphen einer Polypeptidkette zu berechnen werden aus der DSSP-Datei die Sekund\"arstrukturen des Proteins ausgelesen. F\"ur jedes Paar aus zwei SSEs wird die Anzahl der r\"aumlichen Kontakte ihrere Residuen berechnet. Wenn die Anzahl dieser Kontakte einen gewissen Grenzwert \"uberschreitet, wird die angenommen, dass die SSEs r\"aumlich benachbart sind und die jeweiligen Knoten werden durch eine Kante verbunden.
+erfolgt unter Verwendung der entsprechenden PDB und DSSP Dateien. Um den Graphen einer Polypeptidkette zu berechnen werden aus der DSSP-Datei die Sekund\"arstrukturelemente (SSEs) des Proteins ausgelesen. F\"ur jedes Paar von SSEs wird die Anzahl der r\"aumlichen Kontakte ihrere Residuen berechnet. Wenn die Anzahl dieser Kontakte einen gewissen Grenzwert \"uberschreitet, wird die angenommen, dass diese SSEs r\"aumlich benachbart sind und die jeweiligen Knoten werden durch eine Kante verbunden.
 
 \paragraph{Komplexgraphen}
 
 werden ebenfalls in dieser Arbeit untersucht. Ihre Berechnung erfolgt analog zur Berechnung der Proteingraphen. Komplexgraphen k\"onnen einen vollst\"andigen Proteinkomplex darstellen. In einem solchen Graphen werden zus\"atzlich die Nachbarschaften von SSEs unterschiedlicher Polypeptidketten einbezoogen. Ein Komplexgraph setzt sich also aus mehreren Proteingraphen zusammen. Hier wird jedem Knoten zus\"atzlich zum SSE die Zugeh\"origkeit zu einer Polypeptidkette zugeordnet.
 
-\paragraph{Aminos\"auregraphen} werden ebenfalls untersucht und analog zu Proteingraphen berechnet. Hier wird allerdings auf eine Zuordnung von SSEs verzichtet. Stattdessen repr\"asentiert jeder Knoten eine Aminos\"aure eines Proteins. Die Knoten werden entsprechend der chemischen Eigenschaften der Aminos\"auren markiert. Knoten, die saure oder basische Residuen darstellen werden mit einem c markiert. Ein p markiert Knoten f\"ur polare Residuen, die weder sauer noch basisch sind. F\"ur unpolare Aminos\"auren wird ein h verwendet. Auch Liganden k\"onnen in Aminos\"auregraphen dargestellt werden. Ihre Knoten werden durch ein ? markiert.
+\paragraph{Aminos\"auregraphen} werden ebenfalls untersucht und analog zu Proteingraphen berechnet. Hier werden keine SSEs betrachtet. Stattdessen repr\"asentiert jeder Knoten eine Aminos\"aure eines Proteins. Die Knoten werden entsprechend der chemischen Eigenschaften der Aminos\"auren markiert. Knoten, die saure oder basische Residuen darstellen werden mit einem c markiert. Ein p markiert Knoten f\"ur polare Residuen, die weder sauer noch basisch sind. F\"ur unpolare Aminos\"auren wird ein h verwendet. Auch Liganden k\"onnen in Aminos\"auregraphen dargestellt werden. Ihre Knoten werden durch ein ? markiert.
 
 
 F\"ur die Berechnungen dieser Arbeit wurde eine lokale Datenbank erstellt, die das gleiche Schema wie die PTGL verwendet.
@@ -173,7 +173,7 @@ Die Berechnung aller \"aquivalenten \textit{Graphlet}-Worte der L\"ange 3 ist ko
 Der Algorithmus besteht aus 3 \textit{for}-Schleifen, die \"uber das Alphabet iterieren. In der \"au"sersten Schleife werden Worte hinzugef\"ugt, in denen alle Buchstaben gleich sind.
 In der zweiten Schleife wird jeweils der n\"achste Buchstabe des Alphabets betrachtet. F\"ur jedes Paar $a, b$ von Buchstaben \"uber einem Alphabet $\sum$ sind die Mengen der \"aquivalenten Worte f\"ur das \textit{Graphlet} $g_1$ $P_{3-Kreis} = \{ \}$ und $P_{3-Pfad} = \{ aaa, aba, aab  \}$ f\"ur das \textit{Graphlet} $g_2$
 
-
+TODO: Pseudocode, Beschreibung der Mengen, Beweis
 
 
 \begin{subequations}
@@ -199,16 +199,26 @@ a_{3-Kreis} := (hhh, hph, hpp, hpa, aph, hp?, ?ph, hah, haa, ha?, ?ah, h?h, h??,
 
 \section{\texttt{graphletAnalyser}}
 
-Der \texttt{graphletAnalyser} berechnet die oben beschreibenen \textit{Graphlets} nach dem Algorithmus von \emph{Shervashidze et al.}. ZUr Zeit unterst\"utzt er die Berechnung f\"ur 3 verschiedene Graphen der PTGL: 
-SSE-Graphen sind Graphen, die eine Polypeptidkette als Graph darstellen indem sie ihre Sekund\"arstrukturelemente als Knoten repr\"asentieren und diese mit Kanten verbinden, wenn sie r\"aumlich benachbart sind. \\
-Komplexgraphen sind Graphen f\"ur Proteinkomplexe; sie modellieren mehrere Polypeptidketten indem sie mehrere SSE-Graphen miteinander verkn\"upfen. \\
-Aminos\"auregraphen modellieren einzelne Aminos\"auren als Knoten und verbinden diese miteinander, wenn sie r\"aumlich benachbart sind. Dementsprechend ein Vielfaches der Knoten und Kanten eines SSE- oder Komplex-Graphen. \\
-Zus\"atzlich zu den \textit{Graphlets} bis zur Gr\"o"se 5 berechnet das Programm markierte \textit{Graphlets} mit bis zu 3 Knoten. Dabei werden zun\"achst alle Markierungen die kombinatorisch m\"oglich sind berechnet und die entsprechenden \textit{Graphlets} werden gez\"ahlt.\\
-Das Programm wird \"uber die Kommandozeile aufgerufen und erh\"alt eine oder mehrere GML-Dateien als Argumente.
-Zus\"atzlich kann angegeben werden, ob die GML-Datei einen Proteingraphen, Komplexgraphen oder Aminos\"auregraphen beschreibt.
-Alternativ kann auch in der Konfigurationsdatei angegeben werden, dass eine andere Art von Graph eingelesen werden soll.
-\texttt{graphletAnalyser} ist also in der Lage, jede GML-Datei, die einen ungerichteten Graphen enth\"alt einzulesen und f\"ur sie \textit{Graphlets} zu berechnen. Der Nutzer kann weiterhin ein Alphabet unterschiedlicher Knotenmarkierungen angeben, f\"ur das markierte \textit{Graphlets} berechnet werden. Somit kann das Programm auch f\"ur graphenbezogene Fragestellungen verwendet werden, die sich nicht auf Proteine beziehen.
-Aus der .gml-Datei wird ein Graph erstellt. Das Programm nutzt hierbei die \textit{Boost-Graph-Library} zur internen Darstellung. Entsprechend der vom Nutzer ausgew\"ahlten Funktionen werden die \textit{Graphlets} berechnet und als Datei ausgegeben. Zus\"atzlich k\"onnen sie in einer lokalen Datenbank abgespeichert werden.
+Das Programm \texttt{graphletAnalyser} implementiert die oben beschriebenen Algorithmen und kann die Resultate der Berechnungen in verschiedenen Formaten lokal auf dem Rechner des Nutzers speichern und sie in einer \textit{Postgresql}-Datenbank ablegen, die mit PLCC erstellt wurde.
+\texttt{graphletAnalyser} ist in C++ geschrieben und nutzt die \textit{Boost-Graph-Library} zur internen Darstellung der Graphen.
+
+Das Programm wird \"uber die Konsole gestartet und erh\"alt als \textit{Input} eine oder mehrere GML-Dateien. Der Nutzer kann weiterhin \"uber Parameter festlegen, ob markierte \textit{Graphlets} berechnet werden sollen, ob die Resultate in einer mit PLCC erstellten Datenbank gespeichert werden sollen und ob er die vordefinierten Knotenmarkierungen von SSE-Graphen, Komplexgraphen oder Aminos\"auregraphen nutzen m\"ochte.
+
+Weiterhin k\"onnen in der Konfigurationsdatei nutzerdefinierte Alphabete von Knotenmarkierungen eingegeben werden, die bei der Berechnung markierter \textit{Graphlets} genutzt werden k\"onnen.
+
+
+Das Programm bestand bereits vor dem Beginn dieser Arbeit. Es wurden Fehler im Code beseitigt und einige Funktionen hinzugef\"ugt, die im folgenden kurz beschrieben werden. 
+
+\paragraph{Das Einlesen von Komplexgraphen und Aminos\"auregraphen}
+
+ist implementiert worden. Die entsprechenden Alphabete sind im Programmcode vordefiniert und k\"onnen vom Nutzer \"uber Parameter ausgew\"ahlt werden.
+
+\paragraph{Nutzerdefinierte Knotenmarkierungen} k\"onnen nun in der Konfigurationsdatei angegeben werden. Der Nutzer kann ein Alphabet von Knotenmarkierungen und ein \textit{Label} unter dem diese Knotenmarkierungen in den GML-Dateien abgelegt sind angeben. F\"ur dieses Alphabet werden alle \"aquivalenten \textit{Graphlet}-Worte durch den \textit{Graphlet}-Worte-Algorithmus berechnet. Diese werden dann bei der Berechnung der markierten \textit{Graphlets} im Graphen unter dem vorgegebenen \textit{Label} gesucht und gez\"ahlt.
+Es k\"onnen also beliebige Alphabete und \textit{Labels} angegeben werden, so lange die Markierungen der Knoten nicht mehr als einen Buchstaben enthalten. 
+ 
+
+\paragraph{Die Datenbankanbindung} wurde um Funktionen zum Speichern von Aminos\"auregraphen und Komplexgraphen erweitert. Das Speichern von Vektoren markierter \textit{Graphlets} wurde implementiert.
+
 
 
 \section{Scoring}
@@ -264,15 +274,6 @@ Dies steht im Gegensatz zur RGF, die - analog zu einer Vektornorm - die Abst\"an
 
 
 \section{Datens\"atze}
-
-
-\subsection{FATCAT-SCOP-\textit{Benchmarking-Set}}
-
-Die FATCAT SCOP DB, beschrieben in: http://bioinformatics.oxfordjournals.org/content/23/2/e219.long
-k\"onnte sich gut zum Vergleich eignen
-
-Das FATCAT-SCOP-\textit{Benchmarking-Set} ist f\"ur das Strukturalignment-Programm FATCAT \cite{fatcat} zusammengestellt worden, um seine Performance mit der von etablierten Strukturalignment-Programmen wie DALI und CE zu vergleichen. Der Datensatz besteht aus 2256 PDB-Eintr\"agen, die bereits durch die SCOP-Datenbank klassifiziert worden sind.
-In dem Datensatz befinden sich Paare von PDB-Eintr\"agen, die von allen drei Programmen als sehr \"ahnlich bewertet wurden. 
 
 
 \subsection{Fallstudien}
@@ -427,9 +428,11 @@ F\"ur die KOmplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter
 
 
 
-\section{Diskussion: Datensatz 1}
+\section{Diskussion}
 
+\subsection{Datensatz 1}
 
+\subsection{Datensatz 2}
 
 \section{Ausblick}
 
