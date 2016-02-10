@@ -89,7 +89,7 @@ Um die Proteinstrukturtopologien aus der PTGL zu vergleichen wurde das Programm 
 
 
 Die \underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary ist 2009 von \textit{May et al.} \cite{ptgl1} entwickelt worden. Ausgehend von der Tatsache, dass sich Proteinstrukturtopologien als r\"aunliche Beziehungen von SSEs untereinander definieren lassen, verwendet die PTGL \emph{Graphen}, um Proteinstrukturtopologien darzustellen.
-Hierbei stellen die Knoten des Graphen die SSEs eines Proteins dar. Sie werden dem jeweiligen SSE entsprechend markiert. Knoten, die $\alpha$-Helices repr\"asentieren werden mit einem H markiert, $\beta$-Faltbl\"atter mit einem E. Weiterhin erm\"oglicht die PTGL die Darstellung von Liganden, (\cite{vplg}) denen mit L markierte Knoten zugeordnet werden. Um die r\"aumliche Nachbarschaft von Sekund\"arstrukturen und Liganden untereinander darstellen zu k\"onnen werden ungerichtete Kanten zwischen Knoten gezogen wenn die entsprechenden Elemente benachbart sind. Jede Polypeptidkette eines Proteins wird dann als \emph{Proteingraph} dargestellt. Die Zusammenhangskomponenten eines Proteingraphen werden als Faltungsgraphen bezeichnet, weil sie typischerweise eine unabh\"angige Faltungseinheit darstellen.
+Hierbei stellen die Knoten des Graphen die SSEs eines Proteins dar. Sie werden dem jeweiligen SSE entsprechend markiert. Knoten, die $\alpha$-Helices repr\"asentieren werden mit einem H markiert, $\beta$-Faltbl\"atter mit einem E. Weiterhin erm\"oglicht die PTGL die Darstellung von Liganden, (\cite{vplg}) denen mit L markierte Knoten zugeordnet werden. Um die r\"aumliche Nachbarschaft von Sekund\"arstrukturen und Liganden untereinander darstellen zu k\"onnen werden ungerichtete Kanten zwischen Knoten gezogen wenn die entsprechenden Elemente benachbart sind. Jede Polypeptidkette eines Proteins wird dann als \emph{Proteingraph} dargestellt. Die Zusammenhangskomponenten eines Proteingraphen werden als Faltungsghttps://www.opensuse.org/raphen bezeichnet, weil sie typischerweise eine unabh\"angige Faltungseinheit darstellen.
 
 \paragraph{Die Berechnung dieser Graphen}
 
@@ -159,21 +159,65 @@ Die Berechnung aller \"aquivalenten \textit{Graphlet}-Worte der L\"ange 3 ist ko
 
 
 %\begin{algorithmic}
-%\For{ i = 0 to n}
-%do something
+% INPUT: Ein Alphabet \sum = \{ \sigma_1, ... , \sigma_n \}
+% OUTPUT: Zwei Listen Wortliste_3-Weg, Wortliste_3-Kreis \sub \sum*
+% Liste Wortliste_3-Weg
+% Liste Wortliste_3-Kreis
+%\For{ i = 1 to n}
+% Wortliste.add(\sigma_i \sigma_i \sigma_i)
 %\For{ k = i + 1 to n}
-%do something
+% Wortliste_3-Weg.add(\sigma_i \sigma_k \sigma_i)
+% Wortliste_3-Weg.add(\sigma_i \sigma_i \sigma_k)
+% Wortliste_3-Weg.add(\sigma_i \sigma_k \sigma_k)
+% Wortliste_3-Weg.add(\sigma_k \sigma_i \sigma_k)
+%
+% Wortliste_3-Kreis.add(\sigma_i \sigma_k \sigma_i)
+% Wortliste_3-Kreis.add(\sigma_i \sigma_k \sigma_k)
 %\For{ m = k + 1 to n}
-%do something
+% Wortliste_3-Weg.add(\sigma_i \sigma_k \sigma_m)
+% Wortliste_3-Weg.add(\sigma_m \sigma_i \sigma_k)
+% Wortliste_3-Weg.add(\sigma_k \sigma_m \sigma_i)
+%
+% Wortliste_3-Kreis.add(\sigma_i \sigma_k \sigma_m)
+% Wortliste_3-Kreis.add(\sigma_m \sigma_k \sigma_i)
 %\EndFor
 %\EndFor
 %\EndFor
 %\end{algorithmic}
 
-Der Algorithmus besteht aus 3 \textit{for}-Schleifen, die \"uber das Alphabet iterieren. In der \"au"sersten Schleife werden Worte hinzugef\"ugt, in denen alle Buchstaben gleich sind.
-In der zweiten Schleife wird jeweils der n\"achste Buchstabe des Alphabets betrachtet. F\"ur jedes Paar $a, b$ von Buchstaben \"uber einem Alphabet $\sum$ sind die Mengen der \"aquivalenten Worte f\"ur das \textit{Graphlet} $g_1$ $P_{3-Kreis} = \{ \}$ und $P_{3-Pfad} = \{ aaa, aba, aab  \}$ f\"ur das \textit{Graphlet} $g_2$
+Pseudocode Platzhalter \\
+Pseudocode Platzhalter \\
+Pseudocode Platzhalter \\
+Pseudocode Platzhalter \\
+Pseudocode Platzhalter \\
+Pseudocode Platzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
+Pseudocode PLatzhalter \\
 
-TODO: Pseudocode, Beschreibung der Mengen, Beweis
+
+Der Algorithmus besteht aus 3 \textit{for}-Schleifen, die \"uber das Alphabet iterieren. In der \"au"sersten Schleife werden Worte hinzugef\"ugt, in denen alle Buchstaben gleich sind.
+In der zweiten Schleife wird jeweils der n\"achste Buchstabe des Alphabets betrachtet. F\"ur jedes Paar $a, b$ von Buchstaben \"uber einem Alphabet $\sum$ sind die Mengen der \"aquivalenten Worte f\"ur das \textit{Graphlet} $g_1$ $P_{3-Kreis} = \{ \}$ und $P_{3-Weg} = \{ aaa, aba, aab, abb  \}$ f\"ur das \textit{Graphlet} $g_2$
+
+TODO: Beschreibung der Mengen, Beweis
+
+
+
+F\"ur das Alphabet der SSE- und Komplexgraphen $ \sum_{SSE} := \{ H, E, L \} $ und das Alphabet der Aminos\"auregraphen $ \sum_{AA} := \{ h, p, c, ? \} $ gibt der oben beschriebene Algorithmus die folgenden Listen aus:
 
 
 \begin{subequations}
