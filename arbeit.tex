@@ -40,15 +40,20 @@ datensatz von dobson und doig (in shervashidze arbeit erwaehnt) verwendet svms z
 es ist zu erw\"ahnen, dass SVMs zu den fortgeschrittensten Klassifizierungsmethoden geh\"oren, die zur zeit verwendet werden.
 
 
-\paragraph{Die \"Ahnlickeit} von Proteinen zu bestimmen ist eine gro"se Herausforderung. In der Zeit als wenige Strukturen bekannt waren wurde die strukturelle \"Ahnlichkeit von Proteinen noch von Experten visuell bewertet, aber mittlerweile befinden sich die Strukturen von \"uber 100000 biologischen Makromolek\"ulen in der PDB. Der Vergleich dieser gigantischen Anzahl von Strukturdaten erfordert effiziente Analysemethoden. Solche Analysen k\"onnen tiefe Einblicke in die ferne evolution\"are Verwandschaft von Proteinen liefern und sie helfen bei der Bestimmung der Funktion eines Proteins. Sie sind im Bereich des \textit{Drug-Design} hoch interessant, denn  Strukturdaten liefer Informationen \"uber m \"ogliche Liganden, die ein Protein binden kann und damit auch \"uber m\"ogliche Ziele von Medikamenten bei der Bek\"ampfung von Krankheiten. Deshalb sind strukturbasierte \"Ahnlichkeitsanalysen in der pharmakologischen Forschung von zentraler Bedeutung.
-Das Problem hierbei ist, dass die Berechnung der \"Ahnlichkeit von 3D-Strukturen algorithmisch ein schwieriges Problem darstellt; lange Berechnungszeiten sind die Regel und es ist schwierig herauszufinden, ob der gefundene \"Ahnlichkeitswert f\"ur zwei Proteine nur ein lokales Optimum darstellt.
-Deshalb wird versucht, von der 3D-Darstellung zu abstrahieren, ohne zentrale Strukturinformationen zu verlieren. \emph{Dali} \cite{dali}verwendet beispielsweise Distanzmatrizen, die die Abst\"ande einzelner Residuen zueinander speichern, anstatt die Koordinaten jedes Atoms abdsspzuspeichern.
-Der Strukturvergleich findet dann als Vergleich dieser Distanzmatrizen statt.
+\paragraph{Proteine} sind gewisserma"sen die Wekzeuge der Zelle. Fast jede Aufgabe die sie bew\"altigen muss, um zu \"uberleben, l\"ost sie mit Hilfe von Proteinen. Dementsprechend vielf\"altig sind die Formen und Funktionen, die Proteine annehmen - und wie bei Werkzeugen auch, folgt die Form der Funktion. Die Aufkl\"arung der dreidimensionalen Struktur von Proteinen ist somit f\"ur ein tiefergehendes Verst\"andnis ihrer Funktion von zentraler Bedeutung.
 
-Auch Graphen eignen sich, um Strukturdaten in einer leichter zu analysierenden Form abzuspeichern. Denn Graphen k\"onnen genau wie Distanzmatrizen Informationen \"uber r\"aumliche N\"ahe aufbewahren.
-Die PTGL \cite{ptgl1} speichert Proteinstrukturtopologien als Graphen ab. So werden zentrale Informationen \"uber die Struktur eines Proteins aufbewahrt w\"ahrend die Gr\"o"se der Daten ma"sgeblich reduziert wird. Diese Darstellung hat den weiteren Vorteil, dass Graphen zu den meistuntersuchten mathematischen strukturen der letzten Jahre geh\"oren. Soziale Netzwerke, Interaktionen von Proteinen in Zellen, das Internet: All diese Dinge lassen sich als Graphen darstellem und werden als solche untersucht.
-Doch auch die \"Ahnlichkeit von Graphen zu bestimmen ist ein schwieriges Problem. Es leitet sich vom \emph{Graph-Isomorphismus-Problem} ab. Es ist nicht klar, ob dieses Problem NP-vollst\"andig ist. In den letzten Jahren wurde \textit{Feature}-basierte Methoden erforscht, die diese Problem reduzieren. Anstatt direkt zwei Graphen miteinander zu vergleichen, werden \textit{Features} verglichen, so dass einfache Datenpunkte anstatt von komplexen Graphen verglichen werden.
-Solche Methoden wurden h\"aufig erfolgreich angewandt. Diese Anwendungen fanden immer auf gro"sen Netzwerken statt. Nun stellt sich die Frage, ob sich solche Methoden auch f\"ur deutlich kleinere Netzwerke eignen. in der vorliegenden Arbeit wird eine solche \textit{Feature}-basierte Methode - der \textit{Graphlet}-Algorithmus auf verschiedene Proteingraphen angewandt. 
+
+
+Im Rahmen der \textit{•}
+
+
+
+
+\paragraph{\textit{Graphlets}} sind kleine vollst\"andige induzierte Teilgraphen.
+
+
+
+
 
 
 \section{\textit{State of the Art}}
@@ -393,7 +398,7 @@ PDB-ID & CATH-Code  \\
 
 \subsection{Fallstudien  - Datensatz 2} 
 
-F\"ur die ersten Tests wurden verschiedene Proteine entsprechend ihrer CATH-Klassifizeirugn zusammengestellt. Die Proteine wurden so gew\"ahlt, dass die 3 CATH-Klassen gleich stark vertreten sind, in denen sich viele Sekund\"arstrukturelemente befinden. Dementsprechend wurden Proteine aus der CATH-Klasse 4 ignoriert. Diese Klasse enth\"alt nur Proteine mit wenigen Sekund\"arstrukturelementen.
+F\"ur die ersten Tests wurden verschiedene Proteine entsprechend ihrer CATH-Klassifizeirungen zusammengestellt. Die Proteine wurden so gew\"ahlt, dass die 3 CATH-Klassen gleich stark vertreten sind, in denen sich viele Sekund\"arstrukturelemente befinden. Dementsprechend wurden Proteine aus der CATH-Klasse 4 ignoriert. Diese Klasse enth\"alt nur Proteine mit wenigen Sekund\"arstrukturelementen.
 
 Es befinden sich je 5 Vertreter der drei CATH-Klassen 1 (\textit{mainly-alpha}), 2 (\textit{mainly-beta}) und 3 (\textit{alpha-beta}) in diesem Datensatz. Diese wurden so gew\"ahlt, dass je ein Paar innerhalb der selben Klasse ein direkter struktureller Nachbar mit eine Sequenzidentit\"at von mehr als 95\%, sowie ein Nachbar mit einer Sequenzidentit\"at von meher als 35\% befindet, um zu \"uberpr\"ufen, ob die \textit{Graphlet}-Vektoren von Aminos\"auregraphen eine Korrelation mit der Sequenzidentit\"at aufweisen k\"onnen.
 Weiterhin wurde je ein Vertreter der selben Topologie aus einer anderen Superfamilie, sowie der selben Architektur mit anderer Topologie gew\"ahlt.
@@ -431,19 +436,6 @@ PDB-ID & CATH-ID        & Klassifizierung      \\ \hline
 
 Da \textit{Graphlets} in den Experimenten von Pruzlj et al und Shervashidze et auf gro"se Graphen angewandt wurden, bietet es sich an, sie auch auf gro"se Proteinkomplexe anzuwenden und bei kleinen Proeinen den Aminsos\"auregraphen zu verwenden. So kann man (hoffentlich) das Problem der d\"unn besetzten Graphen umgehen und f\"ur verschiedene Gr\"o"sen von Graphen relevante Ergebnisse erzielen. Daf\"ur muss ein Datensatz aus gr\"o"sen Proteinkomplexen mit bekannter struktureller \"Ahnlichkeit zusammengestellt werden.
 
-\subsubsection{Vergleich nach EC-Termen}
-
-EC-Terme beschreiben die enzymatische Aktivit\"at von Biomolek\"ulen. Analog zu GO-Termen erm\"oglichen sie eine Klassfizierung von Biomolek\"ulen entsprechend iherer biolgoischen Funktion, ohne jedoch den gesamten Prozess, oder das Zellorganell, in den das Molek\"ul involviert ist, zu beschreiben. Dem Dogma folgend, dass die Struktur eines Proteins seine Funktion bestimmt, liegt die Vermutung nahe, dass Proteine mit \"ahnlicher Funktion auch eine \"ahnliche Struktur besitzen m\"ussen. Der Vergleich anhand von EC-Termen ist interessant, weil strukturell \"ahnliche Dom\"anen unterschiedliche enzymatische Aktivit\"aten besitzen k\"onnen. Wenn Proteine mit gleicher Dom\"ane und unterschiedlichen enzymatischen Aktivit\"aten richtig eingeordnet werden, spricht das f\"ur die Genauigkeit des Algorithmus. Es bietet sich ein Vergleich von Mannose-6-phosphat Isomerasen (MPhI) und 5-dehydro-4-deoxy-D-glucuronat Isomerasen (ddGI) an. Es gibt Enzyme mit diesen Funktionen in diversen CATH-Superfamilien. Sie sind interessant f\"ur die Analyse, weil sich Vertreter beider Enzymklassen teilweise die selbe Superfamilie teilen, w\"ahrend es gleichzeitig Superfamilien gibt, in denen nur eine der beiden enzymatischen Funktionen vorkommt.
-
-
-\begin{tabular}{l c c r}
-
-PDB-ID & Chain & CATH-Code   & EC-Code  \\
-1PMI   & A     & 2.60.120.10 & 5.3.1.8  \\
-1X8M   & A02   & 2.60.120.10 & 5.3.1.17 \\
-1YWK   & ????  & nicht da    & 5.3.1.17
-
-\end{tabular}
 
 
 \subsection{Fallstudien - Datensatz 3}
@@ -454,7 +446,7 @@ PDB-ID & Chain & CATH-Code   & EC-Code  \\
 
 \section{Fallstudien - Datensatz 1}
 
-Die paarweisen RGF-Distanzen der Proteine befinden sich in den Tabellen \ref{table:occ-pg-rgf} \ref{table:occ-aag-rgf} und \ref{table:occ-cg-tc}. Die paarweisen Tanimoto-Koeffizienten der Strukturen befinden sich in den Tabellen \ref{table:occ-aa-tc}, \ref{table:occ-pg-tf} und \ref{table:occ-cg-tc}.
+Die paarweisen RGF-Distanzen der Proteine befinden sich in den Tabellen \ref{table:occ-pg-rgf} \ref{table:occ-aag-rgf} und \ref{table:occ-cg-tc}. Die paarweisen Jaccard-Indizes befinden sich in den Tabellen \ref{table:occ-aa-tc}, \ref{table:occ-pg-tf} und \ref{table:occ-cg-tc}.
 Hierbei wurden die Zellen, die die 4 besten Bewertungen f\"ur das Protein der entsprechenden Zeile enthalten gr\"un eingef\"arbt. Hierbei gilt, dass das Gr\"un umso dunkler ist, je st\"arker die \"Ahnlichkeit bewertet wird.
 
 \paragraph{Der Vergleich mittels RGF}
@@ -471,12 +463,12 @@ F\"ur die \textit{mainly-alpha}-Klasse und die der \textit{mainly-beta}-Klasse b
 Bei den Komplexgraphen ist die Korrelation zwischen der RGF-Distanz und der Zugeh\"origkeit zur CATH-Klasse noch geringer. Die Tabelle \ref{table:occ-cg-rgf} zeigt nur f\"ur die Proteine 1QQ3, 1HE9, 1EXS und 1QQS die k\"urzeste Distanz zu einem Vertreter der gleichen Klasse.
 Es f\"allt jedoch auf, dass besonders h\"aufig die Proteine der \textit{alpha-beta}-Klasse 5CHY, 2ID9 und 3I42 als \"ahnlich zu anderen bewertet werden.
 
-\paragraph{Der Vergleich der Tanimoto-Koeffizienten}
+\paragraph{Der Vergleich der Jaccard-Indizes}
 zeigt ein \"ahnliches Bild, wie der Vergleich der RGF-Distanzen. Bei den Aminos\"auregraphen zeigt sich, dass innerhalb der \textit{mainly-alpha}-Klasse wieder die paarweisen \"Ahnlichkeiten der \textit{mainly-alpha}-Proteine am gr\"o"sten sind. Dies gilt bis auf eine Ausnahme auch f\"ur die \textit{mainly-beta}-Proteine. Das Protein mit der PDB-ID 1NGL wird als strukturell \"ahnlichstes Protein zu 2W0I bewertet. In der Klasse der \textit{alpha-beta}-Proteine gibt es mit 2ID9 und 1D4O wieder zwei Ausrei"ser, die die gr\"o"sten paarweisen \"Ahnlichkeiten nicht zu Vertretern der eigenen Klasse haben. F\"ur 2ID9 wird 1HE9 als \"ahnlichstes Protein angegeben und 1D4O wird 1QQS zugeordnet.
 
 Die paarweisen Tanimoto-Koeffizienten der Proteingraphen zeigen - wie schon bei den RGF-Distanzen - eine geringere Korrelation mit der Zugeh\"origkeit zu den CATH-Klassen, als die Koeffizienten der Aminos\"auregraphen. Es haben zwar wieder mindestens 3 Vertreter jeder Klasse ihren n\"achsten Nachbarn in der gleichen Klasse, aber es gibt auch einige Proteine, die ihren n\"achsten Nachbarn au"serhalb der eigenen Klasse haben. Hierzu geh\"oren 1D4O, 2W0I (beide \textit{alpha-beta}) und 3GF9 (\textit{mainly-alpha}). Es f\"allt auf, dass wieder die Proteine mit den PDB-DIs 2ID9 und 3I42 besonders h\"aufig als strukturell \"ahnlich zu vielen anderen Proteinen bewertet werden.
 
-F\"ur die KOmplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter den ersten 3 Proteinen 1QPU, 1QQ3 und 1CGN. Auch innerhalb der Klasse \textit{alpha-beta} sind 3 Proteine mit der h\"ochsten paarweisen \"Ahnlichkeit bewertet worden. Die geringe Anzahl von stark bewerteten \"Ahnlichkeiten innerhalb der \textit{mainly-beta}-Klasse ist sehr auff\"allig. 1QQS und 3SLO sind das einzige Paar mit \textit{beta}-Topologie, dessen \"Ahnlichkeit als gro"s bewertet wurde.
+F\"ur die Komplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter den ersten 3 Proteinen 1QPU, 1QQ3 und 1CGN. Auch innerhalb der Klasse \textit{alpha-beta} sind 3 Proteine mit der h\"ochsten paarweisen \"Ahnlichkeit bewertet worden. Die geringe Anzahl von stark bewerteten \"Ahnlichkeiten innerhalb der \textit{mainly-beta}-Klasse ist sehr auff\"allig. 1QQS und 3SLO sind das einzige Paar mit \textit{beta}-Topologie, dessen \"Ahnlichkeit als gro"s bewertet wurde.
 
 \section{Fallstudien - Datensatz 2}
 
@@ -489,7 +481,24 @@ F\"ur die KOmplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter
 
 \section{Diskussion}
 
+Die folgende Diskussion der Fallstudien widmet sich vor allem der Frage, wieso die Ergebnisse der \"Ahnlichkeitsvergleiche, sich so stark zwischen den jeweiligen Graphendarstellungen unterscheiden.
+Des weiteren wird der Zusammenhang zwischen dem Jaccard-Index und der RGF untersucht.
+
 \subsection{Datensatz 1}
+
+Wie schon im Ergebnisteil dargestellt, zeigen die Vergleiche der Aminos\"auregraphen den h\"ohsten Konsens mit der Einteilung der Strukturen durch CATH und SCOPe. Eine m\"ogliche Erkl\"arung hierf\"ur ist die Gestalt der Graphen. Bisher wurden \textit{Graphlets} haupts\"achlich zur Analyse von zusammenh\"angenden Graphen verwendet (\cite{sherv_graphlets}, \cite{graphletfrequency}).
+Proteingraphen und Komplexgraphen sind jedoch nicht immer zusammenh\"angend. es kommt h\"aufig vor, dass einzelne Knoten keine Verbindungen zum Rest des Graphen aufweisen. Das unten stehende Bild zeigt ein Beispiel.
+
+\begin{figure}[h!]
+\includegraphics[scale=0.5]{3gf9_A_albe_PG.png}
+\caption{Proteingraph von 3GF9 - Datensatz 1}
+\end{figure}
+
+Dadurch, dass dies in den zusammenh\"angenden \textit{Graphlets} nicht ber\"ucksichtigt werden kann, geht Information verloren. Unabh\"angig von der Wahl des \"Ahnlichkeitsma"s w\"urde dieser Graph mit einem anderen Graphen, dem die beiden Helix-Knoten mit einem Grad von 0 fehlen, als gleich bewertet werden, obwohl dieser zwei SSEs weniger aufwiese. Diese SSEs k\"onnen jedoch biologisch von zentraler Bedeutung sein.
+
+Im Gegensatz hierzu sind die Aminos\"auregraphen dieser Fallstudie zusammenh\"angend. Dies erkl\"art die h\"ohere Genauigkeit. 
+
+
 
 \subsection{Datensatz 2}
 
@@ -507,26 +516,6 @@ F\"ur die KOmplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter
 
 \subsection{\textit{Graphlet}-Motive}
 
-
-
-Es bieten sich Paper an, die in Liisa Holm \textit{Advances and Pitfalls of Protein Structure Prediction} besprochen wurden. Das Problem ist, dass \texttt{graphletAnalyser} Vektoren erzeugt - also eindimensionale Daten. Somit eignen sich Methoden, die 2D- oder 3D-Daten miteinander alignieren schlecht zum Vergleich. \textit{Holm} erw\"ahnt in ihrer Arbeit aber auch Autoren, die Vergleiche von eindimensionalen Daten durchgef\"uhrt haben. Dies sind folgende:
-
-Liu X, Zhao YP, Zheng WM: CLEMAPS: multiple alignment of protein structures based on conformational letters
-
-Sierk ML, Pearson WR: Sensitivity and selectivity in protein structure comparison
-
-Sacan A, Toroslu IH, Ferhatosmanoglu H: Integrated search and alignment of protein structures
-
-Friedberg I, Harder T, Kolodny R et al. Using an alignment of fragment strings for comparing protein structures
-
-Tung CH, Huan JW, Yang JM: Kappa-alpha plot derived structural alphabet and BLOSUM-like substitution matrix for rapid search of protein structure database
-
-
-
-
-
-
-Yang JA: Comprehensive description of protein structures using protein shape code
 
 
 
@@ -777,8 +766,31 @@ PDB-ID & 1qpu & 1qq3 & 1cgn & 1he9 & 3gf9 & 1exs & 1ngl & 1qqs & 3slo & 1wjx & 5
 \end{table}
 
 
+\begin{table}
+\label{tab:correlations}
+\begin{tabular}{c c c c}
+Datensatz & AAG     &     PG &     CG \\
+AAG       &  1      & 0.6911 & 0.7656 \\
+PG        &  0.6911 &      1 & 0.6939 \\
+CG        &  0.6939 & 0.6939 & 1      \\
 
+\end{tabular}
+\caption{Korrelationen der \"Ahnlichkeitsbewertungen der verschiedenen Graphformate}
+\end{table}
 
+\chapter{Schnittreste}
+
+\section{alte Motivation}
+
+\paragraph{Die \"Ahnlickeit} von Proteinen zu bestimmen ist eine gro"se Herausforderung. In der Zeit als wenige Strukturen bekannt waren wurde die strukturelle \"Ahnlichkeit von Proteinen noch von Experten visuell bewertet, aber mittlerweile befinden sich die Strukturen von \"uber 100000 biologischen Makromolek\"ulen in der PDB. Der Vergleich dieser gigantischen Anzahl von Strukturdaten erfordert effiziente Analysemethoden. Solche Analysen k\"onnen tiefe Einblicke in die ferne evolution\"are Verwandschaft von Proteinen liefern und sie helfen bei der Bestimmung der Funktion eines Proteins. Sie sind im Bereich des \textit{Drug-Design} hoch interessant, denn  Strukturdaten liefer Informationen \"uber m \"ogliche Liganden, die ein Protein binden kann und damit auch \"uber m\"ogliche Ziele von Medikamenten bei der Bek\"ampfung von Krankheiten. Deshalb sind strukturbasierte \"Ahnlichkeitsanalysen in der pharmakologischen Forschung von zentraler Bedeutung.
+Das Problem hierbei ist, dass die Berechnung der \"Ahnlichkeit von 3D-Strukturen algorithmisch ein schwieriges Problem darstellt; lange Berechnungszeiten sind die Regel und es ist schwierig herauszufinden, ob der gefundene \"Ahnlichkeitswert f\"ur zwei Proteine nur ein lokales Optimum darstellt.
+Deshalb wird versucht, von der 3D-Darstellung zu abstrahieren, ohne zentrale Strukturinformationen zu verlieren. \emph{Dali} \cite{dali}verwendet beispielsweise Distanzmatrizen, die die Abst\"ande einzelner Residuen zueinander speichern, anstatt die Koordinaten jedes Atoms abdsspzuspeichern.
+Der Strukturvergleich findet dann als Vergleich dieser Distanzmatrizen statt.
+
+Auch Graphen eignen sich, um Strukturdaten in einer leichter zu analysierenden Form abzuspeichern. Denn Graphen k\"onnen genau wie Distanzmatrizen Informationen \"uber r\"aumliche N\"ahe aufbewahren.
+Die PTGL \cite{ptgl1} speichert Proteinstrukturtopologien als Graphen ab. So werden zentrale Informationen \"uber die Struktur eines Proteins aufbewahrt w\"ahrend die Gr\"o"se der Daten ma"sgeblich reduziert wird. Diese Darstellung hat den weiteren Vorteil, dass Graphen zu den meistuntersuchten mathematischen strukturen der letzten Jahre geh\"oren. Soziale Netzwerke, Interaktionen von Proteinen in Zellen, das Internet: All diese Dinge lassen sich als Graphen darstellem und werden als solche untersucht.
+Doch auch die \"Ahnlichkeit von Graphen zu bestimmen ist ein schwieriges Problem. Es leitet sich vom \emph{Graph-Isomorphismus-Problem} ab. Es ist nicht klar, ob dieses Problem NP-vollst\"andig ist. In den letzten Jahren wurde \textit{Feature}-basierte Methoden erforscht, die diese Problem reduzieren. Anstatt direkt zwei Graphen miteinander zu vergleichen, werden \textit{Features} verglichen, so dass einfache Datenpunkte anstatt von komplexen Graphen verglichen werden.
+Solche Methoden wurden h\"aufig erfolgreich angewandt. Diese Anwendungen fanden immer auf gro"sen Netzwerken statt. Nun stellt sich die Frage, ob sich solche Methoden auch f\"ur deutlich kleinere Netzwerke eignen. in der vorliegenden Arbeit wird eine solche \textit{Feature}-basierte Methode - der \textit{Graphlet}-Algorithmus auf verschiedene Proteingraphen angewandt. 
 
 
 
