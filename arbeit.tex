@@ -82,7 +82,7 @@ Des weiteren sind die meisten Methoden, die Proteinstrukturen vergleichen, \text
 
 Ziel dieser Arbeit war zun\"achst die Erweiterung der Funktionalit\"at des \texttt{graphletAnalyser}. Hierzu geh\"ort eine funktionierende Datenbankanbindung, so dass die \textit{Graphlet}-Vektoren f\"ur alle verschiedenen Graphtypen korrekt in die PTGL eingetragen werden k\"onnen.
 Die Suche nach markierten \textit{Graphlets} sollte so implementiert werden, dass sie auf Graphen mit beliebigen Markierungen angewandt werden kann. Deshalb wurde ein Algorithmus entwickelt und implementiert, der aus einem Alphabet von Knotenmarkierungen alle Worte berechnet, die markierte  2- und 3-\textit{Graphlets} repr\"asentieren - der \textit{Graphlet}-Worte-Algorithmus.
-Schlussendlich sollte im durch Fallstudien \"uberpr\"uft werden, ob und inwiefern sich \textit{Graphlets} eignen, um die \"Ahnlichkeit von Proteinstrukturtopologien zu untersuchen. Dies wurde mit unterschiedlichen Metriken getestet.
+Schlussendlich sollte im durch Fallstudien \"uberpr\"uft werden, ob und inwiefern sich \textit{Graphlets} eignen, um die \"Ahnlichkeit von Proteinstrukturtopologien zu untersuchen. Dies wurde mit unterschiedlichen Metriken getestet. Die hierbe errechneten \"Ahnlichkeitswerte wurden mit den Ergebnissen des \textit{Strukturalignment}-Programms \textit{PDBeFold} verglichen.
 
 \section{Aufbau der Arbeit}
 
@@ -485,6 +485,7 @@ Die folgende Diskussion der Fallstudien widmet sich vor allem der Frage, wieso d
 Des weiteren wird der Zusammenhang zwischen dem Jaccard-Index und der RGF untersucht.
 
 \subsection{Datensatz 1}
+\subsubsection{Vergleich der Graphformate}
 
 Wie schon im Ergebnisteil dargestellt, zeigen die Vergleiche der Aminos\"auregraphen den h\"ohsten Konsens mit der Einteilung der Strukturen durch CATH und SCOPe. Eine m\"ogliche Erkl\"arung hierf\"ur ist die Gestalt der Graphen. Bisher wurden \textit{Graphlets} haupts\"achlich zur Analyse von zusammenh\"angenden Graphen verwendet (\cite{sherv_graphlets}, \cite{graphletfrequency}).
 Proteingraphen und Komplexgraphen sind jedoch nicht immer zusammenh\"angend. es kommt h\"aufig vor, dass einzelne Knoten keine Verbindungen zum Rest des Graphen aufweisen. Das unten stehende Bild zeigt ein Beispiel.
@@ -498,6 +499,18 @@ Dadurch, dass dies in den zusammenh\"angenden \textit{Graphlets} nicht ber\"ucks
 
 Im Gegensatz hierzu sind die Aminos\"auregraphen dieser Fallstudie zusammenh\"angend. Dies erkl\"art die h\"ohere Genauigkeit. 
 
+\subsubsection{Vergleich der Distanzma"se}
+
+Wirft man einen Blick in die Tabellen, sieht es zun\"achst so aus, als w\"urden sich Jaccard-Index und RGF \"ahnlich gut eignen, um die \"Ahnlichkeit der \textit{Graphlet}-Vektoren zu bewerten. Die RGF stellt eine \emph{Distanz} zwischen zwei Vektoren dar. Dementsprechend steht ein RGF-Wert von 0 f\"ur die Gleichheit zweier Vektoren, je h\"oher der Wert ist, desto h\"oher ist der Abstand zwischen den beiden Vektoren. Der modifizierte Jaccard-Index, der hier Verwendung findet, z\"ahlt Elemente, die sich um h\"ochstens einen Faktor $k$ unterscheiden. Ein RGF-Wert von 1 bedeutete, dass alle Elemente beider Vektoren sich h\"ochstens um den Faktor $k$ unterscheiden. Ein Wert von 0 bedeutet, dass alle Elemente sich um mehr als den Faktor $k$ unterscheiden. Dementsprechend w\"urde man erwarten, dass die \textit{Pearson}-Korrelation von RGF und Jaccard-Index negativ ist. Die folgende Tabelle zeigt jedoch, dass diese f\"ur alle berechneten Daten positiv ausf\"allt. 
+
+
+\begin{table}
+\begin{tabular}{c c c}
+
+Vektor & RGF & Jaccard-Index \\
+
+\end{tabular}
+\end{table}
 
 
 \subsection{Datensatz 2}
@@ -506,7 +519,6 @@ Im Gegensatz hierzu sind die Aminos\"auregraphen dieser Fallstudie zusammenh\"an
 
 \section{Ausblick}
 
-\subsection{Verbesserung des Scoring}
 
 \subsection{Optimierung der Laufzeit von \texttt{graphletAnalyser}}
 
@@ -515,7 +527,6 @@ Im Gegensatz hierzu sind die Aminos\"auregraphen dieser Fallstudie zusammenh\"an
 \subsection{\textit{Graphlets} im Faltungsraum}
 
 \subsection{\textit{Graphlet}-Motive}
-
 
 
 
