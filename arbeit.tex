@@ -100,7 +100,7 @@ Um die Proteinstrukturtopologien aus der PTGL zu vergleichen wurde das Programm 
 \section{PTGL}
 
 
-Die \underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary entstand aus einer Idee von Patrick May und Ina Koch \citep{ptgl1}. Ausgehend von der Tatsache, dass sich Proteinstrukturtopologien als r\"aunliche Beziehungen von SSEs untereinander definieren lassen, verwendet die PTGL \emph{Graphen}, um Proteinstrukturtopologien darzustellen.
+Die \underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary entstand aus einer Idee von Patrick May und Ina Koch \cite{ptgl1}. Ausgehend von der Tatsache, dass sich Proteinstrukturtopologien als r\"aunliche Beziehungen von SSEs untereinander definieren lassen, verwendet die PTGL \emph{Graphen}, um Proteinstrukturtopologien darzustellen.
 Hierbei stellen die Knoten des Graphen die SSEs eines Proteins dar. Sie werden dem jeweiligen SSE entsprechend markiert. Knoten, die $\alpha$-Helices repr\"asentieren werden mit einem H markiert, $\beta$-Faltbl\"atter mit einem E. Weiterhin erm\"oglicht die PTGL die Darstellung von Liganden, (\cite{vplg}) denen mit L markierte Knoten zugeordnet werden. Um die r\"aumliche Nachbarschaft von Sekund\"arstrukturen und Liganden untereinander darstellen zu k\"onnen werden ungerichtete Kanten zwischen Knoten gezogen wenn die entsprechenden Elemente benachbart sind. Jede Polypeptidkette eines Proteins wird dann als \emph{Proteingraph} dargestellt. Die Zusammenhangskomponenten eines Proteingraphen werden als Faltungsgraphen bezeichnet, weil sie typischerweise eine unabh\"angige Faltungseinheit darstellen.
 
 Durch diese abstrahierte Darstellung k\"onnen zentrale Charakteristika eines Proteins wie Motive und Dom\"anen einfach visualisiert werden.
@@ -122,58 +122,19 @@ werden ebenfalls in dieser Arbeit untersucht. Ihre Berechnung erfolgt analog zur
 \paragraph{Aminos\"auregraphen} werden ebenfalls untersucht und analog zu Proteingraphen berechnet. Hier werden keine SSEs betrachtet. Stattdessen repr\"asentiert jeder Knoten eine Aminos\"aure eines Proteins. Die Knoten werden entsprechend der chemischen Eigenschaften der Aminos\"auren markiert. Knoten, die saure oder basische Residuen darstellen werden mit einem c markiert. Ein p markiert Knoten f\"ur polare Residuen, die weder sauer noch basisch sind. F\"ur unpolare Aminos\"auren wird ein h verwendet. Auch Liganden k\"onnen in Aminos\"auregraphen dargestellt werden. Ihre Knoten werden durch ein ? markiert.
 
 
-F\"ur die Berechnungen dieser Arbeit wurde eine lokale Datenbank erstellt, die das gleiche Schema wie die PTGL verwendet.
-
-
-\section{\texttt{graphletAnalyser}}
-
-Das Programm \texttt{graphletAnalyser} implementiert die oben beschriebenen Algorithmen und kann die Resultate der Berechnungen in verschiedenen Formaten lokal auf dem Rechner des Nutzers speichern und sie in einer \textit{Postgresql}-Datenbank ablegen, die mit PLCC erstellt wurde.
-\texttt{graphletAnalyser} ist in C++ geschrieben und nutzt die \textit{Boost-Graph-Library} zur internen Darstellung der Graphen.
-
-Das Programm wird \"uber die Konsole gestartet und erh\"alt als \textit{Input} eine oder mehrere GML-Dateien. Der Nutzer kann weiterhin \"uber Parameter festlegen, ob markierte \textit{Graphlets} berechnet werden sollen, ob die Resultate in einer mit PLCC erstellten Datenbank gespeichert werden sollen und ob er die vordefinierten Knotenmarkierungen von SSE-Graphen, Komplexgraphen oder Aminos\"auregraphen nutzen m\"ochte.
-
-Weiterhin k\"onnen in der Konfigurationsdatei nutzerdefinierte Alphabete von Knotenmarkierungen eingegeben werden, die bei der Berechnung markierter \textit{Graphlets} genutzt werden k\"onnen.
-
-
-Das Programm bestand bereits vor dem Beginn dieser Arbeit. Es wurden Fehler im Code beseitigt und einige Funktionen hinzugef\"ugt, die im folgenden kurz beschrieben werden. 
-
-\paragraph{Das Einlesen von Komplexgraphen und Aminos\"auregraphen}
-
-ist implementiert worden. Die entsprechenden Alphabete sind im Programmcode vordefiniert und k\"onnen vom Nutzer \"uber Parameter ausgew\"ahlt werden.
-
-\paragraph{Nutzerdefinierte Knotenmarkierungen} k\"onnen nun in der Konfigurationsdatei angegeben werden. Der Nutzer kann ein Alphabet von Knotenmarkierungen und ein \textit{Label} unter dem diese Knotenmarkierungen in den GML-Dateien abgelegt sind angeben. F\"ur dieses Alphabet werden alle \"aquivalenten \textit{Graphlet}-Worte durch den \textit{Graphlet}-Worte-Algorithmus berechnet. Diese werden dann bei der Berechnung der markierten \textit{Graphlets} im Graphen unter dem vorgegebenen \textit{Label} gesucht und gez\"ahlt.
-Es k\"onnen also beliebige Alphabete und \textit{Labels} angegeben werden, so lange die Markierungen der Knoten nicht mehr als einen Buchstaben enthalten. 
- 
-
-\paragraph{Die Datenbankanbindung} wurde um Funktionen zum Speichern von Aminos\"auregraphen und Komplexgraphen erweitert. Das Speichern von Vektoren markierter \textit{Graphlets} wurde implementiert.
+Weiterhin erm\"oglicht PLCC den Vergleich von \textit{Graphlet}-Vektoren, die im folgenden Teil vorgestellt werden. Diese werden mit der von \textit{Pr{\v u}lic et al.} \cite{frqdistribution} vorgestellten Relativen-\textit{Graphlet}-H\"aufigkeiten-Distanz verglichen.
 
 
 \section{Der \textit{Graphlet}-Algorithmus}
 
 
-
-
-
-\paragraph{Motivation}
-Die PTGL \cite{vplg} erm\"oglicht also die Darstellung von Proteinstrukturtopologien als Graphen. Um aus diesen Graphen weitere Informationen zu gewinnen, ist es sinnvoll, sie untereinander vergleichen zu k\"onnen. Ein solcher Vergleich ist jedoch ein schwieriges Problem: Gesucht ist eine Funktion $f: (G,G') \rightarrow \mathbb{R} $, die f\"ur zwei Graphen $G$ und $G'$ deren \"Ahnlichkeit zueinander beziffert.
-Es gibt diverse M\"oglichkeiten diesesd Problem zu bearbeiten, von denen jedoch keine einfach ist.
-Eine M\"oglichkeit ist, die Suche nach gr\"o"sten gemeinsamen isomorphen Teilgraphen in $G$ und $G'$, oder man versucht eine Editierdistanz zu berechnen - also herauszufinden, wie viele Operationen (Hinzuf\"ugen oder Entfernen von Knoten und Kanten) n\"otig sind um $G$ in $G'$ zu \"uberf\"uhren. Diese beiden genannten Methoden erfordern jedoch aufw\"andige Berechnungen.
-Deshalb werden Methoden verwendet, die \emph{Topologische Charakteristiken} berechnen und dies in polynomieller Laufzeit bewerkstelligen. Der Vorteil hierbei ist, dass die (aufw\"andige) Berechnung dieser Charakteristiken nur einmal pro Graph erfolgen muss. Die Charakteristika k\"onnen dann als Vektoren verglichen werden und man spart sich die Berechnungen, die man sonst f\"ur alle Paare von Graphen $G,G'$ durchf\"uhren muss.
-
-
+Um die Graphen der PTGL vergleichen zu k\"onnen werden \textit{Graphlets} verwendet. Diese sind im Gegensatz zu Graph-Isomorphismen in polynomieller Zeit berechenbar \cite{sherv_graphlets}. \textit{Graphlets} sind kleine, induzierte, zusammenh\"angende Teilgraphen mit bis zu 5 Knoten. Die Abbildungen \ref{fig:3graphlets}, \ref{fig:4graphlets} und \ref{fig:5graphlets} zeigen die \textit{Graphlets} mit 3, 4 und 5 Knoten. Sie werden durch den Algorithmus gez\"ahlt, so dass anstatt von Graphen nur noch Vektoren mit den \textit{Graphlet}-H\"aufigkeiten verglichen werden. Ein solcher Vergleich von Vektoren ist in konstanter Zeit m\"oglich.
 
 \paragraph{Beschreibung des Algorithmus}
-\textit{Graphlets} sind kleine induzierte Teilgraphen eines gr\"o"seren ungerichteten Graphen. \textit{N. Shervashidze} stellte diese Methode als Vergleichsschema f\"ur Graphen 2009 zum ersten Mal vor.  (Literaturverweis einf\"ugen). Folgendes Bild zeigt alle \textit{Graphlets} der Gr\"o"se 4:
-
-\begin{figure}[h]
-\includegraphics[width =\linewidth]{4graphlets.pdf}
-\caption{Graphlets der Gr\"o"se 4 (\textit{Shervashidze et al.})}
-\label{fig:4graphlets}
-\end{figure}
+Um alle \textit{Graphlets} der Gr\"o"se $k \in \{3,4,5\}$ zu z\"ahlen werden alle Euler-Wege der L\"ange $k-1$ in dem gegebenen Graphen gesucht. F\"ur jeden gefundenen Euler-Weg, werden alle inzidenten Kanten aller Knoten des Weges \"uberpr\"uft. Wird hierbei ein \textit{Graphlet} gefunden, wird der Z\"ahler f\"ur das entsprechende Graphlet um den Wert an der entsprechenden Stelle der unten stehenden Gewichtungsvektoren $w_k$ erh\"oht.
 
 
-Um ein \textit{Graphlet} der Gr\"o"se k zu finden, besucht der Algorithmus alle Euler-Wege der L\"ange k, in dem gegebenen Graphen. F\"ur jeden dieser Wege \"uperpr\"uft er, f\"ur alle Paare von Knoten $v,w$ ob es eine Kante $e = {v,w}$ gibt, die nicht zu dem besuchten Euler-Weges gehg\"ort. Je nachdem, welche Kanten hierbei gefunden werden, wird der Z\"ahler f\"ur das entsprechende \textit{Graphlet} erh\"oht. Der Algorithmus z\"ahlt hier aber nur alle zusammenh\"angenden \textit{Graphlets}. Er verwendet die folgenden Gewichtungsvektoren: 
-
+F\"ur \textit{Graphlets} mit $k >= 4$ existieren zus\"atzlich die sogenannten Stern-\textit{Graphlets} ($g_4$ in \ref{fig:4graphlets}, sowie $g_{19}$,$g_{20}$ und $g_{21}$ in \ref{fig:5graphlets}), die keinen solchen Euler-Weg enthalten. Ein Stern-\textit{Graphlet} mit $k$-vielen Knoten hat genau $k$-viele Kanten und keinen Euler-Weg der L\"ange $k-1$.
 
 \begin{subequations}
 \label{eq:w-vector}
@@ -186,10 +147,193 @@ w_5 := \left( \frac{1}{120}, \frac{1}{72}, \frac{1}{48}, \frac{1}{36}, \frac{1}{
 \end{align}
 \end{subequations}
 
-Jede Stelle eines Vektors $w_i$ ist mit einem \textit{Graphlet} assoziiert. Da der Algorithmus alle Euler-Wege einer L\"ange $i$ in dem Graphen abl\"auft, sind in den Vektoren Br\"uche eingetragen, wobei der Z\"ahler f\"ur die Anzahl der Euler-Wege der L\"ange $i$ steht. Dies stimmt nat\"urlich nicht f\"ur die sogenannten Stern-\textit{Graphlets} ($g_4$ in \ref{fig:4graphlets} $g_{19}$,$g_{20}$ und $g_{21}$ in \ref{fig:5graphlets}). Da diese keinen Euler-Weg der L\"ange 4 bzw. 5 enthalten werden sie anders gez\"ahlt.
-(beispiel mit Pseudocode einf\"ugen?)
+Jede Stelle eines Gewichtungsvektors $w_k$ ist mit einem \textit{Graphlet} assoziiert. Die Nenner der Br\"uche in den Vektoren entsprechen den Anzahlen der Euler-Wege der L\"ange $k-1$ in den entsprechenden \textit{Graphlets}. Wenn alle Euler-Wege eines \textit{Graphlets} besucht wurden und der zugeh\"orige induzierte Teilgraph ihm entspricht wird sein Z\"ahler ganzzahlig und das \textit{Graphlet} gilt als gefunden.
+Hierbei bilden  die Stern-\textit{Graphlets}, die keine Euler-Wege der L\"ange $k-1$ enthalten nat\"urlich die Ausnahme.
 
-\subsection{Der \textit{Graphlet}-Worte-Algorithmus}
+Somit wird jedes \textit{Graphlet} gez\"ahlt und die entsprechende Anzahl wird in einen Vektor geschrieben. 
+Die so erzeugten Vektoren werden im folgenden als \textit{Graphlet}-Vektoren bezeichnet.
+Da wir 29 verschiedene \textit{Graphlets} betrachten hat ein \textit{Graphlet}-Vektor 29 Stellen. F\"ur den Vergleich von Proteinstrukturen bedeutet dies, das sich der Berechnugsaufwand auf $O(1)$ reduziert, da anstatt von Graphen oder dreidimensionalen K\"orpern Vektoren im Vektorraum $\mathbb{R}^{29}$ verglichen werden.
+
+TODO: Pseudocode in Anhang einf\"ugen
+
+
+\section{\texttt{graphletAnalyser}}
+
+In seiner urspr\"unglichen Version wurde das Programm bereits 2013 von \textit{Tatiana Bakirova} geschrieben. Im Sommer 2015 wurde es um einige Funktionen erweitert.
+
+\texttt{graphletAnalyser} ist in C++ geschrieben. Zur internen Darstellung der Graphen wird die \textit{Boost-Graph-Library} verwendet. Die Datenbankanbindug wird mittels der Bibliothek pqxx realisiert.
+
+\paragraph{Als Input} erh\"alt das Programm eine oder mehrere GML-Dateien, die Graphen darstellen. Aus jeder GML-Datei wird mit der \textit{Boost-Graph-Library} intern ein Graph erstellt, der f\"ur die Berechnungen verwendet wird.
+
+F\"ur den eingelesenen Graphen berechnet das Programm alle \textit{Graphlets} der Gr\"o"sen 3,4 und 5. Die Implementierung entspricht der Matlab-Implementierung von \textit{N. Shervashidze} \cite{sherv_graphlets}. Zus\"atzlich berechnet es markierte \textit{Graphlets} der Gr\"o"sen 2 und 3, wobei die Markierungen den SSE-Zuordnungen der PTGL entsprechen. Es gibt 35 verschiedene markierte \textit{Graphlets} mit 2 oder 3 Knoten. Unter Ber\"ucksichtigung der Markierungen erh\"oht sich die Anzahl der Stellen der \textit{Graphlet}-Vektoren damit auf 64.
+Die Knotengradverteilungen k\"onnen ebenfalls berechnet werden.
+
+\paragraph{Der Output} des Programms umfasst zum einen die Ausgabe der \textit{Graphlet}-Vektoren mit oder ohne markierte \textit{Graphlets} in den Formaten csv, matlab und nova. Zus\"atzlich k\"onnen die \textit{Graphlet}-Vektoren in einer Datenbank, die zuvor mit PLCC erstellt wurde gespeichert werden. Die Knotengradverteilung kann zusammen mit anderen Daten eines Graphen als .csv-Datei ausgegeben werden.
+
+
+\section{\"Ahnlichkeitsma"se}
+
+Durch die Verwendung der \textit{Graphlets} wird der direkte Vergleich von Graphen durch einen Vergleich von \textit{Graphlet}-Vektoren ersetzt. F\"ur den Vergleich dieser Vektoren gibt es prinzipiell zwei verschiedene M\"oglichkeiten. Entweder kann man eine Abstandsmessung durchf\"uhren, oder man z\"ahlt die gemeinsamen Elemente der beiden Vektoren.
+
+
+
+\subsection{Relative \textit{Graphlet}-H\"aufigkeiten-Distanz}
+
+\textit{N. Pr\v{z}ulj et al.} haben \textit{Graphlets} bereits in verschiedensten Zusammenh\"anen auf biologische Daten wie Protein-Protein-Interaktionsnetzwerke \cite{frqdistribution} angewandt. Als Ma"s f\"ur die \"Ahnlichkeit von Netzwerken nutzen sie die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz (RGF) $D(G,H)$. Diese Metrik berechnet den Abstand zwischen zwei Graphen $G$ und $H$ als logarithmierte Differenz der normalisierten Anzahl der \textit{Graphlets} in $G$ und $H$. Sie ist folgenderma"sen definiert: \\
+
+Sei $N_{i}(G)$ die Anzahl der \textit{Graphlets} von Typ $i \in {1,...,29}$ und \\ $T(G) = \sum_{i = 1}^{29} N_{i}(G)$ die Anzahl der \textit{Graphlets} in $G$, beziehungsweise $H$\\
+
+Dann ist die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz $D(G,H)$ f\"ur zwei Graphen $G$ und $H$ definert als:
+
+\begin{subequations}
+\begin{align}
+D(G,H) := \sum_{i = 1}^{29} | F_{i}(G) - F_{i}(H) | \\
+mit F_{i}(G) := - log(\frac{N_{i}(G)}{T(G)})
+\end{align}
+\end{subequations}
+
+
+
+Diese Metrik l\"asst sich analog zur euklidischen Distanz auffassen, denn sie berechnet f\"ur jeden Index $i$ die Differenz zwischen den Stellen $x_i,y_i$ zweier Vektoren $x$ und $y$. Sie verwendet die normalisierten \textit{Graphlet}-Vektoren unter der Annahme, dass die \"Ahnlichkeit zweier Netzwerke sich aus der \"Ahnlichkeit lokaler Substrukturen ableiten l\"asst \cite{frqdistribution}. Somit k\"onnen Netzwerke, die \"ahnliche Substrukturen habe, sich aber in ihrer Gr\"o"se stark unterschieden, immer noch als \"ahnlich erkannt werden. Zus\"atzlich soll durch diese Normalisierung ausgeschlossen werden, dass einzelne besonders h\"aufige \textit{Graphlets} die Messung verzerren.
+
+Da alle Eintr\"age der Vektoren aus dem Intervall $ [0,1) \in \mathbb{R} $ stammen werden sie logarithmiert. Damit erh\"alt man Abst\"ande, die aus deutlich gr\"o"seren Intervallen stammen. Die Ergebnisse k\"onnen so leichter interpretiert werden und der Einfluss der von Rundungsfehlern verkleinert sich.
+ 
+Weiterhin wurde gezeigt, \cite{frqdistribution} dass diese Metrik auch bei verrauschten Daten noch sehr gut funktioniert. Hierbei ist jedoch zu beachten, dass sie bisher vor allem f\"ur sehr gro"se Netzwerke mit mehreren Tausend Knoten und Kanten verwendet wurde. Diese Gr\"o"se kann von Aminos\"auregraphen erreicht werden, wenn sie gro"se Proteinkomplexe modellieren. Proteingraphen und Komplexgraphen sind aber deutlich kleiner.
+
+
+\subsection{Modifizierter Jaccard-Index}
+
+Der Jaccard-Index ist im eigentlichen Sinne ein Ma"s, um die \"Ahnlichkeit von gleichm\"achtigen Mengen zu bewerten. F\"ur zwei Mengen $A,B$ berechnet sich der Jaccard-Index $D_{Jac}(A,B)$ folgenderma"sen:
+
+\[ D_{Jac}(A,B) := \frac{\sum_{x \ in A \land x \in B} 1}{\sum_{x \in A \lor x \in B} 1} \]
+
+Dementsprechend sind zwei Mengen $A,B$ gleich, wenn  gilt $D_{Jac} = 1$ und disjunkt, wenn gilt $D_{Jac} = 0$. Mit ihm wird die relative Anzahl der Elemente beider Mengen berechnet.
+Um dieses Ma"s in sinnvoller Weise auf \textit{Graphlet}-Vektoren zu \"ubertragen wurde ein zus\"atzlicher Faktor $k \in \mathbb{R} $ mit $k \in [0,1]$  eingef\"uhrt, der als Pr\"azisionsfaktor zu verstehen ist. Die Defintion des modifizierten Jaccard-Index $D_{Jac-m}(v,w)$ f\"ur zwei Vektoren $v,w$ lautet also:
+
+\[ D_{Jac-m}(v,w) := \frac{\sum_{i = 1}^n x_i}{\sum_{x \in A \lor x \in B} 1} \]
+
+Hierbei gilt:
+
+\[ x_i = 
+   \begin{cases}
+     1     & \quad \mathrm{if} \quad v_i >= w_i \times k \land w_i >= v_i \times k \\
+     0     & \quad \mathrm{else} \\
+   \end{cases}
+\]
+
+In dieser modifizierten Variante werden zwei Vektoren $v,w$ als gleich angesehen, wenn sich $v_i,w_i$ f\"ur alle $i$ h\"ochstens um den Faktor $k$ unterschieden.
+Dies steht im Gegensatz zur RGF, die - analog zu einer Vektornorm - die Abst\"ande zwischen zwei \textit{Graphlet}-Vektoren misst.
+
+
+
+\section{Datens\"atze}
+
+
+\subsection{Fallstudien - Datensatz 1}
+
+Anfangs wurden 20 verschiedene Proteine aus verschiedenen CATH-Klassen zum Vergleich ausgew\"ahlt. Die Proteine wurden so gew\"ahlt, dass die drei CATH-klassen mit vielen Sekund\"arstrukturelementen \textit{mainly-alpha}, \textit{mainly-beta} und \textit{alpha-beta} vertreten sind. Weiterhin wurde die Auswahl so getroffen, dass es f\"ur jede Stufe der Hierarchie mindestens zwei Proteine gibt, die auf der entsprechenden Stufe in die gleiche Klasse eingeordnet werden. Die Proteine werden im folgenden kurz beschreiben.
+
+
+
+
+\subsubsection{Zusammengefasst}
+
+\begin{tabular}{l r}
+
+PDB-ID & CATH-Code  \\
+2UTG & 1.10.210.10  \\ % uteroglobin - pdb-klasse: steroid bindend
+1VIB & 1.10.287.120 \\ % neurotoxin - pdb-klasse: neurotoxin
+1QPU & 1.20.120.10  \\ % Cytochrom b
+1QQ3 & 1.20.120.10  \\ % cytochrom b oxidiert
+2XL6 & 1.20.120.10  \\ % cytochrom c mit NO
+2YL1 & 1.20.120.10  \\ % cytochrom c mit CO
+1rxq & 1.20.120.450 \\ % metall abhaengige hydrolase - pdb-head: metall abhaengiges protein
+2qe9 & 1.20.120.450 \\ % metall abhaengige hydrolase - pdb-head: hydrolase
+2RD9 & 1.20.120.450 \\ % metall abhaengige hydrolase - pdb-head: hydrolase
+1M4R & 1.20.1250.10 \\ % interleukin 22 - pdb-head: cytokin
+1HGU & 1.20.1250.10 \\ % wachstumshormon - pdb-head: hormon
+1PV6 & 1.20.1250.20 \\ % lactose permease - pdb-head: transportprotein
+1AWR & 2.40.100.10  \\ % enzymkomplex cypa und hagpia ?
+1D9C & 1.20.1250.10 \\ % BOVINE INTERFERON-GAMMA
+1NGL & 2.40.128.20  \\ % transportprotein
+1N7V & 2.105.10.10  \\ % riesiges Virusprotein - rezeptor bindendes protein
+7TIM & 3.20.20.70   \\ % triosephosphat isomerase phosphat-komplex
+1NEY & 3.20.20.70   \\ % triosephosphat isomerase DHAP-komplex
+2V5L & 3.20.20.70   \\ %  TRYPANOSOMAL TRIOSEPHOSPHATE ISOMERASE - neue kristallform
+1V3Z & 3.30.70.100  \\ % Acylphosphatase
+1A17 & 1.25.40.10   \\ % pdb-header sagt hydrolase - muesste anderen hydrolasen aehnlich sein
+1ar0 & 3.10.450.50  \\ % Nuclear transport factor 2
+
+\end{tabular}
+
+
+\subsection{Fallstudien  - Datensatz 2} 
+
+F\"ur die ersten Tests wurden verschiedene Proteine entsprechend ihrer CATH-Klassifizeirungen zusammengestellt. Die Proteine wurden so gew\"ahlt, dass die 3 CATH-Klassen gleich stark vertreten sind, in denen sich viele Sekund\"arstrukturelemente befinden. Dementsprechend wurden Proteine aus der CATH-Klasse 4 ignoriert. Diese Klasse enth\"alt nur Proteine mit wenigen Sekund\"arstrukturelementen.
+
+Es befinden sich je 5 Vertreter der drei CATH-Klassen 1 (\textit{mainly-alpha}), 2 (\textit{mainly-beta}) und 3 (\textit{alpha-beta}) in diesem Datensatz. Diese wurden so gew\"ahlt, dass je ein Paar innerhalb der selben Klasse ein direkter struktureller Nachbar mit eine Sequenzidentit\"at von mehr als 95\%, sowie ein Nachbar mit einer Sequenzidentit\"at von meher als 35\% befindet, um zu \"uberpr\"ufen, ob die \textit{Graphlet}-Vektoren von Aminos\"auregraphen eine Korrelation mit der Sequenzidentit\"at aufweisen k\"onnen.
+Weiterhin wurde je ein Vertreter der selben Topologie aus einer anderen Superfamilie, sowie der selben Architektur mit anderer Topologie gew\"ahlt.
+ 
+Da die \textit{Graphlet}-Vektoren globale Eigenschaften eines Graphen beschreiben, wurde bei diesem Datensatz darauf geachtet, dass alle Strukturen aus genau einer Polypeptidkette mit genau einer Dom\"ane bestehen.
+
+Diese Herangehensweise folgt aus der Vermutung, dass einzelne Dom\"anen charakteristische \textit{Graphlet}-Vektoren haben. 
+\\
+
+\begin{tabular}{ | c || c | c |}
+
+\hline
+PDB-ID & CATH-ID        & Klassifizierung      \\ \hline
+1qpu   & 1.20.120.10 & Elektronentransport     \\ \hline
+1qq3   & 1.20.120.10 & Elektronentransport     \\ \hline
+1cgn   & 1.20.120.10 & Elektronentransport     \\ \hline
+1he9   & 1.20.120.260& Toxin (Exoenzym)        \\ \hline
+3gf9   & 1.20.900.10 & Endocytose              \\ \hline
+1exs   & 2.40.128.20 & Lipid bindendes Protein \\ \hline
+1ngl   & 2.40.128.20 & Transport Protein       \\ \hline
+1qqs   & 2.40.128.20 & Zucker bindendes Protein\\ \hline
+3slo   & 2.40.128.130& Protein Transport       \\ \hline
+1wjx   & 2.40.280.10 & RNA-bindendes Protein   \\ \hline
+5chy   & 3.40.50.2300& Signaltransduktion      \\ \hline
+2id9   & 3.40.50.2300& Signal Protein          \\ \hline
+3i42   & 3.40.50.2300& unbekannte Funktion     \\ \hline
+1d4o   & 3.40.50.1220& Oxidoreductase          \\ \hline
+2w0i   & 3.40.20.10  & Transferase             \\ 
+\hline
+\end{tabular}
+
+
+
+\subsubsection{Vergleich von Proteinen \"ahnlicher Gr\"o"se}
+
+Da \textit{Graphlets} in den Experimenten von Pruzlj et al und Shervashidze et auf gro"se Graphen angewandt wurden, bietet es sich an, sie auch auf gro"se Proteinkomplexe anzuwenden und bei kleinen Proeinen den Aminsos\"auregraphen zu verwenden. So kann man (hoffentlich) das Problem der d\"unn besetzten Graphen umgehen und f\"ur verschiedene Gr\"o"sen von Graphen relevante Ergebnisse erzielen. Daf\"ur muss ein Datensatz aus gr\"o"sen Proteinkomplexen mit bekannter struktureller \"Ahnlichkeit zusammengestellt werden.
+
+
+
+\subsection{Fallstudien - Datensatz 3}
+
+
+
+\chapter{Ergebnisse}
+
+
+\section{Erweiterung von \texttt{graphletAnalyser}}
+
+\paragraph{Das Einlesen von Komplexgraphen und Aminos\"auregraphen}
+
+ist implementiert worden. Die entsprechenden Alphabete sind im Programmcode vordefiniert und k\"onnen vom Nutzer \"uber Parameter ausgew\"ahlt werden.
+
+\paragraph{Nutzerdefinierte Knotenmarkierungen} k\"onnen nun in der Konfigurationsdatei angegeben werden. Der Nutzer kann ein Alphabet von Knotenmarkierungen und ein \textit{Label} unter dem diese Knotenmarkierungen in den GML-Dateien abgelegt sind angeben. F\"ur dieses Alphabet werden alle \"aquivalenten \textit{Graphlet}-Worte durch den \textit{Graphlet}-Worte-Algorithmus berechnet. Diese werden dann bei der Berechnung der markierten \textit{Graphlets} im Graphen unter dem vorgegebenen \textit{Label} gesucht und gez\"ahlt.
+Es k\"onnen also beliebige Alphabete und \textit{Labels} angegeben werden, so lange die Markierungen der Knoten nicht mehr als einen Buchstaben enthalten. 
+ 
+
+\paragraph{Die Datenbankanbindung} wurde um Funktionen zum Speichern von Aminos\"auregraphen und Komplexgraphen erweitert. Das Speichern von Vektoren markierter \textit{Graphlets} wurde implementiert.
+
+
+\section{Bewertungsfunktionen in PLCC}
+
+
+
+\section{Der \textit{Graphlet}-Worte-Algorithmus}
 
 In der letzten Version von \texttt{graphletAnalyser} war es bereits m\"oglich markierte \textit{Graphlets} mit 2 und 3 Knoten in Proteingraphen zu z\"ahlen. Diese Funktionalit\"at wurde im Rahmen dieser Arbeit verallgemeinert, so dass der Nutzer beliebige Alphabete angeben kann.
 Der Algorithmus erh\"alt das Alphabet $\sum = \{ \sigma_i : i \in \mathbb{N} \}$ der Knotenmarkierungen. Aus diesem Alphabet berechnet er Worte $w$, die zur Repr\"asentation der markierten \textit{Graphlets} genutzt werden.
@@ -281,175 +425,6 @@ a_{3-Weg} := (hhh, hph, hhp, hpp, php, hpa, ahp, pah, hp?, ?hp, p?h, hah, hha, h
 a_{3-Kreis} := (hhh, hph, hpp, hpa, aph, hp?, ?ph, hah, haa, ha?, ?ah, h?h, h??, ppp, pap, paa, pa?, ?ap, p?p, p??, aaa, a?a, a??, ???)
 \end{align}
 \end{subequations}
-
-
-
-\section{Scoring}
-
-
-
-
-
-\subsection{Relative \textit{Graphlet}-H\"aufigkeiten-Distanz}
-
-\textit{N. Pr\v{z}ulj et al.} haben \textit{Graphlets} bereits in verschiedensten Zusammenh\"anen auf biologische Daten wie Protein-Protein-Interaktionsnetzwerke \cite{frqdistribution} angewandt. Als Ma"s f\"ur die \"Ahnlichkeit von Netzwerken nutzen sie die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz (RGF) $D(G,H)$. Diese Metrik berechnet den Abstand zwischen zwei Graphen $G$ und $H$ als logarithmierte Differenz der normalisierten Anzahl der \textit{Graphlets} in $G$ und $H$. Sie ist folgenderma"sen definiert: \\
-
-Sei $N_{i}(G)$ die Anzahl der \textit{Graphlets} von Typ $i \in {1,...,29}$ und \\ $T(G) = \sum_{i = 1}^{29} N_{i}(G)$ die Anzahl der \textit{Graphlets} in $G$, beziehungsweise $H$\\
-
-Dann ist die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz $D(G,H)$ f\"ur zwei Graphen $G$ und $H$ definert als:
-
-\begin{subequations}
-\begin{align}
-D(G,H) := \sum_{i = 1}^{29} | F_{i}(G) - F_{i}(H) | \\
-mit F_{i}(G) := - log(\frac{N_{i}(G)}{T(G)})
-\end{align}
-\end{subequations}
-
-
-
-Diese Metrik l\"asst sich analog zur euklidischen Distanz, oder einer beliebigen anderen Vektornorm auffassen, denn sie berechnet f\"ur jeden Index $i$ die Differenz zwischen den Stellen $x_i,y_i$ zweier Vektoren $x$ und $y$. Sie verwendet die normalisierten \textit{Graphlet}-Vektoren unter der Annahme, dass die \"Ahnlichkeit zweier Netzwerke sich aus der \"Ahnlichkeit lokaler Substrukturen ableiten l\"asst \cite{frqdistribution}. Somit k\"onnen Netzwerke, die \"ahnliche Substrukturen habe, sich aber in ihrer Gr\"o"se stark unterschieden, immer noch als \"ahnlich erkannt werden.
-Weiterhin wurde gezeigt, \cite{frqdistribution} dass diese Metrik auch bei verrauschten Daten noch sehr gut funktioniert. Hierbei ist jedoch zu beachten, dass sie bisher vor allem f\"ur sehr gro"se Netzwerke mit mehreren Tausend Knoten und Kanten verwendet wurde. Diese Gr\"o"se kann von Aminos\"auregraphen erreicht werden, wenn sie gro"se Proteine modellieren. Proteingraphen und Komplexgraphen sind aber deutlich kleiner.
-
-
-\subsection{Modifizierter Jaccard-Index}
-
-Der Jaccard-Index ist im eigentlichen Sinne ein Ma"s, um die \"Ahnlichkeit von gleichm\"achtigen Mengen zu bewerten. F\"ur zwei Mengen $A,B$ berechnet sich der Jaccard-Index $D_{Jac}(A,B)$ folgenderma"sen:
-
-\[ D_{Jac}(A,B) := \frac{\sum_{x \ in A \land x \in B} 1}{\sum_{x \in A \lor x \in B} 1} \]
-
-Dementsprechend sind zwei Mengen $A,B$ gleich, wenn  gilt $D_{Jac} = 1$ und disjunkt, wenn gilt $D_{Jac} = 0$. Mit ihm wird die relative Anzahl der Elemente beider Mengen berechnet.
-Um dieses Ma"s in sinnvoller Weise auf \textit{Graphlet}-Vektoren zu \"ubertragen wurde ein zus\"atzlicher Faktor $k \in \mathbb{R} $ mit $k \in [0,1]$  eingef\"uhrt, der als Pr\"azisionsfaktor zu verstehen ist. Die Defintion des modifizierten Jaccard-Index $D_{Jac-m}(v,w)$ f\"ur zwei Vektoren $v,w$ lautet also:
-
-\[ D_{Jac-m}(v,w) := \frac{\sum_{i = 1}^n x_i}{\sum_{x \in A \lor x \in B} 1} \]
-
-Hierbei gilt:
-
-\[ x_i = 
-   \begin{cases}
-     1     & \quad \mathrm{if} \quad v_i >= w_i \times k \land w_i >= v_i \times k \\
-     0     & \quad \mathrm{else} \\
-   \end{cases}
-\]
-
-In dieser modifizierten Variante werden zwei Vektoren $v,w$ als gleich angesehen, wenn sich $v_i,w_i$ f\"ur alle $i$ h\"ochstens um den Faktor $k$ unterschieden.
-Dies steht im Gegensatz zur RGF, die - analog zu einer Vektornorm - die Abst\"ande zwischen zwei \textit{Graphlet}-Vektoren misst.
-
-
-
-\section{Datens\"atze}
-
-
-\subsection{Fallstudien - Datensatz 1}
-
-Anfangs wurden 20 verschiedene Proteine aus verschiedenen CATH-Klassen zum Vergleich ausgew\"ahlt. Die Proteine wurden so gew\"ahlt, dass die drei CATH-klassen mit vielen Sekund\"arstrukturelementen \textit{mainly-alpha}, \textit{mainly-beta} und \textit{alpha-beta} vertreten sind. Weiterhin wurde die Auswahl so getroffen, dass es f\"ur jede Stufe der Hierarchie mindestens zwei Proteine gibt, die auf der entsprechenden Stufe in die gleiche Klasse eingeordnet werden. Die Proteine werden im folgenden kurz beschreiben.
-
-
-\subsubsection{4-Helix-\textit{Bundles}}
-
-Das Cytochrom B562 von \emph{E. coli} (Bild einf\"ugen) ist ein Protein, das f\"ur Elektronentransport zust\"andig ist. Strukturell wird es als 4-Helix-\textit{Bundle} eingeordnet. Zu diesem Protein gibt es zwei PDB-Eintr\"age: 1QPU und 256B. Es gibt von diesem Protein auch eine Hem-bindende Variante, die oxidiert ist. Sie hat die PDB-ID 1QQ3. All diese Strukturdaten werden von CATH als sehr \"ahnliche Strukturen mit hoher Sequenzidentit\"at eingeordnet.
-Um die Parameter und Metriken f\"ur den Vergleich zu testen, bietet es sich an, diese Proteine mit weiteren Proteinen aus der selben homologen Superfamilie zu vergleichen und diese dann mit Proteinen aus anderen Homologen Superfamilien zu vergleichen. Die entsprechenden Proteine werden h\"andisch entsprechend der Einordnung durch CATH gew\"ahlt. Proteine die neu designt wurden k\"onnten sich auch anbieten. Inwiefern eine Untersuchung an ihnen sinnvoll ist, muss aber noch \"uberpr\"uft werden.
-Weitere Proteine aus der Homologen Superfamilie, die sich eignen sind:\\
-2XL6: Cytochrom C aus Alcaligenes Xylosoxidans, gebunden mit NO\\
-2YL1: s.o. nur andere Variante mit anderem Bindungspartner.\\
-Diese beiden m\"ussten strukturell \"ahnlicher sein, als die weiter oben genannten Varianten von Cytochrom B562.\\
-Die oben genannten Proteine werden von CATH alle in die \emph{Topologie} der 4-Helix-\textit{Bundles} (Hemerythrin Untereinheit A) eingeordnet. Sie sind alle Teil der selben homologen Superfamilie.
-
-Zum Vergleich werden weiterhin 1rxq und 2qe9 aus der Homologen Superfamilie \textit{dinb family like domain}  
-
-
-
-
-\subsubsection{Wachstumshormone}
-
-Sie k\"onnen mit Proteinen aus der Topologie \textit{Growth Hormone, Chain A} verglichen werden. Denn beide werden von CATH in die gleiche Architektur \emph{Up-down bundle} eingeordnet. Proteine aus dieser Topologie sind: \\
-1HGU: Menschliches Wachstumshormon\\
-1M4R: Rekombinantes menschliches Interleukin 22\\
-1D9C: Rinder Interferon Gamma \\
-Die oben genannten Proteine aus der Topologie der Wachstumshormone haben eine Sequenzidentit\"at zwischen 35 und 60 Prozent. Sie scheinen sich gut f\"ur die untersuchung zu eignen.
-Das Protein mit der PDB-ID 1PV6 liegt in der selben Topologie, wird aber in eine andere Superfamilie eingeordnet.
-
-\subsubsection{Aldolasen}
-
-Die Aldolasen 7TIM, 1NEY und 2V5L werden durch das gleich Gen in Hefe codiert. Da sie eine $\beta$-\textit{Barrel}-Struktur besitzen, sollten sie eine niedrigere \textit{Graphlet}-Distanz zueinander aufweisen, als zu allen anderen Strukturen.
-
-\subsubsection{Zusammengefasst}
-
-\begin{tabular}{l r}
-
-PDB-ID & CATH-Code  \\
-2UTG & 1.10.210.10  \\ % uteroglobin - pdb-klasse: steroid bindend
-1VIB & 1.10.287.120 \\ % neurotoxin - pdb-klasse: neurotoxin
-1QPU & 1.20.120.10  \\ % Cytochrom b
-1QQ3 & 1.20.120.10  \\ % cytochrom b oxidiert
-2XL6 & 1.20.120.10  \\ % cytochrom c mit NO
-2YL1 & 1.20.120.10  \\ % cytochrom c mit CO
-1rxq & 1.20.120.450 \\ % metall abhaengige hydrolase - pdb-head: metall abhaengiges protein
-2qe9 & 1.20.120.450 \\ % metall abhaengige hydrolase - pdb-head: hydrolase
-2RD9 & 1.20.120.450 \\ % metall abhaengige hydrolase - pdb-head: hydrolase
-1M4R & 1.20.1250.10 \\ % interleukin 22 - pdb-head: cytokin
-1HGU & 1.20.1250.10 \\ % wachstumshormon - pdb-head: hormon
-1PV6 & 1.20.1250.20 \\ % lactose permease - pdb-head: transportprotein
-1AWR & 2.40.100.10  \\ % enzymkomplex cypa und hagpia ?
-1D9C & 1.20.1250.10 \\ % BOVINE INTERFERON-GAMMA
-1NGL & 2.40.128.20  \\ % transportprotein
-1N7V & 2.105.10.10  \\ % riesiges Virusprotein - rezeptor bindendes protein
-7TIM & 3.20.20.70   \\ % triosephosphat isomerase phosphat-komplex
-1NEY & 3.20.20.70   \\ % triosephosphat isomerase DHAP-komplex
-2V5L & 3.20.20.70   \\ %  TRYPANOSOMAL TRIOSEPHOSPHATE ISOMERASE - neue kristallform
-1V3Z & 3.30.70.100  \\ % Acylphosphatase
-1A17 & 1.25.40.10   \\ % pdb-header sagt hydrolase - muesste anderen hydrolasen aehnlich sein
-1ar0 & 3.10.450.50  \\ % Nuclear transport factor 2
-
-\end{tabular}
-
-
-\subsection{Fallstudien  - Datensatz 2} 
-
-F\"ur die ersten Tests wurden verschiedene Proteine entsprechend ihrer CATH-Klassifizeirungen zusammengestellt. Die Proteine wurden so gew\"ahlt, dass die 3 CATH-Klassen gleich stark vertreten sind, in denen sich viele Sekund\"arstrukturelemente befinden. Dementsprechend wurden Proteine aus der CATH-Klasse 4 ignoriert. Diese Klasse enth\"alt nur Proteine mit wenigen Sekund\"arstrukturelementen.
-
-Es befinden sich je 5 Vertreter der drei CATH-Klassen 1 (\textit{mainly-alpha}), 2 (\textit{mainly-beta}) und 3 (\textit{alpha-beta}) in diesem Datensatz. Diese wurden so gew\"ahlt, dass je ein Paar innerhalb der selben Klasse ein direkter struktureller Nachbar mit eine Sequenzidentit\"at von mehr als 95\%, sowie ein Nachbar mit einer Sequenzidentit\"at von meher als 35\% befindet, um zu \"uberpr\"ufen, ob die \textit{Graphlet}-Vektoren von Aminos\"auregraphen eine Korrelation mit der Sequenzidentit\"at aufweisen k\"onnen.
-Weiterhin wurde je ein Vertreter der selben Topologie aus einer anderen Superfamilie, sowie der selben Architektur mit anderer Topologie gew\"ahlt.
- 
-Da die \textit{Graphlet}-Vektoren globale Eigenschaften eines Graphen beschreiben, wurde bei diesem Datensatz darauf geachtet, dass alle Strukturen aus genau einer Polypeptidkette mit genau einer Dom\"ane bestehen.
-
-Diese Herangehensweise folgt aus der Vermutung, dass einzelne Dom\"anen charakteristische \textit{Graphlet}-Vektoren haben. 
-\\
-
-\begin{tabular}{ | c || c | c |}
-
-\hline
-PDB-ID & CATH-ID        & Klassifizierung      \\ \hline
-1qpu   & 1.20.120.10 & Elektronentransport     \\ \hline
-1qq3   & 1.20.120.10 & Elektronentransport     \\ \hline
-1cgn   & 1.20.120.10 & Elektronentransport     \\ \hline
-1he9   & 1.20.120.260& Toxin (Exoenzym)        \\ \hline
-3gf9   & 1.20.900.10 & Endocytose              \\ \hline
-1exs   & 2.40.128.20 & Lipid bindendes Protein \\ \hline
-1ngl   & 2.40.128.20 & Transport Protein       \\ \hline
-1qqs   & 2.40.128.20 & Zucker bindendes Protein\\ \hline
-3slo   & 2.40.128.130& Protein Transport       \\ \hline
-1wjx   & 2.40.280.10 & RNA-bindendes Protein   \\ \hline
-5chy   & 3.40.50.2300& Signaltransduktion      \\ \hline
-2id9   & 3.40.50.2300& Signal Protein          \\ \hline
-3i42   & 3.40.50.2300& unbekannte Funktion     \\ \hline
-1d4o   & 3.40.50.1220& Oxidoreductase          \\ \hline
-2w0i   & 3.40.20.10  & Transferase             \\ 
-\hline
-\end{tabular}
-
-
-
-\subsubsection{Vergleich von Proteinen \"ahnlicher Gr\"o"se}
-
-Da \textit{Graphlets} in den Experimenten von Pruzlj et al und Shervashidze et auf gro"se Graphen angewandt wurden, bietet es sich an, sie auch auf gro"se Proteinkomplexe anzuwenden und bei kleinen Proeinen den Aminsos\"auregraphen zu verwenden. So kann man (hoffentlich) das Problem der d\"unn besetzten Graphen umgehen und f\"ur verschiedene Gr\"o"sen von Graphen relevante Ergebnisse erzielen. Daf\"ur muss ein Datensatz aus gr\"o"sen Proteinkomplexen mit bekannter struktureller \"Ahnlichkeit zusammengestellt werden.
-
-
-
-\subsection{Fallstudien - Datensatz 3}
-
-
-
-\chapter{Ergebnisse}
 
 \section{Fallstudien - Datensatz 1}
 
@@ -552,7 +527,7 @@ Vektor & RGF & Jaccard-Index \\
 \begin{figure}[h!]
 \includegraphics[width =\linewidth]{4graphlets.pdf}
 \caption{Graphlets der Gr\"o"se 4 (\textit{Shervashidze et al.})}
-\label{fig:4graphlets2}
+\label{fig:4graphlets}
 \end{figure}
 
 \newpage
@@ -795,22 +770,6 @@ CG        &  0.6939 & 0.6939 & 1      \\
 \end{tabular}
 \caption{Korrelationen der \"Ahnlichkeitsbewertungen der verschiedenen Graphformate}
 \end{table}
-
-\chapter{Schnittreste}
-
-\section{alte Motivation}
-
-\paragraph{Die \"Ahnlickeit} von Proteinen zu bestimmen ist eine gro"se Herausforderung. In der Zeit als wenige Strukturen bekannt waren wurde die strukturelle \"Ahnlichkeit von Proteinen noch von Experten visuell bewertet, aber mittlerweile befinden sich die Strukturen von \"uber 100000 biologischen Makromolek\"ulen in der PDB. Der Vergleich dieser gigantischen Anzahl von Strukturdaten erfordert effiziente Analysemethoden. Solche Analysen k\"onnen tiefe Einblicke in die ferne evolution\"are Verwandschaft von Proteinen liefern und sie helfen bei der Bestimmung der Funktion eines Proteins. Sie sind im Bereich des \textit{Drug-Design} hoch interessant, denn  Strukturdaten liefer Informationen \"uber m \"ogliche Liganden, die ein Protein binden kann und damit auch \"uber m\"ogliche Ziele von Medikamenten bei der Bek\"ampfung von Krankheiten. Deshalb sind strukturbasierte \"Ahnlichkeitsanalysen in der pharmakologischen Forschung von zentraler Bedeutung.
-Das Problem hierbei ist, dass die Berechnung der \"Ahnlichkeit von 3D-Strukturen algorithmisch ein schwieriges Problem darstellt; lange Berechnungszeiten sind die Regel und es ist schwierig herauszufinden, ob der gefundene \"Ahnlichkeitswert f\"ur zwei Proteine nur ein lokales Optimum darstellt.
-Deshalb wird versucht, von der 3D-Darstellung zu abstrahieren, ohne zentrale Strukturinformationen zu verlieren. \emph{Dali} \cite{dali}verwendet beispielsweise Distanzmatrizen, die die Abst\"ande einzelner Residuen zueinander speichern, anstatt die Koordinaten jedes Atoms abdsspzuspeichern.
-Der Strukturvergleich findet dann als Vergleich dieser Distanzmatrizen statt.
-
-Auch Graphen eignen sich, um Strukturdaten in einer leichter zu analysierenden Form abzuspeichern. Denn Graphen k\"onnen genau wie Distanzmatrizen Informationen \"uber r\"aumliche N\"ahe aufbewahren.
-Die PTGL \cite{ptgl1} speichert Proteinstrukturtopologien als Graphen ab. So werden zentrale Informationen \"uber die Struktur eines Proteins aufbewahrt w\"ahrend die Gr\"o"se der Daten ma"sgeblich reduziert wird. Diese Darstellung hat den weiteren Vorteil, dass Graphen zu den meistuntersuchten mathematischen strukturen der letzten Jahre geh\"oren. Soziale Netzwerke, Interaktionen von Proteinen in Zellen, das Internet: All diese Dinge lassen sich als Graphen darstellem und werden als solche untersucht.
-Doch auch die \"Ahnlichkeit von Graphen zu bestimmen ist ein schwieriges Problem. Es leitet sich vom \emph{Graph-Isomorphismus-Problem} ab. Es ist nicht klar, ob dieses Problem NP-vollst\"andig ist. In den letzten Jahren wurde \textit{Feature}-basierte Methoden erforscht, die diese Problem reduzieren. Anstatt direkt zwei Graphen miteinander zu vergleichen, werden \textit{Features} verglichen, so dass einfache Datenpunkte anstatt von komplexen Graphen verglichen werden.
-Solche Methoden wurden h\"aufig erfolgreich angewandt. Diese Anwendungen fanden immer auf gro"sen Netzwerken statt. Nun stellt sich die Frage, ob sich solche Methoden auch f\"ur deutlich kleinere Netzwerke eignen. in der vorliegenden Arbeit wird eine solche \textit{Feature}-basierte Methode - der \textit{Graphlet}-Algorithmus auf verschiedene Proteingraphen angewandt. 
-
-
 
 
 
