@@ -82,7 +82,7 @@ Des weiteren sind die meisten Methoden, die Proteinstrukturen vergleichen, \text
 
 Ziel dieser Arbeit war zun\"achst die Erweiterung der Funktionalit\"at des \texttt{graphletAnalyser}. Hierzu geh\"ort eine funktionierende Datenbankanbindung, so dass die \textit{Graphlet}-Vektoren f\"ur alle verschiedenen Graphtypen korrekt in die PTGL eingetragen werden k\"onnen.
 Die Suche nach markierten \textit{Graphlets} sollte so implementiert werden, dass sie auf Graphen mit beliebigen Markierungen angewandt werden kann. Deshalb wurde ein Algorithmus entwickelt und implementiert, der aus einem Alphabet von Knotenmarkierungen alle Worte berechnet, die markierte  2- und 3-\textit{Graphlets} repr\"asentieren - der \textit{Graphlet}-Worte-Algorithmus.
-Schlussendlich sollte im durch Fallstudien \"uberpr\"uft werden, ob und inwiefern sich \textit{Graphlets} eignen, um die \"Ahnlichkeit von Proteinstrukturtopologien zu untersuchen. Dies wurde mit unterschiedlichen Metriken getestet. Die hierbe errechneten \"Ahnlichkeitswerte wurden mit den Ergebnissen des \textit{Strukturalignment}-Programms \textit{PDBeFold} verglichen.
+Schlussendlich sollte im durch Fallstudien \"uberpr\"uft werden, ob und inwiefern sich \textit{Graphlets} eignen, um die \"Ahnlichkeit von Proteinstrukturtopologien zu untersuchen. Dies wurde mit unterschiedlichen Metriken getestet. Die hierbei errechneten \"Ahnlichkeitswerte wurden mit den Ergebnissen des \textit{Strukturalignment}-Programms \textit{PDBeFold} \cite{pdbefold} verglichen. 
 
 \section{Aufbau der Arbeit}
 
@@ -97,24 +97,56 @@ Die Ergebnisse dieses Vergleichs werden im Teil Ergebnisse und Diskussion vorges
 Um die Proteinstrukturtopologien aus der PTGL zu vergleichen wurde das Programm \texttt{graphletAnalyser} genutzt und erweitert. Es wurde bereits 2013 von \textit{Tatiana Bakirova} im Rahmen ihrer Diplomarbeit im Arbeitskreis \textit{Molekulare Bioinformatik} geschrieben. Die urspr\"ungliche Funktionalität wurde erweitert. Hierbei wurden Funktionen zur Analyse von Komplexgraphen, Aminos\"auregraphen und den Sekund\"arstrukturgraphen implemetiert. Diese Graphen stammen allesamt aus der PTGL (\underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary) von Tim Sch\"afer.
 
 
-\section{Die PTGL}
+\section{PTGL}
 
 
-Die \underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary ist 2009 von \textit{May et al.} \cite{ptgl1} entwickelt worden. Ausgehend von der Tatsache, dass sich Proteinstrukturtopologien als r\"aunliche Beziehungen von SSEs untereinander definieren lassen, verwendet die PTGL \emph{Graphen}, um Proteinstrukturtopologien darzustellen.
+Die \underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary entstand aus einer Idee von Patrick May und Ina Koch \citep{ptgl1}. Ausgehend von der Tatsache, dass sich Proteinstrukturtopologien als r\"aunliche Beziehungen von SSEs untereinander definieren lassen, verwendet die PTGL \emph{Graphen}, um Proteinstrukturtopologien darzustellen.
 Hierbei stellen die Knoten des Graphen die SSEs eines Proteins dar. Sie werden dem jeweiligen SSE entsprechend markiert. Knoten, die $\alpha$-Helices repr\"asentieren werden mit einem H markiert, $\beta$-Faltbl\"atter mit einem E. Weiterhin erm\"oglicht die PTGL die Darstellung von Liganden, (\cite{vplg}) denen mit L markierte Knoten zugeordnet werden. Um die r\"aumliche Nachbarschaft von Sekund\"arstrukturen und Liganden untereinander darstellen zu k\"onnen werden ungerichtete Kanten zwischen Knoten gezogen wenn die entsprechenden Elemente benachbart sind. Jede Polypeptidkette eines Proteins wird dann als \emph{Proteingraph} dargestellt. Die Zusammenhangskomponenten eines Proteingraphen werden als Faltungsgraphen bezeichnet, weil sie typischerweise eine unabh\"angige Faltungseinheit darstellen.
 
-\paragraph{Die Berechnung dieser Graphen}
+Durch diese abstrahierte Darstellung k\"onnen zentrale Charakteristika eines Proteins wie Motive und Dom\"anen einfach visualisiert werden.
 
-erfolgt unter Verwendung der entsprechenden PDB und DSSP Dateien. Um den Graphen einer Polypeptidkette zu berechnen werden aus der DSSP-Datei die Sekund\"arstrukturelemente (SSEs) des Proteins ausgelesen. F\"ur jedes Paar von SSEs wird die Anzahl der r\"aumlichen Kontakte ihrere Residuen berechnet. Wenn die Anzahl dieser Kontakte einen gewissen Grenzwert \"uberschreitet, wird die angenommen, dass diese SSEs r\"aumlich benachbart sind und die jeweiligen Knoten werden durch eine Kante verbunden.
+
+\section{PLCC}
+
+PLCC ist die \textit{Software}, die die Daten der PTGL generiert und verwaltet. 
+
+
+\paragraph{Die Berechnung der Graphen der PTGL}
+
+erfolgt unter Verwendung der entsprechenden PDB und DSSP Dateien. Um den Graphen f\"ur eine Polypeptidkette zu berechnen werden aus der DSSP-Datei die Sekund\"arstrukturelemente (SSEs) des Proteins ausgelesen. F\"ur jedes Paar von SSEs wird die Anzahl der r\"aumlichen Kontakte ihrer Residuen berechnet. Wenn die Anzahl dieser Kontakte einen gewissen Grenzwert \"uberschreitet, wird angenommen, dass diese SSEs r\"aumlich benachbart sind und die jeweiligen Knoten werden durch eine Kante verbunden. So wird f\"ur jede Polypeptidkette ein Graph erstellt.
 
 \paragraph{Komplexgraphen}
 
-werden ebenfalls in dieser Arbeit untersucht. Ihre Berechnung erfolgt analog zur Berechnung der Proteingraphen. Komplexgraphen k\"onnen einen vollst\"andigen Proteinkomplex darstellen. In einem solchen Graphen werden zus\"atzlich die Nachbarschaften von SSEs unterschiedlicher Polypeptidketten einbezoogen. Ein Komplexgraph setzt sich also aus mehreren Proteingraphen zusammen. Hier wird jedem Knoten zus\"atzlich zum SSE die Zugeh\"origkeit zu einer Polypeptidkette zugeordnet.
+werden ebenfalls in dieser Arbeit untersucht. Ihre Berechnung erfolgt analog zur Berechnung der Proteingraphen. Der Unterschied besteht darin, dass ein Komplexgraph mehrere Polypeptidketten beschreibt.
 
 \paragraph{Aminos\"auregraphen} werden ebenfalls untersucht und analog zu Proteingraphen berechnet. Hier werden keine SSEs betrachtet. Stattdessen repr\"asentiert jeder Knoten eine Aminos\"aure eines Proteins. Die Knoten werden entsprechend der chemischen Eigenschaften der Aminos\"auren markiert. Knoten, die saure oder basische Residuen darstellen werden mit einem c markiert. Ein p markiert Knoten f\"ur polare Residuen, die weder sauer noch basisch sind. F\"ur unpolare Aminos\"auren wird ein h verwendet. Auch Liganden k\"onnen in Aminos\"auregraphen dargestellt werden. Ihre Knoten werden durch ein ? markiert.
 
 
 F\"ur die Berechnungen dieser Arbeit wurde eine lokale Datenbank erstellt, die das gleiche Schema wie die PTGL verwendet.
+
+
+\section{\texttt{graphletAnalyser}}
+
+Das Programm \texttt{graphletAnalyser} implementiert die oben beschriebenen Algorithmen und kann die Resultate der Berechnungen in verschiedenen Formaten lokal auf dem Rechner des Nutzers speichern und sie in einer \textit{Postgresql}-Datenbank ablegen, die mit PLCC erstellt wurde.
+\texttt{graphletAnalyser} ist in C++ geschrieben und nutzt die \textit{Boost-Graph-Library} zur internen Darstellung der Graphen.
+
+Das Programm wird \"uber die Konsole gestartet und erh\"alt als \textit{Input} eine oder mehrere GML-Dateien. Der Nutzer kann weiterhin \"uber Parameter festlegen, ob markierte \textit{Graphlets} berechnet werden sollen, ob die Resultate in einer mit PLCC erstellten Datenbank gespeichert werden sollen und ob er die vordefinierten Knotenmarkierungen von SSE-Graphen, Komplexgraphen oder Aminos\"auregraphen nutzen m\"ochte.
+
+Weiterhin k\"onnen in der Konfigurationsdatei nutzerdefinierte Alphabete von Knotenmarkierungen eingegeben werden, die bei der Berechnung markierter \textit{Graphlets} genutzt werden k\"onnen.
+
+
+Das Programm bestand bereits vor dem Beginn dieser Arbeit. Es wurden Fehler im Code beseitigt und einige Funktionen hinzugef\"ugt, die im folgenden kurz beschrieben werden. 
+
+\paragraph{Das Einlesen von Komplexgraphen und Aminos\"auregraphen}
+
+ist implementiert worden. Die entsprechenden Alphabete sind im Programmcode vordefiniert und k\"onnen vom Nutzer \"uber Parameter ausgew\"ahlt werden.
+
+\paragraph{Nutzerdefinierte Knotenmarkierungen} k\"onnen nun in der Konfigurationsdatei angegeben werden. Der Nutzer kann ein Alphabet von Knotenmarkierungen und ein \textit{Label} unter dem diese Knotenmarkierungen in den GML-Dateien abgelegt sind angeben. F\"ur dieses Alphabet werden alle \"aquivalenten \textit{Graphlet}-Worte durch den \textit{Graphlet}-Worte-Algorithmus berechnet. Diese werden dann bei der Berechnung der markierten \textit{Graphlets} im Graphen unter dem vorgegebenen \textit{Label} gesucht und gez\"ahlt.
+Es k\"onnen also beliebige Alphabete und \textit{Labels} angegeben werden, so lange die Markierungen der Knoten nicht mehr als einen Buchstaben enthalten. 
+ 
+
+\paragraph{Die Datenbankanbindung} wurde um Funktionen zum Speichern von Aminos\"auregraphen und Komplexgraphen erweitert. Das Speichern von Vektoren markierter \textit{Graphlets} wurde implementiert.
+
 
 \section{Der \textit{Graphlet}-Algorithmus}
 
@@ -249,31 +281,6 @@ a_{3-Weg} := (hhh, hph, hhp, hpp, php, hpa, ahp, pah, hp?, ?hp, p?h, hah, hha, h
 a_{3-Kreis} := (hhh, hph, hpp, hpa, aph, hp?, ?ph, hah, haa, ha?, ?ah, h?h, h??, ppp, pap, paa, pa?, ?ap, p?p, p??, aaa, a?a, a??, ???)
 \end{align}
 \end{subequations}
-
-
-
-
-\section{\texttt{graphletAnalyser}}
-
-Das Programm \texttt{graphletAnalyser} implementiert die oben beschriebenen Algorithmen und kann die Resultate der Berechnungen in verschiedenen Formaten lokal auf dem Rechner des Nutzers speichern und sie in einer \textit{Postgresql}-Datenbank ablegen, die mit PLCC erstellt wurde.
-\texttt{graphletAnalyser} ist in C++ geschrieben und nutzt die \textit{Boost-Graph-Library} zur internen Darstellung der Graphen.
-
-Das Programm wird \"uber die Konsole gestartet und erh\"alt als \textit{Input} eine oder mehrere GML-Dateien. Der Nutzer kann weiterhin \"uber Parameter festlegen, ob markierte \textit{Graphlets} berechnet werden sollen, ob die Resultate in einer mit PLCC erstellten Datenbank gespeichert werden sollen und ob er die vordefinierten Knotenmarkierungen von SSE-Graphen, Komplexgraphen oder Aminos\"auregraphen nutzen m\"ochte.
-
-Weiterhin k\"onnen in der Konfigurationsdatei nutzerdefinierte Alphabete von Knotenmarkierungen eingegeben werden, die bei der Berechnung markierter \textit{Graphlets} genutzt werden k\"onnen.
-
-
-Das Programm bestand bereits vor dem Beginn dieser Arbeit. Es wurden Fehler im Code beseitigt und einige Funktionen hinzugef\"ugt, die im folgenden kurz beschrieben werden. 
-
-\paragraph{Das Einlesen von Komplexgraphen und Aminos\"auregraphen}
-
-ist implementiert worden. Die entsprechenden Alphabete sind im Programmcode vordefiniert und k\"onnen vom Nutzer \"uber Parameter ausgew\"ahlt werden.
-
-\paragraph{Nutzerdefinierte Knotenmarkierungen} k\"onnen nun in der Konfigurationsdatei angegeben werden. Der Nutzer kann ein Alphabet von Knotenmarkierungen und ein \textit{Label} unter dem diese Knotenmarkierungen in den GML-Dateien abgelegt sind angeben. F\"ur dieses Alphabet werden alle \"aquivalenten \textit{Graphlet}-Worte durch den \textit{Graphlet}-Worte-Algorithmus berechnet. Diese werden dann bei der Berechnung der markierten \textit{Graphlets} im Graphen unter dem vorgegebenen \textit{Label} gesucht und gez\"ahlt.
-Es k\"onnen also beliebige Alphabete und \textit{Labels} angegeben werden, so lange die Markierungen der Knoten nicht mehr als einen Buchstaben enthalten. 
- 
-
-\paragraph{Die Datenbankanbindung} wurde um Funktionen zum Speichern von Aminos\"auregraphen und Komplexgraphen erweitert. Das Speichern von Vektoren markierter \textit{Graphlets} wurde implementiert.
 
 
 
