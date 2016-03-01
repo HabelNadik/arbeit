@@ -119,7 +119,7 @@ erfolgt unter Verwendung der entsprechenden PDB und DSSP Dateien. Um den Graphen
 
 werden ebenfalls in dieser Arbeit untersucht. Ihre Berechnung erfolgt analog zur Berechnung der Proteingraphen. Der Unterschied besteht darin, dass ein Komplexgraph mehrere Polypeptidketten beschreibt.
 
-\paragraph{Aminos\"auregraphen} werden ebenfalls untersucht und analog zu Proteingraphen berechnet. Hier werden keine SSEs betrachtet. Stattdessen repr\"asentiert jeder Knoten eine Aminos\"aure eines Proteins. Die Knoten werden entsprechend der chemischen Eigenschaften der Aminos\"auren markiert. Knoten, die saure oder basische Residuen darstellen werden mit einem c markiert. Ein p markiert Knoten f\"ur polare Residuen, die weder sauer noch basisch sind. F\"ur unpolare Aminos\"auren wird ein h verwendet. Auch Liganden k\"onnen in Aminos\"auregraphen dargestellt werden. Ihre Knoten werden durch ein ? markiert.
+\paragraph{Aminos\"auregraphen} werden analog zu Proteingraphen und Komplexgraphen berechnet. Der Unterschied zu den anderen Graphformaten ist, das keine SSEs betrachtet werden. Stattdessen repr\"asentiert jeder Knoten eine Aminos\"aure eines Proteins. Die Knoten werden entsprechend der chemischen Eigenschaften der Aminos\"auren markiert. Knoten, die saure oder basische Residuen darstellen werden mit einem c markiert. Ein p markiert Knoten f\"ur polare Residuen, die weder sauer noch basisch sind. F\"ur unpolare Aminos\"auren wird ein h verwendet. Auch Liganden k\"onnen in Aminos\"auregraphen dargestellt werden. Ihre Knoten werden durch ein ? markiert. Aminos\"auregraphen k\"onnen Proteinkomplexe und einzelne Polypeptidketten darstellen.
 
 
 Weiterhin erm\"oglicht PLCC den Vergleich von \textit{Graphlet}-Vektoren, die im folgenden Teil vorgestellt werden. Diese werden mit der von \textit{Pr{\v u}lic et al.} \cite{frqdistribution} vorgestellten Relativen-\textit{Graphlet}-H\"aufigkeiten-Distanz verglichen.
@@ -194,7 +194,7 @@ mit F_{i}(G) := - log(\frac{N_{i}(G)}{T(G)})
 
 
 
-Diese Metrik l\"asst sich analog zur euklidischen Distanz auffassen, denn sie berechnet f\"ur jeden Index $i$ die Differenz zwischen den Stellen $x_i,y_i$ zweier Vektoren $x$ und $y$. Sie verwendet die normalisierten \textit{Graphlet}-Vektoren unter der Annahme, dass die \"Ahnlichkeit zweier Netzwerke sich aus der \"Ahnlichkeit lokaler Substrukturen ableiten l\"asst \cite{frqdistribution}. Somit k\"onnen Netzwerke, die \"ahnliche Substrukturen habe, sich aber in ihrer Gr\"o"se stark unterschieden, immer noch als \"ahnlich erkannt werden. Zus\"atzlich soll durch diese Normalisierung ausgeschlossen werden, dass einzelne besonders h\"aufige \textit{Graphlets} die Messung verzerren.
+Diese Metrik l\"asst sich analog zur euklidischen Distanz auffassen, denn sie berechnet f\"ur jeden Index $i$ die Differenz zwischen den Stellen $x_i,y_i$ zweier Vektoren $x$ und $y$. Sie verwendet die normalisierten \textit{Graphlet}-Vektoren unter der Annahme, dass die \"Ahnlichkeit zweier Netzwerke sich aus der \"Ahnlichkeit lokaler Substrukturen ableiten l\"asst \cite{frqdistribution}. Somit k\"onnen Netzwerke, die \"ahnliche Substrukturen habe, sich aber in ihrer Gr\"o"se stark unterschieden, immer noch als \"ahnlich erkannt werden. Zus\"atzlich soll durch diese Normalisierung ausgeschlossen werden, dass einzelne besonders h\"aufige \textit{Graphlets} in einem Graphen die Messung verzerren.
 
 Da alle Eintr\"age der Vektoren aus dem Intervall $ [0,1) \in \mathbb{R} $ stammen werden sie logarithmiert. Damit erh\"alt man Abst\"ande, die aus deutlich gr\"o"seren Intervallen stammen. Die Ergebnisse k\"onnen so leichter interpretiert werden und der Einfluss der von Rundungsfehlern verkleinert sich.
  
@@ -229,7 +229,57 @@ Dies steht im Gegensatz zur RGF, die - analog zu einer Vektornorm - die Abst\"an
 \section{Datens\"atze}
 
 
-\subsection{Fallstudien - Datensatz 1}
+
+\subsection{Fallstudien  - Datensatz 1}
+
+
+Dieser Datensatz enth\"alt 15 verschiedene Proteine mit bekannten strukturellen \"Ahnlichkeiten. Die Proteine wurden so gew\"ahlt, dass ihre Einordnungen in strukturelle Klassen in den Datenbanken CATH und SCOPe \"aquivalent zueinander sind.
+Der Datensatz wurde also so zusammengestellt, dass bez\"uglich der strukturellen Einteilung der Proteine der gr\"o"stm\"ogliche Konsens besteht.
+Je 5 Proteine dieses Datensatzes befinden sich in der gleichen Klasse. Von diesen 5 besitzen je 4 die gleiche Topologie und von diesen entstammen wiederum 3 der gleichen homologen Superfamilie. Von diesen ist ein Paar direkt homolog mit einer Sequenzidentit\"at von mehr als 95\%. Das dritte Protein ist zu den anderen beiden entfernt homolog mit einer Sequenzidentit\"at von weniger als 30\%.
+
+Es sind Proteine der Klassen $\alpha$, $\beta$ und $\alpha/\beta$ vertreten. Proteine mit wenigen SSEs wurden nicht betrachtet, da f\"ur diese die Proteingraphen und die Komplexgraphen in den meisten F\"allen keine Kanten besitzen. Dadurch k\"onnen keine \textit{Graphlets} in diesen Graphen gefunden werden.
+
+Weiterhin wurde darauf geachtet, dass jedes Protein dieses Datensatzes aus genau einer Polypeptidkette mit genau einer Dom\"ane besteht. Dies hat mehrere Gr\"unde.
+
+Zum ersten erm\"oglicht diese Auswahl die beste Vergleichbarkeit der Messungen mit Proteingraphen, Komplexgraphen und Aminos\"auregraphen, da Proteingraphen im Gegensatz zu Komplexgraphen und Amins\"auregraphen nur eine Polypeptidkette darstellen k\"onnen. Durch die Beschr\"ankung auf Proteine mit einer Polypeptidkette wird ein direkter Vergleich durch die Korrelation der paarweisen Distanzen in den unterschiedlichen Formaten m\"oglich.
+
+Ein weiterer Grund f\"ur die Beschr\"ankung auf solche Proteine ist, dass man ein ''klareres Signal'' erh\"alt. Die Struktur von Proteinen wird haupts\"achlich anhand ihrer Dom\"anen beschrieben. Wenn \textit{Graphlets} sich wirklich f\"ur den Vergleich von Topologien eignen, dann m\"ussten gleiche Dom\"anen zu gleichen oder zumindest \"ahnlichen \textit{Graphlet}-Vektoren f\"uhren.
+Da diese Vektoren globale Struktureigenschaften des Proteins beschreiben erhielte man f\"ur ein Multidom\"anenprotein mit unterschiedlichen Dom\"anen einen Vektor, der die Struktureigenschaften beider Dom\"anen ''vermischt'' und das Signal verrauscht.
+
+
+In der folgenden Tabelle \ref{tab:set1} sind die PDB-IDs der Proteine dieses Datensatzes zusammen mit ihrer CATH-ID und der Klassifizierung aus der PDB Datei aufgef\"uhrt.
+
+\newpage
+
+\begin{table}[h!]
+\label{tab:set1}
+\begin{tabular}{ | c || c | c |}
+
+\hline
+PDB-ID & CATH-ID        & Klassifizierung      \\ \hline
+1qpu   & 1.20.120.10 & Elektronentransport     \\ \hline
+1qq3   & 1.20.120.10 & Elektronentransport     \\ \hline
+1cgn   & 1.20.120.10 & Elektronentransport     \\ \hline
+1he9   & 1.20.120.260& Toxin (Exoenzym)        \\ \hline
+3gf9   & 1.20.900.10 & Endocytose              \\ \hline
+1exs   & 2.40.128.20 & Lipid bindendes Protein \\ \hline
+1ngl   & 2.40.128.20 & Transport Protein       \\ \hline
+1qqs   & 2.40.128.20 & Zucker bindendes Protein\\ \hline
+3slo   & 2.40.128.130& Protein Transport       \\ \hline
+1wjx   & 2.40.280.10 & RNA-bindendes Protein   \\ \hline
+5chy   & 3.40.50.2300& Signaltransduktion      \\ \hline
+2id9   & 3.40.50.2300& Signal Protein          \\ \hline
+3i42   & 3.40.50.2300& unbekannte Funktion     \\ \hline
+1d4o   & 3.40.50.1220& Oxidoreductase          \\ \hline
+2w0i   & 3.40.20.10  & Transferase             \\ 
+\hline
+\end{tabular}
+\end{table}
+
+F\"ur diesen Datensatz wurden alle \textit{Graphlet}-Vektoren berechnet. Die paarweisen Distanzen dieser Vektoren zueinander wurden mit der RGF und dem Jaccard-Index berechnet. F\"ur die berechneten Distanzmatrizen wurden die Korrelationen der Distanzen in den verschiedenen Formaten berechnet und sie wurden mit den von PDBeFold berechneten Distanzen verglichen. 
+
+
+\subsection{Fallstudien - Datensatz 2}
 
 Anfangs wurden 20 verschiedene Proteine aus verschiedenen CATH-Klassen zum Vergleich ausgew\"ahlt. Die Proteine wurden so gew\"ahlt, dass die drei CATH-klassen mit vielen Sekund\"arstrukturelementen \textit{mainly-alpha}, \textit{mainly-beta} und \textit{alpha-beta} vertreten sind. Weiterhin wurde die Auswahl so getroffen, dass es f\"ur jede Stufe der Hierarchie mindestens zwei Proteine gibt, die auf der entsprechenden Stufe in die gleiche Klasse eingeordnet werden. Die Proteine werden im folgenden kurz beschreiben.
 
@@ -267,45 +317,8 @@ PDB-ID & CATH-Code  \\
 \end{tabular}
 
 
-\subsection{Fallstudien  - Datensatz 2} 
-
-F\"ur die ersten Tests wurden verschiedene Proteine entsprechend ihrer CATH-Klassifizeirungen zusammengestellt. Die Proteine wurden so gew\"ahlt, dass die 3 CATH-Klassen gleich stark vertreten sind, in denen sich viele Sekund\"arstrukturelemente befinden. Dementsprechend wurden Proteine aus der CATH-Klasse 4 ignoriert. Diese Klasse enth\"alt nur Proteine mit wenigen Sekund\"arstrukturelementen.
-
-Es befinden sich je 5 Vertreter der drei CATH-Klassen 1 (\textit{mainly-alpha}), 2 (\textit{mainly-beta}) und 3 (\textit{alpha-beta}) in diesem Datensatz. Diese wurden so gew\"ahlt, dass je ein Paar innerhalb der selben Klasse ein direkter struktureller Nachbar mit eine Sequenzidentit\"at von mehr als 95\%, sowie ein Nachbar mit einer Sequenzidentit\"at von meher als 35\% befindet, um zu \"uberpr\"ufen, ob die \textit{Graphlet}-Vektoren von Aminos\"auregraphen eine Korrelation mit der Sequenzidentit\"at aufweisen k\"onnen.
-Weiterhin wurde je ein Vertreter der selben Topologie aus einer anderen Superfamilie, sowie der selben Architektur mit anderer Topologie gew\"ahlt.
- 
-Da die \textit{Graphlet}-Vektoren globale Eigenschaften eines Graphen beschreiben, wurde bei diesem Datensatz darauf geachtet, dass alle Strukturen aus genau einer Polypeptidkette mit genau einer Dom\"ane bestehen.
-
-Diese Herangehensweise folgt aus der Vermutung, dass einzelne Dom\"anen charakteristische \textit{Graphlet}-Vektoren haben. 
-\\
-
-\begin{tabular}{ | c || c | c |}
-
-\hline
-PDB-ID & CATH-ID        & Klassifizierung      \\ \hline
-1qpu   & 1.20.120.10 & Elektronentransport     \\ \hline
-1qq3   & 1.20.120.10 & Elektronentransport     \\ \hline
-1cgn   & 1.20.120.10 & Elektronentransport     \\ \hline
-1he9   & 1.20.120.260& Toxin (Exoenzym)        \\ \hline
-3gf9   & 1.20.900.10 & Endocytose              \\ \hline
-1exs   & 2.40.128.20 & Lipid bindendes Protein \\ \hline
-1ngl   & 2.40.128.20 & Transport Protein       \\ \hline
-1qqs   & 2.40.128.20 & Zucker bindendes Protein\\ \hline
-3slo   & 2.40.128.130& Protein Transport       \\ \hline
-1wjx   & 2.40.280.10 & RNA-bindendes Protein   \\ \hline
-5chy   & 3.40.50.2300& Signaltransduktion      \\ \hline
-2id9   & 3.40.50.2300& Signal Protein          \\ \hline
-3i42   & 3.40.50.2300& unbekannte Funktion     \\ \hline
-1d4o   & 3.40.50.1220& Oxidoreductase          \\ \hline
-2w0i   & 3.40.20.10  & Transferase             \\ 
-\hline
-\end{tabular}
 
 
-
-\subsubsection{Vergleich von Proteinen \"ahnlicher Gr\"o"se}
-
-Da \textit{Graphlets} in den Experimenten von Pruzlj et al und Shervashidze et auf gro"se Graphen angewandt wurden, bietet es sich an, sie auch auf gro"se Proteinkomplexe anzuwenden und bei kleinen Proeinen den Aminsos\"auregraphen zu verwenden. So kann man (hoffentlich) das Problem der d\"unn besetzten Graphen umgehen und f\"ur verschiedene Gr\"o"sen von Graphen relevante Ergebnisse erzielen. Daf\"ur muss ein Datensatz aus gr\"o"sen Proteinkomplexen mit bekannter struktureller \"Ahnlichkeit zusammengestellt werden.
 
 
 
@@ -314,23 +327,6 @@ Da \textit{Graphlets} in den Experimenten von Pruzlj et al und Shervashidze et a
 
 
 \chapter{Ergebnisse}
-
-
-\section{Erweiterung von \texttt{graphletAnalyser}}
-
-\paragraph{Das Einlesen von Komplexgraphen und Aminos\"auregraphen}
-
-ist implementiert worden. Die entsprechenden Alphabete sind im Programmcode vordefiniert und k\"onnen vom Nutzer \"uber Parameter ausgew\"ahlt werden.
-
-\paragraph{Nutzerdefinierte Knotenmarkierungen} k\"onnen nun in der Konfigurationsdatei angegeben werden. Der Nutzer kann ein Alphabet von Knotenmarkierungen und ein \textit{Label} unter dem diese Knotenmarkierungen in den GML-Dateien abgelegt sind angeben. F\"ur dieses Alphabet werden alle \"aquivalenten \textit{Graphlet}-Worte durch den \textit{Graphlet}-Worte-Algorithmus berechnet. Diese werden dann bei der Berechnung der markierten \textit{Graphlets} im Graphen unter dem vorgegebenen \textit{Label} gesucht und gez\"ahlt.
-Es k\"onnen also beliebige Alphabete und \textit{Labels} angegeben werden, so lange die Markierungen der Knoten nicht mehr als einen Buchstaben enthalten. 
- 
-
-\paragraph{Die Datenbankanbindung} wurde um Funktionen zum Speichern von Aminos\"auregraphen und Komplexgraphen erweitert. Das Speichern von Vektoren markierter \textit{Graphlets} wurde implementiert.
-
-
-\section{Bewertungsfunktionen in PLCC}
-
 
 
 \section{Der \textit{Graphlet}-Worte-Algorithmus}
@@ -425,6 +421,26 @@ a_{3-Weg} := (hhh, hph, hhp, hpp, php, hpa, ahp, pah, hp?, ?hp, p?h, hah, hha, h
 a_{3-Kreis} := (hhh, hph, hpp, hpa, aph, hp?, ?ph, hah, haa, ha?, ?ah, h?h, h??, ppp, pap, paa, pa?, ?ap, p?p, p??, aaa, a?a, a??, ???)
 \end{align}
 \end{subequations}
+
+
+\section{Erweiterung von \texttt{graphletAnalyser}}
+
+\paragraph{Das Einlesen von Komplexgraphen und Aminos\"auregraphen}
+
+ist implementiert worden. Die entsprechenden Alphabete sind im Programmcode vordefiniert und k\"onnen vom Nutzer \"uber Parameter ausgew\"ahlt werden.
+
+\paragraph{Nutzerdefinierte Knotenmarkierungen} k\"onnen nun in der Konfigurationsdatei angegeben werden. Der Nutzer kann ein Alphabet von Knotenmarkierungen und ein \textit{Label} unter dem diese Knotenmarkierungen in den GML-Dateien abgelegt sind angeben. F\"ur dieses Alphabet werden alle \"aquivalenten \textit{Graphlet}-Worte durch den \textit{Graphlet}-Worte-Algorithmus berechnet. Diese werden dann bei der Berechnung der markierten \textit{Graphlets} im Graphen unter dem vorgegebenen \textit{Label} gesucht und gez\"ahlt.
+Es k\"onnen also beliebige Alphabete und \textit{Labels} angegeben werden, so lange die Markierungen der Knoten nicht mehr als einen Buchstaben enthalten. 
+ 
+
+\paragraph{Die Datenbankanbindung} wurde um Funktionen zum Speichern von Aminos\"auregraphen und Komplexgraphen erweitert. Das Speichern von Vektoren markierter \textit{Graphlets} wurde implementiert.
+
+
+\section{Bewertungsfunktionen in PLCC}
+
+
+
+
 
 \section{Fallstudien - Datensatz 1}
 
