@@ -5,20 +5,36 @@ Hasegawa et~al.
 \newblock Advances and pitfalls of protein structural alignment.
 \newblock {\em Current Opinion in Structural Biology}, 2009.
 
+\bibitem{pdbefold}
+E~Krissinel and K~Henrick.
+\newblock Secondary-structure matching (ssm), a new tool for fast protein
+  structure alignment in three dimensions.
+\newblock {\em Acta Crystallographica Section D: Biological Crystallography},
+  60(12):2256--2268, 2004.
+
+\bibitem{top500}
+Simon~C Lovell, Ian~W Davis, W~Bryan Arendall, Paul~IW de~Bakker, J~Michael
+  Word, Michael~G Prisant, Jane~S Richardson, and David~C Richardson.
+\newblock Structure validation by c$\alpha$ geometry: $\phi$, $\psi$ and
+  c$\beta$ deviation.
+\newblock {\em Proteins: Structure, Function, and Bioinformatics},
+  50(3):437--450, 2003.
+
 \bibitem{ptgl1}
-May et~al.
+Patrick May, Annika Kreuchwig, Thomas Steinke, and Ina Koch.
 \newblock Ptgl: a database for secondary structure-based protein topologies.
-\newblock {\em Nucleic Acids Research}, 2010.
+\newblock {\em Nucleic acids research}, 38(suppl 1):D326--D330, 2010.
+
+\bibitem{graphletfrequency}
+N~Pr{\v{z}}ulj, Derek~G Corneil, and Igor Jurisica.
+\newblock Efficient estimation of graphlet frequency distributions in
+  protein--protein interaction networks.
+\newblock {\em Bioinformatics}, 22(8):974--980, 2006.
 
 \bibitem{frqdistribution}
-Prz{\v u}lj et~al.
-\newblock Modelling interactome: scale-free or geometric.
-\newblock {\em Bioinformatics}, 2004.
-
-\bibitem{dali}
-Chris~Sander Liisa~Holm.
-\newblock Dali: a network tool for protein structure comparison.
-\newblock {\em Trends in Biomedical Sciences}, 1995.
+Natasa Pr{\v{z}}ulj, Derek~G Corneil, and Igor Jurisica.
+\newblock Modeling interactome: scale-free or geometric?
+\newblock {\em Bioinformatics}, 20(18):3508--3515, 2004.
 
 \bibitem{vplg}
 Tim Sch{\"a}fer, Patrick May, and Ina Koch.
@@ -30,10 +46,17 @@ Tim Sch{\"a}fer, Patrick May, and Ina Koch.
   (OASIcs)}, pages 108--118, Dagstuhl, Germany, 2012. Schloss
   Dagstuhl--Leibniz-Zentrum fuer Informatik.
 
-\bibitem{fatcat}
-Adam~Godzik Yuzhen~Ye.
-\newblock Flexible structure alignment by chaining aligned fragment pairs
-  allowing twists.
-\newblock {\em Bioinformatics}, 2003.
+\bibitem{sherv_graphlets}
+Nino Shervashidze, Tobias Petri, Kurt Mehlhorn, Karsten~M Borgwardt, and Svn
+  Vishwanathan.
+\newblock Efficient graphlet kernels for large graph comparison.
+\newblock In {\em International conference on artificial intelligence and
+  statistics}, pages 488--495, 2009.
+
+\bibitem{zhangtm}
+Yang Zhang and Jeffrey Skolnick.
+\newblock Tm-align: a protein structure alignment algorithm based on the
+  tm-score.
+\newblock {\em Nucleic acids research}, 33(7):2302--2309, 2005.
 
 \end{thebibliography}

@@ -154,7 +154,7 @@ w_5 := \left( \frac{1}{120}, \frac{1}{72}, \frac{1}{48}, \frac{1}{36}, \frac{1}{
 Jede Stelle eines Gewichtungsvektors $w_k$ ist mit einem \textit{Graphlet} assoziiert. Die Nenner der Br\"uche in den Vektoren entsprechen den Anzahlen der Euler-Wege der L\"ange $k-1$ in den entsprechenden \textit{Graphlets}. Wenn alle Euler-Wege eines \textit{Graphlets} besucht wurden und der zugeh\"orige induzierte Teilgraph ihm entspricht, wird sein Z\"ahler im \textit{Graphlet}-Vektor ganzzahlig und das \textit{Graphlet} gilt als gefunden.
 Hierbei bilden  die Stern-\textit{Graphlets}, die keine Euler-Wege der L\"ange $k-1$ enthalten, nat\"urlich die Ausnahme.
  
-Da wir 29 verschiedene \textit{Graphlets} betrachten, hat ein \textit{Graphlet}-Vektor 29 Stellen. F\"ur den Vergleich von Proteinstrukturen bedeutet dies, dass der Berechnugsaufwand in $O(1)$ liegt, da anstatt von Graphen oder dreidimensionalen K\"orpern Vektoren im Vektorraum $\mathbb{R}^{29}$ verglichen werden.
+Da wir 29 verschiedene \textit{Graphlets} betrachten, hat ein \textit{Graphlet}-Vektor 29 Stellen. F\"ur den Vergleich von Proteinstrukturen bedeutet dies, dass der Berechnugsaufwand in $O(1)$ liegt, da anstatt von Graphen, oder dreidimensionalen K\"orpern Vektoren im Vektorraum $\mathbb{R}^{29}$ verglichen werden.
 
 TODO: Pseudocode in Anhang einf\"ugen
 
@@ -207,6 +207,9 @@ Weiterhin wurde gezeigt, (\cite{frqdistribution}) dass diese Metrik auch bei ver
 
 \section{Datens\"atze}
 
+Im folgenden Teil sind die verwendeten Datens\"atze beschrieben. Es wurden zwei Fallstudien mit Abstandsmessungen durchgef\"uhrt, um diese zu testen.
+
+Zus\"atzlich wurden \textit{Graphlet}-Vektoren f\"ur einen Datensatz aus 500 nicht redundanten PDB-Eintr\"agen berechnet. F\"ur diesen Datensatz wurden keine Abstandsmessungen durchgef\"uhrt, stattdessen wurden die \textit{Graphlet}-Vektoren selbst analysiert.
 
 
 \subsection{Fallstudien  - Datensatz 1}
@@ -262,7 +265,8 @@ F\"ur diesen Datensatz wurden alle \textit{Graphlet}-Vektoren berechnet. Die paa
 
 F\"ur die zweite Fallstudie wurden Proteine ausgew\"ahlt, die weniger engen Beschr\"ankungen unterliegen. Die meisten von ihnen besitzen mehrere - h\"aufig unterschiedliche - Dom\"anen und mehrere Polypeptidketten. Sie wurden so ausgew\"ahlt, dass es zu jedem Protein mindestens ein anderes gibt, das die selbe Topologie hat, um festzustellen, ob ein solches Paar auch immer die niedrigsten Distanzen erh\"alt.
 
-Weiterhin wurde darauf geachtet, diese Proteine so auszuw\"ahlen, dass die Analyse durch \textit{Graphlets} besonder schwierig ausf\"allt. Es sind Proteine aus der Familie der \textit{TIM-Barrels} enthalten, deren Strukturen sich stark unterscheiden, auch wenn sie als homolog angesehen werden und es wurden Paare von PDB-Strukturen eingef\"ugt, die sich nur durch eine Konformations\"anderung unterscheiden.
+Weiterhin wurde darauf geachtet, diese Proteine so auszuw\"ahlen, dass die Analyse durch \textit{Graphlets} besonders schwierig ausf\"allt. Es sind Proteine aus der Familie der \textit{TIM-Barrels} enthalten, deren Strukturen sich stark unterscheiden, auch wenn sie als homolog angesehen werden und es wurden Paare von PDB-Strukturen eingef\"ugt, die sich nur durch eine Konformations\"anderung unterscheiden.
+
 
 
 \subsubsection{Zusammengefasst}
@@ -301,8 +305,18 @@ PDB-ID & CATH-Code  \\
 
 
 
-\subsection{Fallstudien - Datensatz 3}
+\subsection{Der PDBTop500-Datensatz}
 
+Der PDBTop500-Datensatz wurde von \textit{Lovell et al.} vorgestellt (\cite{top500}). Diese nutzten ihn zur Validierung von PDB-Strukturen mittels C$\alpha$-Geometrie.
+Der Datensatz enth\"alt 500 nicht redundante PDB-Eintr\"age mit einer Aufl\"osung von 1,8 \AA \\
+oder besser.
+
+Er wurde ausgew\"ahlt, weil die \textit{Graphlet}-Vektoren f\"ur ihn schnell berechenbar waren. Im Gegensatz zu anderen Datens\"atzen mit nicht redundanten PDB-Eintr\"agen wie dem FATCAT- oder dem ASTRAL-Datensatz enth\"alt dieser keine riesigen Proteinkomplexe, deren \textit{Graphlets} auf durchschnittlichen Computern nicht berechnbar sind. 
+Er ist aber immer noch gro"s genug, um Strukturvergleichsmethoden validieren zu k\"onnen. \textit{Zhang} und \textit{Skolnick} verwendeten zur Validierung von \textit{TM-align} einen Datensatz aus 200 PDB-Eintr\"agen (\cite{zhangtm}).
+
+Da ein Vergleich von Strukturvergleichsmethoden auf einem solchen Datensatz zu aufw\"andig war, wurde dieser Datensatz f\"ur eine statistische Analyse der \textit{Graphlet}-Vektoren genutzt.
+
+F\"ur die relativen H\"aufigkeiten der einzelnen \textit{Graphlets} wurden Minima, Maxima, Varianzen und Durchschnittswerte berechnet. Hierbei war das Ziel festzustellen, ob wirklich alle \textit{Graphlets} f\"ur Strukturvergleiche notwendig sind.
 
 
 \chapter{Ergebnisse}
@@ -468,7 +482,7 @@ F\"ur die Komplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter
 
 \section{Fallstudien - Datensatz 2}
 
-\section{Fallstudien - Datensatz 3}
+\section{PDBTop500-Datensatz}
 
 
 \chapter{Diskussion und Ausblick}
@@ -519,8 +533,6 @@ Vektor & RGF & Jaccard-Index \\
 \subsection{Optimierung der Laufzeit von \texttt{graphletAnalyser}}
 
 \subsection{\"Ahnlichkeitssuche}
-
-\subsection{\textit{Graphlets} im Faltungsraum}
 
 \subsection{\textit{Graphlet}-Motive}
 
