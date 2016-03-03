@@ -32,65 +32,67 @@
 
 \section{Motivation}
 
-TODO: Zitationen einf\"ugen: schwierigkeit der Analyse, bereits bekannte Methoden
-TODO: stärkerer Bezug auf und nennung von tatianas arbeit (insbesondere bio-graphlets)
-TODO: Bereits bekannte Anwendungen von Graphlets: Anwendung von Shervashidze auf ZUSAMMENHAENGENDE graphen, zeigt Probleme mit der Darstellung in der PTGL - einzelne Knoten werden nur in marginaler Weise integriert.
-Anwendung von Przulj: Grosse Netzwerke . Vergleich mit zufaelligen Graphen. Vergleich zwischen PPIs mit hoher Praezision und PPIs mit niedriger praezision. betrifft ebenfalls nur vollstaendige graphen.
-datensatz von dobson und doig (in shervashidze arbeit erwaehnt) verwendet svms zur analyse - 70 prozent genauigkeit wurde erreicht. dies ist ein anzeichen daf\"ur, dass die Klassifizierung mit vektoren nur begrenzt genutzt werden kann. (shervashidze ergebnis ist auch nicht viel besser)
-es ist zu erw\"ahnen, dass SVMs zu den fortgeschrittensten Klassifizierungsmethoden geh\"oren, die zur zeit verwendet werden.
+
+Die verschiedenen Funktionen, die Proteine erf\"ullen sind zu einem gro"sen Teil durch ihre Struktur bestimmt. Diese Struktur ist ein bestimmender Faktor, f\"ur ihre F\"ahigkeit Liganden zu binden und chemische Reaktionen zu katalysieren.
+Daraus folgt, dass die Analyse von Proteinstrukturen zentral f\"ur ein tieferes Verst\"andnis von zellul\"arem Leben ist. Die vergleichende Analyse von Proteinen liefert nicht nur wichtige Erkenntnise \"uber ihre Funktion, sondern hilft auch dabei, evolution\"are Verwandschaften zu entdecken, die durch reine Sequenzanalysen nicht mehr nachvollziehbar sind.
+
+In dieser Arbeit werden Proteinstrukturtopologien untersucht. Die Topologie eines Proteins ist als die Anordnung seiner Sekund\"arstrukturelemente (SSEs) zueinander definiert. Die Betrachtung von SSEs hat den Vorteil, dass diese auch \"uber gro"se evolution\"are Distanzen stark konserviert sind. 
+
+Zur Darstellung dieser Topologien werden hier Graphen verwendet. Graphen geh\"oren zu den am st\"arksten untersuchten mathematischen Strukturen, da sich mit ihnen viele verschiedene komplexe Zusammenh\"ange darstellen lassen. Ihre Nutzung ist \"uberall dort angebracht, wo Daten nicht als Zahlen oder Vektoren darstellbar sind, weil sie eine Menge von Objekten und ihren Beziehungen untereinander repr\"asentieren.
 
 
-\paragraph{Proteine} sind gewisserma"sen die Wekzeuge der Zelle. Fast jede Aufgabe die sie bew\"altigen muss, um zu \"uberleben, l\"ost sie mit Hilfe von Proteinen. Dementsprechend vielf\"altig sind die Formen und Funktionen, die Proteine annehmen - und wie bei Werkzeugen auch, folgt die Form der Funktion. Die Aufkl\"arung der dreidimensionalen Struktur von Proteinen ist somit f\"ur ein tiefergehendes Verst\"andnis ihrer Funktion von zentraler Bedeutung.
+Graphen finden sich in der Erforschung von sozialen Netzwerken wieder und werden in der Chemie zur Darstellung von Molek\"ulen genutzt. Auch in der Bioinformatik sind Graphen das zentrale Mittel zur Darstellung komplexer Beziehungen. Interaktionen von Proteinen werden genauso als Graphen modelliert, wie Signalewege in Zellen oder eben Proteine. Die Analyse von biologischen Netzwerken ist ein zentrales Mittel, um biologische Vorg\"ange besser zu verstehen \cite{junker2011analysis}.
 
+Der Vergleich von Graphen ist jedoch keine triviale Aufgabe. Die Frage: ''Ist dieser Graph in diesem anderen Graphen enthalten?'' befriedigend schnell beantworten zu k\"onnen, ist nicht m\"oglich, denn das zugrunde liegende Entscheidungsproblem ist NP-vollst\"andig \cite{karp1972reducibility}
 
-
-Im Rahmen der \textit{•}
-
-
-
-
-\paragraph{\textit{Graphlets}} sind kleine vollst\"andige induzierte Teilgraphen.
+Um dieses Problem zu umgehen werden hier \textit{Graphlets} angewendet. \textit{Graphlets} sind kleine, induzierte Teilgraphen, die f\"ur gro"se Graphen immer noch schnell abz\"ahlbar sind. Mit dieser Technik lassen sich in polynomieller Zeit Teilstrukturen eines Graphen ermitteln, deren Vergleich einfacher durchzuf\"uhren ist, als ein direkter Vergleich der Graphen selbst. So lassen sich \textit{Graphlets} zur vergleichenden Analyse von Proteinstrukturtopologien verwenden.
 
 
 
 
+\section{\textit{State of the art}}
 
+Mit der wachsenden Anzahl von Struktureeintr\"agen in der \textit{Protein Data Bank} (PDB) ist eine Vielzahl von Methoden entstanden, um diese Strukturen zu vergleichen.
 
-\section{\textit{State of the Art}}
+Der wohl bekannteste Algorithmus zum Vergleich von dreidimensionalen Proteinstrukturen ist DALI von \textit{Holm} und \textit{Sander} \cite{holm1993protein}. Er f\"uhrt ein globales Alignment durch, indem Distanzmatrizen verglichen werden. In diesen Matrizen sind die intramolekularen Distanzen der C$\alpha$-Atome der jeweiligen Proteine eingetragen.
 
-TODO: Methoden nennen, weitere Zitationen
+In den 23 Jahren, die seit der Ver\"offentlichung von DALI vergangen sind, sind aber noch viele weitere Methoden mit unterschiedlichen Ans\"atzen entwickelt worden. Der Algorithmus von \textit{Shindyalov} und \textit{Bourne} \cite{shindyalov1998protein} berechnet ein Alignment von Proteinstrukturen, indem er zun\"achst kleine Paare von Substrukturen aligniert und dann versucht dieses Alignment auf einen optimalen Pfad auszudehnen.
 
-Es gibt bereits einige Methoden, um Proteinstrukturen miteinander zu vergleichen. \textit{Hasegawa et al} \cite{advancespitfalls} liefern einen umfangreichen Vergleich verschiedener Methoden, bei denen Strukturen auf unterschiedlichen Abstraktionsstufen betrachtet und verglichen werden. So k\"onnen Proteinstrukturen dreidimensional, zweidimensional und eindimensional betrachtet und verglichen werden.
+Der FATCAT-Algorithmus von \textit{Ye} und \textit{Godzik} \cite{fatcat} verwendet eine \"ahnliche Idee und versucht zus\"atzlich die Substrukturen flexibel zu alignieren, um auch gleiche Proteine mit ver\"anderter Konformation erkennen zu k\"onnen.
 
-\paragraph{3D-Methoden} versuchen zun\"achst mittels Sequenzalignment einen Bereich in den zu vergleichenden Proteinen zu finden, in dem sich beide Proteine sehr \"ahnlich sind. Dieser Bereich fungiert gewisserma"sen als \emph{Anker} f\"ur das weitere Alignment. In den weiteren Schritten werden die Proteine so positioniert, dass die Distanzen in dem alignierten Bereich minimal sind. Von diesem \textit{Template} ausgehend, werden die Distanzen zwischen den weiteren Residuen der Proteine berechnet und meist mittels \textit{Root-mean-square-deviation} bewertet.
+\textit{TM-align} von \textit{Zhang} und \textit{Skolnick} \cite{zhangtm} berechnet eine Rotationsmatrix und nutzt Dynamische Programmierung. Der Algorithmus benutzt als Bewertungsschema den sogenannten \textit{TM-Score}, der besonders geeignet ist, um lokale \"Ahnlichkeiten zu erkennen.
 
-\paragraph{2D-methoden} versuchen Kontakte zwischen Residuen oder Sekund\"arstrukturen zu vergleichen. Diese Kontakte werden beispielsweise als graphen oder Distanzmatrizen dargestellt. Der Vergleich zwischen zwei Proteinstrukturen wird dann beispielsweise als Verlgeich zweier Distanzmatrizen durchgef\"uhrt.
+Der SSM-Algorithmus von \textit{Krissinel} und \textit{Hendrick} \cite{pdbefold} verwendet eine graphenbasierte Darstellung von Proteinen f\"ur ein erstes Alignment und verfeinert dieses dann durch die Berechnung der Distanzen \"aquivalenter C$\alpha$-Atome. Er wird im \textit{PDBeFold-Web-Server} implementiert. Als einziger hier beschriebener Algorithmus erm\"oglicht er schnelle multiple Strukturvergleiche \"uber einen \textit{Web-Service}.
 
-\paragraph{1D-Methoden} nutzen Strukturprofile zur Darstellung von Proteinen. In Strukturprofilen repr\"asentieren einzelne Buchstaben Eigenschaften von Residuen und die Konformation des Protein-\textit{Backbone} an der entsprechenden Stelle. So k\"onnen schnelle \textit{String}-Algorithmen genutzt werden, um Strukturen zu suchen und zu vergleichen.
+\textit{Graphlets} wurden zuerst von \textit{Pr{\v z}ulj et al.} auf biologische Daten angewandt \cite{frqdistribution}, \cite{graphletfrequency}. Sie nutzten den \textit{Graphlet}-Algorithmus, um \"Ahnlichkeiten von Protein-Protein-Interaktionsnetzwerken zu berechnen.
 
-\paragraph{0D-Methoden} reduzieren die 3D-Struktur am st\"arksten. Die gesamte Struktur wird durch eine Zahl beschrieben, die sich aus der Struktur berechnen l\"asst. Sie erlauben sehr schnelle Suchen in Datenbanken, haben aber das Problem, dass sie keinen Vergleich von Teilstrukturen erm\"oglichen.
+\textit{N. Shervashidze} war die erste, die \textit{Graphlets} zur Analyse von Proteinen anwandte \cite{sherv_graphlets}. Sie nutzte \textit{Support Vector Machines} auf \textit{Graphlet}-Vektoren, um  f\"ur Proteingraphen zu entscheiden, ob diese Enzyme darstellen oder nicht.
 
-\paragraph{Die Methoden} stellen alle einen Versuch dar, die \"Ahnlichkeit von Proteinen zu beziffern. Sie werden angewendet, um entferent homologe Proteine aufzusp\"uren und in Datenbanken eine \"Ahnlichkeitssuche zu erm\"oglichen. Dies findet vor allem im pharmakologischen Bereich Anwendung.
-
-Interessant ist, dass unter den von \textit{Hasegawa et al} vorgestellten 1D-Methoden keine wirklich analog zur Analyse mit \textit{Graphlets} funktioniert. Andere 1D-Methoden versuchen die Polypeptidkette als \textit{String} darzustellen und damit die Konformations\"anderung des \textit{Backbone} zu beschreiben. Im Gegensatz dazu z\"ahlt der \textit{Graphlet}-Algorithmus die \textit{Graphlets} unabh\"angig von ihrer Position im Graphen. Somit repr\"asentiert der \textit{Graphlet}-Vektor an jeder Stelle eine globale Eigenschaft des Graphen, anstatt die Ver\"anderung von einer Sekund\"arstruktur zur n\"achsten zu beschreiben.
-
-Des weiteren sind die meisten Methoden, die Proteinstrukturen vergleichen, \textit{Template}-basiert. Um den Suchraum einzuschr\"anken muss eine Struktur ausgew\"ahlt werden, die als Vorlage f\"ur den Vergleich mit anderen Strukturen dient. Dementsprechend \"andert sich das Ergebnis des Vergleichs auch in Abh\"angigkeit der gew\"ahlten Vorlage.
-
-
+\textit{Graphlets} wurden auch von \textit{Tatiana Bakirova} verwendet, um Proteinstrukturen zu analysieren \cite{bakirova2013comparison}. Sie hat das Programm \texttt{graphletAnalyser} verfasst, das in dieser Arbeit weiterentwickelt wird.
 
 \section{Ziele}
 
-Ziel dieser Arbeit war zun\"achst die Erweiterung der Funktionalit\"at des \texttt{graphletAnalyser}. Hierzu geh\"ort eine funktionierende Datenbankanbindung, so dass die \textit{Graphlet}-Vektoren f\"ur alle verschiedenen Graphtypen korrekt in die PTGL eingetragen werden k\"onnen.
-Die Suche nach markierten \textit{Graphlets} sollte so implementiert werden, dass sie auf Graphen mit beliebigen Markierungen angewandt werden kann. Deshalb wurde ein Algorithmus entwickelt und implementiert, der aus einem Alphabet von Knotenmarkierungen alle Worte berechnet, die markierte  2- und 3-\textit{Graphlets} repr\"asentieren - der \textit{Graphlet}-Worte-Algorithmus.
-Schlussendlich sollte im durch Fallstudien \"uberpr\"uft werden, ob und inwiefern sich \textit{Graphlets} eignen, um die \"Ahnlichkeit von Proteinstrukturtopologien zu untersuchen. Dies wurde mit unterschiedlichen Metriken getestet. Die hierbei errechneten \"Ahnlichkeitswerte wurden mit den Ergebnissen des \textit{Strukturalignment}-Programms \textit{PDBeFold} \cite{pdbefold} verglichen. 
+Ziel dieser Arbeit war zun\"achst die Erweiterung der Funktionalit\"at von \\ \texttt{graphletAnalyser}. Hierzu geh\"ort zun\"achst eine funktionierende Datenbankanbindung, um die berechneten Daten abzuspeichern.
+Die Suche nach markierten \textit{Graphlets} sollte so implementiert werden, dass sie auf Graphen mit beliebigen Markierungen angewandt werden kann. Deshalb wurde ein Algorithmus entwickelt und implementiert, der aus einem Alphabet von Knotenmarkierungen alle Worte berechnet, die markierte  2- und 3-\textit{Graphlets} repr\"asentieren - der \textit{Graphlet}-Worte-Algorithmus. Die Suche nach diesen markierten \textit{Graphlets} in einem Graphen wurde ebenfalls implementiert.
+
+In Fallstudien wird \"uberpr\"uft, ob und inwiefern sich \textit{Graphlets} eignen, um die \"Ahnlichkeit von Proteinstrukturtopologien zu untersuchen. Dies wurde mit unterschiedlichen Metriken getestet. Die hierbei errechneten \"Ahnlichkeitswerte wurden mit den Ergebnissen des Strukturalignment-Programms \textit{PDBeFold} \cite{pdbefold} verglichen.
+
+Weiterhin wurde mit dem PDBTop500-Datensatz \cite{top500} untersucht, welche strukturellen Merkmale von Proteinen mit \textit{Graphlets} ermittelt werden.
 
 \section{Aufbau der Arbeit}
 
-Zun\"achst wird im Kapitel \emph{Materialien und Methoden} PLCC vorgestellt - das Programm, mit dem die Graphen der PTGL erzeugt werden.
-Es folgt eine Kurzbeschreibung der PTGL selbst, sowie eine Beschreibung des \textit{Graphlet}-Algorithmus und des \textit{Graphlet}-Worte-Algorithmus.
-Weiterhin wird das Programm \texttt{graphletAnalyser}vorgestellt, welches den \textit{Graphlet}-Algorithmus implementiert.
-Anschlie"send werden verschiedene Metriken vorgestellt, mit denen die erhaltenen \textit{Graphlet}-Vektoren verglichen werden.
-Die Ergebnisse dieses Vergleichs werden im Teil Ergebnisse und Diskussion vorgestellt. Hierbei werden die verschiedenen Metriken verglichen und es wird \"uberpr\"uft inwiefern die Suche nach markierten \textit{Graphlets} zu diesem Ergebnis beitr\"agt.
+Zun\"achst wird im Kapitel \emph{Materialien und Methoden} die \textit{Protein Topology Graph Library} (PTGL) \cite{ptgl1} vorgestellt, deren Idee die Grundlage f\"ur diese Arbeit liefert. 
+ 
+Es folgt eine Kurzbeschreibung von PLCC, der \textit{Software}, die die Graphen der PTGL erstellt und diese verwaltet, sowie eine Beschreibung des \textit{Graphlet}-Algorithmus.
+
+Weiterhin wird das Programm \texttt{graphletAnalyser} vorgestellt, welches den \textit{Graphlet}-Algorithmus implementiert.
+Anschlie"send wird die erste Metrik vorgestellt, mit denen die erhaltenen \textit{Graphlet}-Vektoren verglichen werden. Es folgt eine Beschreibung der verwendeten Datens\"atze und von \textit{PDBeFold}, dessen Ergebnisse mit denen von \texttt{graphletAnalyser} verglichen werden.
+
+Im Ergebnisteil wird zun\"achst der modifizierte Jaccard-Index pr\"asentiert, der sich mit leichten \"Anderungen am Tanimoto-Koeffizienten orientiert. Dann folgen Beschreibungen des neuen \textit{Graphlet}-Worte-Algorithmus und der in den Fallstudien erhaltenen Ergebnisse.
+
+Im abschlie"senden Teil \emph{Diskussion und Ausblick} wird versucht, die Frage zu kl\"aren, ob sich \textit{Graphlets} f\"ur multiplen Proteinstrukturvergleich und \"ahnliche Anwendungen eignen. Weiterhin wird untersucht, ob Modifikationen der \textit{Graphlet}-Vektoren, oder der Metriken n\"otig sein k\"onnten, um bessere Ergebnisse zu erhalten. 
+
+
 
 \chapter{Materialien und Methoden}
 
@@ -202,7 +204,13 @@ Da alle Eintr\"age der Vektoren aus dem Intervall $ [0,1] \in \mathbb{R} $ stamm
  
 Weiterhin wurde gezeigt, (\cite{frqdistribution}) dass diese Metrik auch bei verrauschten Daten noch sehr gut funktioniert. Hierbei ist jedoch zu beachten, dass sie bisher vor allem f\"ur sehr gro"se Netzwerke mit mehreren Tausend Knoten und Kanten verwendet wurde. Diese Gr\"o"se kann von Aminos\"auregraphen erreicht werden, wenn sie gro"se Proteinkomplexe modellieren. Proteingraphen und Komplexgraphen sind aber deutlich kleiner.
 
+\section{\textit{PDBeFold}}
 
+Im Rahmen der Fallstudien wird \texttt{graphletAnalyser} mit \textit{PDBeFold} \cite{pdbefold} verglichen. \textit{PDBeFold} f\"uhrt einen graphenbasierten Strukrutvergleich durch. Analog zur PTGL modellieren Knoten SSEs. Zus\"atzlich werden diese mit der Anzahl von Residuen der SSE markiert. Im Gegensatz zur PTGL verbindet PDBeFold jeden Knoten durch eine Kante mit jedem anderen Knoten. Die Kanten werden hierbei mit Vektoren markiert, in denen unter anderem die Distanzen und Winkel zwischen den SSEs eingetragen sind.
+
+Die Proteine werden also als vollst\"andige, ungerichtete Graphen modelliert, in denen jede Kante alle Informationen zur r\"aumlichen Orientierung ihrer inzidenten Knoten enth\"alt. Diese Graphen werden vorberechnet.
+
+Zum Vergleich von Strukturen wird f\"ur diese Graphen zun\"achst ein Alignment durchgef\"uhrt, um eine Absch\"atzung der strukturellen \"Ahnlichkeit zu erhalten und die \"aquivalenten Residuen zu ermitteln. Im Anschluss f\"uhrt PDBeFold ein Alignment der C$\alpha$-Atome durch und berechnet die \"Ahnlichkeit mit der \textit{Root-Mean-Square-Deviation}.
 
 
 \section{Datens\"atze}
@@ -536,7 +544,7 @@ Vektor & RGF & Jaccard-Index \\
 
 \subsection{\textit{Graphlet}-Motive}
 
-
+\subsection{Klassifizierung mit \textit{Support-Vector-Machines}}
 
 
 \chapter{Anhang}

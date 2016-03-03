@@ -1,9 +1,24 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{advancespitfalls}
-Hasegawa et~al.
-\newblock Advances and pitfalls of protein structural alignment.
-\newblock {\em Current Opinion in Structural Biology}, 2009.
+\bibitem{bakirova2013comparison}
+Tatiana Bakirova, Tim Sch{\"a}fer, and Ina Koch.
+\newblock Comparison of protein topology graphs using graphlet-based methods.
+\newblock {\em GCB 2013 G{\"o}ttingen-Poster Abstracts}.
+
+\bibitem{holm1993protein}
+Liisa Holm and Chris Sander.
+\newblock Protein structure comparison by alignment of distance matrices.
+\newblock {\em Journal of molecular biology}, 233(1):123--138, 1993.
+
+\bibitem{junker2011analysis}
+Bj{\"o}rn~H Junker and Falk Schreiber.
+\newblock {\em Analysis of biological networks}, volume~2.
+\newblock John Wiley \& Sons, 2011.
+
+\bibitem{karp1972reducibility}
+Richard~M Karp.
+\newblock {\em Reducibility among combinatorial problems}.
+\newblock Springer, 1972.
 
 \bibitem{pdbefold}
 E~Krissinel and K~Henrick.
@@ -25,16 +40,16 @@ Patrick May, Annika Kreuchwig, Thomas Steinke, and Ina Koch.
 \newblock Ptgl: a database for secondary structure-based protein topologies.
 \newblock {\em Nucleic acids research}, 38(suppl 1):D326--D330, 2010.
 
-\bibitem{graphletfrequency}
-N~Pr{\v{z}}ulj, Derek~G Corneil, and Igor Jurisica.
-\newblock Efficient estimation of graphlet frequency distributions in
-  protein--protein interaction networks.
-\newblock {\em Bioinformatics}, 22(8):974--980, 2006.
-
 \bibitem{frqdistribution}
 Natasa Pr{\v{z}}ulj, Derek~G Corneil, and Igor Jurisica.
 \newblock Modeling interactome: scale-free or geometric?
 \newblock {\em Bioinformatics}, 20(18):3508--3515, 2004.
+
+\bibitem{graphletfrequency}
+Natasa Pr{\v{z}}ulj, Derek~G Corneil, and Igor Jurisica.
+\newblock Efficient estimation of graphlet frequency distributions in
+  protein--protein interaction networks.
+\newblock {\em Bioinformatics}, 22(8):974--980, 2006.
 
 \bibitem{vplg}
 Tim Sch{\"a}fer, Patrick May, and Ina Koch.
@@ -52,6 +67,18 @@ Nino Shervashidze, Tobias Petri, Kurt Mehlhorn, Karsten~M Borgwardt, and Svn
 \newblock Efficient graphlet kernels for large graph comparison.
 \newblock In {\em International conference on artificial intelligence and
   statistics}, pages 488--495, 2009.
+
+\bibitem{shindyalov1998protein}
+Ilya~N Shindyalov and Philip~E Bourne.
+\newblock Protein structure alignment by incremental combinatorial extension
+  (ce) of the optimal path.
+\newblock {\em Protein engineering}, 11(9):739--747, 1998.
+
+\bibitem{fatcat}
+Yuzhen Ye and Adam Godzik.
+\newblock Flexible structure alignment by chaining aligned fragment pairs
+  allowing twists.
+\newblock {\em Bioinformatics}, 19(suppl 2):ii246--ii255, 2003.
 
 \bibitem{zhangtm}
 Yang Zhang and Jeffrey Skolnick.
