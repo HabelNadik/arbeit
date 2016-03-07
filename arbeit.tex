@@ -264,7 +264,7 @@ PDB-ID & CATH-ID        & Klassifizierung      \\ \hline
 2w0i   & 3.40.20.10  & Transferase             \\ 
 \hline
 \end{tabular}
-\caption{PDB-Eintr\"age der ersten Fallstudie. Die PDB-IDs sind mit dem CATH-Code der zugeh\"origen homologen Superfamilie und der klassifizierung aus dem \textit{Header} der PDB-Datei eingetragen}
+\caption{PDB-Eintr\"age der ersten Fallstudie. Die PDB-IDs sind mit dem CATH-Code der zugeh\"origen homologen Superfamilie und der Klassifizierung aus dem \textit{Header} der PDB-Datei in der entsprechenden Zeile eingetragen}
 \end{table}
 
 F\"ur diesen Datensatz wurden alle \textit{Graphlet}-Vektoren berechnet. Die paarweisen Distanzen dieser Vektoren zueinander wurden mit der RGF und dem modifizierten Jaccard-Index berechnet. F\"ur die berechneten Distanzmatrizen wurden die Korrelationen der Distanzen in den verschiedenen Formaten berechnet und sie wurden mit den von PDBeFold berechneten Distanzen verglichen. 
@@ -454,13 +454,17 @@ a_{3-Kreis} := (hhh, hph, hpp, hpa, aph, hp?, ?ph, hah, haa, ha?, ?ah, h?h, h??,
 
 \paragraph{Das Einlesen von Komplexgraphen und Aminos\"auregraphen}
 
-ist implementiert worden. Die entsprechenden Alphabete sind im Programmcode vordefiniert und k\"onnen vom Nutzer \"uber Parameter ausgew\"ahlt werden.
+ist implementiert worden. Die entsprechenden Alphabete sind im Programmcode vordefiniert und k\"onnen vom Nutzer \"uber Parameter ausgew\"ahlt werden oder in der Konfigurationsdatei festgelegt werden.
 
-\paragraph{Nutzerdefinierte Knotenmarkierungen} k\"onnen nun in der Konfigurationsdatei angegeben werden. Der Nutzer kann ein Alphabet von Knotenmarkierungen und ein \textit{Label} unter dem diese Knotenmarkierungen in den GML-Dateien abgelegt sind angeben. F\"ur dieses Alphabet werden alle \"aquivalenten \textit{Graphlet}-Worte durch den \textit{Graphlet}-Worte-Algorithmus berechnet. Diese werden dann bei der Berechnung der markierten \textit{Graphlets} im Graphen unter dem vorgegebenen \textit{Label} gesucht und gez\"ahlt.
-Es k\"onnen also beliebige Alphabete und \textit{Labels} angegeben werden, so lange die Markierungen der Knoten nicht mehr als einen Buchstaben enthalten. 
+\paragraph{Nutzerdefinierte Knotenmarkierungen} k\"onnen nun in der Konfigurationsdatei angegeben werden. Der Nutzer kann ein Alphabet von Knotenmarkierungen und ein \textit{Label}, unter dem diese Knotenmarkierungen in den GML-Dateien gespeichert sind, angeben. F\"ur dieses Alphabet werden alle \"aquivalenten \textit{Graphlet}-Worte durch den \textit{Graphlet}-Worte-Algorithmus berechnet. Diese werden dann bei der Berechnung der markierten \textit{Graphlets} im Graphen unter dem vorgegebenen \textit{Label} gesucht und gez\"ahlt.
+Es k\"onnen also beliebige Alphabete und \textit{Labels} angegeben werden, so lange die Markierungen der Knoten nicht mehr als einen Buchstaben enthalten.
+
+
  
 
 \paragraph{Die Datenbankanbindung} wurde um Funktionen zum Speichern von Aminos\"auregraphen und Komplexgraphen erweitert. Das Speichern von Vektoren markierter \textit{Graphlets} wurde implementiert.
+
+Wenn die Option \texttt{--useDatabase} ausgew\"ahlt wird, pr\"uft das Programm, ob der entsprechende Graph bereits in der Datenbank vorhanden ist. Falls der Graph gefunden wurde, wird der \textit{Graphlet}-Vektor f\"ur den entsprechenden Graphen in die Datenbank eingetragen. 
 
 
 
@@ -474,7 +478,7 @@ zeigt f\"ur die Aminos\"auregraphen die st\"arksten \"Ahnlichkeiten immer innerh
 Innerhalb der Klasse der \textit{alpha-beta}-Proteine, gibt es mit 2id9 und 1d4o zwei Proteine, denen eine gr\"o"sere \"Ahnlichkeit zu Proteinen der \textit{mainly-alpha}-Klasse attestiert wurde.
 Bei 1d4o f\"allt auf, dass der niedrigste Wert mit 7,091 deutlich h\"oher ist, als die besten Werte aller anderen Proteine.
 2id9 hat laut der RGF-Distanz die gr\"o"ste \"Ahnlichkeit zu 1he9.
-Bis auf diese beiden Au"snahmen l\"asst sich jedoch eine gro"se starke Korrelation mit den CATH-Klassen erkennen.
+Bis auf diese beiden Au"snahmen l\"asst sich jedoch eine starke Korrelation mit den CATH-Klassen erkennen.
 Alle anderen Proteine haben mindestens die zwei kleinsten zwei RGF-Distanzen zu Vertretern aus der selben CATH-Klasse.
 
 Dies gilt f\"ur die Aminos\"auregraphen. Die RGF-Distanzen der Proteingraphen zueinander zeigen ein weniger klares Bild.
@@ -494,6 +498,22 @@ F\"ur die Komplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter
 
 \section{PDBTop500-Datensatz}
 
+F\"ur den PDBTop500-Datensatz wurden \textit{Graphlet}-Vektoren der drei verschiedenen Graphenformate berechnet. Diese Vektoren wurden f\"ur jedes Format in einer .csv-Datei zusammengefasst und f\"ur jede dieser Dateien wurden \textit{Boxplots} erstellt.
+
+Mit dieser Darstellung kann ermittelt werden, f\"ur welche \textit{Graphlets} die Streuung besonders gro"s ist. Diese \textit{Graphlets} sollten dann besonders gut geeignet sein, um die entsprechenden Graphen zu klassifizieren.
+
+Der folgende Plot zeigt die Verteilungen f\"ur die Aminos\"auregraphen.
+
+
+
+\begin{figure}[h!]
+\centering
+\label{fig:aag_dist}
+\includegraphics[scale=0.9]{graphlet_verteilungen_aag.png}
+\caption{\textit{Graphlets} f\"ur die Aminos\"auregraphen des PDBTop500-Datensatzes. Jeder Eintrag auf der x-Achse entspricht einem \textit{Graphlet}. Die y-Achse stellt ihre relativen H\"aufigkeiten dar}
+\end{figure}
+
+In diesem Plot entsprechen die ersten 29 Eintr\"age den \textit{Graphlets} ohne Markierungen. F\"ur diese \textit{Graphlets} ist die Varianz der Relativen-\textit{Graphlet}-H\"aufigkeiten deutlich gr\"o"ser, als f\"ur die markierten \textit{Graphlets}. Damit haben diese auch den gr\"o"sten Einfluss auf die Vergleiche der \textit{Graphlet}-Vektoren.
 
 \chapter{Diskussion und Ausblick}
 
@@ -502,12 +522,12 @@ F\"ur die Komplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter
 \section{Diskussion}
 
 Die folgende Diskussion der Fallstudien widmet sich vor allem der Frage, wieso die Ergebnisse der \"Ahnlichkeitsvergleiche, sich so stark zwischen den jeweiligen Graphendarstellungen unterscheiden.
-Des weiteren wird der Zusammenhang zwischen dem Jaccard-Index und der RGF untersucht.
+Des weiteren wird der Zusammenhang zwischen dem Jaccard-Index und der RGF untersucht und es wird \"uberpr\"uft, ob das Z\"ahlen markierter \textit{Graphlets} zu einer h\"oheren Genauigkeit f\"uhrt.
 
 \subsection{Datensatz 1}
 \subsubsection{Vergleich der Graphformate}
 
-Wie schon im Ergebnisteil dargestellt, zeigen die Vergleiche der Aminos\"auregraphen den h\"ohsten Konsens mit der Einteilung der Strukturen durch CATH und SCOPe. Eine m\"ogliche Erkl\"arung hierf\"ur ist die Gestalt der Graphen. Bisher wurden \textit{Graphlets} haupts\"achlich zur Analyse von zusammenh\"angenden Graphen verwendet (\cite{sherv_graphlets}, \cite{graphletfrequency}).
+Wie schon im Ergebnisteil dargestellt, zeigen die Vergleiche der Aminos\"auregraphen den h\"ohsten Konsens mit der Einteilung der Strukturen durch CATH und SCOPe. Eine m\"ogliche Erkl\"arung hierf\"ur ist die Gestalt der Graphen. Bisher wurden \textit{Graphlets} zur Analyse von zusammenh\"angenden Graphen verwendet (\cite{sherv_graphlets}, \cite{graphletfrequency}).
 Proteingraphen und Komplexgraphen sind jedoch nicht immer zusammenh\"angend. es kommt h\"aufig vor, dass einzelne Knoten keine Verbindungen zum Rest des Graphen aufweisen. Das unten stehende Bild zeigt ein Beispiel.
 
 \begin{figure}[h!]
@@ -517,7 +537,7 @@ Proteingraphen und Komplexgraphen sind jedoch nicht immer zusammenh\"angend. es 
 
 Dadurch, dass dies in den zusammenh\"angenden \textit{Graphlets} nicht ber\"ucksichtigt werden kann, geht Information verloren. Unabh\"angig von der Wahl des \"Ahnlichkeitsma"s w\"urde dieser Graph mit einem anderen Graphen, dem die beiden Helix-Knoten mit einem Grad von 0 fehlen, als gleich bewertet werden, obwohl dieser zwei SSEs weniger aufwiese. Diese SSEs k\"onnen jedoch biologisch von zentraler Bedeutung sein.
 
-Im Gegensatz hierzu sind die Aminos\"auregraphen dieser Fallstudie zusammenh\"angend. Dies erkl\"art die h\"ohere Genauigkeit. 
+Im Gegensatz hierzu sind die Aminos\"auregraphen dieser Fallstudie zusammenh\"angend. Dies erkl\"art die h\"ohere Genauigkeit.
 
 \subsubsection{Vergleich der Distanzma"se}
 
@@ -535,18 +555,37 @@ Vektor & RGF & Jaccard-Index \\
 
 \subsection{Datensatz 2}
 
-\subsection{Datensatz 3}
+\subsection{PDBTop500-Datensatz}
+
+\paragraph{Aminos\"auregraphen} scheinen wenig geeignet f\"ur die Anwendung von markierten \textit{Graphlets} zu sein, da die meisten von ihnen garnicht gefunden werden, oder ihre relative H\"aufigkeit so klein ist, dass sie kaum einen Einfluss auf den Vergleich der \textit{Graphlet}-Vektoren hat.
+
+Dies kommt daher, dass Aminos\"auregraphen zum einen deutlich mehr Knoten und Kanten enthalten als Komplexgraphen und Proteingraphen und f\"ur ihre 3-\textit{Graphlets} deutlich mehr repr\"asentierende Worte existieren.
+
+ 
+
+
+TODO: durchschnittliche Knoten, Kantenzahl, Knotengrade der unterschiedlichen Foramte berechnen 
+
+
 
 \section{Ausblick}
 
 
 \subsection{Optimierung der Laufzeit von \texttt{graphletAnalyser}}
 
+Vor allem bei der Berechnung der \textit{Graphlets} auf Aminos\"aurgraphen gro"ser Proteine besteht Verbesserungspotential. Aktuell z\"ahlt das Programm bei einem Aufruf automatische alle \textit{Graphlets} mit 3,4 und 5 Knoten jeweils getrennt voneinander.
+
+Da f\"ur die \"Ahnlichkeitsberechnung in ihrer aktuellen Form alle \textit{Graphlets} einbezogen werden, ist es sinnvoll diese Berechnungen in einem Algorithmus zusammenzufassen. F\"ur Graphen mit $n$ Knoten und einem maximalen Knotengrad $d$ lie"se sich die Laufzeit damit von $O(nd^4+nd^3+nd^2)$ auf $O(nd^4)$ reduzieren.
+
+Diese Zusammenfassung lie"se sich dadurch bewerkstelligen, dass man die Funktionen zum \"Uberpr\"ufen der \textit{Graphlets} aus den Algorithmen zum Z\"ahlen der 3- und 4-\textit{Graphlets} in den Algorithmus zum Z\"ahlen der 5-\textit{Graphlets} in die \textit{for}-Schleifen der entsprechenden Tiefen einf\"ugt.
+
 \subsection{\"Ahnlichkeitssuche}
 
 \subsection{\textit{Graphlet}-Motive}
 
 \subsection{Klassifizierung mit \textit{Support-Vector-Machines}}
+
+
 
 
 \chapter{Anhang}
