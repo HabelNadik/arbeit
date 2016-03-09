@@ -10,6 +10,7 @@
 \usepackage[table, dvipsnames, usenames]{xcolor}
 \usepackage{color}
 \usepackage[justification=centering]{caption}
+\usepackage{float}
 %\usepackage{algorithm2e}
 %\usepackage{qtree}
 %\usepackage{cite}
@@ -63,6 +64,8 @@ Der FATCAT-Algorithmus von \textit{Ye} und \textit{Godzik} \cite{fatcat} verwend
 \textit{TM-align} von \textit{Zhang} und \textit{Skolnick} \cite{zhangtm} berechnet eine Rotationsmatrix und nutzt Dynamische Programmierung. Der Algorithmus benutzt als Bewertungsschema den sogenannten \textit{TM-Score}, der besonders geeignet ist, um lokale \"Ahnlichkeiten zu erkennen.
 
 Der SSM-Algorithmus von \textit{Krissinel} und \textit{Hendrick} \cite{pdbefold} verwendet eine graphenbasierte Darstellung von Proteinen f\"ur ein erstes Alignment und verfeinert dieses dann durch die Berechnung der Distanzen \"aquivalenter C$\alpha$-Atome. Er wird im \textit{PDBeFold-Web-Server} implementiert. Als einziger hier beschriebener Algorithmus erm\"oglicht er schnelle multiple Strukturvergleiche \"uber einen \textit{Web-Service}.
+
+
 
 \textit{Graphlets} wurden zuerst von \textit{Pr{\v z}ulj et al.} auf biologische Daten angewandt \cite{frqdistribution}, \cite{graphletfrequency}. Sie nutzten den \textit{Graphlet}-Algorithmus, um \"Ahnlichkeiten von Protein-Protein-Interaktionsnetzwerken zu berechnen.
 
@@ -210,7 +213,9 @@ Im Rahmen der Fallstudien wird \texttt{graphletAnalyser} mit \textit{PDBeFold} \
 
 Die Proteine werden also als vollst\"andige, ungerichtete Graphen modelliert, in denen jede Kante alle Informationen zur r\"aumlichen Orientierung ihrer inzidenten Knoten enth\"alt. Diese Graphen werden vorberechnet.
 
-Zum Vergleich von Strukturen wird f\"ur diese Graphen zun\"achst ein Alignment durchgef\"uhrt, um eine Absch\"atzung der strukturellen \"Ahnlichkeit zu erhalten und die \"aquivalenten Residuen zu ermitteln. Im Anschluss f\"uhrt PDBeFold ein Alignment der C$\alpha$-Atome durch und berechnet die \"Ahnlichkeit mit der \textit{Root-Mean-Square-Deviation}.
+Zum Vergleich von Strukturen wird f\"ur diese Graphen zun\"achst ein Alignment durchgef\"uhrt, um eine Absch\"atzung der strukturellen \"Ahnlichkeit zu erhalten und die \"aquivalenten Residuen zu ermitteln. Im Anschluss f\"uhrt PDBeFold ein Alignment der C$\alpha$-Atome durch und berechnet die \"Ahnlichkeit der Proteine als durchschnittlichen paarweisen Abstand \"aquivalenter Residuen. Als Abstandsma"s verwendet es die \textit{Root-Mean-Square-Deviation}.
+
+Da \texttt{graphletAnalyser} Vektoren berechnet, die verglichen werden, ist ein direkter Vergleich der Abst\"ande aus beiden Programmen nicht m\"oglich. Der Vergleich kann nur durch einen Vergleich relativer Abst\"ande innerhalb der Datens\"atze erfolgen.
 
 
 \section{Datens\"atze}
@@ -279,35 +284,36 @@ Weiterhin wurde darauf geachtet, diese Proteine so auszuw\"ahlen, dass die Analy
 
 
 
-
+\begin{table}[h!]
+\label{tab:set2}
 \begin{tabular}{ | c || c | c | }
-
 \hline
-PDB-ID & CATH-ID  \\ \hline
-2UTG & 1.10.210.10  \\ \hline % uteroglobin - pdb-klasse: steroid bindend
-1VIB & 1.10.287.120 \\ \hline % neurotoxin - pdb-klasse: neurotoxin
-1QPU & 1.20.120.10  \\ \hline % Cytochrom b
-1QQ3 & 1.20.120.10  \\ \hline % cytochrom b oxidiert
-2XL6 & 1.20.120.10  \\ \hline % cytochrom c mit NO
-2YL1 & 1.20.120.10  \\ \hline% cytochrom c mit CO
-1rxq & 1.20.120.450 \\ \hline% metall abhaengige hydrolase - pdb-head: metall abhaengiges protein
-2qe9 & 1.20.120.450 \\ \hline% metall abhaengige hydrolase - pdb-head: hydrolase
-2RD9 & 1.20.120.450 \\ \hline% metall abhaengige hydrolase - pdb-head: hydrolase
-1M4R & 1.20.1250.10 \\ \hline% interleukin 22 - pdb-head: cytokin
-1HGU & 1.20.1250.10 \\ \hline% wachstumshormon - pdb-head: hormon
-1PV6 & 1.20.1250.20 \\ \hline% lactose permease - pdb-head: transportprotein
-1AWR & 2.40.100.10  \\ \hline% enzymkomplex cypa und hagpia ?
-1D9C & 1.20.1250.10 \\ \hline% BOVINE INTERFERON-GAMMA
-1NGL & 2.40.128.20  \\ \hline% transportprotein
-1N7V & 2.105.10.10  \\ \hline% riesiges Virusprotein - rezeptor bindendes protein
-7TIM & 3.20.20.70   \\ \hline% triosephosphat isomerase phosphat-komplex
-1NEY & 3.20.20.70   \\ \hline% triosephosphat isomerase DHAP-komplex
-2V5L & 3.20.20.70   \\ \hline%  TRYPANOSOMAL TRIOSEPHOSPHATE ISOMERASE - neue kristallform
-1V3Z & 3.30.70.100  \\ \hline% Acylphosphatase
-1A17 & 1.25.40.10   \\ \hline% pdb-header sagt hydrolase - muesste anderen hydrolasen aehnlich sein
-1ar0 & 3.10.450.50  \\ \hline% Nuclear transport factor 2
-
+PDB-ID & CATH-ID & Klassifizierung \\ \hline
+2UTG & 1.10.210.10 & Steroid-bindend  \\ \hline % uteroglobin - pdb-klasse: steroid bindend
+1VIB & 1.10.287.120 & Neurotoxin \\ \hline % neurotoxin - pdb-klasse: neurotoxin
+1QPU & 1.20.120.10 & Elektronentransport  \\ \hline % Cytochrom b
+1QQ3 & 1.20.120.10 & Elektronentransport \\ \hline % cytochrom b oxidiert
+2XL6 & 1.20.120.10 & Elektronentransport \\ \hline % cytochrom c mit NO
+2YL1 & 1.20.120.10 & Elektronentransport\\ \hline% cytochrom c mit CO
+1rxq & 1.20.120.450 & metall-bindendes protein \\ \hline
+2qe9 & 1.20.120.450 & Hydrolase \\ \hline% metall abhaengige hydrolase - pdb-head: hydrolase
+2RD9 & 1.20.120.450 & Hydrolase \\ \hline% metall abhaengige hydrolase - pdb-head: hydrolase
+1M4R & 1.20.1250.10 & Cytokin \\ \hline% interleukin 22 - pdb-head: cytokin
+1HGU & 1.20.1250.10 & Hormon \\ \hline% wachstumshormon - pdb-head: hormon
+1PV6 & 1.20.1250.20 & Transportprotein \\ \hline% lactose permease - pdb-head: transportprotein
+1AWR & 2.40.100.10 &  Isomerase-Peptid-Komplex \\ \hline% enzymkomplex cypa und hagpia ?
+1D9C & 1.20.1250.10 & Immunsystem \\ \hline% BOVINE INTERFERON-GAMMA
+1NGL & 2.40.128.20 & Transportprotein \\ \hline% transportprotein
+1N7V & 2.105.10.10 &  Virales Protein \\ \hline% riesiges Virusprotein - rezeptor bindendes protein
+7TIM & 3.20.20.70 & Intramolekulare Oxidoreductase \\ \hline% triosephosphat isomerase phosphat-komplex
+1NEY & 3.20.20.70 & Isomerase  \\ \hline% triosephosphat isomerase DHAP-komplex
+2V5L & 3.20.20.70 & Oxidoreductase  \\ \hline%  TRYPANOSOMAL TRIOSEPHOSPHATE ISOMERASE - neue kristallform
+1V3Z & 3.30.70.100 & Hydrolase \\ \hline% Acylphosphatase
+1A17 & 1.25.40.10  & Hydrolase \\ \hline% pdb-header sagt hydrolase
+1ar0 & 3.10.450.50 & Transport  \\ \hline
 \end{tabular}
+\caption{Proteine des zweiten Datensatzes}
+\end{table}
 
 
 
@@ -317,16 +323,23 @@ PDB-ID & CATH-ID  \\ \hline
 
 \subsection{Der PDBTop500-Datensatz}
 
-Der PDBTop500-Datensatz wurde von \textit{Lovell et al.} vorgestellt (\cite{top500}). Diese nutzten ihn zur Validierung von PDB-Strukturen mittels C$\alpha$-Geometrie.
+Der PDBTop500-Datensatz wurde von \textit{Lovell et al.} vorgestellt (\cite{top500}). Diese nutzten ihn zur Validierung von PDB-Strukturen mit Hilfe der C$\alpha$-Geometrie.
 Der Datensatz enth\"alt 500 nicht redundante PDB-Eintr\"age mit einer Aufl\"osung von 1,8 \AA \\
 oder besser.
 
-Er wurde ausgew\"ahlt, weil die \textit{Graphlet}-Vektoren f\"ur ihn schnell berechenbar waren. Im Gegensatz zu anderen Datens\"atzen mit nicht redundanten PDB-Eintr\"agen wie dem FATCAT- oder dem ASTRAL-Datensatz enth\"alt dieser keine riesigen Proteinkomplexe, deren \textit{Graphlets} auf durchschnittlichen Computern nicht berechnbar sind. 
+Er wurde ausgew\"ahlt, weil die \textit{Graphlet}-Vektoren f\"ur ihn schnell berechenbar waren. Im Gegensatz zu anderen Datens\"atzen mit nicht redundanten PDB-Eintr\"agen wie dem FATCAT- oder dem ASTRAL-Datensatz enth\"alt dieser keine riesigen Proteinkomplexe, deren \textit{Graphlets} auf durchschnittlichen Computern nicht in weniger als 24 Stunden berechnbar sind. 
 Er ist aber immer noch gro"s genug, um Strukturvergleichsmethoden validieren zu k\"onnen. \textit{Zhang} und \textit{Skolnick} verwendeten zur Validierung von \textit{TM-align} einen Datensatz aus 200 PDB-Eintr\"agen (\cite{zhangtm}).
 
-Da ein Vergleich von Strukturvergleichsmethoden auf einem solchen Datensatz zu aufw\"andig war, wurde dieser Datensatz f\"ur eine statistische Analyse der \textit{Graphlet}-Vektoren genutzt.
+Da ein Vergleich der paarweisen Distanzen auf einem solchen Datensatz zu aufw\"andig war, wurde dieser Datensatz f\"ur eine statistische Analyse der \textit{Graphlet}-Vektoren genutzt.
 
 F\"ur die relativen H\"aufigkeiten der einzelnen \textit{Graphlets} wurden Minima, Maxima, Varianzen und Durchschnittswerte berechnet. Hierbei war das Ziel festzustellen, ob wirklich alle \textit{Graphlets} f\"ur Strukturvergleiche notwendig sind.
+
+Weiterhin wurde ein Datensatz aus Aldolasen zusammengestellt, um festzustellen, ob sich die Verteilungen der \textit{Graphlet}-H\"aufigkeiten, zwischen dem gro"sen Datensatz und den Aldolasen unterscheiden. Wenn der Unterschied der Verteilungen zwischen diesen beiden Datens\"atzen so gro"s ist, dass eine klare Unterscheidung m\"oglich ist, dann sollte auch eine maschinelle Klassifizierung der \textit{Graphlets} f\"ur Aldolasen m\"oglich sein. Aldolasen wurden gew\"ahlt, weil diese Superfamilie strukturell besonders divers ist \cite{das2015diversity}.
+
+Wenn die \textit{Graphlet}-Verteilungen der Aldolasen und des PDBTop500-Datensatzes klar unterscheidbar sind, dann sollten sie auch f\"ur Superfamilien, die strukturell einheitlicher sind unterscheidbar sein.
+
+Die PDB-IDs der untersuchten Aldolasen lauten: 1lbm, 1lor, 1mxs, 1nsj, 1v5x, 1vqt, 1wau, 3ceu und 7tim.
+
 
 
 \chapter{Ergebnisse}
@@ -353,7 +366,7 @@ Hierbei gilt:
 \]
 
 In dieser modifizierten Variante werden zwei Vektoren $v,w$ als gleich angesehen, wenn sich $v_i,w_i$ f\"ur alle $i$ h\"ochstens um den Faktor $k$ unterschieden.
-Dies steht im Gegensatz zur RGF, die - analog zu einer Vektornorm - die Abst\"ande zwischen zwei \textit{Graphlet}-Vektoren misst.
+Dies steht im Gegensatz zur RGF, die - analog zum euklidischen Abstand - die Abst\"ande zwischen zwei \textit{Graphlet}-Vektoren misst.
 
 
 \section{Der \textit{Graphlet}-Worte-Algorithmus}
@@ -433,9 +446,13 @@ F\"ur das Alphabet der SSE- und Komplexgraphen $ \sum_{SSE} := \{ H, E, L \} $ u
 
 \begin{subequations}
 \begin{align}
-p_2 := (HH, HE, HL, EE, EL, LL) \\
-p_{3-Weg} := (HHH, HEH, HHE, HEE, EHE, HEL, LHE, ELH, HLH, HHL, HLL, LHL, EEE, ELE, EEL, ELL, LEL, LLL) \\
-p_{3-Kreis} := (HHH, HEH, HEE, HEL, LEH, HLH, HLL, EEE, ELE, ELL, LLL) \\
+p_2 :=       (HH, HE, HL, EE, EL, LL) \\
+p_{3-Weg}   := (HHH, HEH, HHE, HEE, EHE,
+                HEL, LHE, ELH, HLH, HHL,
+                HLL, LHL, EEE, ELE, EEL,
+                ELL, LEL, LLL) \\
+p_{3-Kreis} := (HHH, HEH, HEE, HEL, LEH,
+                HLH, HLL, EEE, ELE, ELL, LLL) \\
 \end{align}
 \end{subequations}
 
@@ -443,12 +460,20 @@ Die Vektoren $a_2, a_{3-Weg}$ und $a_{3-Kreis}$ beschreiben die Worte f\"ur \tex
 
 \begin{subequations}
 \begin{align}
-a_2 := (hh, hp, ha, h?, pp, pa, p?, aa, a?, ??) \\
-a_{3-Weg} := (hhh, hph, hhp, hpp, php, hpa, ahp, pah, hp?, ?hp, p?h, hah, hha, haa, aha, ha?, ?ha ,a?h, h?h, hh?, h??, ?h?, ppp, pap, ppa, paa, apa, pa?, ?pa, a?p, p?p, pp?, p??, ?p?, aaa, a?a, aa?, a??, ?a?, ???) \\
-a_{3-Kreis} := (hhh, hph, hpp, hpa, aph, hp?, ?ph, hah, haa, ha?, ?ah, h?h, h??, ppp, pap, paa, pa?, ?ap, p?p, p??, aaa, a?a, a??, ???)
+a_2 :=         (hh, hp, ha, h?, pp, pa, p?, aa, a?, ??) \\ 
+a_{3-Weg} :=   (hhh, hph, hhp, hpp, php, hpa, ahp, pah, hp?, ?hp,
+                p?h, hah, hha, haa, aha, ha?, ?ha ,a?h, h?h, hh?, 
+                h??, ?h?, ppp, pap, ppa, paa, apa, pa?, ?pa, a?p,
+                p?p, pp?, p??, ?p?, aaa, a?a, aa?, a??, ?a?, ???) \\
+a_{3-Kreis} := (hhh, hph, hpp, hpa, aph, hp?, ?ph, hah, haa, ha?,
+                ?ah, h?h, h??, ppp, pap, paa, pa?, ?ap, p?p, p??,
+                aaa, a?a, a??, ???)
 \end{align}
 \end{subequations}
 
+% a2 laenge 10
+% a3weg laenge 40
+% a3kreis laenge 24
 
 \section{Erweiterung von \texttt{graphletAnalyser}}
 
@@ -494,26 +519,53 @@ Die paarweisen Tanimoto-Koeffizienten der Proteingraphen zeigen - wie schon bei 
 
 F\"ur die Komplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter den ersten 3 Proteinen 1QPU, 1QQ3 und 1CGN. Auch innerhalb der Klasse \textit{alpha-beta} sind 3 Proteine mit der h\"ochsten paarweisen \"Ahnlichkeit bewertet worden. Die geringe Anzahl von stark bewerteten \"Ahnlichkeiten innerhalb der \textit{mainly-beta}-Klasse ist sehr auff\"allig. 1QQS und 3SLO sind das einzige Paar mit \textit{beta}-Topologie, dessen \"Ahnlichkeit als gro"s bewertet wurde.
 
-\section{Fallstudien - Datensatz 2}
 
 \section{PDBTop500-Datensatz}
 
 F\"ur den PDBTop500-Datensatz wurden \textit{Graphlet}-Vektoren der drei verschiedenen Graphenformate berechnet. Diese Vektoren wurden f\"ur jedes Format in einer .csv-Datei zusammengefasst und f\"ur jede dieser Dateien wurden \textit{Boxplots} erstellt.
 
-Mit dieser Darstellung kann ermittelt werden, f\"ur welche \textit{Graphlets} die Streuung besonders gro"s ist. Diese \textit{Graphlets} sollten dann besonders gut geeignet sein, um die entsprechenden Graphen zu klassifizieren.
-
-Der folgende Plot zeigt die Verteilungen f\"ur die Aminos\"auregraphen.
-
+In diese Boxplots wurden zus\"atzlich die relativen H\"aufigkeiten der bereits beschriebenen Aldolasen eingetragen. Hiermit kann festgestellt werden, ob die Superfamilie der Aldolasen anhand ihrer \textit{Graphlets} von anderen Superfamilien unterscheidbar ist.
+Der Boxplot \ref{fig:aaplot} stellt diese Daten f\"ur die Aminos\"auregraphen dar. Da die relative H\"aufigkeiten der \textit{Graphlets} in den Aminos\"auren deutlich kleiner sind, als bei Proteingraphen und Komplexgraphen, weil es mehr \textit{Graphlte}-Worte gibt, wurde die Skala der y-Achse logarithmiert.
 
 
-\begin{figure}[h!]
-\centering
-\label{fig:aag_dist}
-\includegraphics[scale=0.9]{graphlet_verteilungen_aag.png}
-\caption{\textit{Graphlets} f\"ur die Aminos\"auregraphen des PDBTop500-Datensatzes. Jeder Eintrag auf der x-Achse entspricht einem \textit{Graphlet}. Die y-Achse stellt ihre relativen H\"aufigkeiten dar}
-\end{figure}
 
-In diesem Plot entsprechen die ersten 29 Eintr\"age den \textit{Graphlets} ohne Markierungen. F\"ur diese \textit{Graphlets} ist die Varianz der Relativen-\textit{Graphlet}-H\"aufigkeiten deutlich gr\"o"ser, als f\"ur die markierten \textit{Graphlets}. Damit haben diese auch den gr\"o"sten Einfluss auf die Vergleiche der \textit{Graphlet}-Vektoren.
+\begin{sidewaysfigure}
+\label{fig:aaplot}
+\includegraphics[scale=0.55]{aa_plot.png}
+\caption{Verteilung der relativen H\"aufigkeiten der \textit{Graphlets} in Aminos\"auregraphen. Jeder Punkt auf der x-Achse entspricht einem \textit{Graphlet}. Die y-Achse ist logarithmiert und beschreibt die relative H\"aufigkeiten. Die H\"aufigkeiten der Proteine des PDBTop500-Datensatzes sind in blau, die der Aldolasen in rot angegeben. Links von der vertikalen Linie sind \textit{Graphlets} ohne Markierungen, rechts davon sind \textit{Graphlets} mit Markierungen. Ausrei"ser sind nicht eingetragen.}
+
+\end{sidewaysfigure}
+
+
+
+
+Unter den \textit{Graphlets} ohne Markierungen finden gibt es nur zwei bei denen sich die relativen H\"aufigkeiten der Aldolasen nicht mit denen des Datensatzes \"uberlappen. Dies sind die \textit{Graphlets} $g_8$ und $g_{15}$ in \ref{fig:5graphlets}, die in den Aldolasen nicht gefunden werden.
+
+
+Unter den markierten \textit{Graphlets} gibt es deutlich mehr Unterschiede. Sieben verschiedene \textit{Graphlet}-Verteilungen \"uberlappen sich nicht. Die ersten drei hiervon entsprechen den \textit{Graphlet}-Worten h?, c? und ??. Diese stehen f\"ur Kanten zwischen unpolaren Residuen und Liganden, Kanten zwischen sauren oder basischen Residuen und Liganden und Kanten zwischen Liganden,
+
+Die n\"achsten drei Worte f\"ur die keine \"Uberlappungen gefunden wurden sind die Worte hhh, hph und hhp. Diese repr\"asentieren Wege der L\"ange 2 zwischen drei unpolaren Residuen, zwei unpolaren Residuen mit einem polaren Residuum als inneren Knoten und zwei unpolaren Residuen mit einer polaren Aminos\"aure als Endknoten.
+
+
+\begin{sidewaysfigure}
+\label{fig:pgplot}
+\includegraphics[scale=0.55]{pg_plot.png}
+\caption{Verteilung der relative H\"aufigkeiten der \textit{Graphlets} f\"ur Proteingraphen. Auch hier entspricht jeder Punkt auf der x-Achse einem \textit{Graphlet} und die y-Achse zeigt die relativen H\"aufigkeiten an. Wieder trennt die dunkelgr\"une Linie markierte und nicht markierte \textit{Graphlets}. Solche ohne Markierungen sind links, mit Markierungen Versehene befinden sich rechts.}
+\end{sidewaysfigure}
+
+Bei den Proteingraphen in Abbildung \ref{fig:pgplot} sind die \textit{Graphlet}-Verteilungen ein wenig st\"arker voneinander getrennt.  
+Dies gilt f\"ur das 4-\textit{Graphlet} $g_6$, das 5-\textit{Graphlet} $g_13$. Unter den markierten \textit{Graphlets} ist die Trennung f\"ur die am st\"arksten, die durch die Worte HL und HLL markiert werden. Ersteres repr\"asentiert den Kontakt einer $\alpha$-Helix mit einem Liganden. Letzteres markiert einen Kreis, in dem zwei Liganden mit einer Helix in Kontakt stehen.
+
+
+\begin{sidewaysfigure}
+\label{fig:cgplot}
+\includegraphics[scale=0.55]{cg_plot.png}
+\caption{Verteilung der relative H\"aufigkeiten der \textit{Graphlets} f\"ur Komplexgraphen. Auch hier entspricht jeder Punkt auf der x-Achse einem \textit{Graphlet} und die y-Achse zeigt die relativen H\"aufigkeiten an. Wieder trennt die dunkelgr\"une Linie markierte und nicht markierte \textit{Graphlets}. Solche ohne Markierungen sind links, mit Markierungen versehene befinden sich rechts.}
+\end{sidewaysfigure}
+
+F\"ur die Komplexgraphen in Abbildung \ref{fig:cgplot} finden wir die st\"arksten Unterschiede zwischen den Verteilungen der Aldolasen und denen des Referenzdatensatzes. F\"ur die unmarkierten \textit{Graphlets} $g_1$ und $g_2$ in \ref{fig:3graphlets}, $g_2$, $g_3$ und $g_6$ in \ref{fig:4graphlets} sowie $g_6$, $g_{10}$, $g_{12}$, $g_{13}$, $g{16}$, $g_{18}$, $g_{20}$ und $g_{21}$ in \ref{fig:5graphlets}.
+
+Bei den markierten \textit{Graphlets}  
 
 \chapter{Diskussion und Ausblick}
 
@@ -544,27 +596,12 @@ Im Gegensatz hierzu sind die Aminos\"auregraphen dieser Fallstudie zusammenh\"an
 Wirft man einen Blick in die Tabellen, sieht es zun\"achst so aus, als w\"urden sich Jaccard-Index und RGF \"ahnlich gut eignen, um die \"Ahnlichkeit der \textit{Graphlet}-Vektoren zu bewerten. Die RGF stellt eine \emph{Distanz} zwischen zwei Vektoren dar. Dementsprechend steht ein RGF-Wert von 0 f\"ur die Gleichheit zweier Vektoren, je h\"oher der Wert ist, desto h\"oher ist der Abstand zwischen den beiden Vektoren. Der modifizierte Jaccard-Index, der hier Verwendung findet, z\"ahlt Elemente, die sich um h\"ochstens einen Faktor $k$ unterscheiden. Ein RGF-Wert von 1 bedeutete, dass alle Elemente beider Vektoren sich h\"ochstens um den Faktor $k$ unterscheiden. Ein Wert von 0 bedeutet, dass alle Elemente sich um mehr als den Faktor $k$ unterscheiden. Dementsprechend w\"urde man erwarten, dass die \textit{Pearson}-Korrelation von RGF und Jaccard-Index negativ ist. Die folgende Tabelle zeigt jedoch, dass diese f\"ur alle berechneten Daten positiv ausf\"allt. 
 
 
-\begin{table}
-\begin{tabular}{c c c}
-
-Vektor & RGF & Jaccard-Index \\
-
-\end{tabular}
-\end{table}
-
 
 \subsection{Datensatz 2}
 
 \subsection{PDBTop500-Datensatz}
 
-\paragraph{Aminos\"auregraphen} scheinen wenig geeignet f\"ur die Anwendung von markierten \textit{Graphlets} zu sein, da die meisten von ihnen garnicht gefunden werden, oder ihre relative H\"aufigkeit so klein ist, dass sie kaum einen Einfluss auf den Vergleich der \textit{Graphlet}-Vektoren hat.
 
-Dies kommt daher, dass Aminos\"auregraphen zum einen deutlich mehr Knoten und Kanten enthalten als Komplexgraphen und Proteingraphen und f\"ur ihre 3-\textit{Graphlets} deutlich mehr repr\"asentierende Worte existieren.
-
- 
-
-
-TODO: durchschnittliche Knoten, Kantenzahl, Knotengrade der unterschiedlichen Foramte berechnen 
 
 
 
