@@ -10,6 +10,12 @@ Sayoni Das, Natalie~L Dawson, and Christine~A Orengo.
 \newblock Diversity in protein domain superfamilies.
 \newblock {\em Current opinion in genetics \& development}, 35:40--49, 2015.
 
+\bibitem{scope}
+Naomi~K Fox, Steven~E Brenner, and John-Marc Chandonia.
+\newblock Scope: Structural classification of proteins—extended, integrating
+  scop and astral data and classification of new structures.
+\newblock {\em Nucleic acids research}, 42(D1):D304--D309, 2014.
+
 \bibitem{holm1993protein}
 Liisa Holm and Chris Sander.
 \newblock Protein structure comparison by alignment of distance matrices.
@@ -27,7 +33,7 @@ Richard~M Karp.
 
 \bibitem{pdbefold}
 E~Krissinel and K~Henrick.
-\newblock Secondary-structure matching (ssm), a new tool for fast protein
+\newblock Secondary-structure matching ({SSM}), a new tool for fast protein
   structure alignment in three dimensions.
 \newblock {\em Acta Crystallographica Section D: Biological Crystallography},
   60(12):2256--2268, 2004.
@@ -35,14 +41,14 @@ E~Krissinel and K~Henrick.
 \bibitem{top500}
 Simon~C Lovell, Ian~W Davis, W~Bryan Arendall, Paul~IW de~Bakker, J~Michael
   Word, Michael~G Prisant, Jane~S Richardson, and David~C Richardson.
-\newblock Structure validation by c$\alpha$ geometry: $\phi$, $\psi$ and
+\newblock Structure validation by {C}$\alpha$ geometry: $\phi$, $\psi$ and
   c$\beta$ deviation.
 \newblock {\em Proteins: Structure, Function, and Bioinformatics},
   50(3):437--450, 2003.
 
 \bibitem{ptgl1}
 Patrick May, Annika Kreuchwig, Thomas Steinke, and Ina Koch.
-\newblock Ptgl: a database for secondary structure-based protein topologies.
+\newblock {PTGL}: a database for secondary structure-based protein topologies.
 \newblock {\em Nucleic acids research}, 38(suppl 1):D326--D330, 2010.
 
 \bibitem{frqdistribution}
@@ -76,8 +82,16 @@ Nino Shervashidze, Tobias Petri, Kurt Mehlhorn, Karsten~M Borgwardt, and Svn
 \bibitem{shindyalov1998protein}
 Ilya~N Shindyalov and Philip~E Bourne.
 \newblock Protein structure alignment by incremental combinatorial extension
-  (ce) of the optimal path.
+  ({CE}) of the optimal path.
 \newblock {\em Protein engineering}, 11(9):739--747, 1998.
+
+\bibitem{cath}
+Ian Sillitoe, Tony~E Lewis, Alison Cuff, Sayoni Das, Paul Ashford, Natalie~L
+  Dawson, Nicholas Furnham, Roman~A Laskowski, David Lee, Jonathan~G Lees,
+  et~al.
+\newblock {CATH}: comprehensive structural and functional annotations for
+  genome sequences.
+\newblock {\em Nucleic acids research}, page gku947, 2014.
 
 \bibitem{fatcat}
 Yuzhen Ye and Adam Godzik.
@@ -87,8 +101,8 @@ Yuzhen Ye and Adam Godzik.
 
 \bibitem{zhangtm}
 Yang Zhang and Jeffrey Skolnick.
-\newblock Tm-align: a protein structure alignment algorithm based on the
-  tm-score.
+\newblock {TM}-align: a protein structure alignment algorithm based on the
+  {TM}-score.
 \newblock {\em Nucleic acids research}, 33(7):2302--2309, 2005.
 
 \end{thebibliography}

@@ -12,7 +12,7 @@
 \usepackage[justification=centering]{caption}
 \usepackage{float}
 \usepackage{subcaption}
-%\usepackage{algorithm2e}
+\usepackage[linesnumbered,lined,boxed,commentsnumbered, ngerman]{algorithm2e}
 %\usepackage{qtree}
 %\usepackage{cite}
 \definecolor{fGreen}{rgb}{0.13,0.54,0.13}
@@ -35,7 +35,7 @@
 \section{Motivation}
 
 
-Die verschiedenen Funktionen, die Proteine erf\"ullen sind zu einem gro"sen Teil durch ihre Struktur bestimmt. Diese Struktur ist ein bestimmender Faktor, f\"ur ihre F\"ahigkeit Liganden zu binden und chemische Reaktionen zu katalysieren.
+Die verschiedenen Funktionen, die Proteine erf\"ullen sind zu einem gro"sen Teil durch ihre Struktur bestimmt. Diese Struktur ist ein bestimmender Faktor f\"ur ihre F\"ahigkeit Liganden zu binden und chemische Reaktionen zu katalysieren.
 Daraus folgt, dass die Analyse von Proteinstrukturen zentral f\"ur ein tieferes Verst\"andnis von zellul\"arem Leben ist. Die vergleichende Analyse von Proteinen liefert nicht nur wichtige Erkenntnise \"uber ihre Funktion, sondern hilft auch dabei, evolution\"are Verwandschaften zu entdecken, die durch reine Sequenzanalysen nicht mehr nachvollziehbar sind.
 
 In dieser Arbeit werden Proteinstrukturtopologien untersucht. Die Topologie eines Proteins ist als die Anordnung seiner Sekund\"arstrukturelemente (SSEs) zueinander definiert. Die Betrachtung von SSEs hat den Vorteil, dass diese auch \"uber gro"se evolution\"are Distanzen stark konserviert sind. 
@@ -43,43 +43,43 @@ In dieser Arbeit werden Proteinstrukturtopologien untersucht. Die Topologie eine
 Zur Darstellung dieser Topologien werden hier Graphen verwendet. Graphen geh\"oren zu den am st\"arksten untersuchten mathematischen Strukturen, da sich mit ihnen viele verschiedene komplexe Zusammenh\"ange darstellen lassen. Ihre Nutzung ist \"uberall dort angebracht, wo Daten nicht als Zahlen oder Vektoren darstellbar sind, weil sie eine Menge von Objekten und ihren Beziehungen untereinander repr\"asentieren.
 
 
-Graphen finden sich in der Erforschung von sozialen Netzwerken wieder und werden in der Chemie zur Darstellung von Molek\"ulen genutzt. Auch in der Bioinformatik sind Graphen das zentrale Mittel zur Darstellung komplexer Beziehungen. Interaktionen von Proteinen werden genauso als Graphen modelliert, wie Signalewege in Zellen oder eben Proteine. Die Analyse von biologischen Netzwerken ist ein zentrales Mittel, um biologische Vorg\"ange besser zu verstehen \cite{junker2011analysis}.
+Graphen finden sich in der Erforschung von sozialen Netzwerken wieder und werden in der Chemie zur Darstellung von Molek\"ulen genutzt. Auch in der Bioinformatik sind Graphen das zentrale Mittel zur Darstellung komplexer Beziehungen. Interaktionen von Proteinen werden genauso als Graphen modelliert, wie Signalwege in Zellen oder eben Proteine. Die Analyse von biologischen Netzwerken ist ein zentrales Mittel, um biologische Vorg\"ange besser zu verstehen \cite{junker2011analysis}.
 
-Der Vergleich von Graphen ist jedoch keine triviale Aufgabe. Die Frage: ''Ist dieser Graph in diesem anderen Graphen enthalten?'' befriedigend schnell beantworten zu k\"onnen, ist nicht m\"oglich, denn das zugrunde liegende Entscheidungsproblem ist NP-vollst\"andig \cite{karp1972reducibility}
+Der Vergleich von Graphen ist jedoch keine triviale Aufgabe. Die Frage: ''Ist dieser Graph in diesem anderen Graphen enthalten?'', befriedigend schnell beantworten zu k\"onnen, ist nicht m\"oglich, denn das zugrunde liegende Entscheidungsproblem ist NP-vollst\"andig \cite{karp1972reducibility}
 
-Um dieses Problem zu umgehen werden hier \textit{Graphlets} angewendet. \textit{Graphlets} sind kleine, induzierte Teilgraphen, die f\"ur gro"se Graphen immer noch schnell abz\"ahlbar sind. Mit dieser Technik lassen sich in polynomieller Zeit Teilstrukturen eines Graphen ermitteln, deren Vergleich einfacher durchzuf\"uhren ist, als ein direkter Vergleich der Graphen selbst. So lassen sich \textit{Graphlets} zur vergleichenden Analyse von Proteinstrukturtopologien verwenden.
+Um dieses Problem zu umgehen, werden approximative Methoden angewandt. Hierzu geh\"ort das Berechnen von \textit{Graphlets} \cite{frqdistribution}. \textit{Graphlets} sind kleine, induzierte Teilgraphen, die f\"ur gro"se Graphen immer noch schnell abz\"ahlbar sind. Mit dieser Technik lassen sich in polynomieller Zeit Teilstrukturen eines Graphen ermitteln. Dabei erh\"alt man Vektoren, deren Vergleich einfacher durchzuf\"uhren ist, als ein direkter Vergleich der Graphen selbst. So lassen sich \textit{Graphlets} zur vergleichenden Analyse von Proteinstrukturtopologien verwenden.
 
 
 
 
 \section{\textit{State of the art}}
 
-Mit der wachsenden Anzahl von Struktureeintr\"agen in der \textit{Protein Data Bank} (PDB) ist eine Vielzahl von Methoden entstanden, um diese Strukturen zu vergleichen.
+Mit der wachsenden Anzahl von Struktureintr\"agen in der \textit{Protein Data Bank} (PDB) ist eine Vielzahl von Methoden entstanden, um diese Strukturen zu vergleichen.
 
-Der wohl bekannteste Algorithmus zum Vergleich von dreidimensionalen Proteinstrukturen ist DALI von \textit{Holm} und \textit{Sander} \cite{holm1993protein}. Er f\"uhrt ein globales Alignment durch, indem Distanzmatrizen verglichen werden. In diesen Matrizen sind die intramolekularen Distanzen der C$\alpha$-Atome der jeweiligen Proteine eingetragen.
+Der wohl bekannteste Algorithmus zum Vergleich von dreidimensionalen Proteinstrukturen ist DALI von \textit{Holm} und \textit{Sander} \cite{holm1993protein}. Er f\"uhrt ein globales Alignment durch, indem Distanzmatrizen verglichen werden. In diesen Matrizen sind die intramolekularen Distanzen der $\alpha$-C-Atome der jeweiligen Proteine eingetragen.
 
-In den 23 Jahren, die seit der Ver\"offentlichung von DALI vergangen sind, sind aber noch viele weitere Methoden mit unterschiedlichen Ans\"atzen entwickelt worden. Der Algorithmus von \textit{Shindyalov} und \textit{Bourne} \cite{shindyalov1998protein} berechnet ein Alignment von Proteinstrukturen, indem er zun\"achst kleine Paare von Substrukturen aligniert und dann versucht dieses Alignment auf einen optimalen Pfad auszudehnen.
+In den 23 Jahren, die seit der Ver\"offentlichung von DALI vergangen sind, sind aber noch viele weitere Methoden mit unterschiedlichen Ans\"atzen entwickelt worden. Der Algorithmus von \textit{Shindyalov} und \textit{Bourne} \cite{shindyalov1998protein} berechnet ein Alignment von Proteinstrukturen, indem er zun\"achst kleine Paare von Substrukturen aligniert und dann versucht, dieses Alignment auf einen optimalen Pfad auszudehnen.
 
 Der FATCAT-Algorithmus von \textit{Ye} und \textit{Godzik} \cite{fatcat} verwendet eine \"ahnliche Idee und versucht zus\"atzlich die Substrukturen flexibel zu alignieren, um auch gleiche Proteine mit ver\"anderter Konformation erkennen zu k\"onnen.
 
-\textit{TM-align} von \textit{Zhang} und \textit{Skolnick} \cite{zhangtm} berechnet eine Rotationsmatrix und nutzt Dynamische Programmierung. Der Algorithmus benutzt als Bewertungsschema den sogenannten \textit{TM-Score}, der besonders geeignet ist, um lokale \"Ahnlichkeiten zu erkennen.
+\textit{TM-align} von \textit{Zhang} und \textit{Skolnick} \cite{zhangtm} berechnet eine Rotationsmatrix und nutzt Dynamische Programmierung. Der Algorithmus benutzt als Bewertungsschema den sogenannten \textit{TM-Score}, der besonders gut geeignet ist, um lokale \"Ahnlichkeiten zu erkennen.
 
-Der SSM-Algorithmus von \textit{Krissinel} und \textit{Hendrick} \cite{pdbefold} verwendet eine graphenbasierte Darstellung von Proteinen f\"ur ein erstes Alignment und verfeinert dieses dann durch die Berechnung der Distanzen \"aquivalenter C$\alpha$-Atome. Er wird im \textit{PDBeFold-Web-Server} implementiert. Als einziger hier beschriebener Algorithmus erm\"oglicht er schnelle multiple Strukturvergleiche \"uber einen \textit{Web-Service}.
+Der SSM-Algorithmus von \textit{Krissinel} und \textit{Hendrick} \cite{pdbefold} verwendet eine graphenbasierte Darstellung von Proteinen f\"ur ein erstes Alignment und verfeinert dieses dann durch die Berechnung der Distanzen \"aquivalenter $\alpha$-C-Atome. Er wird im \textit{PDBeFold-Web-Server} implementiert. Als einziger hier beschriebener Algorithmus erm\"oglicht er schnelle multiple Strukturvergleiche \"uber einen \textit{Web-Service}.
 
 
 Die meisten dieser Methoden f\"uhren einen \textit{Template}-basierten Vergleich durch. Das hei"st, dass der \"Ahnlichkeitswert, der einem Paar zugewiesen wird zum einen von der Reihenfolge der Eingabe abh\"angt und zum anderen von den anderen Proteinen abh\"angt, die Teil des multiplen Vergleichs sind.
-
+Als \"Ahnlichkeitswerte werden paarweise durchschnittliche Abst\"ande der Strukturen zueinander ausgegeben.
 
 \textit{Graphlets} wurden zuerst von \textit{Pr{\v z}ulj et al.} auf biologische Daten angewandt \cite{frqdistribution}, \cite{graphletfrequency}. Sie nutzten den \textit{Graphlet}-Algorithmus, um \"Ahnlichkeiten von Protein-Protein-Interaktionsnetzwerken zu berechnen.
 
-\textit{N. Shervashidze} war die erste, die \textit{Graphlets} zur Analyse von Proteinen anwandte \cite{sherv_graphlets}. Sie nutzte \textit{Support Vector Machines} auf \textit{Graphlet}-Vektoren, um  f\"ur Proteingraphen zu entscheiden, ob diese Enzyme darstellen oder nicht.
+\textit{N. Shervashidze} war die erste, die \textit{Graphlets} zur Analyse von Proteinstrukturen anwandte \cite{sherv_graphlets}. Sie nutzte \textit{Support Vector Machines} mit \textit{Graphlet}-Vektoren, um  f\"ur Proteingraphen zu entscheiden, ob diese Enzyme darstellen oder nicht.
 
-\textit{Graphlets} wurden auch von \textit{Tatiana Bakirova} verwendet, um Proteinstrukturen zu analysieren \cite{bakirova2013comparison}. Sie hat das Programm \texttt{graphletAnalyser} verfasst, das in dieser Arbeit weiterentwickelt wird.
+\textit{Graphlets} wurden auch von \textit{Tatiana Bakirova} verwendet, um Proteinstrukturen zu analysieren \cite{bakirova2013comparison}. Sie hat das Programm \texttt{graphletAnalyser} verfasst, das in dieser Arbeit genutzt und weiterentwickelt wurde.
 
 \section{Ziele}
 
 Ziel dieser Arbeit war zun\"achst die Erweiterung der Funktionalit\"at von \\ \texttt{graphletAnalyser}. Hierzu geh\"ort zun\"achst eine funktionierende Datenbankanbindung, um die berechneten Daten abzuspeichern.
-Die Suche nach markierten \textit{Graphlets} sollte so implementiert werden, dass sie auf Graphen mit beliebigen Markierungen angewandt werden kann. Deshalb wurde ein Algorithmus entwickelt und implementiert, der aus einem Alphabet von Knotenmarkierungen alle Worte berechnet, die markierte  2- und 3-\textit{Graphlets} repr\"asentieren - der \textit{Graphlet}-Worte-Algorithmus. Die Suche nach diesen markierten \textit{Graphlets} in einem Graphen wurde ebenfalls implementiert.
+Das Berechnen von markierten \textit{Graphlets} sollte so implementiert werden, dass sie auf Graphen mit beliebigen Markierungen angewandt werden kann. Deshalb wurde ein Algorithmus entwickelt und implementiert, der aus einem Alphabet von Knotenmarkierungen alle Worte berechnet, die markierte  2- und 3-\textit{Graphlets} repr\"asentieren -- der \textit{Graphlet}-Worte-Algorithmus. Die Suche nach diesen markierten \textit{Graphlets} in einem Graphen wurde ebenfalls implementiert.
 
 In Fallstudien wird \"uberpr\"uft, ob und inwiefern sich \textit{Graphlets} eignen, um die \"Ahnlichkeit von Proteinstrukturtopologien zu untersuchen. Dies wurde mit unterschiedlichen Metriken getestet. Die hierbei errechneten \"Ahnlichkeitswerte wurden mit den Ergebnissen des Strukturalignment-Programms \textit{PDBeFold} \cite{pdbefold} verglichen.
 
@@ -105,14 +105,13 @@ Im abschlie"senden Teil \emph{Diskussion und Ausblick} wird versucht, die Frage 
 %TODO: Einleitung des MatMeth-Teils \"uberarbeiten
 
 
-%Um die Proteinstrukturtopologien aus der PTGL zu vergleichen wurde das Programm \texttt{graphletAnalyser} genutzt und erweitert. Es wurde bereits 2013 von \textit{Tatiana Bakirova} im Rahmen ihrer Diplomarbeit im Arbeitskreis \textit{Molekulare Bioinformatik} geschrieben. Die urspr\"ungliche Funktionalit\"at wurde erweitert. Hierbei wurden Funktionen zur Analyse von Komplexgraphen, Aminos\"auregraphen und den Sekund\"arstrukturgraphen implemetiert. Diese Graphen stammen allesamt aus der PTGL (\underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary) von Tim Sch\"afer.
 
 
-\section{PTGL}
+\section{\textit{Protein Topology Graph Library}}
 
 
 Die \underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary entstand aus einer Idee von \textit{Patrick May} und \textit{Ina Koch} (\cite{ptgl1}). Ausgehend von der Tatsache, dass sich Proteinstrukturtopologien als r\"aumliche Beziehungen von SSEs untereinander definieren lassen, verwendet die PTGL \emph{Graphen}, um Proteinstrukturtopologien darzustellen.
-Hierbei stellen die Knoten des Graphen die SSEs eines Proteins dar. Sie werden dem jeweiligen SSE entsprechend markiert. Knoten, die $\alpha$-Helices repr\"asentieren, werden mit einem H markiert, $\beta$-Faltbl\"atter mit einem E. Weiterhin erm\"oglicht die PTGL die Darstellung von Liganden, (\cite{vplg}) denen mit L markierte Knoten zugeordnet werden. Um die r\"aumliche Nachbarschaft von Sekund\"arstrukturen und Liganden mit- und untereinander darstellen zu k\"onnen, werden ungerichtete Kanten zwischen Knoten gezogen, wenn die entsprechenden Elemente benachbart sind. Jede Polypeptidkette eines Proteins wird dann als \emph{Proteingraph} dargestellt. Die Zusammenhangskomponenten eines Proteingraphen werden als Faltungsgraphen bezeichnet, weil sie typischerweise eine unabh\"angige Faltungseinheit darstellen.
+Hierbei stellen die Knoten des Graphen die SSEs eines Proteins dar. Sie werden dem jeweiligen SSE entsprechend markiert. Knoten, die $\alpha$-Helices repr\"asentieren, werden mit einem H markiert, $\beta$-Faltbl\"atter mit einem E. Weiterhin erm\"oglicht die PTGL die Darstellung von Liganden, (\cite{vplg}) denen mit L markierte Knoten zugeordnet werden. Um die r\"aumliche Nachbarschaft von SSEs und Liganden mit- und untereinander darstellen zu k\"onnen, werden ungerichtete Kanten zwischen Knoten gezogen, wenn die entsprechenden Elemente benachbart sind. Jede Polypeptidkette eines Proteins wird dann als \emph{Proteingraph} dargestellt. Die Zusammenhangskomponenten eines Proteingraphen werden als Faltungsgraphen bezeichnet, weil sie typischerweise eine unabh\"angige Faltungseinheit darstellen.
 
 Durch diese abstrahierte Darstellung k\"onnen zentrale Charakteristika eines Proteins wie Motive und Dom\"anen einfach visualisiert werden.
 
@@ -130,7 +129,7 @@ erfolgt unter Verwendung der entsprechenden PDB und DSSP-Dateien. Um den Graphen
 
 werden ebenfalls in dieser Arbeit untersucht. Ihre Berechnung erfolgt analog zur Berechnung der Proteingraphen. Der Unterschied besteht darin, dass ein Komplexgraph mehrere Polypeptidketten beschreibt.
 
-\paragraph{Aminos\"auregraphen} werden analog zu Proteingraphen und Komplexgraphen berechnet. Der Unterschied zu den anderen Graphformaten ist, dass keine SSEs betrachtet werden. Stattdessen repr\"asentiert jeder Knoten eine Aminos\"aure eines Proteins. Die Knoten werden entsprechend der chemischen Eigenschaften der Aminos\"auren markiert. Knoten, die saure oder basische Residuen darstellen, werden mit einem c markiert. Ein p markiert Knoten f\"ur polare Residuen, die weder sauer noch basisch sind. F\"ur unpolare Aminos\"auren wird ein h verwendet. Auch Liganden k\"onnen in Aminos\"auregraphen dargestellt werden. Ihre Knoten werden durch ein ? markiert. Aminos\"auregraphen k\"onnen Proteinkomplexe und einzelne Polypeptidketten darstellen.
+\paragraph{Aminos\"auregraphen} werden analog zu Proteingraphen und Komplexgraphen berechnet. Der Unterschied zu den anderen Graphformaten ist, dass keine SSEs betrachtet werden. Stattdessen repr\"asentiert jeder Knoten eine Aminos\"aure eines Proteins. Die Knoten werden entsprechend der chemischen Eigenschaften der Aminos\"auren markiert. Knoten, die saure oder basische Residuen darstellen, werden mit einem c markiert. Ein p markiert Knoten als polare Residuen, die weder sauer noch basisch sind. F\"ur unpolare Aminos\"auren wird ein h verwendet. Auch Liganden k\"onnen in Aminos\"auregraphen dargestellt werden. Ihre Knoten werden durch ein ? markiert. Aminos\"auregraphen k\"onnen Proteinkomplexe und einzelne Polypeptidketten darstellen.
 
 
 Weiterhin erm\"oglicht PLCC den Vergleich von \textit{Graphlet}-Vektoren, die im folgenden Teil vorgestellt werden.
@@ -139,43 +138,44 @@ Weiterhin erm\"oglicht PLCC den Vergleich von \textit{Graphlet}-Vektoren, die im
 \section{Der \textit{Graphlet}-Algorithmus}
 
 
-Um diese Graphen vergleichen zu k\"onnen, werden \textit{Graphlets} verwendet. Diese sind im Gegensatz zu Graph-Isomorphismen in polynomieller Zeit berechenbar \cite{sherv_graphlets}. \textit{Graphlets} sind kleine, induzierte Teilgraphen mit bis zu 5 Knoten. Die Abbildungen \ref{fig:3graphlets}, \ref{fig:4graphlets} und \ref{fig:5graphlets} zeigen die \textit{Graphlets} mit 3, 4 und 5 Knoten. Wir betrachten hierbei nur die zusammenh\"angenden \textit{Graphlets}. Sie werden durch den Algorithmus gez\"ahlt und ihre jeweilige Anzahl wird in einen Vektor geschrieben, den wir als \textit{Graphlet}-Vektor bezeichnen.
+Um diese Graphen vergleichen zu k\"onnen, werden \textit{Graphlets} verwendet. Diese sind im Gegensatz zu Graph-Isomorphismen in polynomieller Zeit berechenbar \cite{sherv_graphlets}. \textit{Graphlets} sind kleine, induzierte Teilgraphen mit bis zu f\"unf Knoten. Die Abbildungen \ref{fig:3graphlets}, \ref{fig:4graphlets} und \ref{fig:5graphlets} zeigen die \textit{Graphlets} mit drei, vier und f\"unf Knoten. Wir betrachten hierbei ausshlie"lich die zusammenh\"angenden \textit{Graphlets}. Sie werden durch den Algorithmus gez\"ahlt und ihre jeweilige relative H\"aufigkeit wird in einen Vektor geschrieben, den wir als \textit{Graphlet}-Vektor bezeichnen.
 
 
 \subsection{Beschreibung des Algorithmus}
 Um alle \textit{Graphlets} der Gr\"o"se $k \in \{3,4,5\}$ zu z\"ahlen, werden alle Euler-Wege der L\"ange $k-1$ in dem gegebenen Graphen gesucht. F\"ur jeden gefundenen Euler-Weg werden alle inzidenten Kanten aller Knoten des Weges \"uberpr\"uft. Wird hierbei ein \textit{Graphlet} gefunden, wird der Z\"ahler f\"ur das entsprechende \textit{Graphlet} im \textit{Graphlet}-Vektor um den Wert an der entsprechenden Stelle der unten stehenden Gewichtungsvektoren $w_k$ erh\"oht.
 
 
-F\"ur \textit{Graphlets} mit $k \geq 4$ existieren zus\"atzlich die sogenannten Stern-\textit{Graphlets} ($g_4$ in \ref{fig:4graphlets}, sowie $g_{19}$,$g_{20}$ und $g_{21}$ in \ref{fig:5graphlets}), die keinen solchen Euler-Weg enthalten.
+F\"ur \textit{Graphlets} mit $k \geq 4$ existieren zus\"atzlich die sogenannten Stern-\textit{Graphlets}. Das sind $g_4$ in \ref{fig:4graphlets}, sowie $g_{19}$,$g_{20}$ und $g_{21}$ in \ref{fig:5graphlets}. Diese enthalten keinen solchen Euler-Weg.
 
+\begin{center}
 \begin{subequations}
 \label{eq:w-vector}
-\begin{align}
+\begin{align*}
 \text{\textit{Graphlet}-Gewichtungsvektoren} \\
 w_2 := \left( \frac{1}{2} \right) \\
 w_3 := \left( \frac{1}{6}, \frac{1}{2} \right) \\
 w_4 := \left( \frac{1}{24}, \frac{1}{12}, \frac{1}{4}, 1, \frac{1}{8},\frac{1}{2} \right) \\
 w_5 := \left( \frac{1}{120}, \frac{1}{72}, \frac{1}{48}, \frac{1}{36}, \frac{1}{28}, \frac{1}{20}, \frac{1}{14}, \frac{1}{10}, \frac{1}{12}, \frac{1}{8}, \frac{1}{4}, \frac{1}{2}, \frac{1}{12} \frac{1}{12}, \frac{1}{4} \frac{1}{4}, \frac{1}{2}, 1, \frac{1}{2}, 1\right)
-\end{align}
+\end{align*}
 \end{subequations}
+\end{center}
 
 Jede Stelle eines Gewichtungsvektors $w_k$ ist mit einem \textit{Graphlet} assoziiert. Die Nenner der Br\"uche in den Vektoren entsprechen den Anzahlen der Euler-Wege der L\"ange $k-1$ in den entsprechenden \textit{Graphlets}. Wenn alle Euler-Wege eines \textit{Graphlets} besucht wurden und der zugeh\"orige induzierte Teilgraph ihm entspricht, wird sein Z\"ahler im \textit{Graphlet}-Vektor ganzzahlig und das \textit{Graphlet} gilt als gefunden.
 Hierbei bilden  die Stern-\textit{Graphlets}, die keine Euler-Wege der L\"ange $k-1$ enthalten, nat\"urlich die Ausnahme.
  
-Da wir 29 verschiedene \textit{Graphlets} betrachten, hat ein \textit{Graphlet}-Vektor 29 Stellen. F\"ur den Vergleich von Proteinstrukturen bedeutet dies, dass der Berechnugsaufwand in $O(1)$ liegt, da anstatt von Graphen, oder dreidimensionalen K\"orpern Vektoren im Vektorraum $\mathbb{R}^{29}$ verglichen werden.
+Da wir 29 verschiedene \textit{Graphlets} betrachten, hat ein \textit{Graphlet}-Vektor 29 Stellen. An jeder Stelle steht die relative H\"aufigkeit eines \textit{Graphlets}. Damit ist ein Vergleich in konstanter Zeit m\"oglich. Anstatt von Graphen oder dreidimensionalen K\"orpern werden mit diesem approximativen Verfahren Vektoren im Vektorraum $\mathbb{R}^{29}$ verglichen.
 
-TODO: Pseudocode in Anhang einf\"ugen
 
 
 \section{\texttt{graphletAnalyser}}
 
 In seiner urspr\"unglichen Version wurde das Programm bereits 2013 von \textit{Tatiana Bakirova} geschrieben. Im Sommer 2015 wurde es um einige Funktionen erweitert.
 
-\texttt{graphletAnalyser} ist in C++ geschrieben. Zur internen Darstellung der Graphen wird die \textit{Boost-Graph-Library} verwendet. Die Datenbankanbindug wird mittels der Bibliothek pqxx realisiert.
+\texttt{graphletAnalyser} ist in C++ geschrieben. Zur internen Darstellung der Graphen wird die \textit{Boost-Graph-Library} verwendet. Die Anbindung an die \textit{Postgreql}-Datenbank wird mittels der Bibliothek pqxx realisiert.
 
 \paragraph{Als Input} erh\"alt das Programm eine oder mehrere GML-Dateien, die Graphen darstellen. Aus jeder GML-Datei wird mit der \textit{Boost-Graph-Library} intern ein Graph erstellt, der f\"ur die Berechnungen verwendet wird.
 
-F\"ur den eingelesenen Graphen berechnet das Programm alle \textit{Graphlets} der Gr\"o"sen 3,4 und 5. Die Implementierung entspricht der \textit{Matlab}-Implementierung von \textit{N. Shervashidze} \cite{sherv_graphlets}. Zus\"atzlich berechnet es markierte \textit{Graphlets} der Gr\"o"sen 2 und 3, wobei die Markierungen den SSE-Zuordnungen der PTGL entsprechen. Es gibt 35 verschiedene markierte \textit{Graphlets} mit 2 oder 3 Knoten. Unter Ber\"ucksichtigung dieser Markierungen erh\"oht sich die Anzahl der Stellen der \textit{Graphlet}-Vektoren auf 64.
+F\"ur den eingelesenen Graphen berechnet das Programm alle \textit{Graphlets} mit drei, vier und f\"unf Knoten. Die Implementierung entspricht der \textit{Matlab}-Implementierung von \textit{N. Shervashidze} \cite{sherv_graphlets}. Zus\"atzlich berechnet es markierte \textit{Graphlets} der Gr\"o"sen 2 und 3, wobei die Markierungen den SSE-Zuordnungen der PTGL entsprechen. Es gibt 35 verschiedene markierte \textit{Graphlets} mit 2 oder 3 Knoten. Unter Ber\"ucksichtigung dieser Markierungen erh\"oht sich die Anzahl der Stellen der \textit{Graphlet}-Vektoren auf 64.
 Die Knotengradverteilungen k\"onnen ebenfalls berechnet werden.
 
 \paragraph{Der Output} des Programms umfasst zum einen die Ausgabe der \textit{Graphlet}-Vektoren mit oder ohne markierte \textit{Graphlets} in den Formaten csv, matlab und nova. Zus\"atzlich k\"onnen die \textit{Graphlet}-Vektoren in einer Datenbank, die zuvor mit PLCC erstellt wurde gespeichert werden. Die Knotengradverteilung kann zusammen mit anderen Daten eines Graphen als .csv-Datei ausgegeben werden.
@@ -189,59 +189,59 @@ Durch die Verwendung der \textit{Graphlets} wird der direkte Vergleich von Graph
 
 \subsection{Relative \textit{Graphlet}-H\"aufigkeiten-Distanz}
 
-\textit{Pr\v{z}ulj et al.} haben \textit{Graphlets} bereits auf Protein-Protein-Interaktionsnetzwerke (\cite{frqdistribution}) angewandt. Als Ma"s f\"ur die \"Ahnlichkeit von Netzwerken nutzen sie die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz (RGF) . Diese Metrik berechnet den Abstand $D(G,H)$ zwischen zwei Graphen $G$ und $H$ als logarithmierte Differenz der normalisierten Anzahl der \textit{Graphlets} in $G$ und $H$. Sie ist folgenderma"sen definiert: \\
+\textit{Pr\v{z}ulj et al.} haben \textit{Graphlets} bereits auf Protein-Protein-Interaktionsnetzwerke (\cite{frqdistribution}) angewandt. Als Ma"s f\"ur die \"Ahnlichkeit von Netzwerken nutzen sie die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz (RGF). Diese Metrik berechnet den Abstand $D(G,H)$ zwischen zwei Graphen $G$ und $H$ als logarithmierte Differenz der normalisierten Anzahl der \textit{Graphlets} in $G$ und $H$. Sie ist folgenderma"sen definiert: \\
 
 Sei $N_{i}(G)$ die Anzahl der \textit{Graphlets} von Typ $i \in {1,...,29}$ und \\ $T(G) = \sum_{i = 1}^{29} N_{i}(G)$ die Anzahl der \textit{Graphlets} in $G$, beziehungsweise $H$.\\
 
 Dann ist $D(G,H)$ f\"ur zwei Graphen $G$ und $H$ definert als:
 
 \begin{subequations}
-\begin{align}
+\begin{align*}
 D(G,H) := \sum_{i = 1}^{29} | F_{i}(G) - F_{i}(H) | \\
-mit F_{i}(G) := - log(\frac{N_{i}(G)}{T(G)})
-\end{align}
+\text{mit } F_{i}(G) := - log(\frac{N_{i}(G)}{T(G)})
+\end{align*}
 \end{subequations}
 
 
 
-Diese Metrik l\"asst sich analog zur euklidischen Distanz auffassen, denn sie berechnet den Abstand f\"ur zwei Vektoren $x,y$ als Differenz ihrer Eintr\"age $x_i -y_i$. Sie verwendet die normalisierten \textit{Graphlet}-Vektoren unter der Annahme, dass die \"Ahnlichkeit zweier Netzwerke sich aus der \"Ahnlichkeit lokaler Substrukturen ableiten l\"asst \cite{frqdistribution}. Somit k\"onnen Netzwerke, die \"ahnliche Substrukturen habe, sich aber in ihrer Gr\"o"se stark unterschieden, immer noch als \"ahnlich erkannt werden. Zus\"atzlich soll durch diese Normalisierung ausgeschlossen werden, dass einzelne besonders h\"aufige \textit{Graphlets} in einem Graphen die Messung verzerren.
+Diese Metrik l\"asst sich analog zur euklidischen Distanz auffassen, denn sie berechnet den Abstand f\"ur zwei Vektoren $x,y$ als Differenz ihrer Eintr\"age $x_i -y_i$. Sie verwendet die normalisierten \textit{Graphlet}-Vektoren unter der Annahme, dass die \"Ahnlichkeit zweier Netzwerke sich aus der \"Ahnlichkeit lokaler Substrukturen ableiten l\"asst \cite{frqdistribution}. Somit k\"onnen Netzwerke, die \"ahnliche Substrukturen haben, sich aber in ihrer Gr\"o"se stark unterschieden, immer noch als \"ahnlich erkannt werden. Zus\"atzlich soll durch diese Normalisierung ausgeschlossen werden, dass einzelne besonders h\"aufige \textit{Graphlets} in einem Graphen die Messung verzerren.
 
-Da alle Eintr\"age der Vektoren aus dem Intervall $ [0,1] \in \mathbb{R} $ stammen werden sie logarithmiert. Damit erh\"alt man Abst\"ande, die aus deutlich gr\"o"seren Intervallen stammen. Die Ergebnisse k\"onnen so leichter interpretiert werden und der Einfluss der von Rundungsfehlern verkleinert sich.
+Da alle Eintr\"age der Vektoren aus dem Intervall $ [0,1] \in \mathbb{R} $ stammen werden sie logarithmiert. Damit erh\"alt man Abst\"ande, die aus deutlich gr\"o"seren Intervallen stammen. Die Ergebnisse k\"onnen so leichter interpretiert werden und der Einfluss der Einfluss von Rundungsfehlern verkleinert sich. Dies sorgt auch daf\"ur, dass seltenere \textit{Graphlets} einen st\"arkeren Einfluss auf die Messung haben, als h\"aufige \textit{Graphlets}.
  
 Weiterhin wurde gezeigt, (\cite{frqdistribution}) dass diese Metrik auch bei verrauschten Daten noch sehr gut funktioniert. Hierbei ist jedoch zu beachten, dass sie bisher vor allem f\"ur sehr gro"se Netzwerke mit mehreren Tausend Knoten und Kanten verwendet wurde. Diese Gr\"o"se kann von Aminos\"auregraphen erreicht werden, wenn sie gro"se Proteinkomplexe modellieren. Proteingraphen und Komplexgraphen sind aber deutlich kleiner.
 
 \section{\textit{PDBeFold}}
 
-Im Rahmen der Fallstudien wird \texttt{graphletAnalyser} mit \textit{PDBeFold} \cite{pdbefold} verglichen. \textit{PDBeFold} f\"uhrt einen graphenbasierten Strukrutvergleich durch. Analog zur PTGL modellieren Knoten SSEs. Zus\"atzlich werden diese mit der Anzahl von Residuen der SSE markiert. Im Gegensatz zur PTGL verbindet PDBeFold jeden Knoten durch eine Kante mit jedem anderen Knoten. Die Kanten werden hierbei mit Vektoren markiert, in denen unter anderem die Distanzen und Winkel zwischen den SSEs eingetragen sind.
+Im Rahmen der Fallstudie wird \texttt{graphletAnalyser} mit \textit{PDBeFold} \cite{pdbefold} verglichen. \textit{PDBeFold} f\"uhrt ebenfalls einen graphenbasierten Strukrutvergleich durch. Analog zur PTGL modellieren Knoten SSEs. Zus\"atzlich werden diese mit der Anzahl von Residuen des jeweiligen SSE markiert. Im Gegensatz zur PTGL verbindet PDBeFold jeden Knoten durch eine Kante mit jedem anderen Knoten. Die Kanten werden hierbei mit Vektoren markiert, in denen unter anderem die Distanzen und Winkel zwischen den SSEs eingetragen sind.
 
 Die Proteine werden also als vollst\"andige, ungerichtete Graphen modelliert, in denen jede Kante alle Informationen zur r\"aumlichen Orientierung ihrer inzidenten Knoten enth\"alt. Diese Graphen werden vorberechnet.
 
-Zum Vergleich von Strukturen wird f\"ur diese Graphen zun\"achst ein Alignment durchgef\"uhrt, um eine Absch\"atzung der strukturellen \"Ahnlichkeit zu erhalten und die \"aquivalenten Residuen zu ermitteln. Im Anschluss f\"uhrt PDBeFold ein Alignment der C$\alpha$-Atome durch und berechnet die \"Ahnlichkeit der Proteine als durchschnittlichen paarweisen Abstand \"aquivalenter Residuen. Als Abstandsma"s verwendet es die \textit{Root-Mean-Square-Deviation}.
+Zum Vergleich von Strukturen wird f\"ur diese Graphen zun\"achst ein Alignment durchgef\"uhrt, um eine Absch\"atzung der strukturellen \"Ahnlichkeit zu erhalten und die \"aquivalenten Residuen zu ermitteln. Im Anschluss f\"uhrt \\ PDBeFold ein Alignment der $\alpha$-C-Atome durch und berechnet die \"Ahnlichkeit der Proteine als durchschnittlichen paarweisen Abstand \"aquivalenter Residuen. Als Abstandsma"s verwendet es die \textit{Root-Mean-Square-Deviation}.
 
 Da \texttt{graphletAnalyser} Vektoren berechnet, die verglichen werden, ist ein direkter Vergleich der Abst\"ande aus beiden Programmen nicht m\"oglich. Der Vergleich kann nur durch einen Vergleich relativer Abst\"ande innerhalb der Datens\"atze erfolgen.
 
 
 \section{Datens\"atze}
 
-Im folgenden Teil sind die verwendeten Datens\"atze beschrieben. Es wurden zwei Fallstudien mit Abstandsmessungen durchgef\"uhrt, um diese zu testen.
+Im folgenden Teil sind die verwendeten Datens\"atze beschrieben. Es wurde eine Fallstudie mit Abstandsmessungen durchgef\"uhrt, um diese zu testen.
 
-Zus\"atzlich wurden \textit{Graphlet}-Vektoren f\"ur einen Datensatz aus 500 nicht redundanten PDB-Eintr\"agen berechnet. F\"ur diesen Datensatz wurden keine Abstandsmessungen durchgef\"uhrt, stattdessen wurden die \textit{Graphlet}-Vektoren selbst analysiert.
-
-
-\subsection{Fallstudien  - Datensatz 1}
+Zus\"atzlich wurden \textit{Graphlet}-Vektoren f\"ur einen Datensatz aus 500 nicht redundanten PDB-Eintr\"agen berechnet. F\"ur diesen Datensatz wurden keine Abstandsmessungen durchgef\"uhrt, stattdessen wurden die \textit{Graphlet}-Vektoren selbst statistisch analysiert.
 
 
-Dieser Datensatz enth\"alt 15 verschiedene Proteine mit bekannten strukturellen \"Ahnlichkeiten. Die Proteine wurden so gew\"ahlt, dass ihre Einordnungen in strukturelle Klassen in den Datenbanken CATH und SCOPe \"aquivalent zueinander sind.
+\subsection{Fallstudie}
+
+
+Dieser Datensatz enth\"alt 15 verschiedene Proteine mit bekannten strukturellen \"Ahnlichkeiten. Die Proteine wurden so gew\"ahlt, dass ihre Einordnungen in strukturelle Klassen in den Datenbanken CATH \cite{cath} und SCOPe \cite{scope} \"aquivalent zueinander sind.
 Der Datensatz wurde also so zusammengestellt, dass bez\"uglich der strukturellen Einteilung der Proteine der gr\"o"stm\"ogliche Konsens besteht.
-Je 5 Proteine dieses Datensatzes befinden sich in der gleichen Klasse. Von diesen 5 besitzen je 4 die gleiche Topologie und von diesen entstammen wiederum 3 der gleichen homologen Superfamilie. Von diesen ist ein Paar direkt homolog mit einer Sequenzidentit\"at von mehr als 95\%. Das dritte Protein ist zu den anderen beiden entfernt homolog mit einer Sequenzidentit\"at von weniger als 30\%.
+Je f\"unf Proteine dieses Datensatzes befinden sich in der gleichen Klasse. Von diesen f\"unf besitzen je vier die gleiche Topologie und von diesen entstammen wiederum drei der gleichen homologen Superfamilie. Von diesen ist ein Paar direkt homolog mit einer Sequenzidentit\"at von mehr als 95\%. Das dritte Protein ist zu den anderen beiden entfernt homolog mit einer Sequenzidentit\"at von weniger als 30\%.
 
 Es sind Proteine der Klassen $\alpha$, $\beta$ und $\alpha/\beta$ vertreten. Proteine mit wenigen SSEs wurden nicht betrachtet, da f\"ur diese die Proteingraphen und die Komplexgraphen in den meisten F\"allen keine Kanten besitzen. Dadurch k\"onnen keine \textit{Graphlets} in diesen Graphen gefunden werden.
 
 Weiterhin wurde darauf geachtet, dass jedes Protein dieses Datensatzes aus genau einer Polypeptidkette mit genau einer Dom\"ane besteht. Dies hat mehrere Gr\"unde.
 
-Zum ersten erm\"oglicht diese Auswahl die beste Vergleichbarkeit der Messungen mit Proteingraphen, Komplexgraphen und Aminos\"auregraphen, da Proteingraphen im Gegensatz zu Komplexgraphen und Amins\"auregraphen nur eine Polypeptidkette darstellen k\"onnen. Durch die Beschr\"ankung auf Proteine mit genau einer Polypeptidkette wird ein direkter Vergleich durch die Korrelation der paarweisen Distanzen in den unterschiedlichen Formaten m\"oglich.
+Zum ersten erm\"oglicht diese Auswahl die beste Vergleichbarkeit der Messungen mit Proteingraphen, Komplexgraphen und Aminos\"auregraphen, da Proteingraphen im Gegensatz zu Komplexgraphen und Aminos\"auregraphen nur eine Polypeptidkette darstellen k\"onnen. Durch die Beschr\"ankung auf Proteine mit genau einer Polypeptidkette wird ein direkter Vergleich durch die Korrelation der paarweisen Distanzen in den unterschiedlichen Graphtypen m\"oglich. Hier werden Liganden in den Komplexgraphen einbezogen und in den Proteingraphen ignoriert.
 
-Ein weiterer Grund f\"ur die Beschr\"ankung auf solche Proteine ist, dass man ein ''klareres Signal'' erh\"alt. Die Struktur von Proteinen wird haupts\"achlich anhand ihrer Dom\"anen beschrieben. Wenn \textit{Graphlets} sich wirklich f\"ur den Vergleich von Topologien eignen, dann m\"ussten gleiche Dom\"anen zu gleichen, oder zumindest \"ahnlichen \textit{Graphlet}-Vektoren f\"uhren.
+Ein weiterer Grund f\"ur die Beschr\"ankung auf solche Proteine ist, dass man ein ''klareres Signal'' erh\"alt. Die Struktur von Proteinen wird haupts\"achlich anhand ihrer Dom\"anen beschrieben. Wenn \textit{Graphlets} sich wirklich f\"ur den Vergleich von Topologien eigne, dann m\"ussten gleiche Dom\"anen zu gleichen oder zumindest \"ahnlichen \textit{Graphlet}-Vektoren f\"uhren.
 Da diese Vektoren globale Struktureigenschaften des Proteins beschreiben erhielte man f\"ur ein Multidom\"anenprotein mit unterschiedlichen Dom\"anen einen Vektor, der die Struktureigenschaften beider Dom\"anen ''vermischt'' und das Signal verrauscht.
 
 
@@ -250,7 +250,7 @@ In der folgenden Tabelle \ref{tab:set1} sind die PDB-IDs der Proteine dieses Dat
 
 
 \begin{table}[h!]
-\label{tab:set1}
+
 \begin{tabular}{ | c || c | c |}
 
 \hline
@@ -260,30 +260,30 @@ PDB-ID & CATH-ID        & Klassifizierung      \\ \hline
 1cgn   & 1.20.120.10 & Elektronentransport     \\ \hline
 1he9   & 1.20.120.260& Toxin (Exoenzym)        \\ \hline
 3gf9   & 1.20.900.10 & Endocytose              \\ \hline
-1exs   & 2.40.128.20 & Lipid bindendes Protein \\ \hline
-1ngl   & 2.40.128.20 & Transport Protein       \\ \hline
-1qqs   & 2.40.128.20 & Zucker bindendes Protein\\ \hline
-3slo   & 2.40.128.130& Protein Transport       \\ \hline
+1exs   & 2.40.128.20 & Lipidbindendes Protein \\ \hline
+1ngl   & 2.40.128.20 & Transportprotein       \\ \hline
+1qqs   & 2.40.128.20 & Zuckerbindendes Protein\\ \hline
+3slo   & 2.40.128.130& Proteintransport       \\ \hline
 1wjx   & 2.40.280.10 & RNA-bindendes Protein   \\ \hline
 5chy   & 3.40.50.2300& Signaltransduktion      \\ \hline
-2id9   & 3.40.50.2300& Signal Protein          \\ \hline
+2id9   & 3.40.50.2300& Signalprotein          \\ \hline
 3i42   & 3.40.50.2300& unbekannte Funktion     \\ \hline
 1d4o   & 3.40.50.1220& Oxidoreductase          \\ \hline
 2w0i   & 3.40.20.10  & Transferase             \\ 
 \hline
 \end{tabular}
 \caption{PDB-Eintr\"age der ersten Fallstudie. Die PDB-IDs sind mit dem CATH-Code der zugeh\"origen homologen Superfamilie und der Klassifizierung aus dem \textit{Header} der PDB-Datei in der entsprechenden Zeile eingetragen}
+\label{tab:set1}
 \end{table}
 
-F\"ur diesen Datensatz wurden alle \textit{Graphlet}-Vektoren berechnet. Die paarweisen Distanzen dieser Vektoren zueinander wurden mit der RGF und dem modifizierten Jaccard-Index berechnet. F\"ur die berechneten Distanzmatrizen wurden die Korrelationen der Distanzen in den verschiedenen Formaten berechnet und sie wurden mit den von PDBeFold berechneten Distanzen verglichen. 
+F\"ur diesen Datensatz wurden alle \textit{Graphlet}-Vektoren berechnet. Die paarweisen Distanzen dieser Vektoren wurden mit der RGF und dem modifizierten Jaccard-Index berechnet. F\"ur die berechneten Distanzmatrizen wurden die Korrelationen der Distanzen in den verschiedenen Formaten berechnet und sie wurden mit den von PDBeFold berechneten Distanzen verglichen. 
 
 
 
 \subsection{Der PDBTop500-Datensatz}
 
-Der PDBTop500-Datensatz wurde von \textit{Lovell et al.} vorgestellt (\cite{top500}). Diese nutzten ihn zur Validierung von PDB-Strukturen mit Hilfe der C$\alpha$-Geometrie.
-Der Datensatz enth\"alt 500 nicht redundante PDB-Eintr\"age mit einer Aufl\"osung von 1,8 \AA \\
-oder besser.
+Der PDBTop500-Datensatz wurde von \textit{Lovell et al.} vorgestellt (\cite{top500}). Diese nutzten ihn zur Validierung von PDB-Strukturvorhersagen unter Verwendung der $\alpha$-C-Geometrie.
+Der Datensatz enth\"alt 500 nicht redundante PDB-Eintr\"age mit einer Aufl\"osung von 1,8\AA{}  oder besser.
 
 Er wurde ausgew\"ahlt, weil die \textit{Graphlet}-Vektoren f\"ur ihn schnell berechenbar waren. Im Gegensatz zu anderen Datens\"atzen mit nicht redundanten PDB-Eintr\"agen wie dem FATCAT- oder dem ASTRAL-Datensatz enth\"alt dieser keine riesigen Proteinkomplexe, deren \textit{Graphlets} auf durchschnittlichen Computern nicht in weniger als 24 Stunden berechnbar sind. 
 Er ist aber immer noch gro"s genug, um Strukturvergleichsmethoden validieren zu k\"onnen. \textit{Zhang} und \textit{Skolnick} verwendeten zur Validierung von \textit{TM-align} einen Datensatz aus 200 PDB-Eintr\"agen (\cite{zhangtm}).
@@ -305,27 +305,27 @@ Die PDB-IDs der untersuchten Aldolasen lauten: 1lbm, 1lor, 1mxs, 1nsj, 1v5x, 1vq
 \section{Der modifizierte Jaccard-Index}
 
 
-Der Jaccard-Index ist im eigentlichen Sinne ein Ma"s, um die \"Ahnlichkeit von gleichm\"achtigen Mengen zu bewerten. F\"ur zwei Mengen $A,B$ berechnet sich der Jaccard-Index $D_{Jac}(A,B)$ folgenderma"sen:
+Der Jaccard-Index ist ein Ma"s, um die \"Ahnlichkeit von gleichm\"achtigen Mengen zu bewerten. F\"ur zwei Mengen $A,B$ berechnet sich der Jaccard-Index $D_{Jac}(A,B)$ folgenderma"sen:
 
 \[ D_{Jac}(A,B) := \frac{\sum_{x \ in A \land x \in B} 1}{\sum_{x \in A \lor x \in B} 1} \]
 
 Dementsprechend sind zwei Mengen $A,B$ gleich, wenn  gilt $D_{Jac} = 1$ und disjunkt, wenn gilt $D_{Jac} = 0$. Mit ihm wird die relative Anzahl der Elemente beider Mengen berechnet.
-Um dieses Ma"s in sinnvoller Weise auf \textit{Graphlet}-Vektoren zu \"ubertragen wurde ein zus\"atzlicher Faktor $k \in \mathbb{R} $ mit $k \in [0,1]$  eingef\"uhrt, der als Pr\"azisionsfaktor zu verstehen ist. Die Defintion des modifizierten Jaccard-Index $D_{Jac-m}(v,w)$ f\"ur zwei Vektoren $v,w$ lautet also:
+Um dieses Ma"s in sinnvoller Weise auf \textit{Graphlet}-Vektoren zu \"ubertragen wurde ein zus\"atzlicher Faktor $k \in \mathbb{R} $ mit $k \in [0,1]$  eingef\"uhrt, der als Pr\"azisionsfaktor zu verstehen ist. Die Defintion des modifizierten Jaccard-Index $D_{JacM}(v,w)$ f\"ur zwei Vektoren $v,w$ lautet also:
 
-\[ D_{Jac-m}(v,w) := \frac{\sum_{i = 1}^n x_i}{\sum_{x \in A \lor x \in B} 1} \]
+\[ D_{JacM}(v,w) := \frac{\sum_{i = 1}^n x_i}{\sum_{x \in A \lor x \in B} 1} \]
 
 Hierbei gilt:
 
 \[ x_i = 
    \begin{cases}
-     1     & \quad \mathrm{if} \quad v_i >= w_i \times k \land w_i >= v_i \times k \\
+     1     & \quad \mathrm{if} \quad v_i \geq w_i \times k \land w_i \geq v_i \times k \\
      0     & \quad \mathrm{else} \\
    \end{cases}
 \]
 
 In dieser modifizierten Variante werden zwei Vektoren $v,w$ als gleich angesehen, wenn sich $v_i,w_i$ f\"ur alle $i$ h\"ochstens um den Faktor $k$ unterschieden.
-Dies steht im Gegensatz zur RGF, die - analog zum euklidischen Abstand - die Abst\"ande zwischen zwei \textit{Graphlet}-Vektoren misst.
-
+Dies steht im Gegensatz zur RGF, die -- analog zum euklidischen Abstand -- die Abst\"ande zwischen zwei \textit{Graphlet}-Vektoren misst.
+F\"ur alle weiteren Messungen in dieser Arbeit wurde $k=0,9$ gew\"ahlt. Dies hatte den Grund, dass weder niedrigere noch h\"ohere Werte zu sinnvoller interpretierbaren Ergebnissen f\"uhrten.
 
 \section{Der \textit{Graphlet}-Worte-Algorithmus}
 
@@ -340,84 +340,65 @@ Die Berechnung aller \"aquivalenten \textit{Graphlet}-Worte der L\"ange 3 ist ko
 
 
 
-%\begin{algorithmic}
-% INPUT: Ein Alphabet \sum = \{ \sigma_1, ... , \sigma_n \}
-% OUTPUT: Zwei Listen Wortliste_3-Weg, Wortliste_3-Kreis \sub \sum*
-% Liste Wortliste_3-Weg
-% Liste Wortliste_3-Kreis
-%\For{ i = 1 to n}
-% Wortliste.add(\sigma_i \sigma_i \sigma_i)
-%\For{ k = i + 1 to n}
-% Wortliste_3-Weg.add(\sigma_i \sigma_k \sigma_i)
-% Wortliste_3-Weg.add(\sigma_i \sigma_i \sigma_k)
-% Wortliste_3-Weg.add(\sigma_i \sigma_k \sigma_k)
-% Wortliste_3-Weg.add(\sigma_k \sigma_i \sigma_k)
-%
-% Wortliste_3-Kreis.add(\sigma_i \sigma_k \sigma_i)
-% Wortliste_3-Kreis.add(\sigma_i \sigma_k \sigma_k)
-%\For{ m = k + 1 to n}
-% Wortliste_3-Weg.add(\sigma_i \sigma_k \sigma_m)
-% Wortliste_3-Weg.add(\sigma_m \sigma_i \sigma_k)
-% Wortliste_3-Weg.add(\sigma_k \sigma_m \sigma_i)
-%
-% Wortliste_3-Kreis.add(\sigma_i \sigma_k \sigma_m)
-% Wortliste_3-Kreis.add(\sigma_m \sigma_k \sigma_i)
-%\EndFor
-%\EndFor
-%\EndFor
-%\end{algorithmic}
 
-Pseudocode Platzhalter \\
-Pseudocode Platzhalter \\
-Pseudocode Platzhalter \\
-Pseudocode Platzhalter \\
-Pseudocode Platzhalter \\
-Pseudocode Platzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
-Pseudocode PLatzhalter \\
+\IncMargin{1em}
+\begin{algorithm}
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwFunction{add}{add}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\Input{Ein Alphabet $ \sum = \{ \sigma_1, ... , \sigma_n \}$ }
+\Output{Zwei Listen Wortliste-3-Weg, Wortliste-3-Kreis, die die repr\"asentierenden Worte f\"ur den Kreis bzw. Weg aus 3 Knoten beschreiben}
+\BlankLine
+\For{$i\leftarrow 1$ \KwTo $n$}{
+Wortliste-3-Weg.\add{$\sigma_i \sigma_i \sigma_i$} \\
+Wortliste-3-Weg.\add{$\sigma_i \sigma_i \sigma_i$} \\
+\For{$k\leftarrow i+1$ \KwTo $n$}{
 
 
-Der Algorithmus besteht aus 3 \textit{for}-Schleifen, die \"uber das Alphabet iterieren. In der \"au"sersten Schleife werden Worte hinzugef\"ugt, in denen alle Buchstaben gleich sind.
-In der zweiten Schleife wird jeweils der n\"achste Buchstabe des Alphabets betrachtet. F\"ur jedes Paar $a, b$ von Buchstaben \"uber einem Alphabet $\sum$ sind die Mengen der \"aquivalenten Worte f\"ur das \textit{Graphlet} $g_1$ $P_{3-Kreis} = \{ \}$ und $P_{3-Weg} = \{ aaa, aba, aab, abb  \}$ f\"ur das \textit{Graphlet} $g_2$
+Wortliste-3-Weg.\add{$\sigma_i \sigma_k \sigma_i$} \\
+Wortliste-3-Weg.\add{$\sigma_i \sigma_i \sigma_k$} \\
+Wortliste-3-Weg.\add{$\sigma_i \sigma_k \sigma_k$} \\
+Wortliste-3-Weg.\add{$\sigma_k \sigma_i \sigma_k$} \\
 
-TODO: Beschreibung der Mengen, Beweis
+Wortliste-3-Kreis.\add{$\sigma_i \sigma_k \sigma_i$} \\
+Wortliste-3-Kreis.\add{$\sigma_i \sigma_k \sigma_k$} \\
+
+\For{$ m \leftarrow k + 1 $ \KwTo $n$}{
+Wortliste-3-Weg.\add{$\sigma_i \sigma_k \sigma_m$} \\
+Wortliste-3-Weg.\add{$\sigma_m \sigma_i \sigma_k$} \\
+Wortliste-3-Weg.\add{$\sigma_k \sigma_m \sigma_i$} \\
+Wortliste-3-Kreis.\add{$\sigma_i \sigma_k \sigma_m$} \\
+Wortliste-3-Kreis.\add{$\sigma_m \sigma_k \sigma_i$} \\
+}
+}
+}
+\caption{\textit{Graphlet}-Worte-Algorithmus}\label{algo_gwords}
+\end{algorithm}\DecMargin{1em}
 
 
+Der Algorithmus besteht aus drei \textit{for}-Schleifen, die \"uber das Alphabet iterieren. In der jeder dieser Schleifen werden alle \"aquivalenten Worte hinzugef\"ugt, die aus den aktuell betrachteten Buchstaben erzeugt werden k\"onnen.
 
-F\"ur das Alphabet der SSE- und Komplexgraphen $ \sum_{SSE} := \{ H, E, L \} $ und das Alphabet der Aminos\"auregraphen $ \sum_{AA} := \{ h, p, c, ? \} $ gibt der oben beschriebene Algorithmus die folgenden Listen aus:
+
+F\"ur das Alphabet der Protein- und Komplexgraphen $ \sum_{SSE} := \{ H, E, L \} $ und das Alphabet der Aminos\"auregraphen $ \sum_{AA} := \{ h, p, c, ? \} $ gibt der oben beschriebene Algorithmus die folgenden Listen aus:
 
 
 \begin{subequations}
-\begin{align}
+\begin{align*}
 p_2 :=       (HH, HE, HL, EE, EL, LL) \\
 p_{3-Weg}   := (HHH, HEH, HHE, HEE, EHE, \\
                 HEL, LHE, ELH, HLH, HHL, \\
                 HLL, LHL, EEE, ELE, EEL, \\
                 ELL, LEL, LLL) \\
-p_{3-Kreis} := (HHH, HEH, HEE, HEL, LEH,
+p_{3-Kreis} := (HHH, HEH, HEE, HEL, LEH, \\
                 HLH, HLL, EEE, ELE, ELL, LLL) \\
-\end{align}
+\end{align*}
 \end{subequations}
 
 Die Vektoren $a_2, a_{3-Weg}$ und $a_{3-Kreis}$ beschreiben die Worte f\"ur \textit{Graphlets} in AA-Graphen 
 
 \begin{subequations}
-\begin{align}
+\begin{align*}
 a_2 :=         (hh, hp, hc, h?, pp, pc, p?, cc, c?, ??) \\ 
 a_{3-Weg} :=   (hhh, hph, hhp, hpp, php, hpc, chp, pch, hp?, ?hp,\\
                 p?h, hch, hhc, hcc, chc, hc?, ?hc ,c?h, h?h, hh?, \\
@@ -426,7 +407,7 @@ a_{3-Weg} :=   (hhh, hph, hhp, hpp, php, hpc, chp, pch, hp?, ?hp,\\
 a_{3-Kreis} := (hhh, hph, hpp, hpc, cph, hp?, ?ph, hch, hcc, hc?, \\
                 ?ch, h?h, h??, ppp, pcp, pcc, pc?, ?cp, p?p, p??, \\
                 ccc, c?c, c??, ???)
-\end{align}
+\end{align*}
 \end{subequations}
 
 % a2 laenge 10
@@ -434,7 +415,6 @@ a_{3-Kreis} := (hhh, hph, hpp, hpc, cph, hp?, ?ph, hch, hcc, hc?, \\
 % a3kreis laenge 24
 
 Um die Korrektheit des Algorithmus zu \"uberpr\"ufen wurde die Ausgabe f\"ur Alphabete mit 3 und 4 Buchstaben h\"andisch \"uberpr\"uft.
-
 
 
 \section{Erweiterung von \texttt{graphletAnalyser}}
@@ -455,31 +435,31 @@ Wenn die Option \texttt{--useDatabase} ausgew\"ahlt wird, pr\"uft das Programm, 
 
 
 
-\section{Fallstudien - Datensatz 1}
+\section{Fallstudie}
 
-Die paarweisen RGF-Distanzen der Proteine befinden sich in den Tabellen \ref{table:occ-pg-rgf} \ref{table:occ-aag-rgf} und \ref{table:occ-cg-tc}. Die paarweisen Jaccard-Indizes befinden sich in den Tabellen \ref{table:occ-aa-tc}, \ref{table:occ-pg-tf} und \ref{table:occ-cg-tc}.
-Hierbei wurden die Zellen, die die 4 besten Bewertungen f\"ur das Protein der entsprechenden Zeile enthalten gr\"un eingef\"arbt. Hierbei gilt, dass das Gr\"un umso dunkler ist, je st\"arker die \"Ahnlichkeit bewertet wird.
+Die paarweisen RGF-Distanzen der Proteine befinden sich in den Tabellen  \ref{table:occ-aag-rgf}, \ref{table:occ-pg-rgf} und \ref{table:occ-cg-tc}. Die paarweisen Jaccard-Indizes befinden sich in den Tabellen \ref{table:occ-aa-tc}, \ref{table:occ-pg-tf} und \ref{table:occ-cg-tc}.
+Hierbei wurden die Zellen, die die 4 besten Bewertungen f\"ur das Protein der entsprechenden Zeile enthalten gr\"un eingef\"arbt. Das Gr\"un ist umso dunkler, je st\"arker die \"Ahnlichkeit bewertet wird.
 
 \paragraph{Der Vergleich mittels RGF}
-zeigt f\"ur die Aminos\"auregraphen die st\"arksten \"Ahnlichkeiten immer innerhalb der entsprechenden CATH-Klassen. Sowohl die Proteine aus der \textit{mainly-alpha}-Klasse, als auch die Proteine der \textit{mainly-beta}-Klasse haben die besten \"Ahnlichkeitswerte mit Proteinen der gleichen Klasse.
-Innerhalb der Klasse der \textit{alpha-beta}-Proteine, gibt es mit 2id9 und 1d4o zwei Proteine, denen eine gr\"o"sere \"Ahnlichkeit zu Proteinen der \textit{mainly-alpha}-Klasse attestiert wurde.
+zeigt f\"ur die Aminos\"auregraphen die st\"arksten \"Ahnlichkeiten immer innerhalb der entsprechenden CATH-Klassen. Sowohl die Proteine aus der $\alpha$-Klasse als auch die Proteine der $\beta$-Klasse haben die besten \"Ahnlichkeitswerte mit Proteinen der gleichen Klasse.
+Innerhalb der Klasse der $\alpha/\beta$-Proteine, gibt es mit 2id9 und 1d4o zwei Proteine, denen eine gr\"o"sere \"Ahnlichkeit zu Proteinen der \textit{mainly-alpha}-Klasse attestiert wurde.
 Bei 1d4o f\"allt auf, dass der niedrigste Wert mit 7,091 deutlich h\"oher ist, als die besten Werte aller anderen Proteine.
 2id9 hat laut der RGF-Distanz die gr\"o"ste \"Ahnlichkeit zu 1he9.
 Bis auf diese beiden Au"snahmen l\"asst sich jedoch eine starke Korrelation mit den CATH-Klassen erkennen.
-Alle anderen Proteine haben mindestens die zwei kleinsten zwei RGF-Distanzen zu Vertretern aus der selben CATH-Klasse.
+Alle anderen Proteine haben mindestens die zwei kleinsten RGF-Distanzen zu Vertretern aus der selben CATH- und SCOPe-Klasse.
 
 Dies gilt f\"ur die Aminos\"auregraphen. Die RGF-Distanzen der Proteingraphen zueinander zeigen ein weniger klares Bild.
-F\"ur die \textit{mainly-alpha}-Klasse und die der \textit{mainly-beta}-Klasse befinden sich die Proteine mit den k\"urzesten Distanzen immer noch in der selben Klasse. Dies l\"asst sich f\"ur die Proteine der \textit{alpha-beta}-Klasse aber nicht mehr behaupten. Hier haben 2ID9, 3I42 und 2w0I die k\"urzesten Distanzen zu Proteinen anderer Klassen.
+F\"ur die $\alpha$-Klasse und die der $\beta$-Klasse befinden sich die Proteine mit den k\"urzesten Distanzen immer noch in der selben Klasse. Dies l\"asst sich f\"ur die Proteine der $\alpha/\beta$-Klasse aber nicht mehr behaupten. Hier haben 2id9, 3i42 und 2w0i die k\"urzesten Distanzen zu Proteinen anderer Klassen.
 
-Bei den Komplexgraphen ist die Korrelation zwischen der RGF-Distanz und der Zugeh\"origkeit zur CATH-Klasse noch geringer. Die Tabelle \ref{table:occ-cg-rgf} zeigt nur f\"ur die Proteine 1QQ3, 1HE9, 1EXS und 1QQS die k\"urzeste Distanz zu einem Vertreter der gleichen Klasse.
-Es f\"allt jedoch auf, dass besonders h\"aufig die Proteine der \textit{alpha-beta}-Klasse 5CHY, 2ID9 und 3I42 als \"ahnlich zu anderen bewertet werden.
+Bei den Komplexgraphen ist die Korrelation zwischen der RGF-Distanz und der Zugeh\"origkeit zur strukturellen Klasse noch geringer. Die Tabelle \ref{table:occ-cg-rgf} zeigt nur f\"ur die Proteine 1qq3, 1he9, 1exs und 1qqs die k\"urzeste Distanz zu einem Vertreter der gleichen Klasse.
+Es f\"allt jedoch auf, dass besonders h\"aufig die Proteine der \textit{alpha-beta}-Klasse 5chy, 2id9 und 3i42 als \"ahnlich zu anderen bewertet werden.
 
 \paragraph{Der Vergleich der Jaccard-Indizes}
-zeigt ein \"ahnliches Bild, wie der Vergleich der RGF-Distanzen. Bei den Aminos\"auregraphen zeigt sich, dass innerhalb der \textit{mainly-alpha}-Klasse wieder die paarweisen \"Ahnlichkeiten der \textit{mainly-alpha}-Proteine am gr\"o"sten sind. Dies gilt bis auf eine Ausnahme auch f\"ur die \textit{mainly-beta}-Proteine. Das Protein mit der PDB-ID 1NGL wird als strukturell \"ahnlichstes Protein zu 2W0I bewertet. In der Klasse der \textit{alpha-beta}-Proteine gibt es mit 2ID9 und 1D4O wieder zwei Ausrei"ser, die die gr\"o"sten paarweisen \"Ahnlichkeiten nicht zu Vertretern der eigenen Klasse haben. F\"ur 2ID9 wird 1HE9 als \"ahnlichstes Protein angegeben und 1D4O wird 1QQS zugeordnet.
+zeigt ein \"ahnliches Bild, wie der Vergleich der RGF-Distanzen. Bei den Aminos\"auregraphen zeigt sich, dass innerhalb der $\alpha$-Klasse wieder die paarweisen \"Ahnlichkeiten der $\alpha$-Proteine am gr\"o"sten sind. Dies gilt bis auf eine Ausnahme auch f\"ur die $\beta$-Proteine. Das Protein mit der PDB-ID 1ngl wird als strukturell \"ahnlichstes Protein zu 2w0i bewertet. In der Klasse der $\alpha/\beta$-Proteine gibt es mit 2ID9 und 1D4O wieder zwei Ausrei"ser, die die gr\"o"sten paarweisen \"Ahnlichkeiten nicht zu Vertretern der eigenen Klasse haben. F\"ur 2ID9 wird 1HE9 als \"ahnlichstes Protein angegeben und 1D4O wird 1QQS zugeordnet.
 
-Die paarweisen Tanimoto-Koeffizienten der Proteingraphen zeigen - wie schon bei den RGF-Distanzen - eine geringere Korrelation mit der Zugeh\"origkeit zu den CATH-Klassen, als die Koeffizienten der Aminos\"auregraphen. Es haben zwar wieder mindestens 3 Vertreter jeder Klasse ihren n\"achsten Nachbarn in der gleichen Klasse, aber es gibt auch einige Proteine, die ihren n\"achsten Nachbarn au"serhalb der eigenen Klasse haben. Hierzu geh\"oren 1D4O, 2W0I (beide \textit{alpha-beta}) und 3GF9 (\textit{mainly-alpha}). Es f\"allt auf, dass wieder die Proteine mit den PDB-DIs 2ID9 und 3I42 besonders h\"aufig als strukturell \"ahnlich zu vielen anderen Proteinen bewertet werden.
+Die paarweisen modifizierten Jaccard-Indizes der Proteingraphen zeigen - wie schon bei den RGF-Distanzen - eine geringere Korrelation mit der Zugeh\"origkeit zu den CATH-Klassen, als die Koeffizienten der Aminos\"auregraphen. Es haben zwar wieder mindestens 3 Vertreter jeder Klasse ihren n\"achsten Nachbarn in der gleichen Klasse, aber es gibt auch einige Proteine, die ihren n\"achsten Nachbarn au"serhalb der eigenen Klasse haben. Hierzu geh\"oren 1d4o und 2w0i, die $\alpha/\beta$-Proteine sind, und das $\alpha$-Protein 3GF9. Es f\"allt auf, dass wieder die Proteine mit den PDB-DIs 2id9 und 3i42 besonders h\"aufig als strukturell \"ahnlich zu vielen anderen Proteinen bewertet werden.
 
-F\"ur die Komplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter den ersten 3 Proteinen 1QPU, 1QQ3 und 1CGN. Auch innerhalb der Klasse \textit{alpha-beta} sind 3 Proteine mit der h\"ochsten paarweisen \"Ahnlichkeit bewertet worden. Die geringe Anzahl von stark bewerteten \"Ahnlichkeiten innerhalb der \textit{mainly-beta}-Klasse ist sehr auff\"allig. 1QQS und 3SLO sind das einzige Paar mit \textit{beta}-Topologie, dessen \"Ahnlichkeit als gro"s bewertet wurde.
+F\"ur die Komplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter den ersten drei Proteinen 1qpu, 1qq3 und 1cgn. Auch innerhalb der Klasse $\alpha/\beta$ sind drei Proteine mit der h\"ochsten paarweisen \"Ahnlichkeit bewertet worden. Die geringe Anzahl von stark bewerteten \"Ahnlichkeiten innerhalb der $\beta$-Klasse ist sehr auff\"allig. 1qqs und 3slo sind das einzige Paar mit $\beta$-Topologie, dessen \"Ahnlichkeit als gro"s bewertet wurde.
 
 
 \section{PDBTop500-Datensatz}
@@ -487,15 +467,15 @@ F\"ur die Komplexgraphen zeigt die Tabelle wieder eine hohe \"Ahnlichkeite unter
 F\"ur den PDBTop500-Datensatz wurden \textit{Graphlet}-Vektoren der drei verschiedenen Graphenformate berechnet. Diese Vektoren wurden f\"ur jedes Format in einer .csv-Datei zusammengefasst und f\"ur jede dieser Dateien wurden \textit{Boxplots} erstellt.
 
 In diese Boxplots wurden zus\"atzlich die relativen H\"aufigkeiten der bereits beschriebenen Aldolasen eingetragen. Hiermit kann festgestellt werden, ob die Superfamilie der Aldolasen anhand ihrer \textit{Graphlets} von anderen Superfamilien unterscheidbar ist.
-Der Boxplot \ref{fig:aaplot} stellt diese Daten f\"ur die Aminos\"auregraphen dar. Da die relative H\"aufigkeiten der \textit{Graphlets} in den Aminos\"auren deutlich kleiner sind, als bei Proteingraphen und Komplexgraphen, weil es mehr \textit{Graphlet}-Worte gibt, wurde die Skala der y-Achse logarithmiert.
+Der Boxplot \ref{fig:aaplot} stellt diese Daten f\"ur die Aminos\"auregraphen dar. Da die relativen H\"aufigkeiten der \textit{Graphlets} in den Aminos\"auren deutlich kleiner sind als bei Proteingraphen und Komplexgraphen, weil es f\"ur sie mehr \textit{Graphlet}-Worte gibt, wurde die Skala der y-Achse logarithmiert.
 
 
 
 \begin{sidewaysfigure}
-\label{fig:aaplot}
+
 \includegraphics[scale=0.55]{aa_plot.png}
 \caption{Verteilung der relativen H\"aufigkeiten der \textit{Graphlets} in Aminos\"auregraphen. Jeder Punkt auf der x-Achse entspricht einem \textit{Graphlet}. Die y-Achse ist logarithmiert und beschreibt die relative H\"aufigkeiten. Die H\"aufigkeiten der Proteine des PDBTop500-Datensatzes sind in blau, die der Aldolasen in rot angegeben. Links von der vertikalen Linie sind \textit{Graphlets} ohne Markierungen, rechts davon sind \textit{Graphlets} mit Markierungen. Ausrei"ser sind nicht eingetragen.}
-
+\label{fig:aaplot}
 \end{sidewaysfigure}
 
 
@@ -504,15 +484,16 @@ Der Boxplot \ref{fig:aaplot} stellt diese Daten f\"ur die Aminos\"auregraphen da
 Unter den \textit{Graphlets} ohne Markierungen in Abbildung \ref{fig:aaplot} gibt es nur zwei bei denen sich die relativen H\"aufigkeiten der Aldolasen nicht mit denen des Datensatzes \"uberlappen. Dies sind die \textit{Graphlets} $g_8$ und $g_{15}$ in \ref{fig:5graphlets}, die in den Aldolasen nicht gefunden werden.
 
 
-Unter den markierten \textit{Graphlets} gibt es deutlich mehr Unterschiede. Sieben verschiedene \textit{Graphlet}-Verteilungen \"uberlappen sich nicht. Die ersten drei hiervon entsprechen den \textit{Graphlet}-Worten h?, c? und ??. Diese stehen f\"ur Kanten zwischen unpolaren Residuen und Liganden, Kanten zwischen sauren oder basischen Residuen und Liganden und Kanten zwischen Liganden,
+Unter den markierten \textit{Graphlets} gibt es deutlich mehr Unterschiede. Sieben verschiedene \textit{Graphlet}-Verteilungen \"uberlappen sich nicht. Die ersten drei hiervon entsprechen den \textit{Graphlet}-Worten h?, c? und ??. Diese stehen f\"ur Kanten zwischen unpolaren Residuen und Liganden, Kanten zwischen sauren oder basischen Residuen und Liganden und Kanten zwischen Liganden.
 
 Die n\"achsten drei Worte f\"ur die keine \"Uberlappungen gefunden wurden sind die Worte hhh, hph und hhp. Diese repr\"asentieren Wege der L\"ange 2 zwischen drei unpolaren Residuen, zwei unpolaren Residuen mit einem polaren Residuum als inneren Knoten und zwei unpolaren Residuen mit einer polaren Aminos\"aure als Endknoten.
 
 
 \begin{sidewaysfigure}
-\label{fig:pgplot}
+
 \includegraphics[scale=0.55]{pg_plot.png}
 \caption{Verteilung der relative H\"aufigkeiten der \textit{Graphlets} f\"ur Proteingraphen. Auch hier entspricht jeder Punkt auf der x-Achse einem \textit{Graphlet} und die y-Achse zeigt die relativen H\"aufigkeiten an. Wieder trennt die dunkelgr\"une Linie markierte und nicht markierte \textit{Graphlets}. Solche ohne Markierungen sind links, mit Markierungen Versehene befinden sich rechts.}
+\label{fig:pgplot}
 \end{sidewaysfigure}
 
 Bei den Proteingraphen in Abbildung \ref{fig:pgplot} sind die \textit{Graphlet}-Verteilungen ein wenig st\"arker voneinander getrennt.  
@@ -520,9 +501,10 @@ Dies gilt f\"ur das 4-\textit{Graphlet} $g_6$, das 5-\textit{Graphlet} $g_13$. U
 
 
 \begin{sidewaysfigure}
-\label{fig:cgplot}
+
 \includegraphics[scale=0.55]{cg_plot.png}
 \caption{Verteilung der relative H\"aufigkeiten der \textit{Graphlets} f\"ur Komplexgraphen. Auch hier entspricht jeder Punkt auf der x-Achse einem \textit{Graphlet} und die y-Achse zeigt die relativen H\"aufigkeiten an. Wieder trennt die dunkelgr\"une Linie markierte und nicht markierte \textit{Graphlets}. Solche ohne Markierungen sind links, mit Markierungen versehene befinden sich rechts.}
+\label{fig:cgplot}
 \end{sidewaysfigure}
 
 F\"ur die Komplexgraphen in Abbildung \ref{fig:cgplot} finden wir die st\"arksten Unterschiede zwischen den Verteilungen der Aldolasen und denen des Referenzdatensatzes. F\"ur die unmarkierten \textit{Graphlets} $g_1$ und $g_2$ in \ref{fig:3graphlets}, $g_2$, $g_3$ und $g_6$ in \ref{fig:4graphlets} sowie $g_6$, $g_{10}$, $g_{12}$, $g_{13}$, $g{16}$, $g_{18}$, $g_{20}$ und $g_{21}$ in \ref{fig:5graphlets}.
@@ -536,14 +518,14 @@ Damit sind die Unterschiede der \textit{Graphlet}-Verteilungen zwischen dem Refe
 
 \section{Diskussion}
 
-Die folgende Diskussion der Fallstudien widmet sich vor allem der Frage, wieso die Ergebnisse der \"Ahnlichkeitsvergleiche, sich so stark zwischen den jeweiligen Graphendarstellungen unterscheiden.
-Des weiteren wird der Zusammenhang zwischen dem Jaccard-Index und der RGF untersucht.
+Die folgende Diskussion widmet sich vor allem der Frage, wieso die Ergebnisse der \"Ahnlichkeitsvergleiche sich so stark zwischen den jeweiligen Graphendarstellungen unterscheiden.
+Des weiteren wird der Zusammenhang zwischen dem modifizierten Jaccard-Index und der RGF untersucht.
 
-\subsection{Datensatz 1}
-\subsubsection{Vergleich der Graphformate}
+\subsection{Fallstudie}
+\subsubsection{Vergleich der Graphtypen}
 
 Wie schon im Ergebnisteil dargestellt, zeigen die Vergleiche der Aminos\"auregraphen den h\"ohsten Konsens mit der Einteilung der Strukturen durch CATH und SCOPe. Eine m\"ogliche Erkl\"arung hierf\"ur ist die Gestalt der Graphen. Bisher wurden \textit{Graphlets} zur Analyse von zusammenh\"angenden Graphen verwendet (\cite{sherv_graphlets}, \cite{graphletfrequency}).
-Proteingraphen und Komplexgraphen sind jedoch nicht immer zusammenh\"angend. es kommt h\"aufig vor, dass einzelne Knoten keine Verbindungen zum Rest des Graphen aufweisen. Das unten stehende Bild zeigt ein Beispiel.
+Proteingraphen und Komplexgraphen sind jedoch nicht immer zusammenh\"angend. es kommt h\"aufig vor, dass einzelne Knoten keine Verbindungen zum Rest des Graphen aufweisen. Dies kommt daher, dass \textit{Coils} nicht modelliert werden. Das unten stehende Bild zeigt ein Beispiel.
 
 \begin{figure}[h!]
 \includegraphics[scale=0.5]{3gf9_A_albe_PG.png}
@@ -552,7 +534,7 @@ Proteingraphen und Komplexgraphen sind jedoch nicht immer zusammenh\"angend. es 
 
 Dadurch, dass dies in den zusammenh\"angenden \textit{Graphlets} nicht ber\"ucksichtigt werden kann, geht Information verloren. Unabh\"angig von der Wahl des \"Ahnlichkeitsma"s w\"urde dieser Graph mit einem anderen Graphen, dem die beiden Helix-Knoten mit einem Grad von 0 fehlen, als gleich bewertet werden, obwohl dieser zwei SSEs weniger aufwiese. Diese SSEs k\"onnen jedoch biologisch von zentraler Bedeutung sein.
 
-Im Gegensatz hierzu sind die Aminos\"auregraphen dieser Fallstudie zusammenh\"angend. Dies erkl\"art die h\"ohere Genauigkeit.
+Im Gegensatz hierzu sind die Aminos\"auregraphen dieser Fallstudie zusammenh\"angend, weil sie alle Residuen in der Polypeptidkette modellieren. Dies erkl\"art die h\"ohere Genauigkeit.
 
 
 \subsubsection{Vergleich der Distanzma"se}
@@ -567,7 +549,7 @@ Aminos\"auregraphen &   0.6052    \\ \hline
 Proteingraphen      &   0.3102    \\ \hline      
 Komplexgraphen      &   0.1256    \\ \hline
 \end{tabular}
-\caption{Korrelationen der RGF mit den Jaccard-Indizes f\"ur die verschiedenen Graphformate}
+\caption{Korrelationen der RGF mit den Jaccard-Indizes f\"ur die verschiedenen Graphtypen}
 \label{tab:correlation}
 
 \end{table}
@@ -577,16 +559,17 @@ So tragen Werte in \"ahnlichen Gr\"o"senordnungen immer zu einer k\"urzeren Dist
 
 
 
-Beim Betrachten der relative \textit{Graphlet}-H\"aufigkeiten haben wir gesehen, dass f\"ur die \textit{Graphlets}, die besonders h\"aufig sind, auch die Varianz dieser H\"aufigkeiten besonders gro"s ist, W\"ahrend gleichzeitig einige \textit{Graphlets} fast nie auftauchen.
+Beim Betrachten der relative n\textit{Graphlet}-H\"aufigkeiten haben wir gesehen, dass f\"ur die \textit{Graphlets}, die besonders h\"aufig sind, auch die Varianz dieser H\"aufigkeiten besonders gro"s ist, w\"ahrend gleichzeitig einige \textit{Graphlets} fast nie auftauchen.
 
-All diese \textit{Graphlets}, die nieauftauchen sorgen daf\"ur, dass der Jaccard-Index wahrscheinlic nie f\"ur ein Paar aus zwei beliebigen Proteinen den Wert Null annimmt. Damit wird bereits eine gewisse Mindest\"ahnlichkeit vorausgesetzt. Gleichzeitig ist kann der Jaccard-Index aber \textit{Graphlets}, die selten auftreten nicht st\"arker gewichten, denn wenn ein seltenes \textit{Graphlet} in einem Graphen einmal auftaucht und in einem anderen zweimal ist dieser Unterschied zu gro"s, um in eine positive Bewertung einzuflie"sen, obwohl dies eine starke \"Ahnlichkeit bedeuten k\"onnte.
+Diese seltenen \textit{Graphlets} sorgen daf\"ur, dass der Jaccard-Index wahrscheinlich nie f\"ur ein Paar aus zwei beliebigen Proteinen den Wert Null annimmt. Damit wird bereits eine gewisse Mindest\"ahnlichkeit vorausgesetzt. Gleichzeitig ist kann der Jaccard-Index aber \textit{Graphlets}, die selten auftreten nicht st\"arker gewichten, denn wenn ein seltenes \textit{Graphlet} in einem Graphen einmal auftaucht und in einem anderen zweimal ist dieser Unterschied zu gro"s, um in eine positive Bewertung einzuflie"sen, obwohl dies eine starke \"Ahnlichkeit bedeuten k\"onnte.
+Diese Form von \"Ahnlichkeit wird in der RGF ber\"ucksichtigt.
 
 \subsubsection{Vergleich mit \textit{PDBeFold} - die Ausrei"ser}
 
-Da \textit{PDBeFold} keine 15 Proteine auf einmal alignieren kann und ein \textit{Template}-basiertes Alignment durchf\"uhrt wurden f\"ur den Vergleich mit den \textit{Graphlet}-Abst\"anden eine Teilmenge der Proteine ausgew\"ahlt.
+Da \textit{PDBeFold} keine 15 Proteine auf einmal alignieren kann und ein \textit{Template}-basiertes Alignment durchf\"uhrt, wurde f\"ur den Vergleich mit den \textit{Graphlet}-Abst\"anden eine Teilmenge der Proteine ausgew\"ahlt.
 
 
-Beim Vergleich der Komplexgraphen in Tabelle \ref{table:occ-cg-rgf} f\"allt auf, dass die Proteine 2id9, 3i42 und 2w0i die die geringsten Distanzen zu 1cgn haben, obwohl 1qq3 sein \"Ahnlichstes sein sollte. Ein Alignment dieser Proteine mit \textit{PDBeFold} liefert die Tabelle \ref{tab:efold_comp1} :
+Beim Vergleich der Komplexgraphen in Tabelle \ref{table:occ-cg-rgf} f\"allt auf, dass die Proteine 2id9, 3i42 und 2w0i die die geringsten Distanzen zu 1cgn haben, obwohl  1qq3 sein \"Ahnlichstes sein sollte. Ein multipler Vergleich dieser Proteine mit \textit{PDBeFold} ist in der Tabelle \ref{table:efold-comp1} zu sehen.
 
 
 
@@ -600,7 +583,7 @@ PDB & 1cgn    & 2id9  & 3i42  & 2w0i  & 1qq3 \\ \hline
 2w0i & 3.554  & 2.982 & 3.066 &       & 3.109  \\ \hline
 1qq3 & 1.757  & 1.651 & 1.866 & 3.109 &       \\ \hline
 \end{tabular}
-\label{tab:efold_comp1}
+\label{table:efold-comp1}
 \caption{Alignmenttabelle aus  \textit{PDBeFold}. In den Zellen sind die \textit{Root-mean-square deviations} f\"ur die einzelnen Paare eingetragen.}
 \end{table}
 
@@ -608,42 +591,48 @@ PDB & 1cgn    & 2id9  & 3i42  & 2w0i  & 1qq3 \\ \hline
 Sie zeigt, dass \textit{PDBeFold} die \"Ahnlichkeit des $\alpha$-Proteins 1cgn zu den $\alpha$/$\beta$-Proteinen 2id9 und 3i42 h\"oher bewertet, als die \"Ahnlichkeit zu dem $\alpha$-Protein 1qq3, obwohl diese in der gleichen Superfamilie einzuordnen sind. Somit stimmen die Bewertungen der \textit{Graphlet}-Vergleiche teilweise mit denen durch \textit{PDBeFold} \"uberein. Der einzige Unterschied in diesem Alignment ist, dass das Paar 1qq3, 1cgn als dritt\"ahnlichstes bewertet wurde, w\"ahrend es beim \textit{Graphlet}-Vergleich als viert\"ahnlichstes eingeordnet wurde.
 
 
-Die starke \"Ahnlichkeit der $\beta$-Proteine zu den $\alpha$-$\beta$-Proteinen l\"asst sich erkl\"aren, wenn man die entsprechenden Graphen aus der PTGL betrachtet. Diese sind in den folgenden Abbildungen dargestellt:
+Die starke \"Ahnlichkeit der $\beta$-Proteine zu den $\alpha$/$\beta$-Proteinen l\"asst sich erkl\"aren, wenn man die entsprechenden Graphen aus der PTGL betrachtet. Diese sind in den Abbildungen \ref{fig:2id9}, \ref{fig:3i42} und \ref{fig:2w0i} dargestellt:
 
 \begin{figure}
 \includegraphics[scale=0.5]{2id9_A_albe_PG.png}
+\label{fig:2id9}
+\caption{Proteingraph von 2id9 \textit{Sch\"afer et al.}}
 \end{figure}
 
 \begin{figure}
 \includegraphics[scale=0.5]{3i42_A_albe_PG.png}
+\label{fig:3i42}
+\caption{Proteingraph von 3i42 \textit{Sch\"afer et al.}}
 \end{figure}
 
 \begin{figure}
 \includegraphics[scale=0.5]{2w0i_A_albe_PG.png}
+\label{fig:2w0i}
+\caption{Proteingraph von 2w0i \textit{Sch\"afer et al.}}
 \end{figure}
 
 In all diesen Graphen haben die meisten Knoten, die $\alpha$-Helices repr\"asentieren keine adjazenten Knoten.
-Damit flie"sen f\"ur keinen dieser graphen mehr als 2 $\alpha$-Helices in die \textit{Graphlet}-Vektoren ein. Stattdessen finden sich nur die zusammenh\"angenden Teilgraphen dieser Graphen in den \textit{Graphlet}-Vektoren wieder und diese Teilgraphen bestehen fast nur aus Knoten die $\beta$-Faltblr\"atter repr\"asentieren.
+Damit flie"sen f\"ur keinen dieser Graphen mehr als zwei $\alpha$-Helices in die \textit{Graphlet}-Vektoren ein. Stattdessen finden sich nur die zusammenh\"angenden Teilgraphen dieser Graphen in den \textit{Graphlet}-Vektoren wieder und diese Teilgraphen bestehen fast nur aus Knoten die $\beta$-Faltbl\"atter repr\"asentieren.
 
 
 \subsection{PDBTop500-Datensatz und Aldolasen}
 
 Der Vergleich der Proteine aus dem PDBTop500-Datensatz mit den Aldolasen hat gezeigt, dass sich die Verteilungen der \textit{Graphlets} f\"ur einige \textit{Graphlets} so stark unterscheiden, dass eine klare Unterscheidung der beiden anhand ihrer Verteilungen m\"oglich zu sein scheint.
 
-Bei den Aminos\"auregraphen scheint diese Unterscheidung dabei am schlechtesten m\"oglich zu sein. Da sich die Verteilungen f\"ur nicht-markierte \textit{Graphlets} durch die Abwesenheit der \textit{Graphlets} $g_8$ und $g_{15}$ in den Aldolasen unterscheiden. Es ist nicht klar, ob diese \textit{Graphlets} wirklich in allen anderen Proteinen vorkommen, oder diese Unterscheidung nur durch einige wenige Topologien, die im Datensatz vertreten sind, zustande kommt.
+Bei den Aminos\"auregraphen scheint diese Unterscheidung dabei am schlechtesten m\"oglich zu sein, da sich die Verteilungen f\"ur nicht-markierte \textit{Graphlets} durch die Abwesenheit der \textit{Graphlets} $g_8$ und $g_{15}$ in den Aldolasen unterscheiden. Es ist nicht klar, ob diese \textit{Graphlets} wirklich in den meisten anderen Proteinen vorkommen, oder diese Unterscheidung nur durch wegen der geringen Anzahl der Strukturen, die im Datensatz vertreten sind, zustande kommt.
 Bei den markierten \textit{Graphlets} unterscheiden sich die Verteilungen am st\"arksten f\"ur jene, die die r\"aumliche N\"ahe von SSEs und Liganden bzw. Liganden untereinander repr\"asentieren.
 Auch hier ist es fraglich, ob dieses Merkmal zur Unterscheidung von Aldolasen von allen anderen Superfamilien wirklich geeignet ist, oder ob Liganden in dem Datensatz unterrepr\"asentiert sind. 
 
-Es ist interessant zu sehen, dass die Unterschiede in den \textit{Graphlet}-Verteilungen f\"ur Proteingraphen und Komplexgraphen am st\"arksten ist, obwohl diese im multiplen Vergleich der Fallstudie die geringeren Zusammenh\"ange mit der strukturellen Einteilung durch CATH zeigten. Die Ursache hierf\"ur werden die verwendeten Metriken sein. Die hohen Unterschiede der \textit{Graphlet}-H\"aufigkeiten der Komplexgraphen im Gegensatz zu den Proteingraphen sind wahrscheinlich auf die Kontakte der Polypeptidketten untereinander zur\"uckzuf\"uhren.
+Es ist interessant zu sehen, dass die Unterschiede in den \textit{Graphlet}-Verteilungen f\"ur Proteingraphen und Komplexgraphen am st\"arksten ist, obwohl diese im multiplen Vergleich der Fallstudie die geringeren Zusammenh\"ange mit der strukturellen Einteilung durch CATH zeigten. Die Ursache hierf\"ur k\"onnen die verwendeten Metriken sein. Die hohen Unterschiede der \textit{Graphlet}-H\"aufigkeiten der Komplexgraphen im Gegensatz zu den Proteingraphen sind wahrscheinlich auf die Kontakte der Polypeptidketten untereinander zur\"uckzuf\"uhren.
  
-
+Die \textit{Graphlet}-Vektoren scheinen sich stark zu ver\"andern, wenn die Kontakte von Polypeptidketten miteinander ber\"ucksichtigt werden. Dies wirft die Frage auf, ob \textit{Graphlet}-Vektoren geeignet sind, um eine Dom\"ane in einem Komplex zu finden.
 
 \section{Ausblick}
 
 
 \subsection{Optimierung der Laufzeit von \texttt{graphletAnalyser}}
 
-Vor allem bei der Berechnung der \textit{Graphlets} auf Aminos\"aurgraphen gro"ser Proteine besteht Verbesserungspotential. Aktuell z\"ahlt das Programm bei einem Aufruf automatische alle \textit{Graphlets} mit 3,4 und 5 Knoten jeweils getrennt voneinander.
+Vor allem bei der Berechnung der \textit{Graphlets} auf Aminos\"aurgraphen gro"ser Proteine besteht Verbesserungspotential. Aktuell z\"ahlt das Programm bei einem Aufruf automatisch alle \textit{Graphlets} mit drei, vier und f\"unf Knoten jeweils getrennt voneinander.
 
 Da f\"ur die \"Ahnlichkeitsberechnung in ihrer aktuellen Form alle \textit{Graphlets} einbezogen werden, ist es sinnvoll diese Berechnungen in einem Algorithmus zusammenzufassen. F\"ur Graphen mit $n$ Knoten und einem maximalen Knotengrad $d$ lie"se sich die Laufzeit damit von $O(nd^4+nd^3+nd^2)$ auf $O(nd^4)$ reduzieren.
 
@@ -651,13 +640,13 @@ Diese Zusammenfassung lie"se sich dadurch bewerkstelligen, dass man die Funktion
 
 \subsection{Neue Bewertungsschemata}
 
-Da die \textit{Graphlet}-Verteilungen beim Vergleich des PDBTop500-Datensatzes mit den Aldolasen nur f\"ur einige wenige \textit{Graphlets} stark genug waren, um beide anhand der Verteilungen unterschieden zu k\"onnen ist es ratsam eine Bewertungsschema einzuf\"uhren, dass die verschiedenen \textit{Graphlets} unterschiedlich stark gewichtet. Um die entsprechenden \textit{Graphlets} zu identifizeren k\"onnte man eine Faktorenanalyse durchf\"uhren. Durch diese erh\"alt man Gewichtungen der einzelnen \textit{Graphlets} die in das neue Bewertungsschema einflie"sen lassen kann.
+Da die \textit{Graphlet}-Verteilungen beim Vergleich des PDBTop500-Datensatzes mit den Aldolasen nur f\"ur einige wenige \textit{Graphlets} stark genug waren, um beide anhand der Verteilungen unterschieden zu k\"onnen, ist es ratsam ein Bewertungsschema einzuf\"uhren, dass die verschiedenen \textit{Graphlets} unterschiedlich stark gewichtet. Um die entsprechenden \textit{Graphlets} zu identifizeren, k\"onnte man eine Faktorenanalyse durchf\"uhren. Durch diese erh\"alt man Gewichtungen der einzelnen \textit{Graphlets}, die man in das neue Bewertungsschema einflie"sen lassen kann.
 
-Eine Alternative w\"are die entsprechenden Gewichte anhand von bereits vorhandenen strukturellen Einteilungen zu berechnen - also \textit{Graphlets}, die in einer Topologie oder Superfamilie besonders stark vertreten sind, st\"arker zu gewichten. Damit w\"are allerdings nur ein Klassifikationsschema m\"oglich, das unterscheiden kann, ob ein Eingabeprotein zu dieser strukturellen Klasse geh\"ort oder nicht. Hierf\"ur k\"onnte man \textit{Support-Vector-Machines} verwenden, wie sie von \textit{Shervashidze et al.} \cite{sherv_graphlets} bereits zur Klassifizierung von Enzymen verwendet worden sind. 
+Eine Alternative w\"are, die entsprechenden Gewichte anhand von bereits vorhandenen strukturellen Einteilungen zu berechnen -- also \textit{Graphlets}, die in einer Topologie oder Superfamilie besonders stark vertreten sind, st\"arker zu gewichten. Damit w\"are allerdings nur ein Klassifikationsschema m\"oglich, das unterscheiden kann, ob ein Eingabeprotein zu dieser strukturellen Klasse geh\"ort oder nicht. Hierf\"ur k\"onnte man \textit{Support-Vector-Machines} verwenden, wie sie von \textit{Shervashidze et al.} \cite{sherv_graphlets} bereits zur Klassifizierung von Enzymen verwendet worden sind. 
 
 \subsection{Weiterentwicklung des \textit{Graphlet}-Worte-Algorithmus}
 
-Der \textit{Graphlet}-Worte-Algorithmus ist so erweiterbar, dass Worte hinzugef\"ugt werden k\"onnen, die gr\"o"sere \textit{Graphlets} repr\"asentieren k\"onnen. Allerdings gilt dies zun\"achst nicht f\"ur die Stern-\textit{Graphlets}. Da in ihnen keine Euler-Wege, die mehr als 2 Knoten enthalten, sind, kann man sie nicht durch Worte repr\"asentieren.
+Der \textit{Graphlet}-Worte-Algorithmus ist so erweiterbar, dass Worte hinzugef\"ugt werden k\"onnen, die gr\"o"sere \textit{Graphlets} repr\"asentieren k\"onnen. Allerdings gilt dies zun\"achst nicht f\"ur die Stern-\textit{Graphlets}. Da in ihnen keine Euler-Wege, die mehr als 2 Knoten enthalten, vorkommen, kann man sie nicht durch Worte repr\"asentieren.
 
 
 Auch f\"ur die anderen \textit{Graphlets} mit vier und f\"unf Knoten ist das Finden von repr\"asentierenden Worten nicht trivial, da es f\"ur sie deutlich mehr Euler-Wege gibt, als f\"ur die \textit{Graphlets} der Gr\"o"se 3.
@@ -665,7 +654,7 @@ Dementsprechend w\"are eine schnelle Implementierung nur f\"ur die \textit{Graph
 
 \subsection{Zusammenh\"angende Graphen}
 
-Viele Probleme bei der \"Ahnlichkeitsbewertung durch \textit{Graphlets} scheinen daher zu r\"uhren, dass Proteingraphen und Komplexgraphn nicht immer zusammenh\"angend sind.
+Viele Probleme bei der \"Ahnlichkeitsbewertung durch \textit{Graphlets} scheinen daher zu r\"uhren, dass Proteingraphen und Komplexgraphen nicht immer zusammenh\"angend sind.
 Um dieses Problem in der Zukunft umgehen zu k\"onnen, gibt es zwei M\"oglichkeiten.
 Erstens kann man die Graphenberechnung durch PLCC so anpassen, dass ungeordnete Regionen der Polypeptidkette einbezogen werden. Dadurch vergr\"o"sert man aber wieder die Darstellung und verschlechtert deren intuitive Verst\"andlichkeit.
 Die zweite M\"oglichkeit ist den \textit{Graphlet}-Algorithmus so anzupassen, dass auch \textit{Graphlets} erkannt werden, die nicht zusammenh\"angend sind. Dies ist zweifelsfrei m\"oglich. Es ist jedoch fraglich, ob die zus\"atzlichen Dimensionen, die der \textit{Graphlet}-Vektor dadurch erh\"alt, wirklich f\"ur eine pr\"azisere Unterscheidung sorgen k\"onnen. M\"oglicherweise verschlechtert sich dadurch auch das Signal. 
@@ -673,12 +662,15 @@ Die zweite M\"oglichkeit ist den \textit{Graphlet}-Algorithmus so anzupassen, da
 
 \subsection{Schluss}
 
-Noch nicht fertig. kommt noch
+In der Fallstudie konnten durch den Vergleich von \textit{Graphlet}-Vektoren die meisten \"ahnlichen Proteine als solche erkannt werden. Die Betrachtung der Verteilungen der \textit{Graphlets} zeigt, dass diese sich zwischen einer Superfamilie und einem Referenzdatensatz unterscheiden.
 
+Damit scheinen \textit{Graphlets} gut f\"ur \"ahnlichkeitsbasierte Anwendungen geeignet zu sein. Es gibt aber noch Verbesserungspotential bei der Genauigkeit und der Geschwindigkeit des Programms.
 
+Es ist allerdings nicht klar, wie die Genauigkeit genau verbessert werden k\"onnte. Da \textit{Graphlets} nicht einfach visualisiert werden k\"onnen, sind die berechneten \"Ahnlichkeitswerte nur verst\"andlich, wenn man die entsprechenden Graphen betrachten kann.
 
+F\"ur eine genauere Einteilung von Proteinstrukturtopologien mit \textit{Graphlet}-Vektoren wird es n\"otig sein, ein entsprechendes \"Ahnlichkeitsma"s zu finden, dass biologisch motiviert ist, oder beim Vergleich mehr Informationen zu ber\"ucksichtigen. 
 
-
+Dies ist eine schwierige Aufgabe, denn es gibt keine definitive Antwort auf die Frage, inwiefern sich zwei Proteinstrukturen \"ahnlich sind.
 
 \chapter{Anhang}
 
@@ -713,7 +705,6 @@ Noch nicht fertig. kommt noch
 
 
 \begin{table}[H]
-\label{table:occ-aag-rgf}
 \scalebox{0.8}{
 \begin{tabular}{l l l l l l l l l l l l l l l l l}
 
@@ -737,13 +728,13 @@ PDB-ID & 1qpu & 1qq3 & 1cgn & 1he9 & 3gf9 & 1exs & 1ngl & 1qqs & 3slo & 1wjx & 5
 
 
 \end{tabular}}
-\caption{Distanzen der Aminos\"auregraphen, gemessen mit RGF. In den Zellen der Tabelle stehen die RGF-Distanzen f\"ur die entsprechenden PDB-Dateien. F\"ur jede Zeile (jedes Protein) sind die 4 niedrigsten Distanzen gr\"un unterlegt. Je dunkler das gr\"un ist, desto k\"urzer ist die Distanz}
+\caption{Distanzen der Aminos\"auregraphen, gemessen mit RGF. In den Zellen der Tabelle stehen die RGF-Distanzen f\"ur die entsprechenden PDB-Dateien. F\"ur jede Zeile (jedes Protein) sind die 4 niedrigsten Distanzen gr\"un unterlegt. Je dunkler das gr\"un ist, desto k\"urzer ist die Distanz.}
+\label{table:occ-aag-rgf}
 \end{table}
 
 
 
 \begin{table}
-\label{table:occ-pg-rgf}
 \scalebox{0.8}{
 \begin{tabular}{l l l l l l l l l l l l l l l l l}
 
@@ -767,12 +758,12 @@ PDB-ID & 1qpu & 1qq3 & 1cgn & 1he9 & 3gf9 & 1exs & 1ngl & 1qqs & 3slo & 1wjx & 5
 
 
 \end{tabular}}
-\caption{Distanzen der Proteingraphen, gemessen mit RGF. In den Zellen der Tabelle stehen die RGF-Distanzen f\"ur die entsprechenden PDB-Dateien. F\"ur jede Zeile (jedes Protein) sind die 4 niedrigsten Distanzen gr\"un unterlegt. Je dunkler das gr\"un ist, desto k\"urzer ist die Distanz}
+\caption{Distanzen der Proteingraphen, gemessen mit RGF. In den Zellen der Tabelle stehen die RGF-Distanzen f\"ur die entsprechenden PDB-Dateien. F\"ur jede Zeile (jedes Protein) sind die 4 niedrigsten Distanzen gr\"un unterlegt. Je dunkler das gr\"un ist, desto k\"urzer ist die Distanz.}
+\label{table:occ-pg-rgf}
 \end{table}
 
 
 \begin{table}
-\label{table:occ-cg-rgf}
 \scalebox{0.8}{
 \begin{tabular}{l l l l l l l l l l l l l l l l l}
 
@@ -796,7 +787,8 @@ PDB-ID & 1qpu & 1qq3 & 1cgn & 1he9 & 3gf9 & 1exs & 1ngl & 1qqs & 3slo & 1wjx & 5
 
 
 \end{tabular}}
-\caption{Distanzen der Komplexgraphen, gemessen mit RGF. In den Zellen der Tabelle stehen die RGF-Distanzen f\"ur die entsprechenden PDB-Dateien. F\"ur jede Zeile (jedes Protein) sind die 4 niedrigsten Distanzen gr\"un unterlegt. Je dunkler das gr\"un ist, desto k\"urzer ist die Distanz}
+\caption{Distanzen der Komplexgraphen, gemessen mit RGF. In den Zellen der Tabelle stehen die RGF-Distanzen f\"ur die entsprechenden PDB-Dateien. F\"ur jede Zeile (jedes Protein) sind die 4 niedrigsten Distanzen gr\"un unterlegt. Je dunkler das gr\"un ist, desto k\"urzer ist die Distanz.}
+\label{table:occ-cg-rgf}
 \end{table}
 
 
@@ -804,7 +796,6 @@ PDB-ID & 1qpu & 1qq3 & 1cgn & 1he9 & 3gf9 & 1exs & 1ngl & 1qqs & 3slo & 1wjx & 5
 \newpage
 
 \begin{table}
-\label{table:occ-aa-tc}
 \scalebox{0.8}{
 \begin{tabular}{l l l l l l l l l l l l l l l l l}
 
@@ -827,11 +818,11 @@ PDB-ID & 1qpu & 1qq3 & 1cgn & 1he9 & 3gf9 & 1exs & 1ngl & 1qqs & 3slo & 1wjx & 5
 
 
 \end{tabular}}
-\caption{Jaccard-Indizes der Aminos\"auregraphen. In den Zellen der Tabelle stehen die Jaccard-Indizes f\"ur die entsprechenden PDB-Dateien. F\"ur jede Zeile (jedes Protein) sind die 4 gr\"o"sten Indizes gr\"un unterlegt. Je dunkler das gr\"un ist, desto gr\"o"ser der Index}
+\caption{Jaccard-Indizes der Aminos\"auregraphen. In den Zellen der Tabelle stehen die Jaccard-Indizes f\"ur die entsprechenden PDB-Dateien. F\"ur jede Zeile (jedes Protein) sind die 4 gr\"o"sten Indizes gr\"un unterlegt. Je dunkler das gr\"un ist, desto gr\"o"ser der Index.}
+\label{table:occ-aa-tc}
 \end{table}
 
 \begin{table}
-\label{table:occ-pg-tf}
 \scalebox{0.8}{
 \begin{tabular}{l l l l l l l l l l l l l l l l l}
 
@@ -853,12 +844,12 @@ PDB-ID & 1qpu & 1qq3 & 1cgn & 1he9 & 3gf9 & 1exs & 1ngl & 1qqs & 3slo & 1wjx & 5
 2w0i & 0.395 & \cellcolor{fGreen!50}0.5 & 0.463 & \cellcolor{fGreen!75}0.538 & 0.333 & \cellcolor{fGreen!100}0.621 & 0.395 & 0.395 & 0.463 & 0.395 & 0.395 & 0.463 & 0.463 & \cellcolor{fGreen!25}0.5 &   X   &  \\
 
 \end{tabular}}
-\caption{Jaccard-Indizes der Proteingraphen. In den Zellen der Tabelle stehen die Jaccard-Indizes f\"ur die entsprechenden PDB-Dateien. F\"ur jede Zeile (jedes Protein) sind die 4 gr\"o"sten Indizes gr\"un unterlegt. Je dunkler das gr\"un ist, desto gr\"o"ser der Index}
+\caption{Jaccard-Indizes der Proteingraphen. In den Zellen der Tabelle stehen die Jaccard-Indizes f\"ur die entsprechenden PDB-Dateien. F\"ur jede Zeile (jedes Protein) sind die 4 gr\"o"sten Indizes gr\"un unterlegt. Je dunkler das gr\"un ist, desto gr\"o"ser der Index.}
+\label{table:occ-pg-tf}
 \end{table}
 
 
 \begin{table}
-\label{table:occ-cg-tc}
 \scalebox{0.8}{
 \begin{tabular}{l l l l l l l l l l l l l l l l l}
 
@@ -880,7 +871,9 @@ PDB-ID & 1qpu & 1qq3 & 1cgn & 1he9 & 3gf9 & 1exs & 1ngl & 1qqs & 3slo & 1wjx & 5
 2w0i & 0.276 & 0.428 & 0.363 & \cellcolor{fGreen!75}0.538 & 0.224 & \cellcolor{fGreen!100}0.621 & 0.395 & 0.2 & 0.153 & 0.395 & 0.395 & \cellcolor{fGreen!25}0.463 & \cellcolor{fGreen!50}0.463 & 0.333 &   X   &  \\
 
 \end{tabular}}
-\caption{Jaccard-Indizes der Komplexgraphen. In den Zellen der Tabelle stehen die Jaccard-Indizes f\"ur die entsprechenden PDB-Dateien. F\"ur jede Zeile (jedes Protein) sind die 4 gr\"o"sten Indizes gr\"un unterlegt. Je dunkler das gr\"un ist, desto gr\"o"ser der Index}
+\caption{Jaccard-Indizes der Komplexgraphen. In den Zellen der Tabelle stehen die Jaccard-Indizes f\"ur die entsprechenden PDB-Dateien. F\"ur jede Zeile (jedes Protein) sind die 4 gr\"o"sten Indizes gr\"un unterlegt. Je dunkler das gr\"un ist, desto gr\"o"ser der Index.}
+\label{table:occ-cg-tc}
+
 \end{table}
 
 

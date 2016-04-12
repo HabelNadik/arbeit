@@ -1,48 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/TeX Live for SUSE Linux)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: arbeit.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: arbeit.aux
 The style file: plain.bst
 Database file #1: literatur.bib
 Warning--empty year in bakirova2013comparison
-You've used 15 entries,
-            2118 wiz_defined-function locations,
-            603 strings with 6859 characters,
-and the built_in function-call counts, 5665 in all, are:
-= -- 558
-> -- 286
-< -- 4
-+ -- 110
-- -- 95
-* -- 447
-:= -- 940
-add.period$ -- 46
-call.type$ -- 15
-change.case$ -- 88
-chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 191
-empty$ -- 423
-format.name$ -- 95
-if$ -- 1160
-int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 17
-newline$ -- 78
-num.names$ -- 32
-pop$ -- 83
-preamble$ -- 1
-purify$ -- 75
-quote$ -- 0
-skip$ -- 132
-stack$ -- 0
-substring$ -- 419
-swap$ -- 37
-text.length$ -- 4
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 56
-warning$ -- 1
-while$ -- 57
-width$ -- 17
-write$ -- 167
 (There was 1 warning)
