@@ -1,20 +1,105 @@
 \begin{thebibliography}{10}
 
+\bibitem{1qq3}
+Fabio Arnesano, Lucia Banci, Ivano Bertini, Simone Ciofi-Baffoni, Thierry
+  de~Lumley Woodyear, Christopher~M Johnson, and Paul~D Barker.
+\newblock Structural consequences of b-to c-type heme conversion in oxidized
+  escherichia coli cytochrome b 562.
+\newblock {\em Biochemistry}, 39(6):1499--1514, 2000.
+
+\bibitem{1qpu}
+Fabio Arnesano, Lucia Banci, Ivano Bertini, Jasmin Faraone-Mennella, Antonio
+  Rosato, Paul~D Barker, and Alan~R Fersht.
+\newblock The solution structure of oxidized escherichia coli cytochrome b 562.
+\newblock {\em Biochemistry}, 38(27):8657--8670, 1999.
+
 \bibitem{bakirova2013comparison}
 Tatiana Bakirova, Tim Sch{\"a}fer, and Ina Koch.
 \newblock Comparison of protein topology graphs using graphlet-based methods.
 \newblock {\em GCB 2013 G{\"o}ttingen-Poster Abstracts}.
+
+\bibitem{1mxs}
+BJ~Bell, L~Watanabe, JL~Rios-Steiner, A~Tulinsky, L~Lebioda, and RK~Arni.
+\newblock Structure of 2-keto-3-deoxy-6-phosphogluconate (kdpg) aldolase from
+  pseudomonas putida.
+\newblock {\em Acta Crystallographica Section D: Biological Crystallography},
+  59(8):1454--1458, 2003.
+
+\bibitem{1wjx}
+Yoshitaka Bessho, Rie Shibata, Shun-ichi Sekine, Kazutaka Murayama, Kyoko
+  Higashijima, Chie Hori-Takemoto, Mikako Shirouzu, Seiki Kuramitsu, and
+  Shigeyuki Yokoyama.
+\newblock Structural basis for functional mimicry of long-variable-arm trna by
+  transfer-messenger rna.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  104(20):8293--8298, 2007.
+
+\bibitem{1ngl}
+Murray Coles, Tammo Diercks, Bernd Muehlenweg, Stefan Bartsch, Volker
+  Z{\"o}lzer, Harald Tschesche, and Horst Kessler.
+\newblock The solution structure and dynamics of human neutrophil
+  gelatinase-associated lipocalin.
+\newblock {\em Journal of molecular biology}, 289(1):139--157, 1999.
+
+\bibitem{uniprot}
+UniProt Consortium et~al.
+\newblock Uniprot: a hub for protein information.
+\newblock {\em Nucleic acids research}, page gku989, 2014.
 
 \bibitem{das2015diversity}
 Sayoni Das, Natalie~L Dawson, and Christine~A Orengo.
 \newblock Diversity in protein domain superfamilies.
 \newblock {\em Current opinion in genetics \& development}, 35:40--49, 2015.
 
+\bibitem{7tim}
+Robert~C Davenport, Paul~A Bash, Barbara~A Seaton, Martin Karplus, Gregory~A
+  Petsko, and Dagmar Ringe.
+\newblock Structure of the triosephosphate isomerase-phosphoglycolohydroxamate
+  complex: an analog of the intermediate on the reaction pathway.
+\newblock {\em Biochemistry}, 30(24):5821--5826, 1991.
+
+\bibitem{1cgn}
+AARON~J Dobbs, BRYAN~F Anderson, H~RICK Faber, and EDWARD~N Baker.
+\newblock Three-dimensional structure of cytochrome c'from two alcaligenes
+  species and the implications for four-helix bundle structures.
+\newblock {\em Acta Crystallographica Section D: Biological Crystallography},
+  52(2):356--368, 1996.
+
 \bibitem{scope}
 Naomi~K Fox, Steven~E Brenner, and John-Marc Chandonia.
 \newblock Scope: Structural classification of proteins—extended, integrating
   scop and astral data and classification of new structures.
 \newblock {\em Nucleic acids research}, 42(D1):D304--D309, 2014.
+
+\bibitem{1qqs}
+David~H Goetz, Sirkku~T Willie, Roger~S Armen, Tomas Bratt, Niels Borregaard,
+  and Roland~K Strong.
+\newblock Ligand preference inferred from the structure of neutrophil
+  gelatinase associated lipocalin.
+\newblock {\em Biochemistry}, 39(8):1935--1941, 2000.
+
+\bibitem{1lbm}
+Martina Henn-Sax, Ralf Thoma, Steffen Schmidt, Michael Hennig, Kasper
+  Kirschner, and Reinhard Sterner.
+\newblock Two ($\beta$$\alpha$) 8-barrel enzymes of histidine and tryptophan
+  biosynthesis have similar reaction mechanisms and common strategies for
+  protecting their labile substrates.
+\newblock {\em Biochemistry}, 41(40):12032--12042, 2002.
+
+\bibitem{1nsj}
+Michael Hennig, Reinhard Sterner, Kasper Kirschner, and Johan~N Jansonius.
+\newblock Crystal structure at 2.0 {\aa} resolution of phosphoribosyl
+  anthranilate isomerase from the hyperthermophile thermotoga maritima:
+  Possible determinants of protein stability,\#.
+\newblock {\em Biochemistry}, 36(20):6009--6016, 1997.
+
+\bibitem{1exs}
+Flip~J Hoedemaeker, Ronald~W Visschers, Arno~C Alting, ME~Kuil, JP~Abrahams,
+  et~al.
+\newblock A novel ph-dependent dimerization motif in $\beta$-lactoglobulin from
+  pig (sus scrofa).
+\newblock {\em Acta Crystallographica Section D: Biological Crystallography},
+  58(3):480--486, 2002.
 
 \bibitem{holm1993protein}
 Liisa Holm and Chris Sander.
@@ -50,6 +135,20 @@ Simon~C Lovell, Ian~W Davis, W~Bryan Arendall, Paul~IW de~Bakker, J~Michael
 Patrick May, Annika Kreuchwig, Thomas Steinke, and Ina Koch.
 \newblock {PTGL}: a database for secondary structure-based protein topologies.
 \newblock {\em Nucleic acids research}, 38(suppl 1):D326--D330, 2010.
+
+\bibitem{2id9}
+Kenneth McAdams, Eric~S Casper, R~Matthew Haas, Bernard~D Santarsiero, Aimee~L
+  Eggler, Andrew Mesecar, and Christopher~J Halkides.
+\newblock The structures of t87i phosphono-chey and t87i/y106w phosphono-chey
+  help to explain their binding affinities to the flim and chez peptides.
+\newblock {\em Archives of biochemistry and biophysics}, 479(2):105--113, 2008.
+
+\bibitem{1d4o}
+G~Sridhar Prasad, Vandana Sridhar, Mutsuo Yamaguchi, Youssef Hatefi, and
+  C~David Stout.
+\newblock Crystal structure of transhydrogenase domain iii at 1.2 {\aa}
+  resolution.
+\newblock {\em Nature Structural \& Molecular Biology}, 6(12):1126--1131, 1999.
 
 \bibitem{frqdistribution}
 Natasa Pr{\v{z}}ulj, Derek~G Corneil, and Igor Jurisica.
@@ -93,6 +192,25 @@ Ian Sillitoe, Tony~E Lewis, Alison Cuff, Sayoni Das, Paul Ashford, Natalie~L
   genome sequences.
 \newblock {\em Nucleic acids research}, page gku947, 2014.
 
+\bibitem{1v5x}
+Junichiro Taka, Kyoko Ogasahara, Jeyaraman Jeyakanthan, Naoki Kunishima, Chizu
+  Kuroishi, Mitsuaki Sugahara, Shigeyuki Yokoyama, and Katsuhide Yutani.
+\newblock Stabilization due to dimer formation of phosphoribosyl anthranilate
+  isomerase from thermus thermophilus hb8: X-ray analysis and dsc experiments.
+\newblock {\em Journal of biochemistry}, 137(5):569--578, 2005.
+
+\bibitem{1lor}
+Ning Wu and Emil~F Pai.
+\newblock Crystal structures of inhibitor complexes reveal an alternate binding
+  mode in orotidine-5′-monophosphate decarboxylase.
+\newblock {\em Journal of Biological Chemistry}, 277(31):28080--28087, 2002.
+
+\bibitem{1he9}
+Martin W{\"u}rtele, Louis Renault, Joseph~T Barbieri, Alfred Wittinghofer, and
+  Eva Wolf.
+\newblock Structure of the exos gtpase activating domain.
+\newblock {\em FEBS letters}, 491(1):26--29, 2001.
+
 \bibitem{fatcat}
 Yuzhen Ye and Adam Godzik.
 \newblock Flexible structure alignment by chaining aligned fragment pairs
@@ -104,5 +222,11 @@ Yang Zhang and Jeffrey Skolnick.
 \newblock {TM}-align: a protein structure alignment algorithm based on the
   {TM}-score.
 \newblock {\em Nucleic acids research}, 33(7):2302--2309, 2005.
+
+\bibitem{5chy}
+Xiangyang Zhu, Joseph Rebello, Philip Matsumura, and Karl Volz.
+\newblock Crystal structures of chey mutants y106w and t87i/y106w chey
+  activation correlates with movement of residue 106.
+\newblock {\em Journal of Biological Chemistry}, 272(8):5000--5006, 1997.
 
 \end{thebibliography}
