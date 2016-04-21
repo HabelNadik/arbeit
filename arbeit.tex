@@ -55,6 +55,7 @@
 
 \vspace{15mm}
 \begin{acronym}
+\acro{GML}{\textit{Graph Modelling Language} / \textit{Graph Meta Language}}
 \acro{PDB}{\textit{Protein Data Bank}}
 \acro{PTGL}{\textit{Protein Topology Graph Library}}
 \acro{RGF}{Relative \textit{Graphlet} H\"aufigkeiten Distanz}
@@ -140,7 +141,7 @@ Anschlie"send wird die erste Metrik vorgestellt, mit denen die erhaltenen \texti
 
 Im Ergebnisteil wird zun\"achst der modifizierte Jaccard-Index pr\"asentiert, der sich mit leichten \"Anderungen am Tanimoto-Koeffizienten orientiert. Dann folgen Beschreibungen des neuen \textit{Graphlet}-Worte-Algorithmus und der in den Fallstudien erhaltenen Ergebnisse.
 
-Im abschlie"senden Teil \emph{Diskussion und Ausblick} wird versucht, die Frage zu kl\"aren, ob sich \textit{Graphlets} f\"ur multiplen Proteinstrukturvergleich und \"ahnliche Anwendungen eignen. Weiterhin wird untersucht, ob Modifikationen der \textit{Graphlet}-Vektoren, oder der Metriken n\"otig sein k\"onnten, um bessere Ergebnisse zu erhalten. 
+Im abschlie"senden Teil \emph{Diskussion und Ausblick} wird versucht, die Frage zu kl\"aren, ob sich \textit{Graphlets} f\"ur den multiplen Proteinstrukturvergleich und \"ahnliche Anwendungen eignen. Weiterhin wird untersucht, ob Modifikationen der \textit{Graphlet}-Vektoren oder der Metriken n\"otig sein k\"onnten, um bessere Ergebnisse zu erhalten. 
 
 
 
@@ -167,13 +168,13 @@ PLCC ist die \textit{Software}, die die Daten der PTGL generiert und verwaltet. 
 
 \paragraph{Die Berechnung der Graphen der PTGL}
 
-erfolgt unter Verwendung der entsprechenden PDB- und DSSP-Dateien. Um den Graphen f\"ur eine Polypeptidkette zu berechnen, werden aus der DSSP-Datei die SSEe des Proteins ausgelesen. F\"ur jedes Paar von SSEs wird die Anzahl der r\"aumlichen Kontakte ihrer Residuen in der PDB-Datei berechnet. Wenn die Anzahl dieser Kontakte einen gewissen Grenzwert \"uberschreitet, wird angenommen, dass diese SSEs r\"aumlich benachbart sind und die jeweiligen Knoten werden durch eine Kante verbunden. So wird f\"ur jede Polypeptidkette ein Graph erstellt.
+erfolgt unter Verwendung der entsprechenden PDB- und DSSP-Dateien. Um den Graphen f\"ur eine Polypeptidkette zu berechnen, werden aus der DSSP-Datei die SSEe des Proteins ausgelesen. F\"ur jedes Paar von SSEen wird die Anzahl der r\"aumlichen Kontakte der zugeh\"origen Aminos\"aurereste in der PDB-Datei berechnet. Wenn die Anzahl dieser Kontakte einen gewissen Grenzwert \"uberschreitet, wird angenommen, dass diese SSEe r\"aumlich benachbart sind und die jeweiligen Knoten werden durch eine Kante verbunden. So wird f\"ur jede Polypeptidkette ein Graph erstellt.
 
 \paragraph{Komplexgraphen}
 
 werden ebenfalls in dieser Arbeit untersucht. Ihre Berechnung erfolgt analog zur Berechnung der Proteingraphen. Der Unterschied besteht darin, dass ein Komplexgraph mehrere Polypeptidketten beschreibt.
 
-\paragraph{Aminos\"auregraphen} werden analog zu Proteingraphen und Komplexgraphen berechnet. Der Unterschied zu den anderen Graphformaten ist, dass keine SSEs betrachtet werden. Stattdessen repr\"asentiert jeder Knoten eine Aminos\"aure eines Proteins. Die Knoten werden entsprechend der chemischen Eigenschaften der Aminos\"auren markiert. Knoten, die saure oder basische Aminos\"aurenreste darstellen, werden mit einem c markiert. Ein p markiert Knoten als polare Reste, die weder sauer noch basisch sind. F\"ur unpolare Aminos\"auren wird ein h verwendet. Auch Liganden k\"onnen in Aminos\"auregraphen dargestellt werden. Ihre Knoten werden durch ein ? markiert. Aminos\"auregraphen k\"onnen Proteinkomplexe und einzelne Polypeptidketten darstellen.
+\paragraph{Aminos\"auregraphen} werden analog zu Proteingraphen und Komplexgraphen berechnet. Der Unterschied zu den anderen Graphformaten ist, dass keine SSEe betrachtet werden. Stattdessen repr\"asentiert jeder Knoten eine Aminos\"aure eines Proteins. Die Knoten werden entsprechend der chemischen Eigenschaften der Aminos\"auren markiert. Knoten, die saure oder basische Aminos\"aurenreste darstellen, werden mit einem c markiert. Ein p markiert Knoten als polare Reste, die weder sauer noch basisch sind. F\"ur unpolare Aminos\"auren wird ein h verwendet. Auch Liganden k\"onnen in Aminos\"auregraphen dargestellt werden. Ihre Knoten werden durch ein ? markiert. Aminos\"auregraphen k\"onnen Proteinkomplexe und einzelne Polypeptidketten darstellen.
 
 
 Weiterhin erm\"oglicht PLCC den Vergleich von \textit{Graphlet}-Vektoren, die im folgenden Teil vorgestellt werden.
@@ -182,14 +183,14 @@ Weiterhin erm\"oglicht PLCC den Vergleich von \textit{Graphlet}-Vektoren, die im
 \section{Der \textit{Graphlet}-Algorithmus}
 
 
-Um diese Graphen vergleichen zu k\"onnen, werden \textit{Graphlets} verwendet. Diese sind im Gegensatz zu Graph-Isomorphismen in polynomieller Zeit berechenbar \cite{sherv_graphlets}. \textit{Graphlets} sind kleine, induzierte Teilgraphen mit bis zu f\"unf Knoten. Die Abbildungen \ref{fig:3graphlets}, \ref{fig:4graphlets} und \ref{fig:5graphlets} zeigen die \textit{Graphlets} mit drei, vier und f\"unf Knoten. Wir betrachten hierbei ausshlie"lich die zusammenh\"angenden \textit{Graphlets}. Sie werden durch den Algorithmus gez\"ahlt und ihre jeweilige relative H\"aufigkeit wird in einen Vektor geschrieben, den wir als \textit{Graphlet}-Vektor bezeichnen.
+Um diese Graphen vergleichen zu k\"onnen, werden \textit{Graphlets} verwendet. Diese sind im Gegensatz zu Graph-Isomorphismen in polynomieller Zeit berechenbar \cite{sherv_graphlets}. \textit{Graphlets} sind kleine, induzierte Teilgraphen mit bis zu f\"unf Knoten. Die Abbildungen \ref{fig:3graphlets}, \ref{fig:4graphlets} und \ref{fig:5graphlets} zeigen die \textit{Graphlets} mit drei, vier und f\"unf Knoten. Wir betrachten hierbei ausschlie"lich zusammenh\"angende \textit{Graphlets}. Sie werden durch den Algorithmus gez\"ahlt; ihre jeweilige relative H\"aufigkeit wird in einen Vektor geschrieben, den wir als \textit{Graphlet}-Vektor bezeichnen.
 
 
 \subsection{Beschreibung des Algorithmus}
 Um alle \textit{Graphlets} der Gr\"o"se $k \in \{3,4,5\}$ zu z\"ahlen, werden alle Euler-Wege der L\"ange $k-1$ in dem gegebenen Graphen gesucht. F\"ur jeden gefundenen Euler-Weg werden alle inzidenten Kanten aller Knoten des Weges \"uberpr\"uft. Wird hierbei ein \textit{Graphlet} gefunden, wird der Z\"ahler f\"ur das entsprechende \textit{Graphlet} im \textit{Graphlet}-Vektor um den Wert an der entsprechenden Stelle der unten stehenden Gewichtungsvektoren $w_k$ erh\"oht.
 
 
-F\"ur \textit{Graphlets} mit $k \geq 4$ existieren zus\"atzlich die sogenannten Stern-\textit{Graphlets}. Das sind $g_4$ in \ref{fig:4graphlets}, sowie $g_{19}$,$g_{20}$ und $g_{21}$ in \ref{fig:5graphlets}. Diese enthalten keinen solchen Euler-Weg.
+F\"ur \textit{Graphlets} mit $k \geq 4$ existieren zus\"atzlich die sogenannten Stern-\textit{Graphlets}. Das sind $g_4$ in der Abbildung \ref{fig:4graphlets}, sowie $g_{19}$,$g_{20}$ und $g_{21}$ in der Abbildung \ref{fig:5graphlets}. Diese enthalten keinen Euler-Weg der L\"ange $k-1$.
 
 \begin{center}
 \begin{subequations}
@@ -204,10 +205,10 @@ w_5 := \left( \frac{1}{120}, \frac{1}{72}, \frac{1}{48}, \frac{1}{36}, \frac{1}{
 \end{subequations}
 \end{center}
 
-Jede Stelle eines Gewichtungsvektors $w_k$ ist mit einem \textit{Graphlet} assoziiert. Die Nenner der Br\"uche in den Vektoren entsprechen den Anzahlen der Euler-Wege der L\"ange $k-1$ in den entsprechenden \textit{Graphlets}. Wenn alle Euler-Wege eines \textit{Graphlets} besucht wurden und der zugeh\"orige induzierte Teilgraph ihm entspricht, wird sein Z\"ahler im \textit{Graphlet}-Vektor ganzzahlig und das \textit{Graphlet} gilt als gefunden.
-Hierbei bilden  die Stern-\textit{Graphlets}, die keine Euler-Wege der L\"ange $k-1$ enthalten, nat\"urlich die Ausnahme.
+Jede Stelle eines Gewichtungsvektors $w_k$ ist mit einem \textit{Graphlet} assoziiert. Die Nenner der Br\"uche in den Vektoren entsprechen den Anzahlen der Euler-Wege der L\"ange $k-1$ in den entsprechenden \textit{Graphlets}. Wenn alle Euler-Wege eines \textit{Graphlets} besucht wurden und der zugeh\"orige induzierte Teilgraph ihm entspricht, wird sein Z\"ahler im \textit{Graphlet}-Vektor ganzzahlig, und das \textit{Graphlet} gilt als gefunden.
+Hierbei bilden  die Stern-\textit{Graphlets}, die keine Euler-Wege der L\"ange $k-1$ enthalten, die Ausnahme.
  
-Da wir 29 verschiedene \textit{Graphlets} betrachten, hat ein \textit{Graphlet}-Vektor 29 Stellen. An jeder Stelle steht die relative H\"aufigkeit eines \textit{Graphlets}. Damit ist ein Vergleich in konstanter Zeit m\"oglich. Anstatt von Graphen oder dreidimensionalen K\"orpern werden mit diesem approximativen Verfahren Vektoren im Vektorraum $\mathbb{R}^{29}$ verglichen.
+Da wir 29 verschiedene \textit{Graphlets} betrachten, hat ein \textit{Graphlet}-Vektor 29 Stellen. An jeder Stelle steht die relative H\"aufigkeit eines \textit{Graphlets}. Damit ist ein Vergleich in konstanter Zeit m\"oglich. Anstelle von Graphen oder dreidimensionalen K\"orpern werden mit diesem approximativen Verfahren Vektoren im Vektorraum $\mathbb{R}^{29}$ verglichen.
 
 
 
@@ -215,14 +216,14 @@ Da wir 29 verschiedene \textit{Graphlets} betrachten, hat ein \textit{Graphlet}-
 
 In seiner urspr\"unglichen Version wurde das Programm bereits 2013 von \textit{Tatiana Bakirova} geschrieben. Im Sommer 2015 wurde es um einige Funktionen erweitert.
 
-\texttt{graphletAnalyser} ist in C++ geschrieben. Zur internen Darstellung der Graphen wird die \textit{Boost-Graph-Library} verwendet. Die Anbindung an die \textit{Postgreql}-Datenbank wird mittels der Bibliothek pqxx realisiert.
+\texttt{graphletAnalyser} ist in C++ geschrieben. Zur internen Darstellung der Graphen wird die \textit{Boost-Graph-Library} verwendet.\\
+Die Anbindung an die \textit{Postgresql}-Datenbank wird durch die Bibliothek pqxx realisiert.
 
-\paragraph{Als Input} erh\"alt das Programm eine oder mehrere GML-Dateien, die Graphen darstellen. Aus jeder GML-Datei wird mit der \textit{Boost-Graph-Library} intern ein Graph erstellt, der f\"ur die Berechnungen verwendet wird.
-
-F\"ur den eingelesenen Graphen berechnet das Programm alle \textit{Graphlets} mit drei, vier und f\"unf Knoten. Die Implementierung entspricht der \textit{Matlab}-Implementierung von \textit{N. Shervashidze} \cite{sherv_graphlets}. Zus\"atzlich berechnet es markierte \textit{Graphlets} der Gr\"o"sen 2 und 3, wobei die Markierungen den SSE-Zuordnungen der PTGL entsprechen. Es gibt 35 verschiedene markierte \textit{Graphlets} mit 2 oder 3 Knoten. Unter Ber\"ucksichtigung dieser Markierungen erh\"oht sich die Anzahl der Stellen der \textit{Graphlet}-Vektoren auf 64.
+\paragraph{Als Input} erh\"alt das Programm eine oder mehrere GML-Dateien, die Graphen darstellen. Aus jeder GML-Datei wird mit der \textit{Boost Graph Library} intern ein Graph erstellt, der f\"ur die Berechnungen verwendet wird. F\"ur den eingelesenen Graphen berechnet das Programm alle \textit{Graphlets} mit drei, vier und f\"unf Knoten.\\
+Die Implementierung entspricht der \textit{Matlab}-Implementierung von \textit{N. Shervashidze} \cite{sherv_graphlets}. Zus\"atzlich berechnet es markierte \textit{Graphlets} der Gr\"o"sen 2 und 3, wobei die Markierungen den Zuordnungen der SSEe durch die PTGL entsprechen. Es gibt 35 verschiedene markierte \textit{Graphlets} mit 2 oder 3 Knoten. Unter Ber\"ucksichtigung dieser Markierungen erh\"oht sich die Anzahl der Stellen der \textit{Graphlet}-Vektoren auf 64.
 Die Knotengradverteilungen k\"onnen ebenfalls berechnet werden.
 
-\paragraph{Der Output} des Programms umfasst zum einen die Ausgabe der \textit{Graphlet}-Vektoren mit oder ohne markierte \textit{Graphlets} in den Formaten csv, matlab und nova. Zus\"atzlich k\"onnen die \textit{Graphlet}-Vektoren in einer Datenbank, die zuvor mit PLCC erstellt wurde gespeichert werden. Die Knotengradverteilung kann zusammen mit anderen Daten eines Graphen als .csv-Datei ausgegeben werden.
+\paragraph{Der Output} des Programms umfasst zum einen die Ausgabe der \textit{Graphlet}-Vektoren mit oder ohne markierte \textit{Graphlets} in den Formaten csv, matlab und nova. Zus\"atzlich k\"onnen die \textit{Graphlet}-Vektoren in einer Datenbank, die zuvor mit PLCC erstellt wurde, gespeichert werden. Die Knotengradverteilung kann zusammen mit anderen Daten eines Graphen als csv-Datei ausgegeben werden.
 
 
 \section{\"Ahnlichkeitsma"s}
@@ -235,32 +236,32 @@ Durch die Verwendung der \textit{Graphlets} wird der direkte Vergleich von Graph
 
 \textit{Pr\v{z}ulj et al.} haben \textit{Graphlets} bereits auf Protein-Protein-Interaktionsnetzwerke (\cite{frqdistribution}) angewandt. Als Ma"s f\"ur die \"Ahnlichkeit von Netzwerken nutzen sie die Relative-\textit{Graphlet}-H\"aufigkeiten-Distanz (RGF). Diese Metrik berechnet den Abstand $D(G,H)$ zwischen zwei Graphen $G$ und $H$ als logarithmierte Differenz der normalisierten Anzahl der \textit{Graphlets} in $G$ und $H$. Sie ist folgenderma"sen definiert: \\
 
-Sei $N_{i}(G)$ die Anzahl der \textit{Graphlets} von Typ $i \in {1,...,29}$ und \\ $T(G) = \sum_{i = 1}^{29} N_{i}(G)$ die Anzahl der \textit{Graphlets} in $G$, beziehungsweise $H$.\\
+Sei $N_{i}(G)$ die Anzahl der \textit{Graphlets} vom Typ $i \in {1,...,29}$ und \\ $T(G) = \sum_{i = 1}^{29} N_{i}(G)$ die Anzahl der \textit{Graphlets} in $G$ beziehungsweise $H$.\\
 
 Dann ist $D(G,H)$ f\"ur zwei Graphen $G$ und $H$ definert als:
 
 \begin{subequations}
 \begin{align*}
 D(G,H) := \sum_{i = 1}^{29} | F_{i}(G) - F_{i}(H) | \\
-\text{mit } F_{i}(G) := - log(\frac{N_{i}(G)}{T(G)})
+\text{mit } F_{i}(G) := - log(\frac{N_{i}(G)}{T(G)}).
 \end{align*}
 \end{subequations}
 
 
 
-Diese Metrik l\"asst sich analog zur euklidischen Distanz auffassen, denn sie berechnet den Abstand f\"ur zwei Vektoren $x,y$ als Differenz ihrer Eintr\"age $x_i -y_i$. Sie verwendet die normalisierten \textit{Graphlet}-Vektoren unter der Annahme, dass die \"Ahnlichkeit zweier Netzwerke sich aus der \"Ahnlichkeit lokaler Substrukturen ableiten l\"asst \cite{frqdistribution}. Somit k\"onnen Netzwerke, die \"ahnliche Substrukturen haben, sich aber in ihrer Gr\"o"se stark unterschieden, immer noch als \"ahnlich erkannt werden. Zus\"atzlich soll durch diese Normalisierung ausgeschlossen werden, dass einzelne besonders h\"aufige \textit{Graphlets} in einem Graphen die Messung verzerren.
+Diese Metrik l\"asst sich analog zur euklidischen Distanz auffassen, denn sie berechnet den Abstand f\"ur zwei Vektoren $x,y$ als Differenz ihrer Eintr\"age $x_i -y_i$. Sie verwendet die normalisierten \textit{Graphlet}-Vektoren unter der Annahme, dass die \"Ahnlichkeit zweier Netzwerke sich aus der \"Ahnlichkeit lokaler Substrukturen ableiten l\"asst \cite{frqdistribution}. Somit k\"onnen Netzwerke, die \"ahnliche Substrukturen haben, sich aber in ihrer Gr\"o"se stark unterschieden, immer noch als \"ahnlich erkannt werden. Zus\"atzlich soll durch diese Normalisierung ausgeschlossen werden, dass einzelne, besonders h\"aufige \textit{Graphlets} in einem Graphen die Messung verzerren.
 
-Da alle Eintr\"age der Vektoren aus dem Intervall $ [0,1] \in \mathbb{R} $ stammen werden sie logarithmiert. Damit erh\"alt man Abst\"ande, die aus deutlich gr\"o"seren Intervallen stammen. Die Ergebnisse k\"onnen so leichter interpretiert werden und der Einfluss der Einfluss von Rundungsfehlern verkleinert sich. Dies sorgt auch daf\"ur, dass seltenere \textit{Graphlets} einen st\"arkeren Einfluss auf die Messung haben, als h\"aufige \textit{Graphlets}.
+Alle Eintr\"age der Vektoren stammen aus dem Intervall $ [0,1] \in \mathbb{R} $. Diese werden logarithmiert. Damit erh\"alt man Abst\"ande, die aus deutlich gr\"o"seren Intervallen stammen. Die Ergebnisse k\"onnen so leichter interpretiert werden und der Einfluss von Rundungsfehlern verkleinert sich. Dies sorgt auch daf\"ur, dass seltenere \textit{Graphlets} einen st\"arkeren Einfluss auf die Messung haben, als h\"aufige \textit{Graphlets}.
  
-Weiterhin wurde gezeigt, (\cite{frqdistribution}) dass diese Metrik auch bei verrauschten Daten noch sehr gut funktioniert. Hierbei ist jedoch zu beachten, dass sie bisher vor allem f\"ur sehr gro"se Netzwerke mit mehreren Tausend Knoten und Kanten verwendet wurde. Diese Gr\"o"se kann von Aminos\"auregraphen erreicht werden, wenn sie gro"se Proteinkomplexe modellieren. Proteingraphen und Komplexgraphen sind aber deutlich kleiner.
+Weiterhin wurde gezeigt, \cite{frqdistribution} dass diese Metrik auch bei verrauschten Daten noch sehr gut funktioniert. Hierbei ist jedoch zu beachten, dass sie bisher vor allem f\"ur sehr gro"se Netzwerke mit mehreren Tausend Knoten und Kanten verwendet wurde. Diese Gr\"o"se kann von Aminos\"auregraphen erreicht werden, wenn sie gro"se Proteinkomplexe modellieren. Proteingraphen und Komplexgraphen sind aber deutlich kleiner.
 
 \section{\textit{PDBeFold}}
 
-Im Rahmen der Fallstudie wird \texttt{graphletAnalyser} mit \textit{PDBeFold} \cite{pdbefold} verglichen. \textit{PDBeFold} f\"uhrt ebenfalls einen graphenbasierten Strukrutvergleich durch. Analog zur PTGL modellieren Knoten SSEs. Zus\"atzlich werden diese mit der Anzahl von Residuen des jeweiligen SSE markiert. Im Gegensatz zur PTGL verbindet PDBeFold jeden Knoten durch eine Kante mit jedem anderen Knoten. Die Kanten werden hierbei mit Vektoren markiert, in denen unter anderem die Distanzen und Winkel zwischen den SSEs eingetragen sind.
+Im Rahmen der Fallstudie wird \texttt{graphletAnalyser} mit \textit{PDBeFold} \cite{pdbefold} verglichen. \textit{PDBeFold} f\"uhrt ebenfalls einen graphenbasierten Strukturvergleich durch. Analog zur PTGL modellieren Knoten SSEe. Zus\"atzlich werden diese mit der Anzahl von Residuen des jeweiligen SSE markiert. Im Gegensatz zur PTGL verbindet PDBeFold jeden Knoten durch eine Kante mit jedem anderen Knoten. Die Kanten werden hierbei mit Vektoren markiert, in denen unter anderem die Distanzen und Winkel zwischen den SSEen eingetragen sind.
 
 Die Proteine werden also als vollst\"andige, ungerichtete Graphen modelliert, in denen jede Kante alle Informationen zur r\"aumlichen Orientierung ihrer inzidenten Knoten enth\"alt. Diese Graphen werden vorberechnet.
 
-Zum Vergleich von Strukturen wird f\"ur diese Graphen zun\"achst ein Alignment durchgef\"uhrt, um eine Absch\"atzung der strukturellen \"Ahnlichkeit zu erhalten und die \"aquivalenten Residuen zu ermitteln. Im Anschluss f\"uhrt \\ PDBeFold ein Alignment der $\alpha$-C-Atome durch und berechnet die \"Ahnlichkeit der Proteine als durchschnittlichen paarweisen Abstand \"aquivalenter Residuen. Als Abstandsma"s verwendet es die \textit{Root-Mean-Square-Deviation}.
+Zum Vergleich von Strukturen wird f\"ur diese Graphen zun\"achst ein Alignment durchgef\"uhrt, um eine Absch\"atzung der strukturellen \"Ahnlichkeit zu erhalten und die \"aquivalenten Residuen zu ermitteln. Im Anschluss f\"uhrt \\ PDBeFold ein Alignment der $C_{\alpha}$-Atome durch und berechnet die \"Ahnlichkeit der Proteine als durchschnittlichen paarweisen Abstand \"aquivalenter Residuen. Als Abstandsma"s verwendet es die \textit{Root Mean Square Deviation}.
 
 Da \texttt{graphletAnalyser} Vektoren berechnet, die verglichen werden, ist ein direkter Vergleich der Abst\"ande aus beiden Programmen nicht m\"oglich. Der Vergleich kann nur durch einen Vergleich relativer Abst\"ande innerhalb der Datens\"atze erfolgen.
 
@@ -269,7 +270,7 @@ Da \texttt{graphletAnalyser} Vektoren berechnet, die verglichen werden, ist ein 
 
 Im folgenden Teil sind die verwendeten Datens\"atze beschrieben. Es wurde eine Fallstudie mit Abstandsmessungen durchgef\"uhrt, um diese zu testen.
 
-Zus\"atzlich wurden \textit{Graphlet}-Vektoren f\"ur einen Datensatz aus 500 nicht redundanten PDB-Eintr\"agen berechnet. F\"ur diesen Datensatz wurden keine Abstandsmessungen durchgef\"uhrt, stattdessen wurden die \textit{Graphlet}-Vektoren selbst statistisch analysiert.
+Zus\"atzlich wurden \textit{Graphlet}-Vektoren f\"ur einen Datensatz aus knapp 500 nicht-redundanten PDB-Eintr\"agen berechnet. F\"ur diesen Datensatz wurden keine Abstandsmessungen durchgef\"uhrt, stattdessen wurden die \textit{Graphlet}-Vektoren selbst statistisch analysiert.
 
 
 \subsection{Fallstudie}
@@ -281,9 +282,7 @@ Je f\"unf Proteine dieses Datensatzes befinden sich in der gleichen Klasse. Von 
 
 Es sind Proteine der Klassen $\alpha$, $\beta$ und $\alpha/\beta$ vertreten. Proteine mit wenigen SSEs wurden nicht betrachtet, da f\"ur diese die Proteingraphen und die Komplexgraphen in den meisten F\"allen keine Kanten besitzen. Dadurch k\"onnen keine \textit{Graphlets} in diesen Graphen gefunden werden.
 
-Weiterhin wurde darauf geachtet, dass jedes Protein dieses Datensatzes aus genau einer Polypeptidkette mit genau einer Dom\"ane besteht. Dies hat mehrere Gr\"unde.
-
-Zum ersten erm\"oglicht diese Auswahl die beste Vergleichbarkeit der Messungen mit Proteingraphen, Komplexgraphen und Aminos\"auregraphen, da Proteingraphen im Gegensatz zu Komplexgraphen und Aminos\"auregraphen nur eine Polypeptidkette darstellen k\"onnen. Durch die Beschr\"ankung auf Proteine mit genau einer Polypeptidkette wird ein direkter Vergleich durch die Korrelation der paarweisen Distanzen in den unterschiedlichen Graphtypen m\"oglich. Hier werden Liganden in den Komplexgraphen einbezogen und in den Proteingraphen ignoriert.
+Weiterhin wurde darauf geachtet, dass jedes Protein dieses Datensatzes aus genau einer Polypeptidkette mit genau einer Dom\"ane besteht. Dies hat mehrere Gr\"unde. Zum ersten erm\"oglicht diese Auswahl die beste Vergleichbarkeit der Messungen mit Proteingraphen, Komplexgraphen und Aminos\"auregraphen, da Proteingraphen im Gegensatz zu Komplexgraphen und Aminos\"auregraphen nur eine Polypeptidkette darstellen k\"onnen. Durch die Beschr\"ankung auf Proteine mit genau einer Polypeptidkette wird ein direkter Vergleich durch die Korrelation der paarweisen Distanzen in den unterschiedlichen Graphtypen m\"oglich. Hier werden Liganden in den Komplexgraphen einbezogen und in den Proteingraphen ignoriert.
 
 Ein weiterer Grund f\"ur die Beschr\"ankung auf solche Proteine ist, dass man ein ''klareres Signal'' erh\"alt. Die Struktur von Proteinen wird haupts\"achlich anhand ihrer Dom\"anen beschrieben. Wenn \textit{Graphlets} sich wirklich f\"ur den Vergleich von Topologien eigne, dann m\"ussten gleiche Dom\"anen zu gleichen oder zumindest \"ahnlichen \textit{Graphlet}-Vektoren f\"uhren.
 Da diese Vektoren globale Struktureigenschaften des Proteins beschreiben erhielte man f\"ur ein Multidom\"anenprotein mit unterschiedlichen Dom\"anen einen Vektor, der die Struktureigenschaften beider Dom\"anen ''vermischt'' und das Signal verrauscht.
