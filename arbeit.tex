@@ -27,6 +27,8 @@
 
 \begin{document}
 
+\pagenumbering{roman}
+
 \definecolor{green}{rgb}{0.13,0.54,0.13}
 
 
@@ -64,6 +66,8 @@
 
 
 \newpage
+
+\pagenumbering{arabic}
 
 \chapter{Einleitung}
 
@@ -284,8 +288,8 @@ Es sind Proteine der Klassen $\alpha$, $\beta$ und $\alpha/\beta$ vertreten. Pro
 
 Weiterhin wurde darauf geachtet, dass jedes Protein dieses Datensatzes aus genau einer Polypeptidkette mit genau einer Dom\"ane besteht. Dies hat mehrere Gr\"unde. Zum ersten erm\"oglicht diese Auswahl die beste Vergleichbarkeit der Messungen mit Proteingraphen, Komplexgraphen und Aminos\"auregraphen, da Proteingraphen im Gegensatz zu Komplexgraphen und Aminos\"auregraphen nur eine Polypeptidkette darstellen k\"onnen. Durch die Beschr\"ankung auf Proteine mit genau einer Polypeptidkette wird ein direkter Vergleich durch die Korrelation der paarweisen Distanzen in den unterschiedlichen Graphtypen m\"oglich. Hier werden Liganden in den Komplexgraphen einbezogen und in den Proteingraphen ignoriert.
 
-Ein weiterer Grund f\"ur die Beschr\"ankung auf solche Proteine ist, dass man ein ''klareres Signal'' erh\"alt. Die Struktur von Proteinen wird haupts\"achlich anhand ihrer Dom\"anen beschrieben. Wenn \textit{Graphlets} sich wirklich f\"ur den Vergleich von Topologien eigne, dann m\"ussten gleiche Dom\"anen zu gleichen oder zumindest \"ahnlichen \textit{Graphlet}-Vektoren f\"uhren.
-Da diese Vektoren globale Struktureigenschaften des Proteins beschreiben erhielte man f\"ur ein Multidom\"anenprotein mit unterschiedlichen Dom\"anen einen Vektor, der die Struktureigenschaften beider Dom\"anen ''vermischt'' und das Signal verrauscht.
+Ein weiterer Grund f\"ur die Beschr\"ankung auf solche Proteine ist, dass man ein "`klareres Signal"' erh\"alt. Die Struktur von Proteinen wird haupts\"achlich anhand ihrer Dom\"anen beschrieben. Wenn \textit{Graphlets} sich wirklich f\"ur den Vergleich von Topologien eignen, dann m\"ussten gleiche Dom\"anen zu gleichen oder zumindest \"ahnlichen \textit{Graphlet}-Vektoren f\"uhren.
+Da diese Vektoren globale Struktureigenschaften des Proteins beschreiben, erhielte man f\"ur ein Multidom\"anenprotein mit unterschiedlichen Dom\"anen einen Vektor, der die Struktureigenschaften beider Dom\"anen "`vermischt"' und das Signal verrauscht.
 
 
 In den Tabellen \ref{tab:occ_alpha}, \ref{tab:occ_beta} und \ref{tab:occ_ab} sind die Proteine der Fallstudie dargestellt.
@@ -822,7 +826,6 @@ Hierbei ist zu ber\"ucksichtigen, dass die \"Ahnlichkeit von Proteinen immer im 
 \chapter{Anhang}
 
 
-\section{Bildverzeichnis}
 
 \begin{center}
 
@@ -854,7 +857,6 @@ Hierbei ist zu ber\"ucksichtigen, dass die \"Ahnlichkeit von Proteinen immer im 
 
 %TODO: UML Diagramm so, konvertieren, dass es eine Bounding Box hat und wieder einf\"ugen
 
-\section{Tabellenverzeichnis}
 
 
 \begin{table}[H]
