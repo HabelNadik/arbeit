@@ -21,6 +21,10 @@
 \usepackage{acronym}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
+\setlength{\parindent}{0.5em}
+
+
+
 \begin{document}
 
 \definecolor{green}{rgb}{0.13,0.54,0.13}
@@ -38,7 +42,25 @@
 
 \newpage
 
+
+
 \listoftables
+
+\newpage
+
+\bigskip
+\begin{Huge}
+\textbf{Abk\"urzungsverzeichnis}
+\end{Huge}
+
+\vspace{15mm}
+\begin{acronym}
+\acro{PDB}{\textit{Protein Data Bank}}
+\acro{PTGL}{\textit{Protein Topology Graph Library}}
+\acro{RGF}{Relative \textit{Graphlet} H\"aufigkeiten Distanz}
+\acro{SSE}{Sekund\"arstrukturelement}
+\end{acronym}
+
 
 \newpage
 
@@ -47,17 +69,20 @@
 \section{Motivation}
 
 
-Die verschiedenen Funktionen, die Proteine erf\"ullen sind zu einem gro"sen Teil durch ihre Struktur bestimmt. Diese Struktur ist ein bestimmender Faktor f\"ur ihre F\"ahigkeit Liganden zu binden und chemische Reaktionen zu katalysieren.
-Daraus folgt, dass die Analyse von Proteinstrukturen zentral f\"ur ein tieferes Verst\"andnis von zellul\"arem Leben ist. Die vergleichende Analyse von Proteinen liefert nicht nur wichtige Erkenntnise \"uber ihre Funktion, sondern hilft auch dabei, evolution\"are Verwandschaften zu entdecken, die durch reine Sequenzanalysen nicht mehr nachvollziehbar sind.
+Proteine sind die essentiellen Bausteine zellul\"aren Lebens. Jede Aktivit\"at eines Organismus kann durch die Aktivit\"at der beteiligten Proteine beschrieben werden. Dementsprechend ist ein tiefes Verst\"andnis von Proteinen zentral f\"ur das Verst\"andnis von zellul\"arem Leben.
+Die Struktur eines Proteins bestimmt seine Funktion und die vergleichende Analyse dieser Strukturen liefert Einblicke in entfernte evolution\"are Verwandschaftsbeziehungen, die durch reine Sequenzanalysen nicht mehr nachvollziehbar sind.
 
-In dieser Arbeit werden Proteinstrukturtopologien untersucht. Die Topologie eines Proteins ist als die Anordnung seiner Sekund\"arstrukturelemente (SSEs) zueinander definiert. Die Betrachtung von SSEs hat den Vorteil, dass diese auch \"uber gro"se evolution\"are Distanzen stark konserviert sind. 
+Hierzu betrachten wir Proteinstrukturtopologien. Die Topologie eines Proteins ist als die Anordnung seiner Sekund\"arstrukturelemente (SSEe)
+ zueinander definiert. Die Betrachtung von SSEe hat den Vorteil, dass diese auch \"uber gro"se evolution\"are Distanzen stark konserviert sind. Es ist also naheliegend, Proteine entsprechend ihrer Topologien einzuordnen.
 
-Zur Darstellung dieser Topologien werden hier Graphen verwendet. Graphen geh\"oren zu den am st\"arksten untersuchten mathematischen Strukturen, da sich mit ihnen viele verschiedene komplexe Zusammenh\"ange darstellen lassen. Ihre Nutzung ist \"uberall dort angebracht, wo Daten nicht als Zahlen oder Vektoren darstellbar sind, weil sie eine Menge von Objekten und ihren Beziehungen untereinander repr\"asentieren.
+Da die Anzahl der bekannten Proteinstrukturen in den letzten Jahren rasant angestiegen sind, ist es nicht mehr m\"oglich diese Einordnung und die hierf\"ur n\"otigen Vergleiche nur manuell vorzunehmen. Es werden algorithmische Vergleichsmethoden und entsprechende Datenstrukturen ben\"otigt.
+
+Zur Darstellung dieser Topologien werden hier Graphen verwendet. Graphen geh\"oren zu den am st\"arksten untersuchten mathematischen Strukturen, da sich mit ihnen viele verschiedene komplexe Zusammenh\"ange darstellen lassen. Ihre Nutzung ist \"uberall dort angebracht, wo Daten nicht als Zahlen oder Vektoren darstellbar sind, weil sie eine Menge von Objekten und ihre Beziehungen untereinander repr\"asentieren.
 
 
 Graphen finden sich in der Erforschung von sozialen Netzwerken wieder und werden in der Chemie zur Darstellung von Molek\"ulen genutzt. Auch in der Bioinformatik sind Graphen das zentrale Mittel zur Darstellung komplexer Beziehungen. Interaktionen von Proteinen werden genauso als Graphen modelliert, wie Signalwege in Zellen oder eben Proteine. Die Analyse von biologischen Netzwerken ist ein zentrales Mittel, um biologische Vorg\"ange besser zu verstehen \cite{junker2011analysis}.
 
-Der Vergleich von Graphen ist jedoch keine triviale Aufgabe. Die Frage: ''Ist dieser Graph in diesem anderen Graphen enthalten?'', befriedigend schnell beantworten zu k\"onnen, ist nicht m\"oglich, denn das zugrunde liegende Entscheidungsproblem ist NP-vollst\"andig \cite{karp1972reducibility}
+Der Vergleich von Graphen ist jedoch keine triviale Aufgabe. Die Frage: "`Ist dieser Graph in diesem anderen Graphen enthalten?"' befriedigend schnell beantworten zu k\"onnen, ist nicht m\"oglich, denn das zugrunde liegende Entscheidungsproblem ist NP-vollst\"andig \cite{karp1972reducibility}.
 
 Um dieses Problem zu umgehen, werden approximative Methoden angewandt. Hierzu geh\"ort das Berechnen von \textit{Graphlets} \cite{frqdistribution}. \textit{Graphlets} sind kleine, induzierte Teilgraphen, die f\"ur gro"se Graphen immer noch schnell abz\"ahlbar sind. Mit dieser Technik lassen sich in polynomieller Zeit Teilstrukturen eines Graphen ermitteln. Dabei erh\"alt man Vektoren, deren Vergleich einfacher durchzuf\"uhren ist, als ein direkter Vergleich der Graphen selbst. So lassen sich \textit{Graphlets} zur vergleichenden Analyse von Proteinstrukturtopologien verwenden.
 
@@ -68,34 +93,41 @@ Um dieses Problem zu umgehen, werden approximative Methoden angewandt. Hierzu ge
 
 Mit der wachsenden Anzahl von Struktureintr\"agen in der \textit{Protein Data Bank} (PDB) ist eine Vielzahl von Methoden entstanden, um diese Strukturen zu vergleichen.
 
-Der wohl bekannteste Algorithmus zum Vergleich von dreidimensionalen Proteinstrukturen ist DALI von \textit{Holm} und \textit{Sander} \cite{holm1993protein}. Er f\"uhrt ein globales Alignment durch, indem Distanzmatrizen verglichen werden. In diesen Matrizen sind die intramolekularen Distanzen der $\alpha$-C-Atome der jeweiligen Proteine eingetragen.
+Der wohl bekannteste Algorithmus zum Vergleich von dreidimensionalen Proteinstrukturen ist DALI von \textit{Holm} und \textit{Sander} \cite{holm1993protein}. Er f\"uhrt ein globales Alignment durch, indem Distanzmatrizen verglichen werden. In diesen Matrizen sind die intramolekularen Distanzen der $C_\alpha$-Atome der jeweiligen Proteine eingetragen.
 
 In den 23 Jahren, die seit der Ver\"offentlichung von DALI vergangen sind, sind aber noch viele weitere Methoden mit unterschiedlichen Ans\"atzen entwickelt worden. Der Algorithmus von \textit{Shindyalov} und \textit{Bourne} \cite{shindyalov1998protein} berechnet ein Alignment von Proteinstrukturen, indem er zun\"achst kleine Paare von Substrukturen aligniert und dann versucht, dieses Alignment auf einen optimalen Pfad auszudehnen.
 
-Der FATCAT-Algorithmus von \textit{Ye} und \textit{Godzik} \cite{fatcat} verwendet eine \"ahnliche Idee und versucht zus\"atzlich die Substrukturen flexibel zu alignieren, um auch gleiche Proteine mit ver\"anderter Konformation erkennen zu k\"onnen.
+Der FATCAT-Algorithmus von \textit{Ye} und \textit{Godzik} \cite{fatcat} verwendet eine \"ahnliche Idee und versucht zus\"atzlich, die Substrukturen flexibel zu alignieren, um auch gleiche Proteine mit ver\"anderter Konformation erkennen zu k\"onnen.
 
 \textit{TM-align} von \textit{Zhang} und \textit{Skolnick} \cite{zhangtm} berechnet eine Rotationsmatrix und nutzt Dynamische Programmierung. Der Algorithmus benutzt als Bewertungsschema den sogenannten \textit{TM-Score}, der besonders gut geeignet ist, um lokale \"Ahnlichkeiten zu erkennen.
 
 Der SSM-Algorithmus von \textit{Krissinel} und \textit{Hendrick} \cite{pdbefold} verwendet eine graphenbasierte Darstellung von Proteinen f\"ur ein erstes Alignment und verfeinert dieses dann durch die Berechnung der Distanzen \"aquivalenter $\alpha$-C-Atome. Er wird im \textit{PDBeFold-Web-Server} implementiert. Als einziger hier beschriebener Algorithmus erm\"oglicht er schnelle multiple Strukturvergleiche \"uber einen \textit{Web-Service}.
 
 
-Die meisten dieser Methoden f\"uhren einen \textit{Template}-basierten Vergleich durch. Das hei"st, dass der \"Ahnlichkeitswert, der einem Paar zugewiesen wird zum einen von der Reihenfolge der Eingabe abh\"angt und zum anderen von den anderen Proteinen abh\"angt, die Teil des multiplen Vergleichs sind.
+Die meisten dieser Methoden f\"uhren einen \textit{Template}-basierten Vergleich durch. Das hei"st, dass der \"Ahnlichkeitswert, der einem Paar zugewiesen wird, zum einen von der Reihenfolge der Eingabe abh\"angt und zum anderen von den Proteinen abh\"angt, die Teil des multiplen Vergleichs sind, aber nicht zu dem gerade betrachteten Paar geh\"oren.
 Als \"Ahnlichkeitswerte werden paarweise durchschnittliche Abst\"ande der Strukturen zueinander ausgegeben.
+
+
+Im Gegensatz zu diesen rein algorithmischen Methoden verwenden Datenbanken wie CATH \ref{cath} und SCOPe \ref{scope} eine Mischung aus algorithmischen Methoden und manueller Einordnung durch Experten, um Proteine in strukturelle Klassen einzuordnen.
 
 \textit{Graphlets} wurden zuerst von \textit{Pr{\v z}ulj et al.} auf biologische Daten angewandt \cite{frqdistribution}, \cite{graphletfrequency}. Sie nutzten den \textit{Graphlet}-Algorithmus, um \"Ahnlichkeiten von Protein-Protein-Interaktionsnetzwerken zu berechnen.
 
 \textit{N. Shervashidze} war die erste, die \textit{Graphlets} zur Analyse von Proteinstrukturen anwandte \cite{sherv_graphlets}. Sie nutzte \textit{Support Vector Machines} mit \textit{Graphlet}-Vektoren, um  f\"ur Proteingraphen zu entscheiden, ob diese Enzyme darstellen oder nicht.
 
-\textit{Graphlets} wurden auch von \textit{Tatiana Bakirova} verwendet, um Proteinstrukturen zu analysieren \cite{bakirova2013comparison}. Sie hat das Programm \texttt{graphletAnalyser} verfasst, das in dieser Arbeit genutzt und weiterentwickelt wurde.
+Auch von \textit{Tatiana Bakirova} wurden \textit{Graphlets} verwendet, um Proteinstrukturen zu analysieren \cite{bakirova2013comparison}. Sie hat das Programm \texttt{graphletAnalyser} verfasst, das in dieser Arbeit genutzt und weiterentwickelt wurde.
 
 \section{Ziele}
 
-Ziel dieser Arbeit war zun\"achst die Erweiterung der Funktionalit\"at von \\ \texttt{graphletAnalyser}. Hierzu geh\"ort zun\"achst eine funktionierende Datenbankanbindung, um die berechneten Daten abzuspeichern.
-Das Berechnen von markierten \textit{Graphlets} sollte so implementiert werden, dass sie auf Graphen mit beliebigen Markierungen angewandt werden kann. Deshalb wurde ein Algorithmus entwickelt und implementiert, der aus einem Alphabet von Knotenmarkierungen alle Worte berechnet, die markierte  2- und 3-\textit{Graphlets} repr\"asentieren -- der \textit{Graphlet}-Worte-Algorithmus. Die Suche nach diesen markierten \textit{Graphlets} in einem Graphen wurde ebenfalls implementiert.
+Ziel dieser Arbeit war zun\"achst die Erweiterung der Funktionalit\"at von \\ \texttt{graphletAnalyser}. Hierzu geh\"ort zun\"achst eine funktionierende Datenbankanbindung, um die berechneten Daten abzuspeichern. Die Ausgabe sollte so erweitert werden, dass das Berechnen der Verteilungen der relativen H\"aufigkeiten der \textit{Graphlets} m\"oglich wird.
+Das Berechnen von markierten \textit{Graphlets} sollte so implementiert werden, dass es auf Graphen mit beliebigen Markierungen angewandt werden kann. Deshalb wurde ein Algorithmus entwickelt und implementiert, der aus einem Alphabet von Knotenmarkierungen alle Worte berechnet, die markierte  2- und 3-\textit{Graphlets} repr\"asentieren -- der \textit{Graphlet}-Worte-Algorithmus. Die Suche nach diesen markierten \textit{Graphlets} in einem Graphen wurde ebenfalls implementiert.
+
 
 In Fallstudien wird \"uberpr\"uft, ob und inwiefern sich \textit{Graphlets} eignen, um die \"Ahnlichkeit von Proteinstrukturtopologien zu untersuchen. Dies wurde mit unterschiedlichen Metriken getestet. Die hierbei errechneten \"Ahnlichkeitswerte wurden mit den Ergebnissen des Strukturalignment-Programms \textit{PDBeFold} \cite{pdbefold} verglichen.
 
-Weiterhin wurde mit dem PDBTop500-Datensatz \cite{top500} untersucht, welche strukturellen Merkmale von Proteinen mit \textit{Graphlets} ermittelt werden.
+
+Weiterhin wurde untersucht, wie die relativen H\"aufigkeiten der \textit{Graphlets} in einem gro"sen Faltungsraum verteilt sind. Um zu \"uberpr\"ufen, ob sich Superfamilien anhand dieser Verteilungen voneinander abgrenzen lassen, wurden diese H\"aufigkeiten f\"ur den PDBTop500-Datensatz mit einem Datensatz aus Aldolasen verglichen.
+
+
 
 \section{Aufbau der Arbeit}
 
@@ -114,7 +146,7 @@ Im abschlie"senden Teil \emph{Diskussion und Ausblick} wird versucht, die Frage 
 
 \chapter{Materialien und Methoden}
 
-%TODO: Einleitung des MatMeth-Teils \"uberarbeiten
+
 
 
 
@@ -122,20 +154,20 @@ Im abschlie"senden Teil \emph{Diskussion und Ausblick} wird versucht, die Frage 
 \section{\textit{Protein Topology Graph Library}}
 
 
-Die \underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary entstand aus einer Idee von \textit{Patrick May} und \textit{Ina Koch} (\cite{ptgl1}). Ausgehend von der Tatsache, dass sich Proteinstrukturtopologien als r\"aumliche Beziehungen von SSEs untereinander definieren lassen, verwendet die PTGL \emph{Graphen}, um Proteinstrukturtopologien darzustellen.
-Hierbei stellen die Knoten des Graphen die SSEs eines Proteins dar. Sie werden dem jeweiligen SSE entsprechend markiert. Knoten, die $\alpha$-Helices repr\"asentieren, werden mit einem H markiert, $\beta$-Faltbl\"atter mit einem E. Weiterhin erm\"oglicht die PTGL die Darstellung von Liganden, (\cite{vplg}) denen mit L markierte Knoten zugeordnet werden. Um die r\"aumliche Nachbarschaft von SSEs und Liganden mit- und untereinander darstellen zu k\"onnen, werden ungerichtete Kanten zwischen Knoten gezogen, wenn die entsprechenden Elemente benachbart sind. Jede Polypeptidkette eines Proteins wird dann als \emph{Proteingraph} dargestellt. Die Zusammenhangskomponenten eines Proteingraphen werden als Faltungsgraphen bezeichnet, weil sie typischerweise eine unabh\"angige Faltungseinheit darstellen.
+Die \textit{\underline{P}rotein \underline{T}opology \underline{G}raph \underline{L}ibrary} entstand aus einer Idee von \textit{Patrick May} und \textit{Ina Koch} \cite{ptgl1}. Ausgehend von der Tatsache, dass sich Proteinstrukturtopologien als r\"aumliche Beziehungen von SSEen untereinander definieren lassen, verwendet die PTGL \emph{Graphen}, um Proteinstrukturtopologien darzustellen.
+Hierbei stellen die Knoten des Graphen die SSEe eines Proteins dar. Sie werden dem jeweiligen SSE entsprechend markiert. Knoten, die $\alpha$-Helices repr\"asentieren, werden mit einem H markiert, $\beta$-Faltbl\"atter mit einem E. Weiterhin erm\"oglicht die PTGL die Darstellung von Liganden, \cite{vplg} denen mit L markierte Knoten zugeordnet werden. Um die r\"aumliche Nachbarschaft von SSEs und Liganden mit- und untereinander darstellen zu k\"onnen, werden ungerichtete Kanten zwischen Knoten gezogen, wenn die entsprechenden Elemente benachbart sind. Jede Polypeptidkette eines Proteins wird dann als \emph{Proteingraph} dargestellt. Die Zusammenhangskomponenten eines Proteingraphen werden als Faltungsgraphen bezeichnet, weil sie typischerweise eine unabh\"angige Faltungseinheit darstellen.
 
 Durch diese abstrahierte Darstellung k\"onnen zentrale Charakteristika eines Proteins wie Motive und Dom\"anen einfach visualisiert werden.
 
 
 \section{PLCC}
 
-PLCC ist die \textit{Software}, die die Daten der PTGL generiert und verwaltet. Sie wird von \textit{Tim Sch\"afer} geschrieben und verwaltet.
+PLCC ist die \textit{Software}, die die Daten der PTGL generiert und verwaltet. Sie wurde von \textit{Tim Sch\"afer} geschrieben und  wird von ihm verwaltet.
 
 
 \paragraph{Die Berechnung der Graphen der PTGL}
 
-erfolgt unter Verwendung der entsprechenden PDB und DSSP-Dateien. Um den Graphen f\"ur eine Polypeptidkette zu berechnen, werden aus der DSSP-Datei die SSEs des Proteins ausgelesen. F\"ur jedes Paar von SSEs wird die Anzahl der r\"aumlichen Kontakte ihrer Residuen in der PDB-Datei berechnet. Wenn die Anzahl dieser Kontakte einen gewissen Grenzwert \"uberschreitet, wird angenommen, dass diese SSEs r\"aumlich benachbart sind und die jeweiligen Knoten werden durch eine Kante verbunden. So wird f\"ur jede Polypeptidkette ein Graph erstellt.
+erfolgt unter Verwendung der entsprechenden PDB- und DSSP-Dateien. Um den Graphen f\"ur eine Polypeptidkette zu berechnen, werden aus der DSSP-Datei die SSEe des Proteins ausgelesen. F\"ur jedes Paar von SSEs wird die Anzahl der r\"aumlichen Kontakte ihrer Residuen in der PDB-Datei berechnet. Wenn die Anzahl dieser Kontakte einen gewissen Grenzwert \"uberschreitet, wird angenommen, dass diese SSEs r\"aumlich benachbart sind und die jeweiligen Knoten werden durch eine Kante verbunden. So wird f\"ur jede Polypeptidkette ein Graph erstellt.
 
 \paragraph{Komplexgraphen}
 
@@ -278,7 +310,7 @@ In den Tabellen \ref{tab:occ_alpha}, \ref{tab:occ_beta} und \ref{tab:occ_ab} sin
 %3slo   & 2.40.128.130& Proteintransport       \\ \hline
 %1wjx   & 2.40.280.10 & RNA-bindendes Protein   \\ \hline
 %5chy   & 3.40.50.2300& Signaltransduktion      \\ \hline
-%2id9   & 3.40.50.2300& Signalprotein          \\ \hline
+%2id9   & 3.40.50.2300& Signalprotein          \\ \hlineSnapshot 1
 %3i42   & 3.40.50.2300& unbekannte Funktion     \\ \hline
 %1d4o   & 3.40.50.1220& Oxidoreductase          \\ \hline
 %2w0i   & 3.40.20.10  & Transferase             \\ 
@@ -632,6 +664,8 @@ Damit sind die Unterschiede der \textit{Graphlet}-Verteilungen zwischen dem Refe
 Die folgende Diskussion widmet sich vor allem der Frage, wieso die Ergebnisse der \"Ahnlichkeitsvergleiche sich so stark zwischen den jeweiligen Graphendarstellungen unterscheiden.
 Des weiteren wird der Zusammenhang zwischen dem modifizierten Jaccard-Index und der RGF untersucht.
 
+\section{Diskussion}
+
 \subsection{Fallstudie}
 \subsubsection{Vergleich der Graphtypen}
 
@@ -774,15 +808,15 @@ Die zweite M\"oglichkeit ist den \textit{Graphlet}-Algorithmus so anzupassen, da
 
 \subsection{Schluss}
 
-In der Fallstudie konnten durch den Vergleich von \textit{Graphlet}-Vektoren die meisten \"ahnlichen Proteine als solche erkannt werden. Die Betrachtung der Verteilungen der \textit{Graphlets} zeigt, dass diese sich zwischen einer Superfamilie und einem Referenzdatensatz unterscheiden.
+In der Fallstudie konnten durch den Vergleich von \textit{Graphlet}-Vektoren die meisten \"ahnlichen Proteine als solche erkannt werden. Die Betrachtung der Verteilungen der \textit{Graphlets} zeigt, dass diese sich zwischen einer diversen Superfamilie und einem Referenzdatensatz unterscheiden.
 
 Damit scheinen \textit{Graphlets} gut f\"ur \"ahnlichkeitsbasierte Anwendungen geeignet zu sein. Es gibt aber noch Verbesserungspotential bei der Genauigkeit und der Geschwindigkeit des Programms.
 
 Es ist allerdings nicht klar, wie die Genauigkeit genau verbessert werden k\"onnte. Da \textit{Graphlets} nicht einfach visualisiert werden k\"onnen, sind die berechneten \"Ahnlichkeitswerte nur verst\"andlich, wenn man die entsprechenden Graphen betrachten kann.
 
-F\"ur eine genauere Einteilung von Proteinstrukturtopologien mit \textit{Graphlet}-Vektoren wird es n\"otig sein, ein entsprechendes \"Ahnlichkeitsma"s zu finden, das biologisch motiviert ist, oder beim Vergleich zus\"atzliche Informationen zu ber\"ucksichtigen. 
+F\"ur eine genauere Einteilung von Proteinstrukturtopologien mit \textit{Graphlet}-Vektoren wird es n\"otig sein, ein entsprechendes \"Ahnlichkeitsma"s zu finden, das biologisch motiviert ist, oder beim Vergleich zus\"atzliche Informationen zu ber\"ucksichtigen. Die Untersuchung der \textit{Graphlet}-Verteilungen hat gezeigt, dass es einige wenige \textit{Graphlets} sich besser zur Unterscheidung eignen als die meisten anderen.
 
-Hierbei ist zu ber\"ucksichtigen, dass die \"Ahnlichkeit von Proteinen immer im Kontext der jeweiligen Fragestellung steht. Die Spezifit\"at der Bindung h\"angt h\"aufig von einigen wenigen Aminos\"auren in der Bindungstasche eines Proteins ab. Im Gegensatz dazu ist die Dom\"anenstruktur f\"ur evolution\"are Beziehungen entscheidend.
+Hierbei ist zu ber\"ucksichtigen, dass die \"Ahnlichkeit von Proteinen immer im Kontext der jeweiligen Fragestellung zu verstehen ist. Die Spezifit\"at der Bindung h\"angt h\"aufig von den Positionen einiger weniger Aminos\"auren in der Bindungstasche eines Proteins ab. Im Gegensatz dazu ist die konservierte Dom\"anenstruktur f\"ur Erkenntnisse \"uber evolution\"are Beziehungen wichtiger.
 
 
 
