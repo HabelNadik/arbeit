@@ -18,6 +18,14 @@ Tatiana Bakirova, Tim Sch{\"a}fer, and Ina Koch.
 \newblock Comparison of protein topology graphs using graphlet-based methods.
 \newblock {\em GCB 2013 G{\"o}ttingen-Poster Abstracts}.
 
+\bibitem{3slo}
+Travis~J Barnard, James Gumbart, Janine~H Peterson, Nicholas Noinaj, Nicole~C
+  Easley, Nathalie Dautin, Adam~J Kuszak, Emad Tajkhorshid, Harris~D Bernstein,
+  and Susan~K Buchanan.
+\newblock Molecular basis for the activation of a catalytic asparagine residue
+  in a self-cleaving bacterial autotransporter.
+\newblock {\em Journal of molecular biology}, 415(1):128--142, 2012.
+
 \bibitem{1mxs}
 BJ~Bell, L~Watanabe, JL~Rios-Steiner, A~Tulinsky, L~Lebioda, and RK~Arni.
 \newblock Structure of 2-keto-3-deoxy-6-phosphogluconate (kdpg) aldolase from
@@ -65,6 +73,35 @@ AARON~J Dobbs, BRYAN~F Anderson, H~RICK Faber, and EDWARD~N Baker.
 \newblock {\em Acta Crystallographica Section D: Biological Crystallography},
   52(2):356--368, 1996.
 
+\bibitem{2w0i}
+J.M. Elkins, Pike A.C.W., E.~Salah, P.~Savitsky, J.W. Murray, A.~Roos,
+  F.~Von~Delft, A.~Edwards, C.H. Arrowsmith, M.~Wilkstrom, C.~Bountra, and
+  S.~Knapp.
+\newblock Structure of c-terminal actin depolymerizing factor homology (adf-h)
+  domain of human twinfilin-2.
+\newblock \url{http://www.rcsb.org/pdb/explore/explore.do?structureId=2w0i},
+  2008.
+\newblock [Stand: 21.04.2016].
+
+\bibitem{1vqt}
+Joint~Center for Structural~genomics.
+\newblock Crystal structure of orotidine 5'-phosphate decarboxylase (tm0332)
+  from thermotoga maritima at 2.00 {\aa} resolution.
+\newblock \url{http://www.rcsb.org/pdb/explore/explore.do?structureId=1vqt},
+  2005.
+\newblock [stand: 21.04.2106].
+
+\bibitem{3ceu}
+F.~Forouhar, Y.~Chen, J.~Seetharaman, H.~Janjua, L.~Mao, R.~Xiao, E.L. Foote,
+  M.~Maglaqui, C.~Ciccosanti, L.~Zhao, M.C. Baran, T.B. Acton, G.T. Montelione,
+  J.F. Hunt, L.~Tong, and Northeast Structural~Genomics Consortium.
+\newblock Crystal structure of thiamine phosphate pyrophosphorylase (bt\_0647)
+  from bacteroides thetaiotaomicron. northeast structural genomics consortium
+  target btr268.
+\newblock \url{http://www.rcsb.org/pdb/explore/explore.do?structureId=3ceu},
+  2008.
+\newblock [Stand: 21.04.2016].
+
 \bibitem{scope}
 Naomi~K Fox, Steven~E Brenner, and John-Marc Chandonia.
 \newblock Scope: Structural classification of proteins—extended, integrating
@@ -81,7 +118,7 @@ David~H Goetz, Sirkku~T Willie, Roger~S Armen, Tomas Bratt, Niels Borregaard,
 \bibitem{1lbm}
 Martina Henn-Sax, Ralf Thoma, Steffen Schmidt, Michael Hennig, Kasper
   Kirschner, and Reinhard Sterner.
-\newblock Two ($\beta$$\alpha$) 8-barrel enzymes of histidine and tryptophan
+\newblock Two {($\beta$$\alpha$)0} 8-barrel enzymes of histidine and tryptophan
   biosynthesis have similar reaction mechanisms and common strategies for
   protecting their labile substrates.
 \newblock {\em Biochemistry}, 41(40):12032--12042, 2002.
@@ -161,6 +198,14 @@ Natasa Pr{\v{z}}ulj, Derek~G Corneil, and Igor Jurisica.
   protein--protein interaction networks.
 \newblock {\em Bioinformatics}, 22(8):974--980, 2006.
 
+\bibitem{3i42}
+U.A. Ramagopal, C.~Morano, Burley S.K., and Almo S.C.
+\newblock Structure of the resoponse regulator receiver domain (chey-like) from
+  methylobacillus flagellatus.
+\newblock \url{http://www.rcsb.org/pdb/explore/explore.do?structureId=3i42},
+  2009.
+\newblock [Stand: 21.04.2016].
+
 \bibitem{vplg}
 Tim Sch{\"a}fer, Patrick May, and Ina Koch.
 \newblock {Computation and Visualization of Protein Topology Graphs Including
@@ -171,7 +216,15 @@ Tim Sch{\"a}fer, Patrick May, and Ina Koch.
   (OASIcs)}, pages 108--118, Dagstuhl, Germany, 2012. Schloss
   Dagstuhl--Leibniz-Zentrum fuer Informatik.
 
-\bibitem{sherv_graphlets}
+\bibitem{3gf9}
+Y~Shen, Y~Tong, W~Tempel, Y~Li, C.H. Arrowsmith, A.M. Edwards, C~Bountra,
+  J~Weigelt, A~Bochkarev, and H~Park.
+\newblock Crystal structure of human intersectin 2 rhogef domain.
+\newblock \url{http://www.rcsb.org/pdb/explore/explore.do?structureId=3gf9},
+  2009.
+\newblock [Stand: 21.04.2016].
+
+\bibitem{shervgraphlets}
 Nino Shervashidze, Tobias Petri, Kurt Mehlhorn, Karsten~M Borgwardt, and Svn
   Vishwanathan.
 \newblock Efficient graphlet kernels for large graph comparison.

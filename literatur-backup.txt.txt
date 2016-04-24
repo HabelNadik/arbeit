@@ -1,4 +1,3 @@
-
 @article{ advancespitfalls,
                 author = "Hasegawa et al",
                 title = "Advances and pitfalls of protein structural alignment",
@@ -185,7 +184,7 @@
 }
 
 @article{scope,
-  title={SCOPe: Structural Classification of Proteins—extended, integrating SCOP and ASTRAL data and classification of new structures},
+  title={SCOPe: Structural Classification of Proteins�extended, integrating SCOP and ASTRAL data and classification of new structures},
   author={Fox, Naomi K and Brenner, Steven E and Chandonia, John-Marc},
   journal={Nucleic acids research},
   volume={42},
@@ -261,6 +260,14 @@
 
 3gf9
 
+online{3gf9,
+  author={Shen, Y and Tong, Y and Tempel, W and Li, Y and Arrowsmith, C.H. and Edwards, A.M. and Bountra, C and Weigelt, J and Bochkarev, A and Park, H},
+  title={Crystal structure of human Intersection 2 RhoGEF domain},
+  url={{http://www.rcsb.org/pdb/explore/explore.do?structureId=3gf9}},
+  urldate={2016-04-21},
+  year={2009},
+  publisher={Protein Data Bank}
+}
 
 
 
@@ -381,6 +388,17 @@
 
 3i42 - keine veroeffentlichung
 
+online{3i42,
+   title={Structure of the resoponse regulator receiver domain (CheY-like) from Methylobacillus flagellatus},
+  author={Ramagopal, U.A. and Morano, C. and Burley S.K. and Almo S.C.},
+  url={{http://www.rcsb.org/pdb/explore/explore.do?structureId=3i42}},
+  urldate={2016-04-22},
+  year={2009},
+ publisher={Protein Data Bank}
+ } 
+
+
+
 
 
 
@@ -414,6 +432,16 @@
 
 2w0i - nicht veroeffentlicht
 
+online{2w0i,
+ title={Structure of C-terminal Actin Depolymerizing Factor Homology (ADF-H) Domain of human Twinfilin-2},
+ author={Elkins, J.M. and Pike A.C.W. and Salah, E. and Savitsky, P. and Murray, J.W. and Roos, A. and Von Delft, F. and Edwards, A. and Arrowsmith, C.H. and Wilkstrom, M. and Bountra, C. and Knapp, S.},
+ year={2008},
+ url={{http://www.rcsb.org/pdb/explore/explore.do?structureId=2w0i}},
+ urldate={2016-04-21},
+ publisher={Protein Data Bank}
+}
+
+
 
 
 
@@ -443,7 +471,7 @@ Paper zu den Aldolasen
 1lor
 
 @article{1lor,
-  title={Crystal structures of inhibitor complexes reveal an alternate binding mode in orotidine-5′-monophosphate decarboxylase},
+  title={Crystal structures of inhibitor complexes reveal an alternate binding mode in orotidine-5'-monophosphate decarboxylase},
   author={Wu, Ning and Pai, Emil F},
   journal={Journal of Biological Chemistry},
   volume={277},
@@ -500,9 +528,39 @@ Paper zu den Aldolasen
 
 
 
+
+
+1vqt - nicht veroeffentlicht
+
+online{1vqt,
+ title={Crystal structure od Orotidine 5'-phosphate decarboxylase (TM0332) from Thermotoga maritima at 2.00  {\AA} resolution},
+ author={Joint Center for Structural genomics},
+ year={2005},
+ url = {{http://www.rcsb.org/pdb/explore/explore.do?structureId=1vqt}},
+ urldate={2016-04-21},
+ publisher={Protein Data Bank}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 1wau
 
-@article{1wau,
+article{1wau,
   title={Mechanism of the Class I KDPG aldolase},
   author={Fullerton, Stephen WB and Griffiths, Jennifer S and Merkel, Alexandra B and Cheriyan, Manoj and Wymer, Nathan J and Hutchins, Michael J and Fierke, Carol A and Toone, Eric J and Naismith, James H},
   journal={Bioorganic \& medicinal chemistry},
@@ -512,6 +570,30 @@ Paper zu den Aldolasen
   year={2006},
   publisher={Elsevier}
 }
+
+
+
+
+
+
+
+
+
+
+
+3ceu 
+
+online{3ceu,
+ title={Crystal structure of thiamine phosphate pyrophosphorylase (BT_0647) from Bacteroides thetaiotaomicron. Northeast Structural Genomics Consortium target BtR268},
+ author={Forouhar, F. and Chen, Y. and Seetharaman, J. and Janjua, H. and Mao, L. and Xiao, R. and Foote, E.L. and Maglaqui, M. and Ciccosanti, C. and Zhao, L. and Baran, M.C. and Acton, T.B. and Montelione, G.T. and Hunt, J.F. and Tong, L. and Northeast Structural Genomics Consortium},
+ url={{http://www.rcsb.org/pdb/explore/explore.do?structureId=3ceu}},
+ urldate={2016-04-21},
+ year={2008},
+ publisher={Protein Data Bank}
+}
+
+
+
 
 
 
@@ -543,50 +625,4 @@ Paper zu den Aldolasen
 
 
 
-ONLINE SACHEN -----------------------------------------------------------------------------------------------------
 
-
-@misc{3ceu,
- title={Crystal structure of thiamine phosphate pyrophosphorylase (BT\_0647) from Bacteroides thetaiotaomicron. Northeast Structural Genomics Consortium target BtR268},
- author={Forouhar, F. and Chen, Y. and Seetharaman, J. and Janjua, H. and Mao, L. and Xiao, R. and Foote, E.L. and Maglaqui, M. and Ciccosanti, C. and Zhao, L. and Baran, M.C. and Acton, T.B. and Montelione, G.T. and Hunt, J.F. and Tong, L. and Northeast Structural Genomics Consortium},
- year={2008},
- publisher={Protein Data Bank},
-howpublished={\url{http://www.rcsb.org/pdb/explore/explore.do?structureId=3ceu}},
-note={[Stand: 21.04.2016]}
-}
-
-@misc{1vqt,
- title={Crystal structure of Orotidine 5'-phosphate decarboxylase (TM0332) from Thermotoga maritima at 2.00  {\AA} resolution},
- author={Joint Center for Structural genomics},
- year={2005},
- howpublished={\url{http://www.rcsb.org/pdb/explore/explore.do?structureId=1vqt}},
- note={[stand: 21.04.2106]},
- publisher={Protein Data Bank}
-}
-
-@misc{2w0i,
- title={Structure of C-terminal Actin Depolymerizing Factor Homology (ADF-H) Domain of human Twinfilin-2},
- author={Elkins, J.M. and Pike A.C.W. and Salah, E. and Savitsky, P. and Murray, J.W. and Roos, A. and Von Delft, F. and Edwards, A. and Arrowsmith, C.H. and Wilkstrom, M. and Bountra, C. and Knapp, S.},
- year={2008},
- howpublished={\url{http://www.rcsb.org/pdb/explore/explore.do?structureId=2w0i}},
- note={[Stand: 21.04.2016]},
- publisher={Protein Data Bank}
-}
-
-@misc{3i42,
-   title={Structure of the resoponse regulator receiver domain (CheY-like) from Methylobacillus flagellatus},
-  author={Ramagopal, U.A. and Morano, C. and Burley S.K. and Almo S.C.},
-  howpublished={\url{http://www.rcsb.org/pdb/explore/explore.do?structureId=3i42}},
-  note={[Stand: 21.04.2016]},
-  year={2009},
- publisher={Protein Data Bank}
-}
- 
-@misc{3gf9,
-  author={Shen, Y and Tong, Y and Tempel, W and Li, Y and Arrowsmith, C.H. and Edwards, A.M. and Bountra, C and Weigelt, J and Bochkarev, A and Park, H},
-  title={Crystal structure of human Intersectin 2 RhoGEF domain},
-  howpublished={\url{http://www.rcsb.org/pdb/explore/explore.do?structureId=3gf9}},
-  note={[Stand: 21.04.2016]},
-  year={2009},
-  publisher={Protein Data Bank}
-}

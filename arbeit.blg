@@ -1,54 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/TeX Live for SUSE Linux)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: arbeit.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: arbeit.aux
 The style file: plain.bst
 Database file #1: literatur.bib
-Warning--I didn't find a database entry for "3gf9"
-Warning--I didn't find a database entry for "3slo"
-Warning--I didn't find a database entry for "3i42"
-Warning--I didn't find a database entry for "2woi"
-Warning--I didn't find a database entry for "1vqt"
-Warning--I didn't find a database entry for "3ceu"
 Warning--empty year in bakirova2013comparison
-You've used 35 entries,
-            2118 wiz_defined-function locations,
-            733 strings with 11847 characters,
-and the built_in function-call counts, 14987 in all, are:
-= -- 1448
-> -- 921
-< -- 6
-+ -- 364
-- -- 325
-* -- 1286
-:= -- 2514
-add.period$ -- 106
-call.type$ -- 35
-change.case$ -- 260
-chr.to.int$ -- 0
-cite$ -- 36
-duplicate$ -- 437
-empty$ -- 987
-format.name$ -- 325
-if$ -- 2995
-int.to.chr$ -- 0
-int.to.str$ -- 35
-missing$ -- 37
-newline$ -- 178
-num.names$ -- 72
-pop$ -- 221
-preamble$ -- 1
-purify$ -- 227
-quote$ -- 0
-skip$ -- 311
-stack$ -- 0
-substring$ -- 1075
-swap$ -- 83
-text.length$ -- 6
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 136
-warning$ -- 1
-while$ -- 135
-width$ -- 37
-write$ -- 387
-(There were 7 warnings)
+(There was 1 warning)

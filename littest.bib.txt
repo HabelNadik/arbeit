@@ -1,2 +1,0 @@
-
-@ARTICLE{test, author = {Norm Chomsky}, title = {Bullshit Paradise}, journal = {Przuli}, year = {2006}}

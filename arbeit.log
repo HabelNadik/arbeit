@@ -1,0 +1,953 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.31)  25 APR 2016 01:12
+entering extended mode
+**arbeit.tex
+(arbeit.tex
+LaTeX2e <2015/01/01> patch level 2
+Babel <3.9m> and hyphenation patterns for 69 languages loaded.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\mathtools\mathtools.sty"
+Package: mathtools 2015/06/17 v1.17 mathematical typesetting tools
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\calc.sty"
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count88
+\calc@Bcount=\count89
+\calc@Adimen=\dimen103
+\calc@Bdimen=\dimen104
+\calc@Askip=\skip43
+\calc@Bskip=\skip44
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count90
+\calc@Cskip=\skip45
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\mathtools\mhsetup.sty"
+Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip46
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks15
+\ex@=\dimen105
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen106
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count91
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count92
+\leftroot@=\count93
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count94
+\DOTSCASE@=\count95
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count96
+\c@MaxMatrixCols=\count97
+\dotsspace@=\muskip10
+\c@parentequation=\count98
+\dspbrk@lvl=\count99
+\tag@help=\toks16
+\row@=\count100
+\column@=\count101
+\maxfields@=\count102
+\andhelp@=\toks17
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks18
+\multlinegap=\skip47
+\multlinetaggap=\skip48
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count103
+\l_MT_multwidth_dim=\dimen114
+\origjot=\skip49
+\l_MT_shortvdotswithinadjustabove_dim=\dimen115
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen116
+\l_MT_above_intertext_sep=\dimen117
+\l_MT_below_intertext_sep=\dimen118
+\l_MT_above_shortintertext_sep=\dimen119
+\l_MT_below_shortintertext_sep=\dimen120
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\german\ngerman.sty"
+v2.5e 1998-07-08
+Package: ngerman 1998/07/08 v2.5e Support for writing german texts (br)
+\grmnU@D=\dimen121
+ngerman -- \language number for naustrian undefined, default 44 used.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
+
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2011/06/24 v1.1 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen122
+\Hy@linkcounter=\count104
+\Hy@pagecounter=\count105
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count106
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count107
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\url\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen123
+\Fld@menulength=\count108
+\Field@Width=\dimen124
+\Fld@charsize=\dimen125
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count109
+\c@Item=\count110
+\c@Hfootnote=\count111
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count112
+\c@bookmark@seq@number=\count113
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip50
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\rotating\rotating.sty"
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 94.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+\Gread@gobject=\count114
+))
+\Gin@req@height=\dimen126
+\Gin@req@width=\dimen127
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count115
+\rotFPtop=\skip51
+\rotFPbot=\skip52
+\rot@float@box=\box28
+\rot@mess@toks=\toks20
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Package option `usenames' ignored on input line 216.
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\colortbl\colortbl.sty"
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen128
+\extrarowheight=\dimen129
+\NC@list=\toks21
+\extratabsurround=\skip53
+\backup@length=\skip54
+)
+\everycr=\toks22
+\minrowclearance=\skip55
+)
+\rownum=\count116
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\dvipsnam.def"
+File: dvipsnam.def 2014/10/14 v3.0j Driver-dependent file (DPC,SPQR)
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen130
+\captionmargin@=\dimen131
+\captionwidth=\dimen132
+\caption@tempdima=\dimen133
+\caption@indent=\dimen134
+\caption@parindent=\dimen135
+\caption@hangindent=\dimen136
+)
+\c@ContinuedFloat=\count117
+Package caption Info: hyperref package is loaded.
+Package caption Info: rotating package is loaded.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count118
+\float@exts=\toks23
+\float@box=\box29
+\@float@everytoks=\toks24
+\@floatcapt=\box30
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\subcaption.sty"
+Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
+\c@subfigure=\count119
+\c@subtable=\count120
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\algorithm2e\algorithm2e.sty"
+Package: algorithm2e 2013/01/06 v5.00 algorithms environments
+\c@AlgoLine=\count121
+\algocf@hangindent=\skip56
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
+Package: relsize 2003/07/04 ver 3.1
+)
+********************************************************
+Package `algorithm2e' Release 5.1 -- october 19 2015 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (christophe.fiorio@umontpellier.fr)
+********************************************************
+\skiptotal=\skip57
+\skiplinenumber=\skip58
+\skiprule=\skip59
+\skiphlne=\skip60
+\skiptext=\skip61
+\skiplength=\skip62
+\algomargin=\skip63
+\skipalgocfslide=\skip64
+\algowidth=\dimen137
+\inoutsize=\dimen138
+\inoutindent=\dimen139
+\interspacetitleruled=\dimen140
+\interspacealgoruled=\dimen141
+\interspacetitleboxruled=\dimen142
+\algocf@ruledwidth=\skip65
+\algocf@inoutbox=\box31
+\algocf@inputbox=\box32
+\AlCapSkip=\skip66
+\AlCapHSkip=\skip67
+\algoskipindent=\skip68
+\algocf@nlbox=\box33
+\algocf@hangingbox=\box34
+\algocf@untilbox=\box35
+\algocf@skipuntil=\skip69
+\algocf@capbox=\box36
+\algoheightruledefault=\skip70
+\algoheightrule=\skip71
+\algotitleheightruledefault=\skip72
+\algotitleheightrule=\skip73
+\c@algocfline=\count122
+\c@algocfproc=\count123
+\c@algocf=\count124
+\algocf@algoframe=\box37
+\algocf@algobox=\box38
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\acronym\acronym.sty"
+Package: acronym 2015/03/21 v1.41 Support for acronyms (Tobias Oetiker)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\bigfoot\suffix.sty"
+Package: suffix 2006/07/15 1.5a Variant command support
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\xstring\xstring.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\xstring\xstring.tex"
+\@xs@message=\write3
+\integerpart=\count125
+\decimalpart=\count126
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
+\AC@clearlist=\toks25
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+\Gm@cnth=\count127
+\Gm@cntv=\count128
+\c@Gm@tempcnt=\count129
+\Gm@bindingoffset=\dimen143
+\Gm@wd@mp=\dimen144
+\Gm@odd@mp=\dimen145
+\Gm@even@mp=\dimen146
+\Gm@layoutwidth=\dimen147
+\Gm@layoutheight=\dimen148
+\Gm@layouthoffset=\dimen149
+\Gm@layoutvoffset=\dimen150
+\Gm@dimlist=\toks26
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\changepage\changepage.sty"
+Package: changepage 2009/10/20 v1.0c check page and change page layout
+\c@cp@cntr=\count130
+\cp@tempcnt=\count131
+)
+(arbeit.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+\AtBeginShipoutBox=\box39
+Package hyperref Info: Link coloring OFF on input line 35.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count132
+)
+LaTeX Info: Redefining \ref on input line 35.
+LaTeX Info: Redefining \pageref on input line 35.
+LaTeX Info: Redefining \nameref on input line 35.
+ (arbeit.out) (arbeit.out)
+\@outlinefile=\write4
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count133
+\scratchdimen=\dimen151
+\scratchbox=\box40
+\nofMPsegments=\count134
+\nofMParguments=\count135
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count136
+\MPscratchDim=\dimen152
+\MPnumerator=\count137
+\makeMPintoPDFobject=\count138
+\everyMPtoPDFconversion=\toks28
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: showframe 
+* h-part:(L,W,R)=(92.14519pt, 430.00462pt, 92.14519pt)
+* v-part:(T,H,B)=(95.39737pt, 556.47656pt, 143.09605pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=430.00462pt
+* \textheight=556.47656pt
+* \oddsidemargin=19.8752pt
+* \evensidemargin=19.8752pt
+* \topmargin=-13.87262pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 43.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 43.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{C:/Users/vv/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] (arbeit.toc [1
+
+])
+\tf@toc=\write5
+ [2]
+(arbeit.lof)
+\tf@lof=\write6
+ [3
+
+] (arbeit.lot)
+\tf@lot=\write7
+ [4
+
+] [5]
+Kapitel 1.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.103 
+       [1
+
+] [2] [3]
+Kapitel 2.
+[4
+
+] [5]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 229.
+ [6]
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
+
+ []
+
+[7] [8]
+Overfull \hbox (1.47594pt too wide) in paragraph at lines 346--346
+ \OT1/cmr/m/n/10 1QPU| 
+ []
+
+<1QPU_asym_r_500.jpg, id=360, 501.875pt x 501.875pt>
+File: 1QPU_asym_r_500.jpg Graphic file (type jpg)
+ <use 1QPU_asym_r_500.jpg>
+Package pdftex.def Info: 1QPU_asym_r_500.jpg used on input line 346.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+<1QQ3_asym_r_500.jpg, id=362, 501.875pt x 501.875pt>
+File: 1QQ3_asym_r_500.jpg Graphic file (type jpg)
+ <use 1QQ3_asym_r_500.jpg>
+Package pdftex.def Info: 1QQ3_asym_r_500.jpg used on input line 347.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+Overfull \hbox (1.96202pt too wide) in paragraph at lines 348--348
+ \OT1/cmr/m/n/10 1CGN| 
+ []
+
+<1CGN_bio_r_500.jpg, id=364, 501.875pt x 501.875pt>
+File: 1CGN_bio_r_500.jpg Graphic file (type jpg)
+ <use 1CGN_bio_r_500.jpg>
+Package pdftex.def Info: 1CGN_bio_r_500.jpg used on input line 348.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+<1HE9_bio_r_500.jpg, id=366, 501.875pt x 501.875pt>
+File: 1HE9_bio_r_500.jpg Graphic file (type jpg)
+ <use 1HE9_bio_r_500.jpg>
+Package pdftex.def Info: 1HE9_bio_r_500.jpg used on input line 349.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+<3GF9_bio_r_500.jpg, id=368, 501.875pt x 501.875pt>
+File: 3GF9_bio_r_500.jpg Graphic file (type jpg)
+ <use 3GF9_bio_r_500.jpg>
+Package pdftex.def Info: 3GF9_bio_r_500.jpg used on input line 350.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+
+LaTeX Warning: Float too large for page by 7.07161pt on input line 354.
+
+<1EXS_bio_r_500.jpg, id=370, 501.875pt x 501.875pt>
+File: 1EXS_bio_r_500.jpg Graphic file (type jpg)
+ <use 1EXS_bio_r_500.jpg>
+Package pdftex.def Info: 1EXS_bio_r_500.jpg used on input line 364.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+Overfull \hbox (0.9898pt too wide) in paragraph at lines 365--365
+ \OT1/cmr/m/n/10 1NGL| 
+ []
+
+<1NGL_asym_r_500.jpg, id=372, 501.875pt x 501.875pt>
+File: 1NGL_asym_r_500.jpg Graphic file (type jpg)
+ <use 1NGL_asym_r_500.jpg>
+Package pdftex.def Info: 1NGL_asym_r_500.jpg used on input line 365.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+Overfull \hbox (0.50372pt too wide) in paragraph at lines 366--366
+ \OT1/cmr/m/n/10 1QQS| 
+ []
+
+<1QQS_bio_r_500.jpg, id=374, 501.875pt x 501.875pt>
+File: 1QQS_bio_r_500.jpg Graphic file (type jpg)
+ <use 1QQS_bio_r_500.jpg>
+Package pdftex.def Info: 1QQS_bio_r_500.jpg used on input line 366.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+<3SLO_bio_r_500.jpg, id=376, 501.875pt x 501.875pt>
+File: 3SLO_bio_r_500.jpg Graphic file (type jpg)
+ <use 3SLO_bio_r_500.jpg>
+Package pdftex.def Info: 3SLO_bio_r_500.jpg used on input line 367.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+Overfull \hbox (2.30927pt too wide) in paragraph at lines 368--368
+ \OT1/cmr/m/n/10 1WJX| 
+ []
+
+<1WJX_bio_r_500.jpg, id=378, 501.875pt x 501.875pt>
+File: 1WJX_bio_r_500.jpg Graphic file (type jpg)
+ <use 1WJX_bio_r_500.jpg>
+Package pdftex.def Info: 1WJX_bio_r_500.jpg used on input line 368.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+Overfull \hbox (1.6148pt too wide) in paragraph at lines 385--385
+ \OT1/cmr/m/n/10 5CHY| 
+ []
+
+<5CHY_bio_r_500.jpg, id=380, 501.875pt x 501.875pt>
+File: 5CHY_bio_r_500.jpg Graphic file (type jpg)
+ <use 5CHY_bio_r_500.jpg>
+Package pdftex.def Info: 5CHY_bio_r_500.jpg used on input line 385.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+<2ID9_bio_r_500.jpg, id=382, 501.875pt x 501.875pt>
+File: 2ID9_bio_r_500.jpg Graphic file (type jpg)
+ <use 2ID9_bio_r_500.jpg>
+Package pdftex.def Info: 2ID9_bio_r_500.jpg used on input line 386.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+<3I42_bio_r_500.jpg, id=384, 501.875pt x 501.875pt>
+File: 3I42_bio_r_500.jpg Graphic file (type jpg)
+ <use 3I42_bio_r_500.jpg>
+Package pdftex.def Info: 3I42_bio_r_500.jpg used on input line 387.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ¤ in font cmr10!
+
+<1D4O_bio_r_500.jpg, id=386, 501.875pt x 501.875pt>
+File: 1D4O_bio_r_500.jpg Graphic file (type jpg)
+ <use 1D4O_bio_r_500.jpg>
+Package pdftex.def Info: 1D4O_bio_r_500.jpg used on input line 388.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+<2W0I_bio_r_500.jpg, id=388, 501.875pt x 501.875pt>
+File: 2W0I_bio_r_500.jpg Graphic file (type jpg)
+ <use 2W0I_bio_r_500.jpg>
+Package pdftex.def Info: 2W0I_bio_r_500.jpg used on input line 389.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+Overfull \hbox (1.89261pt too wide) in paragraph at lines 421--421
+ \OT1/cmr/m/n/10 1LBM| 
+ []
+
+<1LBM_bio_r_500.jpg, id=400, 501.875pt x 501.875pt>
+File: 1LBM_bio_r_500.jpg Graphic file (type jpg)
+ <use 1LBM_bio_r_500.jpg>
+Package pdftex.def Info: 1LBM_bio_r_500.jpg used on input line 421.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+<1NSJ_bio_r_500.jpg, id=401, 501.875pt x 501.875pt>
+File: 1NSJ_bio_r_500.jpg Graphic file (type jpg)
+ <use 1NSJ_bio_r_500.jpg>
+Package pdftex.def Info: 1NSJ_bio_r_500.jpg used on input line 422.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+<1V5X_bio_r_500.jpg, id=402, 501.875pt x 501.875pt>
+File: 1V5X_bio_r_500.jpg Graphic file (type jpg)
+ <use 1V5X_bio_r_500.jpg>
+Package pdftex.def Info: 1V5X_bio_r_500.jpg used on input line 423.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+Overfull \hbox (0.92036pt too wide) in paragraph at lines 425--425
+ \OT1/cmr/m/n/10 3CEU| 
+ []
+
+<3CEU_bio_r_500.jpg, id=403, 501.875pt x 501.875pt>
+File: 3CEU_bio_r_500.jpg Graphic file (type jpg)
+ <use 3CEU_bio_r_500.jpg>
+Package pdftex.def Info: 3CEU_bio_r_500.jpg used on input line 425.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+<7TIM_bio_r_500.jpg, id=404, 501.875pt x 501.875pt>
+File: 7TIM_bio_r_500.jpg Graphic file (type jpg)
+ <use 7TIM_bio_r_500.jpg>
+Package pdftex.def Info: 7TIM_bio_r_500.jpg used on input line 426.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+Overfull \hbox (1.6148pt too wide) in paragraph at lines 439--439
+ \OT1/cmr/m/n/10 1VQT| 
+ []
+
+<1VQT_bio_r_500.jpg, id=405, 501.875pt x 501.875pt>
+File: 1VQT_bio_r_500.jpg Graphic file (type jpg)
+ <use 1VQT_bio_r_500.jpg>
+Package pdftex.def Info: 1VQT_bio_r_500.jpg used on input line 439.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+Overfull \hbox (3.28146pt too wide) in paragraph at lines 440--440
+ \OT1/cmr/m/n/10 1WAU| 
+ []
+
+<1WAU_bio_r_500.jpg, id=407, 501.875pt x 501.875pt>
+File: 1WAU_bio_r_500.jpg Graphic file (type jpg)
+ <use 1WAU_bio_r_500.jpg>
+Package pdftex.def Info: 1WAU_bio_r_500.jpg used on input line 440.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+Overfull \hbox (0.78148pt too wide) in paragraph at lines 441--441
+ \OT1/cmr/m/n/10 1LOR| 
+ []
+
+<1LOR_bio_r_500.jpg, id=409, 501.875pt x 501.875pt>
+File: 1LOR_bio_r_500.jpg Graphic file (type jpg)
+ <use 1LOR_bio_r_500.jpg>
+Package pdftex.def Info: 1LOR_bio_r_500.jpg used on input line 441.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+Overfull \hbox (1.61482pt too wide) in paragraph at lines 442--442
+ \OT1/cmr/m/n/10 1MXS| 
+ []
+
+<1MXS_bio_r_500.jpg, id=411, 501.875pt x 501.875pt>
+File: 1MXS_bio_r_500.jpg Graphic file (type jpg)
+ <use 1MXS_bio_r_500.jpg>
+Package pdftex.def Info: 1MXS_bio_r_500.jpg used on input line 442.
+(pdftex.def)             Requested size: 85.35826pt x 85.35307pt.
+
+[9] [10 <./1QPU_asym_r_500.jpg> <./1QQ3_asym_r_500.jpg> <./1CGN_bio_r_500.jpg> 
+<./1HE9_bio_r_500.jpg> <./3GF9_bio_r_500.jpg>] [11 <./1EXS_bio_r_500.jpg> <./1N
+GL_asym_r_500.jpg> <./1QQS_bio_r_500.jpg> <./3SLO_bio_r_500.jpg> <./1WJX_bio_r_
+500.jpg>] [12 <./5CHY_bio_r_500.jpg> <./2ID9_bio_r_500.jpg> <./3I42_bio_r_500.j
+pg> <./1D4O_bio_r_500.jpg> <./2W0I_bio_r_500.jpg>] [13 <./1LBM_bio_r_500.jpg> <
+./1NSJ_bio_r_500.jpg> <./1V5X_bio_r_500.jpg> <./3CEU_bio_r_500.jpg> <./7TIM_bio
+_r_500.jpg>] [14 <./1VQT_bio_r_500.jpg> <./1WAU_bio_r_500.jpg> <./1LOR_bio_r_50
+0.jpg> <./1MXS_bio_r_500.jpg>]
+Kapitel 3.
+[15
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 489--490
+
+ []
+
+[16] [17] [18] <aa_plot.png, id=520, 1003.75pt x 959.585pt>
+File: aa_plot.png Graphic file (type png)
+ <use aa_plot.png>
+Package pdftex.def Info: aa_plot.png used on input line 625.
+(pdftex.def)             Requested size: 552.06421pt x 527.77338pt.
+
+<pg_plot.png, id=523, 1003.75pt x 959.585pt>
+File: pg_plot.png Graphic file (type png)
+ <use pg_plot.png>
+Package pdftex.def Info: pg_plot.png used on input line 642.
+(pdftex.def)             Requested size: 552.06421pt x 527.77338pt.
+
+<cg_plot.png, id=525, 1003.75pt x 959.585pt>
+File: cg_plot.png Graphic file (type png)
+ <use cg_plot.png>
+Package pdftex.def Info: cg_plot.png used on input line 653.
+(pdftex.def)             Requested size: 552.06421pt x 527.77338pt.
+ [19] [20 <./aa_plot.png (PNG copy)>] [21 <./pg_plot.png (PNG copy)>] [22 <./cg
+_plot.png (PNG copy)>]
+Kapitel 4.
+<3gf9_A_albe_PG_beb.png, id=551, 487.8225pt x 300.3722pt>
+File: 3gf9_A_albe_PG_beb.png Graphic file (type png)
+
+<use 3gf9_A_albe_PG_beb.png>
+Package pdftex.def Info: 3gf9_A_albe_PG_beb.png used on input line 681.
+(pdftex.def)             Requested size: 243.91064pt x 150.18571pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[23
+
+] [24 <./3gf9_A_albe_PG_beb.png>]
+<2id9_A_albe_PG_beb.png, id=570, 474.27188pt x 304.13625pt>
+File: 2id9_A_albe_PG_beb.png Graphic file (type png)
+
+<use 2id9_A_albe_PG_beb.png>
+Package pdftex.def Info: 2id9_A_albe_PG_beb.png used on input line 752.
+(pdftex.def)             Requested size: 237.13536pt x 152.06775pt.
+
+<3i42_A_albe_PG_beb.png, id=571, 548.0475pt x 294.34969pt>
+File: 3i42_A_albe_PG_beb.png Graphic file (type png)
+
+<use 3i42_A_albe_PG_beb.png>
+Package pdftex.def Info: 3i42_A_albe_PG_beb.png used on input line 759.
+(pdftex.def)             Requested size: 274.02307pt x 147.17447pt.
+
+<2w0i_A_albe_PG_beb.png, id=572, 554.07pt x 299.61937pt>
+File: 2w0i_A_albe_PG_beb.png Graphic file (type png)
+
+<use 2w0i_A_albe_PG_beb.png>
+Package pdftex.def Info: 2w0i_A_albe_PG_beb.png used on input line 766.
+(pdftex.def)             Requested size: 277.03432pt x 149.80931pt.
+ [25 <./2id9_A_albe_PG_beb.png>] [26 <./3i42_A_albe_PG_beb.png> <./2w0i_A_albe_
+PG_beb.png>]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 791.
+ [27] [28] [29]
+Kapitel 5.
+<3graphlets.pdf, id=599, 397.46494pt x 141.52171pt>
+File: 3graphlets.pdf Graphic file (type pdf)
+ <use 3graphlets.pdf>
+Package pdftex.def Info: 3graphlets.pdf used on input line 844.
+(pdftex.def)             Requested size: 284.52756pt x 101.31465pt.
+
+<4graphlets.pdf, id=600, 704.6325pt x 305.14pt>
+File: 4graphlets.pdf Graphic file (type pdf)
+ <use 4graphlets.pdf>
+Package pdftex.def Info: 4graphlets.pdf used on input line 852.
+(pdftex.def)             Requested size: 430.00462pt x 186.21426pt.
+
+<5graphlets.pdf, id=601, 894.29707pt x 1068.1004pt>
+File: 5graphlets.pdf Graphic file (type pdf)
+ <use 5graphlets.pdf>
+Package pdftex.def Info: 5graphlets.pdf used on input line 859.
+(pdftex.def)             Requested size: 430.00462pt x 513.57877pt.
+
+[30
+
+ <./3graphlets.pdf> <./4graphlets.pdf
+
+pdfTeX warning: pdflatex (file ./4graphlets.pdf): PDF inclusion: multiple pdfs 
+with page group included in a single page
+>] [31 <./5graphlets.pdf>]
+Overfull \hbox (25.24924pt too wide) in paragraph at lines 874--896
+[][] 
+ []
+
+
+Overfull \hbox (25.24924pt too wide) in paragraph at lines 905--928
+[][] 
+ []
+
+
+Overfull \hbox (25.24924pt too wide) in paragraph at lines 936--959
+[][] 
+ []
+
+[32]
+Overfull \hbox (25.24924pt too wide) in paragraph at lines 970--992
+[][] 
+ []
+
+
+Overfull \hbox (25.24924pt too wide) in paragraph at lines 1001--1022
+[][] 
+ []
+
+
+Overfull \hbox (25.24924pt too wide) in paragraph at lines 1035--1056
+[][] 
+ []
+
+(arbeit.bbl [33] [34] [35
+
+]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [36] [37]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ² in font cmr10!
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1066.
+ [38]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1066.
+ (arbeit.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1066.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1066.
+
+Package rerunfilecheck Info: File `arbeit.out' has not changed.
+(rerunfilecheck)             Checksum: CB805B04CEBFCEE54CAFD63F4FCD800D;2316.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1066.
+ )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 1061 ({)
+### bottom level 
+Here is how much of TeX's memory you used:
+ 10780 strings out of 493673
+ 161824 string characters out of 3141539
+ 370532 words of memory out of 3000000
+ 13768 multiletter control sequences out of 15000+200000
+ 15999 words of font info for 60 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 41i,18n,39p,1021b,3388s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mbx7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx
+ti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex
+10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pf
+b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on arbeit.pdf (44 pages, 2215507 bytes).
+PDF statistics:
+ 919 PDF objects out of 1000 (max. 8388607)
+ 192 named destinations out of 1000 (max. 500000)
+ 443 words of extra memory for PDF output out of 10000 (max. 10000000)
+
